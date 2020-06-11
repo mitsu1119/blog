@@ -7,7 +7,7 @@ custom_js = []
 useFaviconGenerator = false
 languagedir = "ltr"
 
-themeOptions = ["light", "dark", "hacker", "solarized", "kimbie"]
+themeOptions = ["light", "dark"]
 notAllowedTypesInHome = ["contact", "talks", "about", "showcase"]
 notAllowedTypesInHomeSidebar = ["about", "archive", "showcase"]
 notAllowedTypesInArchive = ["about", "talks", "showcase"]
@@ -28,7 +28,7 @@ enableSearch = true
 enableSearchHighlight = true
 enableGoToTop = true
 enableWhoami = true
-summaryShape = "classic"
+summaryShape = "card"
 archiveGroupByDate = "2006"
 archivePaginate = 3
 paginateWindow = 1

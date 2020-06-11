@@ -8,7 +8,7 @@ defaultContentLanguage = "ja"
 defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 
-summaryLength = 70
+summaryLength = 80
 buildFuture = true
 
 copyright = "©{year}, All Rights Reserved"
