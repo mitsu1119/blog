@@ -1,0 +1,11 @@
+[[main]]
+  identifier = "home"
+  name = "home"
+  url = "http://mitsu1119.github.io/blog"
+  weight = 1
+
+[[main]]
+  identifier = "posts"
+  name = "posts"
+  url = "http://mitsu1119.github.io/blog/posts"
+  weight = 2
