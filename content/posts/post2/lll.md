@@ -1,6 +1,6 @@
 ---
 date: "2020-05-10 20:51:59 +0000 UTC"
-draft: true
+draft: false
 title: "LLLを理解するぞ"
 tags: []
 libraries:
@@ -97,30 +97,26 @@ $ B$ が正方行列，つまりfull-rankな格子の基底行列であれば $ 
 
 </div>
 <div class="section">
-    ### 3. 逐次最小
-    **定義 3.1:**<br/>
-$ B \in \mathbb{R}^{m \times n}$を基底行列とする格子$ \Lambda$について，自然数$ 1 \leq i \leq n$に対する$ i$番目の逐次最小$ \lambda_i = \lambda_i(\Lambda)$を次の式で定義する．<div align="center">$ \lambda _{i} (\Lambda )=\inf\left\{r \mathrel{}\middle|\mathrel{} i\leq \dim (\mathrm{span} (\Lambda \cap B(0;r)))\right\} \ \mathit{where} \ B(0;r)=\left\{x\in \mathbb{R}^{m} \mathrel{}\middle|\mathrel{} \|x\| \leq r \right\}$</div>多分ぱっと見ではこの式が何を言っているのかわかりにくいと思いますが（自分はわからなかった）言っていることは実は結構簡単で，要するに逐次最小$ \lambda_i$とは，$ i$個の線形独立な格子の元を含む原点中心の最小の超球の半径です．<br/>
-この定義より，格子$ \Lambda$の線形独立な格子ベクトルを短い順に$ n$個とってできたベクトルの組$ v_1,\cdots,v_n$の長さはそれぞれ$ \lambda_1,\cdots,\lambda_n$となることがわかります．ただし注意として，五次元以上の格子では$ \left\{ v_1,\cdots,v_n \right\}$が必ずしも$ \Lambda$の基底になるとは限りません．<br/>
-例えば格子$ \Lambda$の基底行列$ B$を<div align="center">$ \displaystyle B=\begin{pmatrix}
-b_{1} &amp; \cdots  &amp; b_{5}
-\end{pmatrix} =\begin{pmatrix}
-2 &amp;  &amp;  &amp;  &amp; 1\\
- &amp; 2 &amp;  &amp;  &amp; 1\\
- &amp;  &amp; 2 &amp;  &amp; 1\\
- &amp;  &amp;  &amp; 2.2 &amp; 1.1\\
- &amp;  &amp;  &amp;  &amp; 1
-\end{pmatrix}$</div>としたとき，ノルムが逐次最小になる線形独立な格子ベクトルの組を並べた行列$ V$は次のようになります．<div align="center">$ \displaystyle V=\begin{pmatrix}
-v_{1} &amp; \cdots  &amp; v_{5}
-\end{pmatrix} =\begin{pmatrix}
-2 &amp;  &amp;  &amp;  &amp; \\
- &amp; 2 &amp;  &amp;  &amp; \\
- &amp;  &amp; 2 &amp;  &amp; \\
- &amp;  &amp;  &amp; 2.2 &amp; \\
- &amp;  &amp;  &amp;  &amp; 2
-\end{pmatrix}$</div>$ v_5$は$ 2b_5 - b_4 - b_3 - b_2 - b_1$で作れます．しかし，格子は基底ベクトルの整数倍しか含まないため，$ b_5 \notin \mathcal{L}(V)$となるため$ V$は$ \Lambda$の基底になれません（基底は実数のベクトルが許されているものの格子点はその整数倍しか許されていないところがミソです）．これと同じような基底行列を用意してあげれば，より高い次元の格子での反例も簡単に作れます．では次に，格子における有名な諸定理を紹介します．**定理 3.1 (Blichfeldtの定理):**<br/>
-基底行列$ B \in \mathbb{R}^{m \times n}$の格子$ \Lambda$と集合$ S \subseteq \mathrm{span}(B)$について，$ \mathrm{vol}(S) > \det \Lambda$ならば$ z_1 - z_2 \in \Lambda$なる$ z_1,z_2 \in S$が存在する．**証明:**<br/>
-$ S_x = S \cap (x + \mathcal{P}(B)),\ x \in \Lambda$とすると次の式が成り立つ．<div align="center">$ \displaystyle S = \bigcup_{x \in \Lambda} S_x$</div>従って，<div align="center">$ \displaystyle \mathrm{vol}(S)=\sum_{x \in \Lambda} \mathrm{vol}(S_x)$</div>となる．ところで，$ S_x&#39; = S_x - x = (S - x) \cap \mathcal{P}(B)$とすると$ \mathrm{vol}(S_x)=\mathrm{vol}(S&#39;_x)$なので，仮定より<div align="center">$ \displaystyle \det \Lambda &lt; \mathrm{vol}(S) = \sum_{x \in \Lambda} \mathrm{vol}(S_x) = \sum_{x \in \Lambda} \mathrm{vol}(S_x&#39;)$</div>が成り立つ．また，$ S_x&#39; \subseteq \mathcal{P}(B)$なので$ (S_x)_{x \in \Lambda}$は素集合系ではないため，$ S_x&#39; \cap S_y&#39; \neq \emptyset$かつ$ x \neq y$を満たす$ x, y \in \Lambda$が存在する．<br/>
-よって，$ z \in S_x&#39; \cap S_y&#39; \neq \emptyset$に対し$ z_1 = z + x \in S_x,\ z_2 = z + y \in S_y$とすれば$ z_1 - z_2 = x - y \in \Lambda$となり，定理を満たすベクトルを構成することができる．$ ■$まあ要するに，格子$ \mathcal{L}(B)$のスパン上の，体積が$ \det \Lambda$を超える集合は，基本平行体で切り分けて一つの領域に集めた時必ず重なる点があるから成り立つということです（下図参照（画像クリックで拡大できます））．<div class="images-row mceNonEditable">{{< figure src="/images/2020/05/10/205159/20200507164758.png"  >}}{{< figure src="/images/2020/05/10/205159/20200507164801.png"  >}}{{< figure src="/images/2020/05/10/205159/20200507164820.png"  >}}</div>このBlichfeldtの定理を利用すれば，次の定理が簡単に示せます．**定理 3.2 (Minkowskiの凸体定理):**<br/>
+
+### 3. 逐次最小
+**定義 3.1:**
+$ B \in \mathbb{R}^{m \times n}$ を基底行列とする格子 $ \Lambda$ について，自然数 $ 1 \leq i \leq n$ に対する $ i$ 番目の逐次最小 $ \lambda_i = \lambda_i(\Lambda)$ を次の式で定義する．$$\lambda _ {i} (\Lambda )=\inf\left\\{r \mathrel{}\middle|\mathrel{} i\leq \dim (\mathrm{span} (\Lambda \cap B(0;r)))\right\\} \ \\\\ \hspace{6em} \mathit{where} \ B(0;r)=\left\\{x\in \mathbb{R}^{m} \mathrel{}\middle|\mathrel{} \|x\| \leq r \right\\} $$
+
+多分ぱっと見ではこの式が何を言っているのかわかりにくいと思いますが（自分はわからなかった）言っていることは実は結構簡単で，要するに逐次最小 $ \lambda_i$ とは， $ i$ 個の線形独立な格子の元を含む原点中心の最小の超球の半径です．
+この定義より，格子 $ \Lambda$ の線形独立な格子ベクトルを短い順に $ n$ 個とってできたベクトルの組 $ v_1,\cdots,v_n$ の長さはそれぞれ $ \lambda_1,\cdots,\lambda_n$ となることがわかります．ただし注意として，五次元以上の格子では $ \left\\{ v_1,\cdots,v_n \right\\}$ が必ずしも $ \Lambda$ の基底になるとは限りません．
+例えば格子 $ \Lambda$ の基底行列 $ B$ を$$\displaystyle B=\begin{pmatrix} b _ {1} &amp; \cdots  &amp; b _ {5} \end{pmatrix} = \begin{pmatrix} 2 &amp;  &amp;  &amp;  &amp; 1\\\\ &amp; 2 &amp;  &amp;  &amp; 1\\\\ &amp;  &amp; 2 &amp;  &amp; 1\\\\ &amp;  &amp;  &amp; 2.2 &amp; 1.1\\\\ &amp;  &amp;  &amp;  &amp; 1 \end{pmatrix}$$としたとき，ノルムが逐次最小になる線形独立な格子ベクトルの組を並べた行列 $ V$ は次のようになります．$$ \displaystyle V=\begin{pmatrix} v_{1} &amp; \cdots  &amp; v_{5} \end{pmatrix} =\begin{pmatrix} 2 &amp;  &amp;  &amp;  &amp; \\\\ &amp; 2 &amp;  &amp;  &amp; \\\\ &amp;  &amp; 2 &amp;  &amp; \\\\ &amp;  &amp;  &amp; 2.2 &amp; \\\\ &amp;  &amp;  &amp;  &amp; 2 \end{pmatrix}$$ $ v_5$ は $ 2b_5 - b_4 - b_3 - b_2 - b_1$ で作れます．しかし，格子は基底ベクトルの整数倍しか含まないため， $ b_5 \notin \mathcal{L}(V)$ となるため $ V$ は $ \Lambda$ の基底になれません（基底は実数のベクトルが許されているものの格子点はその整数倍しか許されていないところがミソです）．これと同じような基底行列を用意してあげれば，より高い次元の格子での反例も簡単に作れます．
+
+では次に，格子における有名な諸定理を紹介します．
+
+**定理 3.1 (Blichfeldtの定理):**
+基底行列 $ B \in \mathbb{R}^{m \times n}$ の格子を $ \Lambda$ とする．このとき集合 $ S \subseteq \mathrm{span}(B)$ について $ \mathrm{vol}(S) > \det \Lambda$ ならば $ z_1 - z_2 \in \Lambda$ なる $ z_1,z_2 \in S$ が存在する．
+
+**証明:**
+$ S_x = S \cap (x + \mathcal{P}(B)),\\ x \in \Lambda$ とすると次の式が成り立つ．$$ \displaystyle S = \bigcup _ {x \in \Lambda} S _ x$$従って，$$ \displaystyle \mathrm{vol}(S)=\sum _ {x \in \Lambda} \mathrm{vol}(S _ x)$$となる．ところで， $ S _ x&#39; = S _ x - x = (S - x) \cap \mathcal{P}(B)$ とすると $ \mathrm{vol}(S _ x)=\mathrm{vol}(S&#39; _ x)$ なので，仮定より$$ \displaystyle \det \Lambda &lt; \mathrm{vol}(S) = \sum _ {x \in \Lambda} \mathrm{vol}(S _ x) = \sum _ {x \in \Lambda} \mathrm{vol}(S _ x&#39;)$$
+また， $ S _ x&#39; \subseteq \mathcal{P}(B)$ なので $ (S _ x) _ {x \in \Lambda}$ は素集合系ではないため， $ S _ x&#39; \cap S _ y&#39; \neq \emptyset$ かつ $ x \neq y$ を満たす $ x, y \in \Lambda$ が存在する．
+よって， $ z \in S _ x&#39; \cap S _ y&#39; \neq \emptyset$ に対し $ z _ 1 = z + x \in S _ x, \\ z _ 2 = z + y \in S _ y$ とすれば $ z _ 1 - z _ 2 = x - y \in \Lambda$ となり，定理を満たすベクトルを構成することができる．$ ■$
+
+まあ要するに，格子$ \mathcal{L}(B)$のスパン上の，体積が$ \det \Lambda$を超える集合は，基本平行体で切り分けて一つの領域に集めた時必ず重なる点があるから成り立つということです（下図参照（画像クリックで拡大できます））．<div class="images-row mceNonEditable">{{< figure src="/images/2020/05/10/205159/20200507164758.png"  >}}{{< figure src="/images/2020/05/10/205159/20200507164801.png"  >}}{{< figure src="/images/2020/05/10/205159/20200507164820.png"  >}}</div>このBlichfeldtの定理を利用すれば，次の定理が簡単に示せます．**定理 3.2 (Minkowskiの凸体定理):**<br/>
 $ \Lambda$を$ n$次のfull-rankな格子とする．このとき原点に対して対称な凸集合$ M \subset \mathbb{R}^n$が$ \mathrm{vol}(M) > 2^n \det \Lambda$ならば，$ x \in M$を満たす$ x \neq 0 \in \Lambda$が存在する．**証明:**<br/>
 $ M&#39; = \left\{x \mathrel{}\middle|\mathrel{} 2x \in M \right\}$とする．このとき仮定より$ \mathrm{vol}(M&#39;) = 2^{-n}\mathrm{vol}(M) > \det \Lambda$となり，Blichfeldtの定理より，$ z_1 - z_2 \in \Lambda \setminus \left\{0\right\}$を満たす$ z_1, z_2 \in M&#39;$が存在する．また，$ z_1,z_2$は$ M&#39;$の定義より$ 2z_1,2z_2 \in M$を満たすため，仮定より$ -2z_2 \in M$なので$ x = z_1 - z_2 = \frac{2z_1 - 2z_2}{2} \in M$とすれば定理を満たすベクトルを構成することができる．$ ■$**定理 3.3:**<br/>
 $ n$次のfull-rankな格子$ \Lambda$の逐次最小$ \lambda_1$について次の式が成り立つ．<div align="center">$ \displaystyle \lambda_1 \leq \sqrt{n}(\det \Lambda)^{\frac{1}{n}}$</div>**証明:**<br/>
