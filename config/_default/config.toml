@@ -44,3 +44,9 @@ googleAnalytics = ""
   tag = "tags"
   series = "series"
 
+[params]
+  # mathjax
+  mathjax = false
+  mathjaxEnableSingleDollar = true
+  mathjaxEnableAutoNumber = true
+  mathjaxUseLocalFiles = false

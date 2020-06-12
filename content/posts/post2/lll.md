@@ -1,10 +1,9 @@
 ---
 date: "2020-05-10 20:51:59 +0000 UTC"
-draft: false
 title: "LLLを理解するぞ"
 tags: []
-libraries:
-- katex
+draft: false
+mathjax: true
 ---
 
 <ul class="table-of-contents">
@@ -112,148 +111,162 @@ $ B \in \mathbb{R}^{m \times n}$ を基底行列とする格子 $ \Lambda$ に�
 基底行列 $ B \in \mathbb{R}^{m \times n}$ の格子を $ \Lambda$ とする．このとき集合 $ S \subseteq \mathrm{span}(B)$ について $ \mathrm{vol}(S) > \det \Lambda$ ならば $ z_1 - z_2 \in \Lambda$ なる $ z_1,z_2 \in S$ が存在する．
 
 **証明:**
-$ S_x = S \cap (x + \mathcal{P}(B)),\\ x \in \Lambda$ とすると次の式が成り立つ．$$ \displaystyle S = \bigcup _ {x \in \Lambda} S _ x$$従って，$$ \displaystyle \mathrm{vol}(S)=\sum _ {x \in \Lambda} \mathrm{vol}(S _ x)$$となる．ところで， $ S _ x&#39; = S _ x - x = (S - x) \cap \mathcal{P}(B)$ とすると $ \mathrm{vol}(S _ x)=\mathrm{vol}(S&#39; _ x)$ なので，仮定より$$ \displaystyle \det \Lambda &lt; \mathrm{vol}(S) = \sum _ {x \in \Lambda} \mathrm{vol}(S _ x) = \sum _ {x \in \Lambda} \mathrm{vol}(S _ x&#39;)$$
-また， $ S _ x&#39; \subseteq \mathcal{P}(B)$ なので $ (S _ x) _ {x \in \Lambda}$ は素集合系ではないため， $ S _ x&#39; \cap S _ y&#39; \neq \emptyset$ かつ $ x \neq y$ を満たす $ x, y \in \Lambda$ が存在する．
+$ S_x = S \cap (x + \mathcal{P}(B)),\\ x \in \Lambda$ とすると次の式が成り立つ．$$ \displaystyle S = \bigcup _ {x \in \Lambda} S _ x$$従って，$$ \displaystyle \mathrm{vol}(S)=\sum _ {x \in \Lambda} \mathrm{vol}(S _ x)$$となる．ところで， $ S _ x&#39; = S _ x - x = (S - x) \cap \mathcal{P}(B)$ とすると $ \mathrm{vol}(S _ x)=\mathrm{vol}(S&#39; _ x)$ なので，仮定より$$ \displaystyle \det \Lambda &lt; \mathrm{vol}(S) = \sum _ {x \in \Lambda} \mathrm{vol}(S _ x) = \sum _ {x \in \Lambda} \mathrm{vol}(S _ x&#39;)$$また， $ S _ x&#39; \subseteq \mathcal{P}(B)$ なので $ (S _ x) _ {x \in \Lambda}$ は素集合系ではないため， $ S _ x&#39; \cap S _ y&#39; \neq \emptyset$ かつ $ x \neq y$ を満たす $ x, y \in \Lambda$ が存在する．
 よって， $ z \in S _ x&#39; \cap S _ y&#39; \neq \emptyset$ に対し $ z _ 1 = z + x \in S _ x, \\ z _ 2 = z + y \in S _ y$ とすれば $ z _ 1 - z _ 2 = x - y \in \Lambda$ となり，定理を満たすベクトルを構成することができる．$ ■$
 
-まあ要するに，格子$ \mathcal{L}(B)$のスパン上の，体積が$ \det \Lambda$を超える集合は，基本平行体で切り分けて一つの領域に集めた時必ず重なる点があるから成り立つということです（下図参照（画像クリックで拡大できます））．<div class="images-row mceNonEditable">{{< figure src="/images/2020/05/10/205159/20200507164758.png"  >}}{{< figure src="/images/2020/05/10/205159/20200507164801.png"  >}}{{< figure src="/images/2020/05/10/205159/20200507164820.png"  >}}</div>このBlichfeldtの定理を利用すれば，次の定理が簡単に示せます．**定理 3.2 (Minkowskiの凸体定理):**<br/>
-$ \Lambda$を$ n$次のfull-rankな格子とする．このとき原点に対して対称な凸集合$ M \subset \mathbb{R}^n$が$ \mathrm{vol}(M) > 2^n \det \Lambda$ならば，$ x \in M$を満たす$ x \neq 0 \in \Lambda$が存在する．**証明:**<br/>
-$ M&#39; = \left\{x \mathrel{}\middle|\mathrel{} 2x \in M \right\}$とする．このとき仮定より$ \mathrm{vol}(M&#39;) = 2^{-n}\mathrm{vol}(M) > \det \Lambda$となり，Blichfeldtの定理より，$ z_1 - z_2 \in \Lambda \setminus \left\{0\right\}$を満たす$ z_1, z_2 \in M&#39;$が存在する．また，$ z_1,z_2$は$ M&#39;$の定義より$ 2z_1,2z_2 \in M$を満たすため，仮定より$ -2z_2 \in M$なので$ x = z_1 - z_2 = \frac{2z_1 - 2z_2}{2} \in M$とすれば定理を満たすベクトルを構成することができる．$ ■$**定理 3.3:**<br/>
-$ n$次のfull-rankな格子$ \Lambda$の逐次最小$ \lambda_1$について次の式が成り立つ．<div align="center">$ \displaystyle \lambda_1 \leq \sqrt{n}(\det \Lambda)^{\frac{1}{n}}$</div>**証明:**<br/>
-閉球$ B(0; r) \subset \mathbb{R}^n$について，立方体$ X = \left[-\frac{r}{\sqrt{n}}, \frac{r}{\sqrt{n}} \right]^{n} \subset \mathbb{R}^n$は$ X \subseteq B(0; r)$を満たす．従って，$  \mathrm{vol}(X) = 2^n(\frac{r}{\sqrt{n}})^n \leq \mathrm{vol}(B(0;r))$となる．よって$ r = \sqrt{n}(\det \Lambda)^{\frac{1}{n}}$とすれば$ \mathrm{vol}(B(0; r)) \geq 2^n\det \Lambda$が成り立ち，Minkowskiの凸体定理より$ B(0; r)$の内側に格子点が存在するため，$ r =  \sqrt{n}(\det \Lambda)^{\frac{1}{n}}$より短い格子ベクトルが存在する．$ ■$<br/>
+まあ要するに，格子 $  \mathcal{L}(B) $ のスパン上の，体積が $  \det \Lambda $ を超える集合は，基本平行体で切り分けて一つの領域に集めた時必ず重なる点があるから成り立つということです（下図参照）．
+![Blichfeldt1](../blichfeldt1.png)
+![Blichfeldt2](../blichfeldt2.png)
+![Blichfeldt3](../blichfeldt3.png)
+
+このBlichfeldtの定理を利用すれば，次の有名な定理が簡単に示せます．
+
+**定理 3.2 (Minkowskiの凸体定理):**
+ $  \Lambda $ を $  n $ 次のfull-rankな格子とする．このとき原点に対して対称な凸集合 $  M \subset \mathbb{R}^n $ が $  \mathrm{vol}(M) > 2^n \det \Lambda $ ならば， $  x \in M $ を満たす $  x \neq 0 \in \Lambda $ が存在する．
+
+**証明:**
+$  M&#39; = \left\\{x \mathrel{}\middle|\mathrel{} 2x \in M \right\\} $ とする．このとき仮定より $  \mathrm{vol}(M&#39;) = 2^{-n}\mathrm{vol}(M) > \det \Lambda $ となり，Blichfeldtの定理より， $  z_1 - z_2 \in \Lambda \setminus \left\\{0\right\\} $ を満たす $  z_1, z_2 \in M&#39; $ が存在する．また， $  z_1,z_2 $ は $  M&#39; $ の定義より $  2z_1,2z_2 \in M $ を満たすため，仮定より $  -2z_2 \in M $ なので $  x = z_1 - z_2 = \frac{2z_1 - 2z_2}{2} \in M $ とすれば定理を満たすベクトルを構成することができる． $  ■ $
+
+**定理 3.3:**
+$  n $ 次のfull-rankな格子 $  \Lambda $ の逐次最小 $  \lambda_1 $ について次の式が成り立つ．$$  \displaystyle \lambda_1 \leq \sqrt{n}(\det \Lambda)^{\frac{1}{n}} $$
+
+**証明:**
+閉球 $  B(0; r) \subset \mathbb{R}^n $ について，立方体 $  X = \left[-\frac{r}{\sqrt{n}}, \frac{r}{\sqrt{n}} \right]^{n} \subset \mathbb{R}^n $ は $  X \subseteq B(0; r) $ を満たす．従って， $   \mathrm{vol}(X) = 2^n(\frac{r}{\sqrt{n}})^n \leq \mathrm{vol}(B(0;r)) $ となる．よって $  r = \sqrt{n}(\det \Lambda)^{\frac{1}{n}} $ とすれば $  \mathrm{vol}(B(0; r)) \geq 2^n\det \Lambda $ が成り立ち，Minkowskiの凸体定理より $  B(0; r) $ の内側に格子点が存在するため， $  r =  \sqrt{n}(\det \Lambda)^{\frac{1}{n}} $ より短い格子ベクトルが存在する． $  ■ $
 
 
 </div>
+
+<!--
 <div class="section">
     ### 4. グラム・シュミットの直交化法
     **定義 4.1:**<br/>
-内積空間$ V$の基底$ \left\{b_1, b_2,\cdots,b_n \right\}$から，同じ空間を張るような直交基底$ \left\{b_1^*,b_2^*,\cdots,b_n^* \right\}$を次の式から求める操作を**グラム・シュミットの直交化法**という．<div align="center">$ \displaystyle b^{*}_{i} =b_{i} -\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j}\ \mathit{where}\ \mu _{i,j} =\frac{\langle b_{i} ,b^{*}_{j} \rangle }{\langle b^{*}_{j} ,b^{*}_{j} \rangle }$</div>正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．<br/>
-また簡単のため，グラム・シュミットの直交化における係数$ \mu_{i,j}\ (1 \leq j &lt; i \leq n)$を**グラムシュミット係数**と呼び，$ \left\{ b_1,\cdots,b_n \right\}$をグラム・シュミットの直交化法で直交化したときに得られる新たなベクトル$ b_1^*,\cdots,b_n^*$を**グラムシュミットベクトル**と呼ぶことにします．さらに，グラム・シュミットの直交化法を，基底行列$ B = \begin{pmatrix} b_{1} &amp; \cdots  &amp; b_{n} \end{pmatrix}$から$ B^* = \begin{pmatrix} b_{1}^* &amp; \cdots  &amp; b_{n}^* \end{pmatrix}$を得る操作としても用いるようにします．<br/>
+内積空間 $  V $ の基底 $  \left\{b_1, b_2,\cdots,b_n \right\} $ から，同じ空間を張るような直交基底 $  \left\{b_1^*,b_2^*,\cdots,b_n^* \right\} $ を次の式から求める操作を**グラム・シュミットの直交化法**という．<div align="center"> $  \displaystyle b^{*}_{i} =b_{i} -\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j}\ \mathit{where}\ \mu _{i,j} =\frac{\langle b_{i} ,b^{*}_{j} \rangle }{\langle b^{*}_{j} ,b^{*}_{j} \rangle } $ </div>正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．<br/>
+また簡単のため，グラム・シュミットの直交化における係数 $  \mu_{i,j}\ (1 \leq j &lt; i \leq n) $ を**グラムシュミット係数**と呼び， $  \left\{ b_1,\cdots,b_n \right\} $ をグラム・シュミットの直交化法で直交化したときに得られる新たなベクトル $  b_1^*,\cdots,b_n^* $ を**グラムシュミットベクトル**と呼ぶことにします．さらに，グラム・シュミットの直交化法を，基底行列 $  B = \begin{pmatrix} b_{1} &amp; \cdots  &amp; b_{n} \end{pmatrix} $ から $  B^* = \begin{pmatrix} b_{1}^* &amp; \cdots  &amp; b_{n}^* \end{pmatrix} $ を得る操作としても用いるようにします．<br/>
 一応疑似コードも載せておきます．<br/>
 {{< figure src="/images/2020/05/10/205159/20200507233803.png"  >}}<br/>
-見てわかる通り，計算量は$ O(n^2m)$です．では次に，グラムシュミットベクトルの基本的な性質を紹介します．**性質 4.1:**<br/>
-内積空間$ V$の基底を$ \left\{b_1,\cdots,b_n \right\}$とする．このとき，グラムシュミットベクトル$ b_1^*,\cdots,b_n^* $は自然数$ 1 \leq i \leq n$に対し次の式を満たす．
+見てわかる通り，計算量は $  O(n^2m) $ です．では次に，グラムシュミットベクトルの基本的な性質を紹介します．**性質 4.1:**<br/>
+内積空間 $  V $ の基底を $  \left\{b_1,\cdots,b_n \right\} $ とする．このとき，グラムシュミットベクトル $  b_1^*,\cdots,b_n^*  $ は自然数 $  1 \leq i \leq n $ に対し次の式を満たす．
 
 <ol>
-<li>$ \| b_i^* \| \leq \| b_i \|$</li>
-<li>$ \langle b_i, b_i^* \rangle = \langle b_i^*,b_i^* \rangle$</li>
+<li> $  \| b_i^* \| \leq \| b_i \| $ </li>
+<li> $  \langle b_i, b_i^* \rangle = \langle b_i^*,b_i^* \rangle $ </li>
 </ol>**証明:**<br/>
-まず一つ目の式について，<div align="center">$ \displaystyle \begin{aligned}
+まず一つ目の式について，<div align="center"> $  \displaystyle \begin{aligned}
 \| b^{*}_{i} \| ^{2} &amp; =\langle b_{i} -\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j} ,b_{i} -\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j} \rangle \\
  &amp; =\| b_{i} \| ^{2} -\sum ^{i-1}_{j=1} \mu ^{2}_{i,j} \| b^{*}_{j} \| ^{2}
-\end{aligned}$</div>なので明らかに$ \| b_i^* \| \leq \| b_i \|$が成り立つ．<br/>
-また，二つ目の式も同様に<div align="center">$ \displaystyle \begin{aligned}
+\end{aligned} $ </div>なので明らかに $  \| b_i^* \| \leq \| b_i \| $ が成り立つ．<br/>
+また，二つ目の式も同様に<div align="center"> $  \displaystyle \begin{aligned}
 \langle b_{i} ,b^{*}_{i} \rangle  &amp; =\langle b_{i} ,b_{i} -\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j} \rangle \\
  &amp; =\| b_{i} \| ^{2} -\sum ^{i-1}_{j=1} \mu _{i,j} \langle b^{*}_{i} +\sum ^{i-1}_{k=1} \mu _{i,k} b^{*}_{k} ,b^{*}_{j} \rangle \\
  &amp; =\| b_{i} \| ^{2} -\sum ^{i-1}_{j=1} \mu _{i,j} \| b^{*}_{j} \| ^{2}
-\end{aligned}$</div>が成り立ち，$ \langle b_i, b_i^* \rangle = \|b_i^*\|^2 = \langle b_i^*, b_i^* \rangle$となる．$ ■$また，格子$ \Lambda$の基底$ \left\{ b_1, \cdots, b_n \right\} \in \mathbb{R}^{m \times n}$のグラムシュミットベクトルは，定義より明らかに$ \mathrm{span}(b_1,\cdots,b_n) = \mathrm{span}(b_{1}^*, \cdots , b_{n}^*)$となります．**定理 4.2:**<br/>
-格子$ \Lambda$の基底を$ \left\{ b_1,\cdots,b_n \right\}$とする．この時，格子の行列式$ \det \Lambda$をグラムシュミットベクトル$ b_1^*,\cdots,b_n^*$を用いて次のように表すことができる．<div align="center">$ \displaystyle \det \Lambda = \prod_{i = 1}^n \|b_i^* \|$</div>**証明:**<br/>
-$ B = \begin{pmatrix} b_{1} &amp; b_{2} &amp; \cdots  &amp; b_{n} \end{pmatrix}$とする．このとき，$ b_i = b_i^* + \sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j}$なので次の式が成り立つ．<div align="center">$ \displaystyle \begin{eqnarray}
+\end{aligned} $ </div>が成り立ち， $  \langle b_i, b_i^* \rangle = \|b_i^*\|^2 = \langle b_i^*, b_i^* \rangle $ となる． $  ■ $ また，格子 $  \Lambda $ の基底 $  \left\{ b_1, \cdots, b_n \right\} \in \mathbb{R}^{m \times n} $ のグラムシュミットベクトルは，定義より明らかに $  \mathrm{span}(b_1,\cdots,b_n) = \mathrm{span}(b_{1}^*, \cdots , b_{n}^*) $ となります．**定理 4.2:**<br/>
+格子 $  \Lambda $ の基底を $  \left\{ b_1,\cdots,b_n \right\} $ とする．この時，格子の行列式 $  \det \Lambda $ をグラムシュミットベクトル $  b_1^*,\cdots,b_n^* $ を用いて次のように表すことができる．<div align="center"> $  \displaystyle \det \Lambda = \prod_{i = 1}^n \|b_i^* \| $ </div>**証明:**<br/>
+ $  B = \begin{pmatrix} b_{1} &amp; b_{2} &amp; \cdots  &amp; b_{n} \end{pmatrix} $ とする．このとき， $  b_i = b_i^* + \sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j} $ なので次の式が成り立つ．<div align="center"> $  \displaystyle \begin{eqnarray}
 B &amp; = &amp; \begin{pmatrix} b^{*}_{1} &amp; b^{*}_{2} +\mu _{2,1} b^{*}_{1} &amp; b^{*}_{3} +\mu _{3,1} b^{*}_{1} +\mu _{3,2} b^{*}_{2} &amp; \cdots  &amp; b^{*}_{n} +\sum ^{n-1}_{j=1} \mu _{i,j} b^{*}_{j} \end{pmatrix}\\
  &amp; = &amp; \begin{pmatrix} b^{*}_{1} &amp; b^{*}_{2} &amp; b^{*}_{3} &amp; \cdots  &amp; b^{*}_{n} \end{pmatrix}\begin{pmatrix} 1 &amp; \mu _{2,1} &amp; \mu _{3,1} &amp; \cdots  &amp; \mu _{n,1}\\ 0 &amp; 1 &amp; \mu _{3,2} &amp; \cdots  &amp; \mu _{n,2}\\ 0 &amp; 0 &amp; 1 &amp; \cdots  &amp; \mu _{n,3}\\ \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\ 0 &amp; 0 &amp; 0 &amp; \cdots  &amp; 1 \end{pmatrix}\\
  &amp; = &amp; QR
-\end{eqnarray}$ </div>従って，<div align="center">$ \displaystyle \begin{eqnarray}
+\end{eqnarray} $  </div>従って，<div align="center"> $  \displaystyle \begin{eqnarray}
 \det \Lambda &amp; = &amp; \sqrt{\det (^t\!BB)}\\
 &amp; = &amp; \sqrt{\det (^t\!R^t\!QQR)}\\
 &amp; = &amp; \sqrt{\det (^t\!QQ)}\\
-&amp; = &amp; \prod_{i = 1}^n \|b_i^* \| \end{eqnarray}$ </div><div align="right">$ ■$</div>**定義 4.2:**<br/>
-格子$ \Lambda$の基底を$ \left\{b_1,\cdots,b_n\right\}$とする．この時次の式で定義される量$ \delta$を**直交欠陥**と言う．<div align="center">$ \displaystyle \delta = \frac{\prod ^{n}_{i=1} \| b_{i} \| }{\det \Lambda }$</div>$ \det \Lambda$は，スパンの直交化した基底ベクトルのノルムの総乗でした．そのため直交欠陥は，元の基底がどのくらい直交していないかを表す指標となります．また，元のベクトルが直交していた場合，グラム・シュミットの直交化法を行っても基底は変わらないので直交欠陥は$ 1$になります．**定理 4.3:**<br/>
-格子$ \Lambda$の直交欠陥$ \delta$について次の式が成り立つ．<div align="center">$ \delta \geq 1$</div>**証明:**<br/>
-$ \Lambda$の基底を$ \left\{b_1,b_2,\cdots,b_n\right\}$とし，そのグラムシュミットベクトルを$ b_1^*,\cdots,b_n^*$とする．この時，自然数$ 1 \leq i \leq n$に対し$ \| b_i^* \| \leq \| b_i \|$なので，$ \| b_1^* \| \| b_2^* \| \cdots \| b_n^* \| \leq \|b_1\| \|b_2\| \cdots \|b_n\|$となる．従って定理4.2より，$ \det \Lambda \leq \prod ^{n}_{i=1} \| b_{i} \|$となる．$ ■$<br/>
+&amp; = &amp; \prod_{i = 1}^n \|b_i^* \| \end{eqnarray} $  </div><div align="right"> $  ■ $ </div>**定義 4.2:**<br/>
+格子 $  \Lambda $ の基底を $  \left\{b_1,\cdots,b_n\right\} $ とする．この時次の式で定義される量 $  \delta $ を**直交欠陥**と言う．<div align="center"> $  \displaystyle \delta = \frac{\prod ^{n}_{i=1} \| b_{i} \| }{\det \Lambda } $ </div> $  \det \Lambda $ は，スパンの直交化した基底ベクトルのノルムの総乗でした．そのため直交欠陥は，元の基底がどのくらい直交していないかを表す指標となります．また，元のベクトルが直交していた場合，グラム・シュミットの直交化法を行っても基底は変わらないので直交欠陥は $  1 $ になります．**定理 4.3:**<br/>
+格子 $  \Lambda $ の直交欠陥 $  \delta $ について次の式が成り立つ．<div align="center"> $  \delta \geq 1 $ </div>**証明:**<br/>
+ $  \Lambda $ の基底を $  \left\{b_1,b_2,\cdots,b_n\right\} $ とし，そのグラムシュミットベクトルを $  b_1^*,\cdots,b_n^* $ とする．この時，自然数 $  1 \leq i \leq n $ に対し $  \| b_i^* \| \leq \| b_i \| $ なので， $  \| b_1^* \| \| b_2^* \| \cdots \| b_n^* \| \leq \|b_1\| \|b_2\| \cdots \|b_n\| $ となる．従って定理4.2より， $  \det \Lambda \leq \prod ^{n}_{i=1} \| b_{i} \| $ となる． $  ■ $ <br/>
 
 
 </div>
 <div class="section">
     ### 5. Lagrangeの方法
     **定義 5.1:**<br/>
-格子の基底$ \left\{ b_1, b_2 \right\} \in \mathbb{R}^{m \times 2}$が任意の$ x \in \mathbb{Z}$に対し次の条件を満たすとき，**簡約されている**という．<div align="center">$ \|b_1\| \leq \|b_2\| \leq \|b_2+xb_1\|$</div>また，簡約されている基底のことを**簡約基底**と呼ぶ．ある格子の簡約基底は，同じ格子を張るような基底の中で直交欠陥が最も$ 1$に近く，各ベクトルが短い基底です．また，ある格子が与えられたときその簡約基底を求めることを**簡約化**と言います．基底の簡約化は次のような性質から，最も長さの短い格子ベクトルの計算に用いられます．**定理 5.1:**<br/>
-二次元の格子$ \Lambda$の簡約基底を$ \left\{b_1,b_2\right\} \in \mathbb{R}^{m \times 2}$とし，逐次最小を$ \lambda_1,\lambda_2$とする．この時次の式が成り立つ．<div align="center">$ \|b_1\| = \lambda_1,\ \|b_2\| = \lambda_2$</div>**証明:**<br/>
-適当な格子ベクトル$ v = l_1b_1 + l_2b_2 \neq 0$を考える．$ l_2 = 0$なら$ \|v\| \geq \|b_1\|$となり，また$ l_2 \neq 0$の時は，$ l_1 = ql_2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &lt; |l_2|$と書けば$ v = rb_1 + l_2(b_2 + qb_1)$である．従って，<div align="center">$ \displaystyle \begin{eqnarray}
+格子の基底 $  \left\{ b_1, b_2 \right\} \in \mathbb{R}^{m \times 2} $ が任意の $  x \in \mathbb{Z} $ に対し次の条件を満たすとき，**簡約されている**という．<div align="center"> $  \|b_1\| \leq \|b_2\| \leq \|b_2+xb_1\| $ </div>また，簡約されている基底のことを**簡約基底**と呼ぶ．ある格子の簡約基底は，同じ格子を張るような基底の中で直交欠陥が最も $  1 $ に近く，各ベクトルが短い基底です．また，ある格子が与えられたときその簡約基底を求めることを**簡約化**と言います．基底の簡約化は次のような性質から，最も長さの短い格子ベクトルの計算に用いられます．**定理 5.1:**<br/>
+二次元の格子 $  \Lambda $ の簡約基底を $  \left\{b_1,b_2\right\} \in \mathbb{R}^{m \times 2} $ とし，逐次最小を $  \lambda_1,\lambda_2 $ とする．この時次の式が成り立つ．<div align="center"> $  \|b_1\| = \lambda_1,\ \|b_2\| = \lambda_2 $ </div>**証明:**<br/>
+適当な格子ベクトル $  v = l_1b_1 + l_2b_2 \neq 0 $ を考える． $  l_2 = 0 $ なら $  \|v\| \geq \|b_1\| $ となり，また $  l_2 \neq 0 $ の時は， $  l_1 = ql_2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &lt; |l_2| $ と書けば $  v = rb_1 + l_2(b_2 + qb_1) $ である．従って，<div align="center"> $  \displaystyle \begin{eqnarray}
 \|v\| &amp;\geq&amp; |l_2|\|b_2 + qb_1\| - r\|b_1\|\\
 &amp;=&amp; (|l_2| - r)\|b_2+qb_1\|  + r(\|b_2 + qb_1\| - \|b_1\|)\\
 &amp;\geq&amp; \|b_2 + qb_1\|\\
-&amp;\geq&amp; \|b_2\| \geq \|b_1\| \end{eqnarray}$</div>よって示された．$■$また，簡約であることと同値な次の条件を考えれば，具体的にどんなベクトルによって構成されるか考えやすくなると思います．**定理 5.2:**<br/>
-二次元の格子$ \Lambda$の基底$ \left\{b_1,b_2 \right\} \in \mathbb{R}^{m \times 2}$が簡約基底であるための必要十分条件は次の式を満たすことである．<div align="center">$ \|b_1\| \leq \|b_2\| \leq \|b_2 \pm b_1\|$</div>**証明:**<br/>
-まず$ b_1,b_2$が簡約されていると仮定する．定義5.1において$ x = \pm 1$とすれば$ \|b_1\| \leq \|b_2\| \leq \|b_2 \pm b_1\|$．<br/>
-次に$ b_1,b_2$が$ \|b_1\| \leq \|b_2\| \leq \|b_2 \pm b_1\|$を満たすと仮定する．ここで，関数$ f(\mu) = \|b_2 + \mu b_1 \|^2 = \|b_2\|^2 - 2\mu \langle b_1,b_2 \rangle + \mu^2\|b_1\|^2$の最小値が$ -1 &lt; \mu &lt; 1$の時取られることを考えれば，$ f(\mu)$は二次関数なので$ |x| > 1$を満たす整数$ x$に対し$ f(0) \leq f(x)$となり，同じ$ x$に対し$ \|b_2\| \leq \|b_2 + xb_1 \|$となる．従って仮定より任意の$ x \in \mathbb{Z}$に対し$ \|b_1\| \leq \|b_2\| \leq \|b_2 + xb_1\|$が成り立つ．よって示された．$■$基底の簡約化は一般には難しい問題です．ところが二次元の場合は，厳密解が多項式時間で求まるLagrangeの方法というアルゴリズムが存在し，具体的には次のような操作で簡約することができます．<br/>
+&amp;\geq&amp; \|b_2\| \geq \|b_1\| \end{eqnarray} $ </div>よって示された． $ ■ $ また，簡約であることと同値な次の条件を考えれば，具体的にどんなベクトルによって構成されるか考えやすくなると思います．**定理 5.2:**<br/>
+二次元の格子 $  \Lambda $ の基底 $  \left\{b_1,b_2 \right\} \in \mathbb{R}^{m \times 2} $ が簡約基底であるための必要十分条件は次の式を満たすことである．<div align="center"> $  \|b_1\| \leq \|b_2\| \leq \|b_2 \pm b_1\| $ </div>**証明:**<br/>
+まず $  b_1,b_2 $ が簡約されていると仮定する．定義5.1において $  x = \pm 1 $ とすれば $  \|b_1\| \leq \|b_2\| \leq \|b_2 \pm b_1\| $ ．<br/>
+次に $  b_1,b_2 $ が $  \|b_1\| \leq \|b_2\| \leq \|b_2 \pm b_1\| $ を満たすと仮定する．ここで，関数 $  f(\mu) = \|b_2 + \mu b_1 \|^2 = \|b_2\|^2 - 2\mu \langle b_1,b_2 \rangle + \mu^2\|b_1\|^2 $ の最小値が $  -1 &lt; \mu &lt; 1 $ の時取られることを考えれば， $  f(\mu) $ は二次関数なので $  |x| > 1 $ を満たす整数 $  x $ に対し $  f(0) \leq f(x) $ となり，同じ $  x $ に対し $  \|b_2\| \leq \|b_2 + xb_1 \| $ となる．従って仮定より任意の $  x \in \mathbb{Z} $ に対し $  \|b_1\| \leq \|b_2\| \leq \|b_2 + xb_1\| $ が成り立つ．よって示された． $ ■ $ 基底の簡約化は一般には難しい問題です．ところが二次元の場合は，厳密解が多項式時間で求まるLagrangeの方法というアルゴリズムが存在し，具体的には次のような操作で簡約することができます．<br/>
 {{< figure src="/images/2020/05/10/205159/20200508124611.png"  >}}<br/>
-$ 7$行目の$ \mu_{2, 1}$は，$ \|b_2 - \mu_{2,1}b_1 \|^2$が最小となるような$ b_1$の係数を設定していることに注意してください．$ \mu_{2,1}$の最小値は，下に凸な二次関数$ \|b_2 - \mu_{2,1}b_1 \|^2 = \|b_2\|^2 - 2\mu_{2,1} \langle b_1,b_2 \rangle + \mu_{2,1}^2\|b_1\|^2$の最小値でもあるので，適当に微分して$ -2\langle b_{1} ,b_{2} \rangle +2\mu _{2,1} \| b_{1} \| ^{2} =0$の解を求めれば$ \mu_{2, 1} = \langle b1, b2 \rangle / \|b_1\|^2$が導けます．つまり，二つのベクトルの差のノルムができるだけ短くなるように計算しているだけです．
+ $  7 $ 行目の $  \mu_{2, 1} $ は， $  \|b_2 - \mu_{2,1}b_1 \|^2 $ が最小となるような $  b_1 $ の係数を設定していることに注意してください． $  \mu_{2,1} $ の最小値は，下に凸な二次関数 $  \|b_2 - \mu_{2,1}b_1 \|^2 = \|b_2\|^2 - 2\mu_{2,1} \langle b_1,b_2 \rangle + \mu_{2,1}^2\|b_1\|^2 $ の最小値でもあるので，適当に微分して $  -2\langle b_{1} ,b_{2} \rangle +2\mu _{2,1} \| b_{1} \| ^{2} =0 $ の解を求めれば $  \mu_{2, 1} = \langle b1, b2 \rangle / \|b_1\|^2 $ が導けます．つまり，二つのベクトルの差のノルムができるだけ短くなるように計算しているだけです．
 
 </div>
 <div class="section">
     ### 6. LLL簡約基底とサイズ簡約
     Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．**定義 6.1:**<br/>
-格子$ \Lambda$の基底$ \left\{ b_1,\cdots,b_n \right\} \in \mathbb{R}^{m \times n}$とそのグラムシュミットベクトル$ b_1^*,\cdots,b_n^* \in \mathbb{R}^{m \times n}$について，ある$ \delta \in \mathbb{R}\ (\frac{1}{4} &lt; \delta &lt; 1)$を用いて次の条件が成り立つとき，基底がパラメータ$ \delta$で**LLL簡約されている**という．
+格子 $  \Lambda $ の基底 $  \left\{ b_1,\cdots,b_n \right\} \in \mathbb{R}^{m \times n} $ とそのグラムシュミットベクトル $  b_1^*,\cdots,b_n^* \in \mathbb{R}^{m \times n} $ について，ある $  \delta \in \mathbb{R}\ (\frac{1}{4} &lt; \delta &lt; 1) $ を用いて次の条件が成り立つとき，基底がパラメータ $  \delta $ で**LLL簡約されている**という．
 
 <ol>
-<li>自然数$ 1 \leq j &lt; i \leq n$について$ |\mu_{i,j}| \leq \frac{1}{2}$ (サイズ簡約)</li>
-<li>自然数$ 1 \leq i&lt; n$について$ (\delta - \mu_{i+1, i}^2)\|b_i^*\|^2 \leq \|b_{i+1}^*\|^2$ (Lovászの条件)</li>
+<li>自然数 $  1 \leq j &lt; i \leq n $ について $  |\mu_{i,j}| \leq \frac{1}{2} $  (サイズ簡約)</li>
+<li>自然数 $  1 \leq i&lt; n $ について $  (\delta - \mu_{i+1, i}^2)\|b_i^*\|^2 \leq \|b_{i+1}^*\|^2 $  (Lovászの条件)</li>
 </ol>一つ目の条件はLLL以外の格子アルゴリズムでも度々出てきます．また，この条件を満たす基底を**サイズ簡約されている**と言います．また二つ目の条件はLovászの条件と呼ばれ，これのおかげで簡約の定義を緩めることができます．次に，格子の基底が与えられたとき，グラムシュミットベクトルを変えないようにサイズ簡約された基底を作るアルゴリズムを示します．これを使えばサイズ簡約の条件を簡単に達成できます．<br/>
 {{< figure src="/images/2020/05/10/205159/20200508124636.png"  >}}**補題 6.1:**<br/>
-格子$ \Lambda$の基底を$ \left\{b_1,\cdots,b_n \right\} \in \mathbb{R}^{m \times n}$とし，そのグラムシュミット係数を$ \mu_{i,j}\ (1\leq j &lt; i \leq n)$，グラムシュミットベクトルを$ b_1^*,\cdots,b_n^*$とする．また，Algorithm 3でこの格子の基底をサイズ簡約したとき得られるベクトルの組を$ \left\{ b_1&#39;,\cdots,b_n&#39; \right\}$とし，二重ループの内側でベクトルを張りなおした時のベクトルの組を$ 1 \leq j &lt; i \leq n$に対して$ \{ b_{i,j,1}&#39;,\cdots,b_{i,j,n}&#39; \}$とする．つまり$ b_{i,j,i}&#39; = b_i - \lfloor \mu _{i,j} \rceil b_{j} ,\ b_{k} &#39;=b_{k} \ ( k\neq i)$．<br/>
-また，$ \{ b_{i,j,1}&#39;,\cdots,b_{i,j,n}&#39; \}$のグラムシュミットベクトルを$ b_{i,j,1}&#39;^*,\cdots,b_{i,j,n}&#39;^*$とし，そのグラムシュミット係数を$ \nu _{i,j,k,l} \ ( 1\leq l&lt; k\leq n)$としたとき，次の式が成り立つ．
+格子 $  \Lambda $ の基底を $  \left\{b_1,\cdots,b_n \right\} \in \mathbb{R}^{m \times n} $ とし，そのグラムシュミット係数を $  \mu_{i,j}\ (1\leq j &lt; i \leq n) $ ，グラムシュミットベクトルを $  b_1^*,\cdots,b_n^* $ とする．また，Algorithm 3でこの格子の基底をサイズ簡約したとき得られるベクトルの組を $  \left\{ b_1&#39;,\cdots,b_n&#39; \right\} $ とし，二重ループの内側でベクトルを張りなおした時のベクトルの組を $  1 \leq j &lt; i \leq n $ に対して $  \{ b_{i,j,1}&#39;,\cdots,b_{i,j,n}&#39; \} $ とする．つまり $  b_{i,j,i}&#39; = b_i - \lfloor \mu _{i,j} \rceil b_{j} ,\ b_{k} &#39;=b_{k} \ ( k\neq i) $ ．<br/>
+また， $  \{ b_{i,j,1}&#39;,\cdots,b_{i,j,n}&#39; \} $ のグラムシュミットベクトルを $  b_{i,j,1}&#39;^*,\cdots,b_{i,j,n}&#39;^* $ とし，そのグラムシュミット係数を $  \nu _{i,j,k,l} \ ( 1\leq l&lt; k\leq n) $ としたとき，次の式が成り立つ．
 
 <ol>
-<li>自然数$ 1 \leq k \leq n$に対し$ b^{\prime *}_{i,j,k} =b^{*}_{k}$</li>
-<li>自然数$ 1 \leq l \leq j$に対し$ \nu _{i,j,i,l} =\mu _{i,l} -\lfloor \mu _{i,j} \rceil \mu _{j,l}$で，特に$ |\nu _{i,j,i,j} |\leq \frac{1}{2}$となる．</li>
+<li>自然数 $  1 \leq k \leq n $ に対し $  b^{\prime *}_{i,j,k} =b^{*}_{k} $ </li>
+<li>自然数 $  1 \leq l \leq j $ に対し $  \nu _{i,j,i,l} =\mu _{i,l} -\lfloor \mu _{i,j} \rceil \mu _{j,l} $ で，特に $  |\nu _{i,j,i,j} |\leq \frac{1}{2} $ となる．</li>
 <li>その他のグラムシュミット係数に変化はない．</li>
 </ol>**証明:**<br/>
-一つ目の式は$ \mathrm{span}( b_{k} ,\cdots ,b_{n})$及び$ \mathrm{span}( b&#39;_{i,j,k} ,\cdots ,b_{i,j,n})$への射影を考えれば明らかなので，二つ目の式のみ示す．<br/>
-定義より，<div align="center">$ \displaystyle \nu _{i,j,i,l} = \frac{\langle b&#39;_{i,j,i} ,b^{\prime *}_{i,j,l} \rangle }{\langle b^{\prime *}_{i,j,l} ,b^{\prime *}_{i,j,l} \rangle }=\frac{\langle b_{i} -\lfloor \mu _{i,j} \rceil b_{j} ,b^{*}_{l} \rangle }{\| b^{*}_{l} \| ^{2}}=\mu _{i.l} -\lfloor \mu _{i,j} \rceil \mu _{j,l}$</div>である．$ |\nu _{i,j,i,j} |=|\mu _{i.j} -\lfloor \mu _{i,j} \rceil \mu _{j,j} |=|\mu _{i,j} -\lfloor \mu _{i,j} \rceil |$なので，四捨五入の性質より$  |\nu _{i,j,i,j} | \leq \frac{1}{2}$が成り立つ．<br/>
-また，その他のグラムシュミット係数が変化しないことは$ b_{i,j,k} &#39;=b_{k} \ ( k\neq i)$より明らかである．$■$補題6.1より，Algorithm 3の正当性を確認することができました．また，補題6.1の1つ目の式から，Algorithm 3の6行目の処理は2つ目の式を使ってグラムシュミット係数のみ計算すればいいことがわかります．しかしここでは簡単のため，グラム・シュミットの直交化をするようにしています．この部分の最適化は，LLLの説明が終わった後の最適化の部分に纏めて書いてあるので安心してください．
+一つ目の式は $  \mathrm{span}( b_{k} ,\cdots ,b_{n}) $ 及び $  \mathrm{span}( b&#39;_{i,j,k} ,\cdots ,b_{i,j,n}) $ への射影を考えれば明らかなので，二つ目の式のみ示す．<br/>
+定義より，<div align="center"> $  \displaystyle \nu _{i,j,i,l} = \frac{\langle b&#39;_{i,j,i} ,b^{\prime *}_{i,j,l} \rangle }{\langle b^{\prime *}_{i,j,l} ,b^{\prime *}_{i,j,l} \rangle }=\frac{\langle b_{i} -\lfloor \mu _{i,j} \rceil b_{j} ,b^{*}_{l} \rangle }{\| b^{*}_{l} \| ^{2}}=\mu _{i.l} -\lfloor \mu _{i,j} \rceil \mu _{j,l} $ </div>である． $  |\nu _{i,j,i,j} |=|\mu _{i.j} -\lfloor \mu _{i,j} \rceil \mu _{j,j} |=|\mu _{i,j} -\lfloor \mu _{i,j} \rceil | $ なので，四捨五入の性質より $   |\nu _{i,j,i,j} | \leq \frac{1}{2} $ が成り立つ．<br/>
+また，その他のグラムシュミット係数が変化しないことは $  b_{i,j,k} &#39;=b_{k} \ ( k\neq i) $ より明らかである． $ ■ $ 補題6.1より，Algorithm 3の正当性を確認することができました．また，補題6.1の1つ目の式から，Algorithm 3の6行目の処理は2つ目の式を使ってグラムシュミット係数のみ計算すればいいことがわかります．しかしここでは簡単のため，グラム・シュミットの直交化をするようにしています．この部分の最適化は，LLLの説明が終わった後の最適化の部分に纏めて書いてあるので安心してください．
 
 </div>
 <div class="section">
     ### 7. Lovászの条件
-    LLL簡約のLovászの条件は$ \|b_{i+1}^*\|^2 + \mu_{i+1, i}^2 \|b_i^*\|^2 = \|b_{i+1}^* + \mu_{i+1,i}b_i^*\|^2$でしたが，次のような式に書き換えることもできます．<div align="center">$ \delta \|b_i^*\|^2 \leq  \|b_{i+1}^* + \mu_{i+1,i}b_i^*\|^2$</div>ここで正射影$ \pi_i: \mathbb{R}^m \to  \mathrm{span}( b_i^* , \cdots  , b_n^* )$を考えてみます．具体的には<div align="center">$ \displaystyle \pi_i(x) = \sum_{j=i}^n \frac{\langle x,b_j^* \rangle}{\langle b_j^*,b_j^* \rangle}b_j^*$</div>となります．これを用いればLovászの条件は，$ \delta \|\pi_i(b_i)\|^2 \leq \|\pi_i(b_{i+1})\|^2$となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件$ b_i \leq b_{i+1}$を$ \delta$を用いて緩和したものと同じようなものになります．<br/>
-また，サイズ簡約の条件より，$ \alpha = \frac{1}{\delta - 1 / 4}$としたとき自然数$ 1 \leq j \leq i \leq n$について<div align="center">$ \|b_j^*\|^2 \leq \alpha^{i-j}\|b_i^*\|^2$</div>となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．**定理 7.1:**<br/>
-格子$ \Lambda$の基底行列を$ B=\begin{pmatrix} b_{1} &amp; \cdots  &amp; b_{n} \end{pmatrix} \in \mathbb{R}^{m \times n}$とし，そのグラムシュミットベクトルによる行列を$ B^*=\begin{pmatrix} b_{1}^* &amp; \cdots  &amp; b_{n}^* \end{pmatrix}$とする．この時，格子$ \Lambda$の逐次最小$ \lambda_1$について次の不等式が成り立つ．<div align="center">$ \lambda_1 \geq  \min_i \|b_i^*\|$</div>**証明:**<br/>
-$ \displaystyle \lambda_1 \in \left\{ \|Bx\| \mathrel{}\middle|\mathrel{} x \in \mathbb{Z}^n \setminus \left\{0\right\} \right\}$なので，任意の$ x = \begin{pmatrix} x_{1} &amp; \cdots  &amp; x_{n} \end{pmatrix} \in \mathbb{Z}^n \setminus \left\{0\right\}$に対し$ \|Bx\| \geq \min_i \|b_i^*\|$を示せばよい．<br/>
-まず$ k$を$ x_k \neq 0$となる$ x$の最大のインデックスとする．この時$ Bx$と$ b_k^*$の内積を取ると<div align="center">$ \displaystyle
+    LLL簡約のLovászの条件は $  \|b_{i+1}^*\|^2 + \mu_{i+1, i}^2 \|b_i^*\|^2 = \|b_{i+1}^* + \mu_{i+1,i}b_i^*\|^2 $ でしたが，次のような式に書き換えることもできます．<div align="center"> $  \delta \|b_i^*\|^2 \leq  \|b_{i+1}^* + \mu_{i+1,i}b_i^*\|^2 $ </div>ここで正射影 $  \pi_i: \mathbb{R}^m \to  \mathrm{span}( b_i^* , \cdots  , b_n^* ) $ を考えてみます．具体的には<div align="center"> $  \displaystyle \pi_i(x) = \sum_{j=i}^n \frac{\langle x,b_j^* \rangle}{\langle b_j^*,b_j^* \rangle}b_j^* $ </div>となります．これを用いればLovászの条件は， $  \delta \|\pi_i(b_i)\|^2 \leq \|\pi_i(b_{i+1})\|^2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b_i \leq b_{i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．<br/>
+また，サイズ簡約の条件より， $  \alpha = \frac{1}{\delta - 1 / 4} $ としたとき自然数 $  1 \leq j \leq i \leq n $ について<div align="center"> $  \|b_j^*\|^2 \leq \alpha^{i-j}\|b_i^*\|^2 $ </div>となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．**定理 7.1:**<br/>
+格子 $  \Lambda $ の基底行列を $  B=\begin{pmatrix} b_{1} &amp; \cdots  &amp; b_{n} \end{pmatrix} \in \mathbb{R}^{m \times n} $ とし，そのグラムシュミットベクトルによる行列を $  B^*=\begin{pmatrix} b_{1}^* &amp; \cdots  &amp; b_{n}^* \end{pmatrix} $ とする．この時，格子 $  \Lambda $ の逐次最小 $  \lambda_1 $ について次の不等式が成り立つ．<div align="center"> $  \lambda_1 \geq  \min_i \|b_i^*\| $ </div>**証明:**<br/>
+ $  \displaystyle \lambda_1 \in \left\{ \|Bx\| \mathrel{}\middle|\mathrel{} x \in \mathbb{Z}^n \setminus \left\{0\right\} \right\} $ なので，任意の $  x = \begin{pmatrix} x_{1} &amp; \cdots  &amp; x_{n} \end{pmatrix} \in \mathbb{Z}^n \setminus \left\{0\right\} $ に対し $  \|Bx\| \geq \min_i \|b_i^*\| $ を示せばよい．<br/>
+まず $  k $ を $  x_k \neq 0 $ となる $  x $ の最大のインデックスとする．この時 $  Bx $ と $  b_k^* $ の内積を取ると<div align="center"> $  \displaystyle
 \begin{aligned}
 \langle Bx,b^{*}_{k} \rangle  &amp; =\langle \sum ^{k}_{i=1} x_{i} b_{i} ,b^{*}_{k} \rangle \\
  &amp; =\sum ^{k}_{i=1} \langle x_{i} b_{i} ,b^{*}_{k} \rangle \\
  &amp; =\langle x_{k} b_{k} ,b^{*}_{k} \rangle \\
  &amp; =x_{k} \| b^{*}_{k} \| ^{2}
 \end{aligned}
-$</div>となる．よってコーシー・シュワルツの不等式より，<div align="center">$ \|Bx\| \|b_k^*\| \geq | \langle Bx, b_k^* \rangle | = |x_k| \|b_k^*\|^2$</div>となり，$ |x_k| \geq 1$より$ \|Bx\| \geq \|b_k^*\| \geq \min_i \|b_i^*\|$が成り立つ．よって示された．$■$**定理 7.2:**<br/>
-パラメータ$ \delta$でLLL簡約された基底$ \left\{b_1,\cdots,b_n \right\}$とそのグラムシュミットベクトル$ b_1^*,\cdots,b_n^* $について，$ \alpha = \frac{1}{\delta - 1/4}$としたとき，$ 1 \leq j \leq i \leq n$を満たす任意の自然数$ i,j$に対して次の不等式が成り立つ．<div align="center">$ \displaystyle \|b_j\| \leq \alpha^{(i-1)/2}\|b_i^*\|$</div>**証明:**<br/>
-まず，$ \|b_i\|^2\ (1 \leq i \leq n)$に対して次の式が成り立つ．<div align="center">$ \displaystyle
+ $ </div>となる．よってコーシー・シュワルツの不等式より，<div align="center"> $  \|Bx\| \|b_k^*\| \geq | \langle Bx, b_k^* \rangle | = |x_k| \|b_k^*\|^2 $ </div>となり， $  |x_k| \geq 1 $ より $  \|Bx\| \geq \|b_k^*\| \geq \min_i \|b_i^*\| $ が成り立つ．よって示された． $ ■ $ **定理 7.2:**<br/>
+パラメータ $  \delta $ でLLL簡約された基底 $  \left\{b_1,\cdots,b_n \right\} $ とそのグラムシュミットベクトル $  b_1^*,\cdots,b_n^*  $ について， $  \alpha = \frac{1}{\delta - 1/4} $ としたとき， $  1 \leq j \leq i \leq n $ を満たす任意の自然数 $  i,j $ に対して次の不等式が成り立つ．<div align="center"> $  \displaystyle \|b_j\| \leq \alpha^{(i-1)/2}\|b_i^*\| $ </div>**証明:**<br/>
+まず， $  \|b_i\|^2\ (1 \leq i \leq n) $ に対して次の式が成り立つ．<div align="center"> $  \displaystyle
 \begin{aligned}
 \| b_{i} \| ^{2} &amp; =\langle b_{i} ,b_{i} \rangle \\
  &amp; =\langle b^{*}_{i} +\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j} ,b^{*}_{i} +\sum ^{i-1}_{j=1} \mu _{i,j} b^{*}_{j} \rangle \\
  &amp; =\| b^{*}_{i} \|^2 +\sum ^{i-1}_{j=1} \mu ^{2}_{i,j} \| b^{*}_{j} \| ^{2}
 \end{aligned}
-$</div>よって，$ \|b_j^*\|^2 \leq \alpha^{i-j}\|b_i^*\|^2$とサイズ簡約の条件を用いれば<div align="center">$ \displaystyle
+ $ </div>よって， $  \|b_j^*\|^2 \leq \alpha^{i-j}\|b_i^*\|^2 $ とサイズ簡約の条件を用いれば<div align="center"> $  \displaystyle
 \begin{aligned}
 \| b_{i} \| ^{2} &amp; \leq \| b^{*}_{i} \| ^{2} +\frac{1}{4}\sum ^{i-1}_{j=1} \alpha ^{i-j} \| b_{i} \| ^{2}\\
  &amp; =\| b^{*}_{i} \| ^{2} +\frac{1}{4} \| b_{i} \| ^{2}\frac{\alpha ^{i} -\alpha }{\alpha -1}
 \end{aligned}
-$</div>となる．従って，$ \displaystyle \| b_{i} \| ^{2} \leq \| b^{*}_{i} \| ^{2}\left( 1+\frac{1}{4}\frac{\alpha ^{i} -\alpha }{\alpha -1}\right)$が成り立つ．<br/>
-ここで$ j \geq 1$とすると$ \displaystyle 1+\frac{1}{4}\frac{\alpha ^{j} -\alpha }{\alpha -1} \leq \alpha ^{j-1}$なので，$ 1 \leq j \leq i \leq n$に対して<div align="center">$ \displaystyle
+ $ </div>となる．従って， $  \displaystyle \| b_{i} \| ^{2} \leq \| b^{*}_{i} \| ^{2}\left( 1+\frac{1}{4}\frac{\alpha ^{i} -\alpha }{\alpha -1}\right) $ が成り立つ．<br/>
+ここで $  j \geq 1 $ とすると $  \displaystyle 1+\frac{1}{4}\frac{\alpha ^{j} -\alpha }{\alpha -1} \leq \alpha ^{j-1} $ なので， $  1 \leq j \leq i \leq n $ に対して<div align="center"> $  \displaystyle
 \begin{aligned}
 \| b_{j} \| ^{2} &amp; \leq \alpha ^{j-1} \| b^{*}_{j} \| ^{2}\\
  &amp; \leq \alpha ^{j-1} \alpha ^{i-j} \| b^{*}_{i} \| ^{2}\\
  &amp; =\alpha ^{i-1} \| b^{*}_{i} \| ^{2}
 \end{aligned}
-$</div>従って$ \displaystyle \| b_{j} \| \leq \alpha ^{( i-1) /2} \| b^{*}_{i} \| $が得られる．$■$これらの定理より，LLLによる最短格子ベクトルの近似の精度を与える不等式が得られます．**定理 7.3:**<br/>
-格子$ \Lambda$の，パラメータ$ \delta$によるLLL簡約基底$ \left\{ b_1, \cdots, b_n \right\}$と逐次最小$ \lambda_1$について，$ \alpha = \frac{1}{\delta - 1/4}$としたとき次の不等式が成り立つ．<div align="center">$ \displaystyle \|b_1\| \leq \alpha^{(n-1)/2}\lambda_1$</div>**証明:**<br/>
-$ 1 \leq i \leq n$なる自然数$ i$について，定理7.2より<div align="center">$ \displaystyle \alpha ^{( 1-i) /2} \| b^{*}_{1} \| \leq \ \| b^{*}_{i} \| $</div>したがって，定理7.1より<div align="center">$ \displaystyle
+ $ </div>従って $  \displaystyle \| b_{j} \| \leq \alpha ^{( i-1) /2} \| b^{*}_{i} \|  $ が得られる． $ ■ $ これらの定理より，LLLによる最短格子ベクトルの近似の精度を与える不等式が得られます．**定理 7.3:**<br/>
+格子 $  \Lambda $ の，パラメータ $  \delta $ によるLLL簡約基底 $  \left\{ b_1, \cdots, b_n \right\} $ と逐次最小 $  \lambda_1 $ について， $  \alpha = \frac{1}{\delta - 1/4} $ としたとき次の不等式が成り立つ．<div align="center"> $  \displaystyle \|b_1\| \leq \alpha^{(n-1)/2}\lambda_1 $ </div>**証明:**<br/>
+ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より<div align="center"> $  \displaystyle \alpha ^{( 1-i) /2} \| b^{*}_{1} \| \leq \ \| b^{*}_{i} \|  $ </div>したがって，定理7.1より<div align="center"> $  \displaystyle
 \begin{aligned}
 \lambda _{1} &amp; \geq \min_i \| b^{*}_{i} \| \\
  &amp; \geq \min_i \alpha ^{( 1-i) /2} \| b^{*}_{1} \| \\
  &amp; =\alpha ^{( 1-n) /2} \| b^{*}_{1} \| 
 \end{aligned}
-$</div>従って，$ b_1^* = b_1$より$\| b_{1} \| \leq \alpha ^{( n-1) /2} \lambda _{1}$が得られる．$■$**定理 7.4:**<br/>
-格子$ \Lambda$の，パラメータ$ \delta$によるLLL簡約基底$ \left\{ b_1, \cdots, b_n \right\}$について，$ \alpha = \frac{1}{\delta - 1/4}$としたとき次の不等式が成り立つ．<div align="center">$ \|b_1\| \leq \alpha^{(n-1)/4} \det( \Lambda) ^ {1/n}$</div>**証明:**<br/>
-定理7.2より，<div align="center">$ \displaystyle
+ $ </div>従って， $  b_1^* = b_1 $ より $ \| b_{1} \| \leq \alpha ^{( n-1) /2} \lambda _{1} $ が得られる． $ ■ $ **定理 7.4:**<br/>
+格子 $  \Lambda $ の，パラメータ $  \delta $ によるLLL簡約基底 $  \left\{ b_1, \cdots, b_n \right\} $ について， $  \alpha = \frac{1}{\delta - 1/4} $ としたとき次の不等式が成り立つ．<div align="center"> $  \|b_1\| \leq \alpha^{(n-1)/4} \det( \Lambda) ^ {1/n} $ </div>**証明:**<br/>
+定理7.2より，<div align="center"> $  \displaystyle
 \begin{aligned}
 \begin{aligned}
 \| b_{1} \| ^{n}
 \end{aligned} &amp; \leq \prod ^{n}_{i=1} \alpha ^{( i-1) /2} \| b^{*}_{i} \| \\
  &amp; =\alpha ^{n( n-1) /4}\det \Lambda 
 \end{aligned}
-$</div>である．従って，$ \| b_{1} \| \leq \alpha ^{( n-1) /4}\det( \Lambda )^{1/n}$．$■$<br/>
+ $ </div>である．従って， $  \| b_{1} \| \leq \alpha ^{( n-1) /4}\det( \Lambda )^{1/n} $ ． $ ■ $ <br/>
 
 
 </div>
@@ -264,22 +277,22 @@ $</div>である．従って，$ \| b_{1} \| \leq \alpha ^{( n-1) /4}\det( \Lamb
 {{< figure src="/images/2020/05/10/205159/20200508235522.png"  >}}<br/>
 さすがに愚直が過ぎるので，ある程度無駄な計算を省いたものとして下のコードも示しておきます．主な解析はこっちのコードで行います．<br/>
 {{< figure src="/images/2020/05/10/205159/20200508235606.png"  >}}LLLアルゴリズムにおいて，Lovászの条件を満たさなかったときの基底ベクトルの交換は次の補題から有効性が確認できます．**補題 8.1:**<br/>
-Algorithm 5の12行目にて，ベクトル$ b_k$と$ b_{k-1}$をを交換する前の基底を$ \left\{b_1,\cdots,b_n\right\}$，交換した直後の基底を$ \left\{b_1&#39;,\cdots,b_n&#39;\right\}$とし，それぞれのグラムシュミットベクトルを$ b_1^*,\cdots,b_n^*$及び$ b_1&#39;^*,\cdots,b_n&#39;^*$とする．このとき，次の式が成り立つ．
+Algorithm 5の12行目にて，ベクトル $  b_k $ と $  b_{k-1} $ をを交換する前の基底を $  \left\{b_1,\cdots,b_n\right\} $ ，交換した直後の基底を $  \left\{b_1&#39;,\cdots,b_n&#39;\right\} $ とし，それぞれのグラムシュミットベクトルを $  b_1^*,\cdots,b_n^* $ 及び $  b_1&#39;^*,\cdots,b_n&#39;^* $ とする．このとき，次の式が成り立つ．
 
 <ol>
-<li>$ n$以下の自然数$ i \neq k,k-1$に対し，$ b_{i} ^{\prime *} =b^{*}_{i}$</li>
-<li>$ \displaystyle b^{\prime *}_{k-1} =b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} ,\ \| b^{\prime *}_{k-1} \| ^{2} =\| b^{*}_{k} \| ^{2} +\mu ^{2}_{k,k-1} \| b^{*}_{k-1} \| ^{2}$</li>
-<li>$ \displaystyle b^{\prime *}_{k} =\frac{\| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k-1} -\mu _{k,k-1} \frac{\| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k} ,\ \| b^{\prime *}_{k} \| ^{2} =\frac{\| b^{*}_{k-1} \| ^{2} \| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}}$</li>
+<li> $  n $ 以下の自然数 $  i \neq k,k-1 $ に対し， $  b_{i} ^{\prime *} =b^{*}_{i} $ </li>
+<li> $  \displaystyle b^{\prime *}_{k-1} =b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} ,\ \| b^{\prime *}_{k-1} \| ^{2} =\| b^{*}_{k} \| ^{2} +\mu ^{2}_{k,k-1} \| b^{*}_{k-1} \| ^{2} $ </li>
+<li> $  \displaystyle b^{\prime *}_{k} =\frac{\| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k-1} -\mu _{k,k-1} \frac{\| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k} ,\ \| b^{\prime *}_{k} \| ^{2} =\frac{\| b^{*}_{k-1} \| ^{2} \| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} $ </li>
 </ol>**証明:**<br/>
-自然数$ 1 \leq j &lt; i \leq n$に対し，グラムシュミットベクトル$ b_1^*,\cdots,b_n^*$のグラムシュミット係数を$ \mu_{i,j}$，$ b_1&#39;^*,\cdots,b_n&#39;^*$のグラムシュミット係数を$ \mu_{i,j}&#39;$とする．<br/>
-$ b_k$と$ b_{k-1}$を交換しただけなので一つ目の式は明らかに成り立ち，また自然数$ 1 \leq j &lt; i &lt; k-1$に対して$ \mu_{i,j}&#39; = \mu_{i,j}$である．<br/>
-また，$ b^{\prime *}_{k-1}$について<div align="center">$ \displaystyle
+自然数 $  1 \leq j &lt; i \leq n $ に対し，グラムシュミットベクトル $  b_1^*,\cdots,b_n^* $ のグラムシュミット係数を $  \mu_{i,j} $ ， $  b_1&#39;^*,\cdots,b_n&#39;^* $ のグラムシュミット係数を $  \mu_{i,j}&#39; $ とする．<br/>
+ $  b_k $ と $  b_{k-1} $ を交換しただけなので一つ目の式は明らかに成り立ち，また自然数 $  1 \leq j &lt; i &lt; k-1 $ に対して $  \mu_{i,j}&#39; = \mu_{i,j} $ である．<br/>
+また， $  b^{\prime *}_{k-1} $ について<div align="center"> $  \displaystyle
 \begin{aligned}
 b^{\prime *}_{k-1} &amp; =b^{\prime }_{k-1} -\sum ^{k-2}_{j=1} \mu ^{\prime }_{k-1,j} b^{\prime *}_{j}\\
  &amp; =b_{k} -\sum ^{k-2}_{j=1} \mu _{k,j} b^{*}_{j}\\
  &amp; =b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1}
-\end{aligned}$</div>なので，そのノルムについて，$ \| b^{\prime *}_{k-1} \| ^{2} =\langle b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} ,b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} \rangle =\| b^{*}_{k} \| ^{2} +\mu ^{2}_{k,k-1} \| b^{*}_{k-1} \| ^{2}$となる．<br/>
-また，$ b^{\prime *}_{k}$について<div align="center">$ \displaystyle
+\end{aligned} $ </div>なので，そのノルムについて， $  \| b^{\prime *}_{k-1} \| ^{2} =\langle b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} ,b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} \rangle =\| b^{*}_{k} \| ^{2} +\mu ^{2}_{k,k-1} \| b^{*}_{k-1} \| ^{2} $ となる．<br/>
+また， $  b^{\prime *}_{k} $ について<div align="center"> $  \displaystyle
 \begin{aligned}
 b^{\prime *}_{k} &amp; =b^{\prime }_{k} -\sum ^{k-1}_{j=1} \mu ^{\prime }_{k,j} b^{\prime *}_{j}\\
  &amp; =b_{k-1} -\sum ^{k-2}_{j=1} \mu _{k-1,j} b^{*}_{j} -\mu ^{\prime }_{k,k-1} b^{\prime *}_{k-1}\\
@@ -288,61 +301,61 @@ b^{\prime *}_{k} &amp; =b^{\prime }_{k} -\sum ^{k-1}_{j=1} \mu ^{\prime }_{k,j} 
  &amp; =b^{*}_{k-1} -\frac{\mu _{k,k-1} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}}\left( b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1}\right)\\
  &amp; =\frac{\| b^{\prime *}_{k-1} \| ^{2} -\mu ^{2}_{k,k-1} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k-1} -\frac{\mu _{k,k-1} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k}\\
  &amp; =\frac{\| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k-1} -\mu _{k,k-1}\frac{\| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k}
-\end{aligned}$</div>が成り立つため，そのノルムについて<div align="center">$  \displaystyle
+\end{aligned} $ </div>が成り立つため，そのノルムについて<div align="center"> $   \displaystyle
 \begin{aligned}
 \| b^{\prime *}_{k} \|  &amp; =\frac{\| b^{*}_{k} \| ^{4} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{4}} +\mu ^{2}_{k,k-1}\frac{\| b^{*}_{k-1} \| ^{4} \| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{4}}\\
  &amp; =\frac{\| b^{*}_{k-1} \| ^{2} \| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{4}}\left( \| b^{*}_{k} \| ^{2} +\mu ^{2}_{k,k-1} \| b^{*}_{k-1} \| ^{2}\right)\\
  &amp; =\frac{\| b^{*}_{k-1} \| ^{2} \| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}}
-\end{aligned}$</div>となる．よって示された．$■$補題8.1より，元の基底のベクトル$ b_k$と$ b_{k-1}$がLovászの条件を満たさなかったとき，$ \| b^{*}_{k} \| ^{2} &lt; ( \delta -\mu ^{2}_{k,k-1}) \| b^{*}_{k-1} \| ^{2}$なので，これを交換して得られた基底$ \left\{ b_1^{\prime},\cdots,b_n^{\prime} \right\}$について$ \|b_{k-1}^{\prime *}\|^2 &lt; \delta \|b_{k-1}^*\|^2$が成り立ちます．よって，Lovászの条件を満たさない基底ベクトル$ b_k,b_{k-1}$の交換は，$ \|b_{k-1}^*\|^2$を少なくとも$ \delta$倍だけ短くする操作と同じものになります．<br/>
-では次にLLLの計算量を考えます．ただ，$ \mathbb{R}^n$内の任意の格子に対する具体的な計算量を証明することができなかったので，整数格子限定の計算量しか解説できません．ごめんなさい……(てか既に厳密な計算量が与えられてるかすらわからなかったのです．強い人どうか教えてください)<br/>
+\end{aligned} $ </div>となる．よって示された． $ ■ $ 補題8.1より，元の基底のベクトル $  b_k $ と $  b_{k-1} $ がLovászの条件を満たさなかったとき， $  \| b^{*}_{k} \| ^{2} &lt; ( \delta -\mu ^{2}_{k,k-1}) \| b^{*}_{k-1} \| ^{2} $ なので，これを交換して得られた基底 $  \left\{ b_1^{\prime},\cdots,b_n^{\prime} \right\} $ について $  \|b_{k-1}^{\prime *}\|^2 &lt; \delta \|b_{k-1}^*\|^2 $ が成り立ちます．よって，Lovászの条件を満たさない基底ベクトル $  b_k,b_{k-1} $ の交換は， $  \|b_{k-1}^*\|^2 $ を少なくとも $  \delta $ 倍だけ短くする操作と同じものになります．<br/>
+では次にLLLの計算量を考えます．ただ， $  \mathbb{R}^n $ 内の任意の格子に対する具体的な計算量を証明することができなかったので，整数格子限定の計算量しか解説できません．ごめんなさい……(てか既に厳密な計算量が与えられてるかすらわからなかったのです．強い人どうか教えてください)<br/>
 まずはLLLの停止性について次の定理が言えます．**定理 8.2:**<br/>
-格子$ \Lambda$の基底を$ \left\{ b_1,\cdots,b_n \right\} \in \mathbb{Z}^{m \times n}$とし，$ X = \max_i \|b_i\|^2$とする．この時，Algorithm5で示される，パラメータ$ \delta$によるLLLのwhile文中の処理は$ O\left( n^{2}\log X\right)$程度の回数で停止する．**証明:**<br/>
-$ \left\{ b_1,\cdots,b_n \right\}$のグラムシュミットベクトルを$ b_1^*,\cdots,b_n^*$とする．<br/>
-いま，自然数$ 1 \leq i &lt; n$に対し$ B_{i} =\begin{pmatrix} b_{1} &amp; \cdots  &amp; b_{i} \end{pmatrix} \in \mathbb{Z}^{i \times m}$とし，$ d_i = \det\left({}^t\!B_iB_i\right)$と置く．$ B_i$は整数行列なので$ d_i \in \mathbb{Z}$となり，また定理4.2より次の式が成り立つ．<div align="center">$ \displaystyle
-d_{i} =\prod ^{i}_{j=1} \| b^{*}_{i} \| ^{2} \leq \prod ^{i}_{j=1} \| b_{i} \| ^{2} \leq X^{i}$</div>ここで，<div align="center">$ \displaystyle
-D=\prod ^{n-1}_{i=1} d_{i} =\prod ^{n-1}_{i=1} \| b^{*}_{i} \| ^{n-i}$</div>としたとき，定義より次の式が成り立つ．<div align="center">$ \displaystyle
-D=\prod ^{n-1}_{i=1} \| b^{*}_{i} \| ^{n-i} \leq \prod ^{n-1}_{i=1} X^{n-i} =X^{n( n-1) /2}$</div>ところで，Algorithm5において元の基底のベクトル$ b_k,b_{k-1}$がLovászの条件を満たさず，この二つを交換して新しい基底$ \left\{ b_1^{\prime},\cdots,b_n^{\prime} \right\}$を作ったとする．この基底のグラムシュミットベクトルを$ b_1^{\prime *},\cdots,b_n^{\prime *}$とし，新しい基底に対する$ d_i$を$ d_i^{\prime}$とすれば，補題8.1より自然数$ 1 \leq i &lt; k-1$に対して$ d_i^{\prime} = d_i$となる．さらにベクトルの交換により$ \|b_{k-1}^{\prime *}\|^2 \leq \delta \|b_{k-1}^*\|^2$なので$ d_{k-1}^{\prime} \leq \delta d_{k-1}$となり，また$ \|b_{k-1}^{\prime *}\|^2 \|b_k^{\prime *}\|^2 = \|b_{k-1}^*\|^2 \|b_k^*\|^2$より，自然数$ k \leq i \leq n$に対して$ d_i^{\prime} = d_i$である．従って，基底ベクトルの交換により$ D$の値も少なくとも$ \delta$倍小さくなることがわかる．ゆえに，Algorithm5における基底ベクトルの交換の回数を$ N$とすれば$ 1 \leq \delta^N D$なので，<div align="center">$ \displaystyle N\leq \log_{\delta }\frac{1}{D} =\log_{1/\delta } D\leq \log_{1/\delta }\left( X^{n( n-1) /2}\right) =\frac{n( n-1)}{2}\log_{1/\delta } X$</div>となる．これより，基底ベクトルの交換の回数$ N$は$ O\left( n^{2}\log X\right)$程度である．よって示された．$■$定理8.2を使えば，最終的なLLL(Algorithm 5)の計算量が簡単に求まります．**定理 8.3:**<br/>
-格子$ \Lambda$の基底を$ \left\{ b_1,\cdots,b_n \right\} \in \mathbb{Z}^{m \times n}$とし，$ X = \max_i \|b_i\|^2$とする．この時，Algorithm5で示される，パラメータ$ 1/4 &lt; \delta &lt; 1$によるLLL簡約全体の計算量は$ O\left( n^{5}m\log X\right)$となる．**証明:**<br/>
-グラム・シュミットの直交化法の計算量は$ O(n^2m)$なので，3行目までの初期化の処理の計算量もまた$ O(n^2m)$である．<br/>
-また，4行目から15行目の繰り返し回数は定理8.2より$ O(n^2 \log X)$程度であった．この中に，5行目から8行目までの$ O(n^3m)$の処理と，8行目から15行目までの$ O(n^2m)$の処理が含まれているため，メインのループ全体の計算量は$ O(n^2 \log X \cdot (n^3m + n^2m)) = O(n^5 m \log X)$となる．<br/>
-よってAlgorithm 5全体の計算量は$ O(n^2m + n^5 m \log X) = O(n^5 m \log X)$となる．$■$<br/>
+格子 $  \Lambda $ の基底を $  \left\{ b_1,\cdots,b_n \right\} \in \mathbb{Z}^{m \times n} $ とし， $  X = \max_i \|b_i\|^2 $ とする．この時，Algorithm5で示される，パラメータ $  \delta $ によるLLLのwhile文中の処理は $  O\left( n^{2}\log X\right) $ 程度の回数で停止する．**証明:**<br/>
+ $  \left\{ b_1,\cdots,b_n \right\} $ のグラムシュミットベクトルを $  b_1^*,\cdots,b_n^* $ とする．<br/>
+いま，自然数 $  1 \leq i &lt; n $ に対し $  B_{i} =\begin{pmatrix} b_{1} &amp; \cdots  &amp; b_{i} \end{pmatrix} \in \mathbb{Z}^{i \times m} $ とし， $  d_i = \det\left({}^t\!B_iB_i\right) $ と置く． $  B_i $ は整数行列なので $  d_i \in \mathbb{Z} $ となり，また定理4.2より次の式が成り立つ．<div align="center"> $  \displaystyle
+d_{i} =\prod ^{i}_{j=1} \| b^{*}_{i} \| ^{2} \leq \prod ^{i}_{j=1} \| b_{i} \| ^{2} \leq X^{i} $ </div>ここで，<div align="center"> $  \displaystyle
+D=\prod ^{n-1}_{i=1} d_{i} =\prod ^{n-1}_{i=1} \| b^{*}_{i} \| ^{n-i} $ </div>としたとき，定義より次の式が成り立つ．<div align="center"> $  \displaystyle
+D=\prod ^{n-1}_{i=1} \| b^{*}_{i} \| ^{n-i} \leq \prod ^{n-1}_{i=1} X^{n-i} =X^{n( n-1) /2} $ </div>ところで，Algorithm5において元の基底のベクトル $  b_k,b_{k-1} $ がLovászの条件を満たさず，この二つを交換して新しい基底 $  \left\{ b_1^{\prime},\cdots,b_n^{\prime} \right\} $ を作ったとする．この基底のグラムシュミットベクトルを $  b_1^{\prime *},\cdots,b_n^{\prime *} $ とし，新しい基底に対する $  d_i $ を $  d_i^{\prime} $ とすれば，補題8.1より自然数 $  1 \leq i &lt; k-1 $ に対して $  d_i^{\prime} = d_i $ となる．さらにベクトルの交換により $  \|b_{k-1}^{\prime *}\|^2 \leq \delta \|b_{k-1}^*\|^2 $ なので $  d_{k-1}^{\prime} \leq \delta d_{k-1} $ となり，また $  \|b_{k-1}^{\prime *}\|^2 \|b_k^{\prime *}\|^2 = \|b_{k-1}^*\|^2 \|b_k^*\|^2 $ より，自然数 $  k \leq i \leq n $ に対して $  d_i^{\prime} = d_i $ である．従って，基底ベクトルの交換により $  D $ の値も少なくとも $  \delta $ 倍小さくなることがわかる．ゆえに，Algorithm5における基底ベクトルの交換の回数を $  N $ とすれば $  1 \leq \delta^N D $ なので，<div align="center"> $  \displaystyle N\leq \log_{\delta }\frac{1}{D} =\log_{1/\delta } D\leq \log_{1/\delta }\left( X^{n( n-1) /2}\right) =\frac{n( n-1)}{2}\log_{1/\delta } X $ </div>となる．これより，基底ベクトルの交換の回数 $  N $ は $  O\left( n^{2}\log X\right) $ 程度である．よって示された． $ ■ $ 定理8.2を使えば，最終的なLLL(Algorithm 5)の計算量が簡単に求まります．**定理 8.3:**<br/>
+格子 $  \Lambda $ の基底を $  \left\{ b_1,\cdots,b_n \right\} \in \mathbb{Z}^{m \times n} $ とし， $  X = \max_i \|b_i\|^2 $ とする．この時，Algorithm5で示される，パラメータ $  1/4 &lt; \delta &lt; 1 $ によるLLL簡約全体の計算量は $  O\left( n^{5}m\log X\right) $ となる．**証明:**<br/>
+グラム・シュミットの直交化法の計算量は $  O(n^2m) $ なので，3行目までの初期化の処理の計算量もまた $  O(n^2m) $ である．<br/>
+また，4行目から15行目の繰り返し回数は定理8.2より $  O(n^2 \log X) $ 程度であった．この中に，5行目から8行目までの $  O(n^3m) $ の処理と，8行目から15行目までの $  O(n^2m) $ の処理が含まれているため，メインのループ全体の計算量は $  O(n^2 \log X \cdot (n^3m + n^2m)) = O(n^5 m \log X) $ となる．<br/>
+よってAlgorithm 5全体の計算量は $  O(n^2m + n^5 m \log X) = O(n^5 m \log X) $ となる． $ ■ $ <br/>
 
 
 </div>
 <div class="section">
     ### 9. 最適化
-    前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を$ O(n^2m)$から$ O(n)$まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．<br/>
+    前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  O(n^2m) $ から $  O(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．<br/>
 {{< figure src="/images/2020/05/10/205159/20200509002113.png"  >}}次に，Algorithm 5の13行目のグラム・シュミットの直交化の部分に注目します．この部分はベクトルの交換が行われるためグラムシュミットベクトルを計算する必要があります．しかしグラム・シュミットの直交化を直接利用する必要はなく，補題8.1と次の補題を用いれば，交換する前の基底を利用して直交化することができます．**補題 9.1:**<br/>
-格子$ \Lambda$の基底を$ \left\{ b_1,\cdots,b_n \right\} \in \mathbb{R}^{m \times n}$とし，そのグラムシュミット係数を$ \mu_{i,j}\ (1 \leq j &lt; i \leq n)$，グラムシュミットベクトルを$ b_1^*,\cdots,b_n^*$とする．ここで，ある自然数$ 1 &lt; k \leq n$に対し$ b_k, b_{k-1}$の組がLovászの条件を満たさず，$ \| b^{*}_{k} \| ^{2} &lt; ( \delta -\mu ^{2}_{k,k-1}) \| b^{*}_{k-1} \| ^{2}$であったとし，そのベクトルを交換して得られる基底を$ \left\{ b_1^{\prime},\cdots,b_n^{\prime} \right\}$とする．またそのグラムシュミット係数を$ \mu_{i,j}^{\prime}\ (1 \leq j &lt; i \leq n)$と表し，グラムシュミットベクトルを$ b_1^{\prime *},\cdots,b_n^{\prime *}$とする．この時以下の式が成り立つ．
+格子 $  \Lambda $ の基底を $  \left\{ b_1,\cdots,b_n \right\} \in \mathbb{R}^{m \times n} $ とし，そのグラムシュミット係数を $  \mu_{i,j}\ (1 \leq j &lt; i \leq n) $ ，グラムシュミットベクトルを $  b_1^*,\cdots,b_n^* $ とする．ここで，ある自然数 $  1 &lt; k \leq n $ に対し $  b_k, b_{k-1} $ の組がLovászの条件を満たさず， $  \| b^{*}_{k} \| ^{2} &lt; ( \delta -\mu ^{2}_{k,k-1}) \| b^{*}_{k-1} \| ^{2} $ であったとし，そのベクトルを交換して得られる基底を $  \left\{ b_1^{\prime},\cdots,b_n^{\prime} \right\} $ とする．またそのグラムシュミット係数を $  \mu_{i,j}^{\prime}\ (1 \leq j &lt; i \leq n) $ と表し，グラムシュミットベクトルを $  b_1^{\prime *},\cdots,b_n^{\prime *} $ とする．この時以下の式が成り立つ．
 
 <ol>
-<li>$ \displaystyle \mu ^{\prime}_{k,k-1} =\frac{\mu _{k,k-1} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}}$</li>
-<li>自然数$ 1 \leq j &lt; k-2$に対し，$ \mu^{\prime}_{k-1,j} =\mu _{k,j} ,\ \mu^{\prime}_{k,j} =\mu _{k-1,j}$</li>
-<li>自然数$ k+1 \leq j \leq n$に対し，$ \mu^{\prime}_{j,k} =\mu _{j,k-1} -\mu _{k,k-1} \mu _{j,k} ,\ \mu^{\prime}_{j,k-1} =\mu _{j,k} +\mu^{\prime}_{k,k-1} \mu^{\prime}_{j,k}$</li>
+<li> $  \displaystyle \mu ^{\prime}_{k,k-1} =\frac{\mu _{k,k-1} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} $ </li>
+<li>自然数 $  1 \leq j &lt; k-2 $ に対し， $  \mu^{\prime}_{k-1,j} =\mu _{k,j} ,\ \mu^{\prime}_{k,j} =\mu _{k-1,j} $ </li>
+<li>自然数 $  k+1 \leq j \leq n $ に対し， $  \mu^{\prime}_{j,k} =\mu _{j,k-1} -\mu _{k,k-1} \mu _{j,k} ,\ \mu^{\prime}_{j,k-1} =\mu _{j,k} +\mu^{\prime}_{k,k-1} \mu^{\prime}_{j,k} $ </li>
 <li>上の式の条件に当てはまらないグラムシュミット係数は変化しない．</li>
 </ol>**証明:**<br/>
-まず，$ \mu_{k,k-1}^{\prime}$について補題8.1より次の式が成り立つ．<div align="center">$ \displaystyle  \begin{array}{l}
+まず， $  \mu_{k,k-1}^{\prime} $ について補題8.1より次の式が成り立つ．<div align="center"> $  \displaystyle  \begin{array}{l}
 \begin{aligned}
 \mu ^{\prime }_{k,k-1} &amp; =\frac{\langle b^{\prime }_{k} ,b^{\prime *}_{k-1} \rangle }{\langle b^{\prime *}_{k-1} ,b^{\prime *}_{k-1} \rangle }\\
  &amp; =\frac{\langle b_{k-1} ,b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} \rangle }{\| b^{\prime *}_{k-1} \| ^{2}}\\
  &amp; =\frac{\mu _{k,k-1} \langle b_{k-1} ,b^{*}_{k-1} \rangle }{\| b^{\prime *}_{k-1} \| ^{2}}\\
  &amp; =\frac{\mu _{k,k-1} \| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}}
 \end{aligned}
-\end{array}$</div>また，自然数$ 1 \leq j &lt; k-1$について<div align="center">$ \displaystyle \begin{aligned}
+\end{array} $ </div>また，自然数 $  1 \leq j &lt; k-1 $ について<div align="center"> $  \displaystyle \begin{aligned}
 \mu ^{\prime }_{k-1,j} &amp; =\frac{\langle b^{\prime }_{k-1} ,b^{\prime *}_{j} \rangle }{\| b^{\prime *}_{j} \| ^{2}}\\
  &amp; =\frac{\langle b_{k} ,b^{*}_{j} \rangle }{\| b^{*}_{j} \| ^{2}}\\
  &amp; =\mu _{k,j}
-\end{aligned}$</div>であり，$ \mu^{\prime}_{k,j}$も同様に，<div align="center">$ \displaystyle \begin{aligned}
+\end{aligned} $ </div>であり， $  \mu^{\prime}_{k,j} $ も同様に，<div align="center"> $  \displaystyle \begin{aligned}
 \mu ^{\prime }_{k,j} &amp; =\frac{\langle b^{\prime }_{k} ,b^{\prime *}_{j} \rangle }{\| b^{\prime *}_{j} \| ^{2}}\\
  &amp; =\frac{\langle b_{k-1} ,b^{*}_{j} \rangle }{\| b^{*}_{j} \| ^{2}}\\
  &amp; =\mu _{k-1,j}
-\end{aligned}$</div>となる．<br/>
-さらに，自然数$ k+1 \leq j \leq n$についても同様に，<div align="center">$ \displaystyle \begin{aligned}
+\end{aligned} $ </div>となる．<br/>
+さらに，自然数 $  k+1 \leq j \leq n $ についても同様に，<div align="center"> $  \displaystyle \begin{aligned}
 \mu ^{&#39;}_{j,k} &amp; =\frac{\langle b^{\prime }_{j} ,b^{\prime *}_{k} \rangle }{\| b^{&#39;*}_{k} \| ^{2}}\\
  &amp; =\frac{\langle b_{j} ,\frac{\| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k-1} -\mu _{k,k-1}\frac{\| b^{*}_{k-1} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}} b^{*}_{k} \rangle }{\frac{\| b^{*}_{k-1} \| ^{2} \| b^{*}_{k} \| ^{2}}{\| b^{\prime *}_{k-1} \| ^{2}}}\\
  &amp; =\frac{\langle b_{j} ,\| b^{*}_{k} \| ^{2} b^{*}_{k-1} -\mu _{k,k-1} \| b^{*}_{k-1} \| ^{2} b^{*}_{k} \rangle }{\| b^{*}_{k-1} \| ^{2} \| b^{*}_{k} \| }\\
  &amp; =\mu _{j,k-1} -\mu _{k,k-1} \mu _{j,k}
-\end{aligned}$</div>となり，$ \mu_{j,k-1}^{\prime}$についても<div align="center">$ \displaystyle \begin{aligned}
+\end{aligned} $ </div>となり， $  \mu_{j,k-1}^{\prime} $ についても<div align="center"> $  \displaystyle \begin{aligned}
 \mu ^{&#39;}_{j,k-1} &amp; =\frac{\langle b^{\prime }_{j} ,b^{\prime *}_{k-1} \rangle }{\| b^{&#39;*}_{k-1} \| ^{2}}\\
  &amp; =\frac{\langle b_{j} ,b^{*}_{k} +\mu _{k,k-1} b^{*}_{k-1} \rangle }{\| b^{\prime *}_{k-1} \| ^{2}}\\
  &amp; =\frac{\| b^{*}_{k} \| ^{2} \langle b_{j} ,b^{*}_{k} \rangle +\mu _{k,k-1} \| b^{*}_{k} \| ^{2} \langle b_{j} ,b^{*}_{k-1} \rangle }{\| b^{\prime *}_{k-1} \| ^{2} \| b^{*}_{k} \| ^{2}}\\
@@ -354,11 +367,12 @@ D=\prod ^{n-1}_{i=1} \| b^{*}_{i} \| ^{n-i} \leq \prod ^{n-1}_{i=1} X^{n-i} =X^{
  &amp; =\mu _{j,k} +\mu ^{\prime }_{k,k-1} \mu _{j,k-1} -\mu ^{\prime }_{k,k-1} \mu _{k,k-1} \mu _{j,k}\\
  &amp; =\mu _{j,k} +\mu ^{\prime }_{k,k-1}( \mu _{j,k-1} -\mu _{k,k-1} \mu _{j,k})\\
  &amp; =\mu _{j,k} +\mu ^{\prime }_{k,k-1} \mu ^{\prime }_{j,k}
-\end{aligned}$</div>となる．<br/>
-他のグラムシュミット係数については，$ b_k$と$ b_{k-1}$しか交換してないことから変化しないことは明らかである．よって示された．$■$補題9.1の結果を用いれば，Algorithm 5の13行目のグラム・シュミットの直交化を$ O(n)$の処理で置き換えることができ，最終的にLLL全体は次のようになります．<br/>
+\end{aligned} $ </div>となる．<br/>
+他のグラムシュミット係数については， $  b_k $ と $  b_{k-1} $ しか交換してないことから変化しないことは明らかである．よって示された． $ ■ $ 補題9.1の結果を用いれば，Algorithm 5の13行目のグラム・シュミットの直交化を $  O(n) $ の処理で置き換えることができ，最終的にLLL全体は次のようになります．<br/>
 {{< figure src="/images/2020/05/10/205159/20200509003017.png"  >}}<br/>
-ちなみにこのLLLの計算量は，定理8.3の記号を用いれば$ O(n^3 m \log X)$です．早くなった！<br/>
+ちなみにこのLLLの計算量は，定理8.3の記号を用いれば $  O(n^3 m \log X) $ です．早くなった！<br/>
 LLLの最適化は現在も研究されている分野で，例えばDeepLLLやSegmentLLLなど，色々な種類のLLLが開発されています．これを見てLLLに興味を持った人は，ぜひ勉強して完全理解して自分に教えてください．
 
 </div>
 
+-->
