@@ -44,5 +44,3 @@ googleAnalytics = ""
   tag = "tags"
   series = "series"
 
-[params]
-    mathjaxStyle = "mathjax-style.css"
