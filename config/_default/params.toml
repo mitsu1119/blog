@@ -7,7 +7,7 @@ custom_js = []
 useFaviconGenerator = false
 languagedir = "ltr"
 
-themeOptions = ["dark", "light"]
+themeOptions = ["light", "dark"]
 notAllowedTypesInHome = ["contact", "talks", "about", "showcase"]
 notAllowedTypesInHomeSidebar = ["about", "archive", "showcase"]
 notAllowedTypesInArchive = ["about", "talks", "showcase"]
