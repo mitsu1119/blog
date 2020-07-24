@@ -1,4 +1,4 @@
-logoText = "nya"
+logoText = "みつみつみつですか？"
 logoType = "short"
 logo = false
 description = "個人的に勉強して面白かったことやCTFのwriteup等を書き連ねていきます。"
@@ -36,11 +36,11 @@ talksPaginate = 8
 talksGroupByDate = "2006"
 
 myname = "mitsu"
-email = "kyomu@gmail.comjanaiyo"
-whoami = "neko"
+email = ""
+whoami = "暗号が好きなネコです．"
 bioImageUrl = ""
 useGravatar = false
-location = "the kingdom of neko"
+location = "The kingdom of neko"
 organization = "kyomu"
 link = "https://github.com/mitsu1119"
 
