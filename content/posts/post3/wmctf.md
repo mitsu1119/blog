@@ -7,7 +7,7 @@ mathjax: true
 
 <div class="section">
 
-I played WMCTF 2020 in mixed team of Defenit and zerpts named Defenitelyzer0. We got 8th place!  
+I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!  
 Thanks to my team members.
 ![rank](../rank.png)
 

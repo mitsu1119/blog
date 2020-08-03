@@ -46,9 +46,9 @@
         <link>https://mitsu1119.github.io/blog/posts/post3/wmctf/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <atom:modified>Mon, 03 Aug 2020 17:52:44 +0900</atom:modified>
+        <atom:modified>Mon, 03 Aug 2020 17:58:26 +0900</atom:modified>
         <guid>https://mitsu1119.github.io/blog/posts/post3/wmctf/</guid>
-        <description>I played WMCTF 2020 in mixed team of Defenit and zerpts named Defenitelyzer0. We got 8th place!
+        <description>I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!
 Thanks to my team members.
 I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.
 [Crypto: 606pts] babySum (14 solved) We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.
