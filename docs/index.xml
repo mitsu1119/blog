@@ -12,7 +12,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>©{year}, All Rights Reserved</copyright>
-    <lastBuildDate>Sat, 13 Jun 2020 01:52:49 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2020 15:11:32 +0900</lastBuildDate>
     
         <atom:link href="https://mitsu1119.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -40,6 +40,28 @@
         
       
 
+      
+      <item>
+        <title>WMCTF 2020 writeup</title>
+        <link>https://mitsu1119.github.io/blog/posts/post3/wmctf/</link>
+        <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
+        
+        <atom:modified>Mon, 03 Aug 2020 15:11:32 +0900</atom:modified>
+        <guid>https://mitsu1119.github.io/blog/posts/post3/wmctf/</guid>
+        <description>I played WMCTF 2020 in mixed team of Defenit and zerpts named Defenitelyzer0. We got 8th place!
+Thanks to my team members.
+I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.
+[Crypto: 606pts] babySum (14 solved) We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.
+Reading check.py, we will see that we need to solve a typical subset sum problem.</description>
+        
+        <dc:creator>mitsu</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
       <item>
         <title>first</title>
