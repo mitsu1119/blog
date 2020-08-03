@@ -49,7 +49,7 @@ $$
 0 &amp; 0 &amp; \cdots  &amp; 0 &amp; sN &amp; kN
 \end{pmatrix}
 $$
-By the (n+1)th column, we can bind the number of numbers in the subset sum to k.  
+By the (n+2)th column, we can bind the number of numbers in the subset sum to k.  
 Moreover, simply multiplying the matrix by BKZ may not give good results.
 Moreover, simply running the BKZ algorithm on this matrix may not work well, so we can shuffle the lines and repeat.  
 Here is the solver.
