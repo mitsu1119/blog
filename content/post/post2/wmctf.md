@@ -14,7 +14,7 @@ Thanks to my team members.
 
 I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.
 
-#### [Crypto: 606pts] babySum (14 solved)
+## [Crypto: 606pts] babySum (14 solved)
 We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.  
 Reading check.py, we will see that we need to solve a typical subset sum problem. 
 

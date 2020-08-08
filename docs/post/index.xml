@@ -6,10 +6,19 @@
     <description>Recent content in Posts on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2020 15:11:32 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2020 10:53:56 +0900</lastBuildDate>
     
 	<atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Test</title>
+      <link>https://mitsu1119.github.io/blog/post/post3/test/</link>
+      <pubDate>Sat, 08 Aug 2020 10:53:56 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post3/test/</guid>
+      <description>test dayo</description>
+    </item>
     
     <item>
       <title>WMCTF 2020 writeup</title>
