@@ -18,7 +18,7 @@ I tried to solve the crypto challenges, but they are too hard for me. I could so
 We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.  
 Reading check.py, we will see that we need to solve a typical subset sum problem. 
 
-```check.py
+```python
 from json import load
 
 k, n, d = 20, 120, 0.8
@@ -51,11 +51,10 @@ $$
 \end{pmatrix}
 $$
 By the (n+2)th column, we can bind the number of numbers in the subset sum to k.  
-Moreover, simply multiplying the matrix by BKZ may not give good results.
 Moreover, simply running the BKZ algorithm on this matrix may not work well, so we can shuffle the lines and repeat.  
-Here is the solver.
+Here is the solver written in sage.
 
-```solver.sage
+```sage
 from json import load
 
 def chk(sol, A, s):

@@ -55,7 +55,7 @@ Thanks to my team members. I tried to solve the crypto challenges, but they are 
 [Crypto: 606pts] babySum (14 solved) We are given some scripts. The data contained a single number s and a list of 120 numbers A.">
 <meta itemprop="datePublished" content="2020-08-03T15:11:32&#43;09:00" />
 <meta itemprop="dateModified" content="2020-08-03T15:11:32&#43;09:00" />
-<meta itemprop="wordCount" content="560">
+<meta itemprop="wordCount" content="551">
 
 
 
@@ -174,7 +174,7 @@ Reading check.py, we will see that we need to solve a typical subset sum problem
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-check.py" data-lang="check.py"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">load</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">load</span>
 
 <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mf">0.8</span>
 <span class="n">s</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&#34;data&#34;</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">))</span>
@@ -206,9 +206,8 @@ $$
 \end{pmatrix}
 $$
 By the (n+2)th column, we can bind the number of numbers in the subset sum to k.<br>
-Moreover, simply multiplying the matrix by BKZ may not give good results.
 Moreover, simply running the BKZ algorithm on this matrix may not work well, so we can shuffle the lines and repeat.<br>
-Here is the solver.</p>
+Here is the solver written in sage.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -246,7 +245,7 @@ Here is the solver.</p>
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-solver.sage" data-lang="solver.sage"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">load</span>
+<pre class="chroma"><code class="language-sage" data-lang="sage"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">load</span>
 
 <span class="k">def</span> <span class="nf">chk</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">a</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span> <span class="o">==</span> <span class="n">s</span>
