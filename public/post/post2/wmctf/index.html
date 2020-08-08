@@ -94,8 +94,6 @@ Thanks to my team members. I tried to solve the crypto challenges, but they are 
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/blog/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/blog/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -113,8 +111,6 @@ Thanks to my team members. I tried to solve the crypto challenges, but they are 
         <a class="menu-item-link" href="/blog/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/blog/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/blog/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -326,7 +322,25 @@ WMCTF{83077532752999414286785898029842440}</p>
     </footer>
   </article>
         </div>
-        
+        <div id="comments-gitment"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitment = new Gitment({
+        id: '2020-08-03 15:11:32 \u002b0900 JST',
+        title: 'WMCTF 2020 writeup',
+        link: decodeURI(location.href),
+        desc: 'I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!\nThanks to my team members. I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.\n[Crypto: 606pts] babySum (14 solved) We are given some scripts. The data contained a single number s and a list of 120 numbers A.',
+        owner: 'mitsu1119',
+        repo: 'blog',
+        oauth: {
+          client_id: 'f3e7c8f4a2b837358387',
+          client_secret: 'b97e73a33a1d3893bfbec97af19d35d15faa9752'
+        }
+      });
+      gitment.render('comments-gitment');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
 
   
 

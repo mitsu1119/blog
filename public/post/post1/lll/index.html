@@ -86,8 +86,6 @@
         <li class="mobile-menu-item">Archives</li>
       </a><a href="/blog/tags/">
         <li class="mobile-menu-item">Tags</li>
-      </a><a href="/blog/categories/">
-        <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
 </nav>
@@ -105,8 +103,6 @@
         <a class="menu-item-link" href="/blog/post/">Archives</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/blog/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/blog/categories/">Categories</a>
       </li>
   </ul>
 </nav>
@@ -432,7 +428,25 @@ LLLの最適化は現在も研究されている分野で，例えばDeepLLLやS
     </footer>
   </article>
         </div>
-        
+        <div id="comments-gitment"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitment = new Gitment({
+        id: '2020-05-10 20:51:59 \u002b0000 UTC',
+        title: 'LLLを理解するぞ',
+        link: decodeURI(location.href),
+        desc: 'はじめに 大体タイトル通りの記事です．LLLを解説していきます． 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやっ',
+        owner: 'mitsu1119',
+        repo: 'blog',
+        oauth: {
+          client_id: 'f3e7c8f4a2b837358387',
+          client_secret: 'b97e73a33a1d3893bfbec97af19d35d15faa9752'
+        }
+      });
+      gitment.render('comments-gitment');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
 
   
 
