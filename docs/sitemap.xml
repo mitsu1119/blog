@@ -2,28 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://mitsu1119.github.io/blog/post/</loc>
-    <lastmod>2020-08-08T10:53:56+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://mitsu1119.github.io/blog/post/post3/test/</loc>
-    <lastmod>2020-08-08T10:53:56+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://mitsu1119.github.io/blog/</loc>
-    <lastmod>2020-08-08T10:53:56+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://mitsu1119.github.io/blog/tags/lattice/</loc>
+    <lastmod>2020-08-03T15:11:32+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://mitsu1119.github.io/blog/post/</loc>
     <lastmod>2020-08-03T15:11:32+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -45,6 +31,13 @@
   
   <url>
     <loc>https://mitsu1119.github.io/blog/tags/writeup/</loc>
+    <lastmod>2020-08-03T15:11:32+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://mitsu1119.github.io/blog/</loc>
     <lastmod>2020-08-03T15:11:32+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
