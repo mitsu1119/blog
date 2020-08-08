@@ -3,6 +3,7 @@ languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "みつみつみつですか？"
 preserveTaxonomyNames = true
+publishDir = "./docs"
 enableRobotsTXT = true
 enableEmoji = true
 theme = "hugo-theme-even"

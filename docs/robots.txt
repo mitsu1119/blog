@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://mitsu1119.github.io/blog/sitemap.xml
