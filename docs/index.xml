@@ -6,10 +6,19 @@
     <description>Recent content on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Aug 2020 15:11:32 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2020 01:14:23 +0900</lastBuildDate>
     
 	<atom:link href="https://mitsu1119.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>InterKosenCTF2020</title>
+      <link>https://mitsu1119.github.io/blog/post/post3/interkosenctf2020/</link>
+      <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post3/interkosenctf2020/</guid>
+      <description>InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ</description>
+    </item>
     
     <item>
       <title>WMCTF 2020 writeup</title>

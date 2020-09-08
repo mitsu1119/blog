@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kosen on みつみつみつですか？</title>
+    <link>https://mitsu1119.github.io/blog/tags/kosen/</link>
+    <description>Recent content in kosen on みつみつみつですか？</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Sep 2020 01:14:23 +0900</lastBuildDate>
+    
+	<atom:link href="https://mitsu1119.github.io/blog/tags/kosen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>InterKosenCTF2020</title>
+      <link>https://mitsu1119.github.io/blog/post/post3/interkosenctf2020/</link>
+      <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post3/interkosenctf2020/</guid>
+      <description>InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめ</description>
+    </item>
+    
+  </channel>
+</rss>
