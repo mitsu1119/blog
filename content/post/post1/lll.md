@@ -239,7 +239,7 @@ Lagrangeの方法は，二次元の格子の簡約しかできない代わりに
 <div class="section">
 
 ## 7. Lovászの条件
-LLL簡約のLovászの条件は $  \|b _ {i+1} ^ \*\| ^ 2 + \mu _ {i+1, i} ^ 2 \|b _ i ^ \*\| ^ 2 = \|b _ {i+1} ^ \* + \mu _ {i+1,i}b _ i ^ \*\| ^ 2 $ でしたが，次のような式に書き換えることもできます．$$  \delta \|b _ i ^ \*\| ^ 2 \leq  \|b _ {i+1} ^ \* + \mu _ {i+1,i}b _ i ^ \*\| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ \* , \cdots  , b _ n ^ \* ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ \* \rangle}{\langle b _ j ^ \*,b _ j ^ \* \rangle}b _ j ^ \* $$となります．これを用いればLovászの条件は， $  \delta \|\pi _ i(b _ i)\| ^ 2 \leq \|\pi _ i(b _ {i+1})\| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
+LLL簡約のLovászの条件は， $  \|b _ {i+1} ^ \*\| ^ 2 + \mu _ {i+1, i} ^ 2 \|b _ i ^ \*\| ^ 2 = \|b _ {i+1} ^ \* + \mu _ {i+1,i}b _ i ^ \*\| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta \|b _ i ^ \*\| ^ 2 \leq  \|b _ {i+1} ^ \* + \mu _ {i+1,i}b _ i ^ \*\| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ \* , \cdots  , b _ n ^ \* ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ \* \rangle}{\langle b _ j ^ \*,b _ j ^ \* \rangle}b _ j ^ \* $$となります．これを用いればLovászの条件は， $  \delta \|\pi _ i(b _ i)\| ^ 2 \leq \|\pi _ i(b _ {i+1})\| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
 また，サイズ簡約の条件より， $  \alpha = \frac{1}{\delta - 1 / 4} $ としたとき自然数 $  1 \leq j \leq i \leq n $ について$$  \|b _ j ^ \*\| ^ 2 \leq \alpha ^ {i-j}\|b _ i ^ \*\| ^ 2 $$となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．
 
 **定理 7.1:**

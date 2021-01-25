@@ -49,7 +49,7 @@
 <meta itemprop="description" content="はじめに 大体タイトル通りの記事です．LLLを解説していきます． 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやっ">
 <meta itemprop="datePublished" content="2020-05-10T20:51:59+00:00" />
 <meta itemprop="dateModified" content="2020-05-10T20:51:59+00:00" />
-<meta itemprop="wordCount" content="16264">
+<meta itemprop="wordCount" content="16262">
 
 
 
@@ -311,7 +311,7 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 </div>
 <div class="section">
 <h2 id="7-lovászの条件">7. Lovászの条件</h2>
-<p>LLL簡約のLovászの条件は $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ でしたが，次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
+<p>LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
 また，サイズ簡約の条件より， $  \alpha = \frac{1}{\delta - 1 / 4} $ としたとき自然数 $  1 \leq j \leq i \leq n $ について$$  |b _ j ^ *| ^ 2 \leq \alpha ^ {i-j}|b _ i ^ *| ^ 2 $$となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．</p>
 <p><strong>定理 7.1:</strong>
 格子 $  \Lambda $ の基底行列を $  B=\begin{pmatrix} b _ {1} &amp; \cdots  &amp; b _ {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n} $ とし，そのグラムシュミットベクトルによる行列を $  B ^ *=\begin{pmatrix} b _ {1} ^ * &amp; \cdots  &amp; b _ {n} ^ * \end{pmatrix} $ とする．この時，格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ について次の不等式が成り立つ．$$  \lambda _ 1 \geq  \min _ i |b _ i ^ *| $$</p>
