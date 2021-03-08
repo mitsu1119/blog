@@ -6,7 +6,16 @@
     <description>Recent content in Posts on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 04 Jan 2021 21:03:57 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Mar 2021 19:06:07 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>zer0pts ctf 2021 開催記</title>
+      <link>https://mitsu1119.github.io/blog/post/post6/zer0pts2021/</link>
+      <pubDate>Mon, 08 Mar 2021 19:06:07 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post6/zer0pts2021/</guid>
+      <description>はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとて</description>
+    </item>
+    
     <item>
       <title>連結されたベジェ曲線状を等速で動こう</title>
       <link>https://mitsu1119.github.io/blog/post/post5/bezier/</link>
