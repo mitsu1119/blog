@@ -6,7 +6,16 @@
     <description>Recent content in Posts on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Mar 2021 19:06:07 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Mar 2021 06:15:12 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>zer0pts ctf 2021 writeup (日本語)</title>
+      <link>https://mitsu1119.github.io/blog/post/post7/zer02021_writeup/</link>
+      <pubDate>Tue, 09 Mar 2021 06:15:12 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post7/zer02021_writeup/</guid>
+      <description>はじめに 日本語でwriteupを書いていきます。英語版はこちら easy pseudo random: https://t.co/d8RX3eY6tC pure division: https://hackmd.io/@mitsu/ByhK-tZX_ 他の問題のwriteupはこちらです。英語なので注意してください</description>
+    </item>
+    
     <item>
       <title>zer0pts ctf 2021 開催記</title>
       <link>https://mitsu1119.github.io/blog/post/post6/zer0pts2021/</link>
