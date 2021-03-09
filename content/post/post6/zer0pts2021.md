@@ -1,6 +1,7 @@
 ---
 title: "zer0pts ctf 2021 開催記"
 date: 2021-03-08T19:06:07+09:00
+tags: ["misc"]
 draft: false
 ---
 

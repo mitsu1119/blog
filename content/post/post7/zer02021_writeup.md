@@ -1,6 +1,7 @@
 ---
 title: "zer0pts ctf 2021 writeup (日本語)"
 date: 2021-03-09T06:15:12+09:00
+tags: ["writeup", "elliptic curve"]
 draft: false
 mathjax: true
 ---

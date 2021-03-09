@@ -6,7 +6,16 @@
     <description>Recent content in algorithm on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 May 2020 20:51:59 +0000</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jan 2021 21:03:57 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>連結されたベジェ曲線状を等速で動こう</title>
+      <link>https://mitsu1119.github.io/blog/post/post5/bezier/</link>
+      <pubDate>Mon, 04 Jan 2021 21:03:57 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post5/bezier/</guid>
+      <description>はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実</description>
+    </item>
+    
     <item>
       <title>LLLを理解するぞ</title>
       <link>https://mitsu1119.github.io/blog/post/post1/lll/</link>
