@@ -6,7 +6,16 @@
     <description>Recent content on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Mar 2021 06:15:12 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Sep 2021 12:01:57 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CakeCTF2021 Crypto</title>
+      <link>https://mitsu1119.github.io/blog/post/post9/cake/</link>
+      <pubDate>Mon, 06 Sep 2021 12:01:57 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post9/cake/</guid>
+      <description>discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。 フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$</description>
+    </item>
+    
     <item>
       <title>zer0pts ctf 2021 writeup (日本語)</title>
       <link>https://mitsu1119.github.io/blog/post/post7/zer02021_writeup/</link>
