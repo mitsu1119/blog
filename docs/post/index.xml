@@ -6,7 +6,16 @@
     <description>Recent content in Posts on みつみつみつですか？</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Sep 2021 12:01:57 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Sep 2021 18:07:38 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NITIC CTF 2 Crypto</title>
+      <link>https://mitsu1119.github.io/blog/post/post8/nitic/</link>
+      <pubDate>Mon, 06 Sep 2021 18:07:38 +0900</pubDate>
+      
+      <guid>https://mitsu1119.github.io/blog/post/post8/nitic/</guid>
+      <description>はじめに 茨城高専の学生さん+ α で開催の CTF のようです。自分も高専生なので同じ高専生が開くということで親近感が湧き、頑張って取り組もうと思いまし</description>
+    </item>
+    
     <item>
       <title>CakeCTF2021 Crypto</title>
       <link>https://mitsu1119.github.io/blog/post/post9/cake/</link>
