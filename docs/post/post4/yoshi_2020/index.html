@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.87.0 with theme even" />
+<meta name="generator" content="Hugo 0.89.2 with theme even" />
 
 
 <link rel="canonical" href="https://mitsu1119.github.io/blog/post/post4/yoshi_2020/" />
@@ -49,7 +49,7 @@
 <meta itemprop="name" content="yoshi-camp 2020 winter 参加記">
 <meta itemprop="description" content="はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがang"><meta itemprop="datePublished" content="2020-12-28T17:32:33+09:00" />
 <meta itemprop="dateModified" content="2020-12-28T17:32:33+09:00" />
-<meta itemprop="wordCount" content="5469">
+<meta itemprop="wordCount" content="5461">
 <meta itemprop="keywords" content="angr,lattice," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="yoshi-camp 2020 winter 参加記"/>
 <meta name="twitter:description" content="はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがang"/>
@@ -138,7 +138,6 @@
             <li><a href="#例題1">例題1</a></li>
           </ul>
         </li>
-        <li><a href="#例題2">例題2</a></li>
         <li><a href="#例題3">例題3</a></li>
         <li><a href="#z3の便利機能">Z3の便利機能</a></li>
         <li><a href="#z3の利用ミス集">Z3の利用ミス集</a></li>
@@ -162,7 +161,7 @@
       <div class="section">
 <h1 id="はじめに">はじめに</h1>
 <p>年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。</p>
-<p><br /></p>
+<br />
 <h1 id="z3を完全に理解しよう-by-ptr-yudai">Z3を完全に理解しよう by ptr-yudai</h1>
 <p>Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。</p>
 <h2 id="シンボリック変数の型">シンボリック変数の型</h2>
@@ -198,7 +197,7 @@
 <li>Quantifiers (全称・存在記号あり。Function)</li>
 <li>Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした)</li>
 </ul>
-<p><br /></p>
+<br />
 <h2 id="例題">例題</h2>
 <p>このあと例題を解きました。</p>
 <h3 id="例題1">例題1</h3>
@@ -210,8 +209,32 @@
 <li>D「Eは嘘つき」</li>
 <li>E「BとCは嘘つき」</li>
 </ul>
-<p><br />
-Bool型の変数を5つつくって制約をつければ解けます。正直者を2人に特定するのがちょっと大変そうだったので、解を列挙して正直者が二人のパターンを見つけました。</p>
+<br />
+Bool型の変数を5つつくって制約をつければ解けます。正直者を2人に特定するのがちょっと大変そうだったので、解を列挙して正直者が二人のパターンを見つけました。
+``` python
+from z3 import *
+<p>xs = [Bool(&ldquo;x%d&rdquo; % i) for i in range(5)]</p>
+<p>s = Solver()</p>
+<p>s.add(Implies(xs[0], And(xs[1] == True, xs[4] == True)))
+s.add(Implies(xs[1], xs[2] == False))
+s.add(Implies(xs[2], xs[3] == False))
+s.add(Implies(xs[3], xs[4] == False))
+s.add(Implies(xs[4], And(xs[1] == False, xs[2] == False)))</p>
+<p>while True:
+r = s.check()
+if r == sat:
+m = s.model()
+cons = []
+num = 0
+for i in range(5):
+print(m[xs[i]], end=&quot;&quot;)
+if m[xs[i]] == True:
+num += 1
+cons.append(xs[i] == m[xs[i]])
+if num == 2:
+break
+s.add(Not(And(cons)))
+print()</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -241,82 +264,37 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
+</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">z3</span> <span class="kn">import</span> <span class="o">*</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">正直者はBとDでした。
 
-<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bool</span><span class="p">(</span><span class="s2">&#34;x</span><span class="si">%d</span><span class="s2">&#34;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+## 例題2
+次の式を満たす有理数x,yを求めよ
+1. $x^2 + y^2 = 533\/196$
+2. $x^2 + y^2 = 3$
 
-<span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
+実はyoshi-camp参加者は何ヶ月か前に$x^2 + y^2 = 3$の有理数解が無いことを降下法で証明していました。その証明と比べるとZ3を使った証明は簡単だよという趣旨らしいです。問題設定がptr-yudaiクオリティでさすがでした。
 
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Implies</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">And</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">,</span> <span class="n">xs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)))</span>
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Implies</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">))</span>
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Implies</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">))</span>
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Implies</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">))</span>
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Implies</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">And</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)))</span>
+xとyをIntの変数2つで表し、またZ3は割り算が使いにくいので両辺に分母の2乗をかけて解くという奉仕でやりました。
 
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
-        <span class="n">cons</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">m</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-                <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">cons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">m</span><span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
-        <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Not</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">cons</span><span class="p">)))</span>
-        <span class="nb">print</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>正直者はBとDでした。</p>
-<h2 id="例題2">例題2</h2>
-<p>次の式を満たす有理数x,yを求めよ</p>
-<ol>
-<li>$x^2 + y^2 = 533/196$</li>
-<li>$x^2 + y^2 = 3$</li>
-</ol>
-<p>実はyoshi-camp参加者は何ヶ月か前に$x^2 + y^2 = 3$の有理数解が無いことを降下法で証明していました。その証明と比べるとZ3を使った証明は簡単だよという趣旨らしいです。問題設定がptr-yudaiクオリティでさすがでした。</p>
-<p>xとyをIntの変数2つで表し、またZ3は割り算が使いにくいので両辺に分母の2乗をかけて解くという奉仕でやりました。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">z3</span> <span class="kn">import</span> <span class="o">*</span>
+``` python
+from z3 import *
 
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Ints</span><span class="p">(</span><span class="s2">&#34;a b c d&#34;</span><span class="p">)</span>
+a, b, c, d = Ints(&#34;a b c d&#34;)
 
-<span class="n">resa</span> <span class="o">=</span> <span class="mi">533</span>
-<span class="n">resb</span> <span class="o">=</span> <span class="mi">196</span>
+resa = 533
+resb = 196
 
-<span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">resb</span> <span class="o">*</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">resb</span> <span class="o">*</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">==</span> <span class="n">resa</span> <span class="o">*</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+s = Solver()
+s.add(a &gt;= 0, b &gt; 0, c &gt;= 0, d &gt; 0)
+s.add(resb * a**2 * d**2 + resb * c**2 * b**2 == resa * b**2 * d**2)
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;x = </span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;y = </span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+r = s.check()
+if r == sat:
+    m = s.model()
+    print(f&#34;x = {m[a]}/{m[b]}&#34;)
+    print(f&#34;y = {m[c]}/{m[d]}&#34;)
 </code></pre></td></tr></table>
 </div>
 </div><p>1番の答えは11/7と1/2で有ることがわかりました。また同じような方法で2番を解こうとしましたが当然解けませんでした。</p>
@@ -330,8 +308,8 @@ $$ P + Q = O * (P * Q)$$
 と定義せよ。</li>
 </ul>
 <p>Sの元の個数を7個とし、(S, +)が群とならないものをもとめなさい。</p>
-<p><br />
-この問題はSの元の個数が与えられていない状態で楕円曲線論入門に載っていたものでした。輪講中に出会った難しい問題として記憶に新しかったです。</p>
+<br />
+この問題はSの元の個数が与えられていない状態で楕円曲線論入門に載っていたものでした。輪講中に出会った難しい問題として記憶に新しかったです。
 <p>Functionを使って頑張って計算します。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -384,7 +362,7 @@ $$ P + Q = O * (P * Q)$$
 </code></pre></td></tr></table>
 </div>
 </div><p>この出力で群の結合法則を満たさない演算を手に入れることができました。とても便利で驚きです。</p>
-<p><br /></p>
+<br />
 <h2 id="z3の便利機能">Z3の便利機能</h2>
 <ul>
 <li>Optimize (最大、最小問題が解ける。ベクトル解析めっちゃ使ってそう)</li>
@@ -397,13 +375,13 @@ $$ P + Q = O * (P * Q)$$
 <p>1つ目の問題はBitVecの変数に対して単に&raquo;としてしまうとだめ、というものでした。LShRを使えば解決します。</p>
 <p>2つ目の問題はCのunsigned char同士の掛け算の問題でした。unsigned char同士の掛け算は暗黙の型変換で16bitの計算になってしまうので、単に8ビットのBitVecに対してZeroExt(8, x)みたいにして掛け算しないとだめ、というものでした。</p>
 <p>3つ目の問題は32bitのBitVecで出力に時間がかかるというものでした。32bitを使うのではなく8bitのBitVec4つで表して解けば短い実行時間ですむらしいです。ただ、うまく修正したはずがあまり速度向上が見えなかったのでうーん🤔という感じです。</p>
-<p><br /></p>
+<br />
 <p>全体的に初めて知ることが多く、勉強になることがたくさんありました。ありがとうございました。</p>
-<p><br /></p>
+<br />
 <h1 id="bkzで勝つ-by-mitsu">BKZで勝つ by mitsu</h1>
 <p>自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。</p>
 <p>内容はBKZ簡約基底、BKZ簡約のアルゴリズムについて雰囲気で説明し気持ちだけ汲み取ってもらおうというものでした。また問題を解いてもらったのですが、BKZを使う問題は基本的に基底をshuffleしてwhileで回す必要がありうまく解くのに時間がかかるため、結局その問題のフラグは講義中に得ることができませんでした。悲しい。ついでに部分和問題のCLOS法についても話しましたがこれは家庭普及率100%なのであまり必要なかった印象です。</p>
-<p><br /></p>
+<br />
 <h1 id="lllで殴る2-by-theoldmoon0602">LLLで殴る(2) by theoldmoon0602</h1>
 <p>前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。</p>
 <h2 id="coppersmithの定理">Coppersmithの定理</h2>
@@ -411,7 +389,7 @@ $$ P + Q = O * (P * Q)$$
 <p>monicな1変数多項式$f(x)$について、$f(x_0) \equiv 0 \mod N$を満たす小さい$x_0$を求めるプログラムを作ろうという話です。</p>
 <p><strong>定理(Coppersmithの定理)</strong></p>
 <p>monicな1変数$d$次多項式$f$の、$f(x_0) \equiv 0 \mod b$を満たす$|x_0 | &lt; N^{\beta^2 / d}$を、$\log N,\ d$の多項式時間で求めることができる。ただし$b$は$N$の因数で$N^\beta \leq b$。</p>
-<p><br /></p>
+<br />
 <p>具体的な方針としては、modular多項式は難しいので整数係数の多項式変換しようというものでした。つまり、$f(x_0) - kN = 0$として$k=0$としようという話でした。これの条件がHowgrave-Grahamの補題で与えられていました。Howgrave-Grahamの補題によると、$f(x)$の係数はできるだけ小さいと嬉しいようです。</p>
 <p>また、多項式の根を変えずに係数だけを小さくするにはLLLを用いて係数を簡約するといいという話でした。LLLで変換しても張る格子自体は変化しないため根は変わりません。ところがLLLで簡約したいのですが方程式一つしか無いのでsだめで、独立な方程式をもっとたくさん増やさないといけません。この方法としては$\mod N$の世界の多項式$f$を$\mod N^m$の世界に持ち上げて、$f(x_0) = kN$の両辺を$i$乗するというものでした。こうすれば根は$f(x)^i = k^iN^i$なので$N^{m-i}x^i$をかければ同じ根は得られます。つまり
 $$g_{i,j} = N^{m-i}x^if^i$$
@@ -419,15 +397,15 @@ $$g_{i,j} = N^{m-i}x^if^i$$
 <p>ということで、$g_{i,j}(xX)$を特別に係数を横に並べたベクトルとして見ると、
 $$
 \begin{pmatrix}
-g _ {0,0}( xX)\\<br>
+g _ {0,0}( xX)\\
 g _ {0,1}( xX)\\<br>
 \vdots \\<br>
 g _ {0,d-1}( xX)\\<br>
 g _ {1,0}( xX)\\<br>
 \vdots \\<br>
-g _ {m-1,d-1}( xX)\\<br>
-h _ {0}( xX)\\<br>
-\vdots \\<br>
+g _ {m-1,d-1}( xX)\\
+h _ {0}( xX)\\
+\vdots \\
 h _ {t-1}( xX)<br>
 \end{pmatrix}
 $$
@@ -536,60 +514,60 @@ $$
 <p>LCGの漸化式
 $$
 \begin{array}{ c c }
-x_{1} &amp; =ax_{0} +b\bmod m\\<br>
-x2 &amp; =ax_{1} +b\bmod m\\<br>
+x_{1} &amp; =ax_{0} +b\bmod m\\
+x2 &amp; =ax_{1} +b\bmod m\\
 \vdots  &amp; \vdots
 \end{array}
 $$
 について、普通なら欄数列が6つくらい得られれば各係数を計算することができますが、今回は$x_i$の下位半分のビットがわかりませんというものでした。多分実際に使う場合も乱数列にあまりをとって使うことが多いのでとても現実的な設定でした。$x_i$について、未知数$z_i$として$x_i=2^ky_i + z_i$とします。</p>
-<p><br />
+<br />
 解説された解き方ですが、
 $$
 \begin{array}{ r l }
-x_{1} = &amp; ax_{0} +b\\<br>
-x_{2} = &amp; ax_{1} +b=a^{2} x_{0} +ab+b\\<br>
-x_{3} = &amp; a^{3} x_{0} +a^{2} b+ab+b\\<br>
-x_{4} = &amp; a^{4} x_{0} +a^{3} b+a^{2} b+ab+b\\<br>
-x_{i} = &amp; a^{i} x_{0} +f_{i}
+x_{1} = & ax_{0} +b\\\\
+x_{2} = & ax_{1} +b=a^{2} x_{0} +ab+b\\\\
+x_{3} = & a^{3} x_{0} +a^{2} b+ab+b\\\\
+x_{4} = & a^{4} x_{0} +a^{3} b+a^{2} b+ab+b\\\\
+x_{i} = & a^{i} x_{0} +f_{i}
 \end{array}
 $$
 というふうにして次のような方程式を考えます。
 $$
 xL =
 \begin{pmatrix}
-x_{0} -b &amp; x_{1} -f_{1} &amp; \cdots  &amp; x_{n} -f_{n}
+x_{0} -b & x_{1} -f_{1} & \cdots  & x_{n} -f_{n}
 \end{pmatrix}\begin{pmatrix}
-m &amp; a &amp; a^{2} &amp; \cdots  &amp; a^{n}\\<br>
-&amp; -1 &amp;  &amp;  &amp; \\<br>
-&amp;  &amp; -1 &amp;  &amp; \\<br>
-&amp;  &amp;  &amp; \ddots  &amp; \\<br>
-&amp;  &amp;  &amp;  &amp; -1
+m & a & a^{2} & \cdots  & a^{n}\\\\
+ & -1 &  &  & \\\\
+ &  & -1 &  & \\\\
+ &  &  & \ddots  & \\\\
+ &  &  &  & -1
 \end{pmatrix} =0\bmod m
 $$
-$L$を基底簡約して$B$に変換しても格子は変わらないので$xB=0 \mod m$はなりたちます。</p>
+$L$を基底簡約して$B$に変換しても格子は変わらないので$xB=0 \mod m$はなりたちます。
 <p>$x = s^ky + z$なので$(2^ky + z)B = lm$となるようなベクトル$l$が存在し、$zB = lm - 2^kyB$となります。
 ここで$zB \simeq 0$と近似できるようで、$l$が求められるそうです。ここから$l$がわかったので$z$も求めることができます、という内容でした。なんで$zB \simeq 0$とできるのかイマイチ理解ができませんでした。</p>
 <h2 id="lwe">LWE</h2>
 <p>時間がなくてほとんど解説されませんでした。</p>
 <p>$$
 \begin{pmatrix}
-a_{11} &amp; a_{21} &amp; \cdots  &amp; a_{m1}\\<br>
-a_{12} &amp; \ddots  &amp;  &amp; \vdots \\<br>
-\vdots  &amp;  &amp; \ddots  &amp; \vdots \\<br>
-a_{1n} &amp; \cdots  &amp; \cdots  &amp; a_{mn}\\<br>
--p &amp;  &amp;  &amp; \\<br>
-&amp; -p &amp;  &amp; \\<br>
-&amp;  &amp; \ddots  &amp; \\<br>
+a_{11} &amp; a_{21} &amp; \cdots  &amp; a_{m1}\\
+a_{12} &amp; \ddots  &amp;  &amp; \vdots \\
+\vdots  &amp;  &amp; \ddots  &amp; \vdots \\
+a_{1n} &amp; \cdots  &amp; \cdots  &amp; a_{mn}\\
+-p &amp;  &amp;  &amp; \\
+&amp; -p &amp;  &amp; \\
+&amp;  &amp; \ddots  &amp; \\
 &amp;  &amp;  &amp; -p
 \end{pmatrix}
 $$</p>
 <p>みたいな行列を作ってLLLしてBabaiです。</p>
-<p><br />
-数学の話が多めでした。いつかやろうやろうと思っていたことをやる機会になったのでとてもありがたい発表でした。この発表と比べると自分のBKZの話がカス過ぎて悲しくなってしまいます。</p>
-<p><br /></p>
+<br />
+数学の話が多めでした。いつかやろうやろうと思っていたことをやる機会になったのでとてもありがたい発表でした。この発表と比べると自分のBKZの話がカス過ぎて悲しくなってしまいます。
+<br />
 <h1 id="prngと戯れる">PRNGと戯れる</h1>
 <p>yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。</p>
-<p><br /></p>
+<br />
 <h1 id="感想">感想</h1>
 <p>午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。</p>
 <p>あとは単に問題を解くのに実行時間がかかるBKZはこういうところで発表するものじゃないなと身にしみて思いました。ごめんなさい</p>
