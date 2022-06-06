@@ -49,7 +49,7 @@
 <meta itemprop="name" content="LLLを理解するぞ">
 <meta itemprop="description" content="はじめに 大体タイトル通りの記事です．LLLを解説していきます． 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやっ"><meta itemprop="datePublished" content="2020-05-10T20:51:59+00:00" />
 <meta itemprop="dateModified" content="2020-05-10T20:51:59+00:00" />
-<meta itemprop="wordCount" content="16262">
+<meta itemprop="wordCount" content="16337">
 <meta itemprop="keywords" content="lattice,algorithm," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="LLLを理解するぞ"/>
 <meta name="twitter:description" content="はじめに 大体タイトル通りの記事です．LLLを解説していきます． 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやっ"/>
@@ -370,6 +370,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 </div>
 <div class="section">
 <h2 id="9-最適化">9. 最適化</h2>
+<p>この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．</p>
 <p>前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  \Theta(n ^ 2m) $ から $  \Theta(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．</p>
 <p><img src="../size_reduction_2.png" alt="size_reduction_2">
 次に，Algorithm 5の13行目のグラム・シュミットの直交化の部分に注目します．この部分はベクトルの交換が行われるためグラムシュミットベクトルを計算する必要があります．しかしグラム・シュミットの直交化を直接利用する必要はなく，補題8.1と次の補題を用いれば，交換する前の基底を利用して直交化することができます．</p>
