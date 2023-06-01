@@ -1,6 +1,6 @@
 baseurl: https://mitsu1119.github.io/blog
 languageCode: ja
-theme: hugo-theme-stack
+theme: stack
 publishDir: ./docs
 paginate: 5
 title: みつみつみつですか？
@@ -44,7 +44,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: images/avatar.png
 
     article:
         math: true

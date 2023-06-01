@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>elliptic curve on Example Site</title>
+        <title>elliptic curve on みつみつみつですか？</title>
         <link>https://mitsu1119.github.io/blog/tags/elliptic-curve/</link>
-        <description>Recent content in elliptic curve on Example Site</description>
+        <description>Recent content in elliptic curve on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>ja</language>
         <lastBuildDate>Tue, 09 Mar 2021 06:15:12 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/elliptic-curve/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>zer0pts ctf 2021 writeup (日本語)</title>
         <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>

@@ -15,6 +15,7 @@ math: true
 とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．  
 
 <div class="github-card" data-user="mitsu1119" data-repo="Lattice_Reduction" data-width="500" data-height="" data-theme="default"></div>
+[![mitsu1119/Lattice_Reduction - GitHub](https://gh-card.dev/repos/mitsu1119/Lattice_Reduction.svg)](https://github.com/mitsu1119/Lattice_Reduction)
 <script src="https://cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
 
@@ -33,9 +34,9 @@ full-rankでない例は $ m > n$ の場合を適当に考えれば作れます�
 格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\\}$$と表すこともあります．このときの $B$ のことを**基底行列**と言います．
 
 一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-![lattice_ex1](../lattice_ex1.png)
+![lattice_ex1](/lattice_ex1.png)
 $$ \displaystyle B=\begin{pmatrix} 1 &amp; 0 \\\\ 0 &amp; 1 \end{pmatrix}$$
-![lattice_ex2](../lattice_ex2.png)
+![lattice_ex2](./lattice_ex2.png)
 $$ \displaystyle B=\begin{pmatrix} 1 &amp; 1 \\\\ 1 &amp; 2 \end{pmatrix}$$
 
 この例を見て気づいた方は多いと思いますが，実は倍数全体の集合 $ m\mathbb{Z} ^ n$ も格子です．基底行列を $ mI$ と取ればうまく張れると思います．

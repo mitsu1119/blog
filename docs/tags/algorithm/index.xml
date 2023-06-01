@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>algorithm on Example Site</title>
+        <title>algorithm on みつみつみつですか？</title>
         <link>https://mitsu1119.github.io/blog/tags/algorithm/</link>
-        <description>Recent content in algorithm on Example Site</description>
+        <description>Recent content in algorithm on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>ja</language>
         <lastBuildDate>Mon, 04 Jan 2021 21:03:57 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/algorithm/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>連結されたベジェ曲線状を等速で動こう</title>
         <link>https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</link>
@@ -466,7 +466,7 @@ $$&lt;/p&gt;
 	
 &gt;
 $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 0 \\ 0 &amp;amp; 1 \end{pmatrix}$$
-&lt;img src=&#34;https://mitsu1119.github.io/blog/lattice_ex2.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/lattice_ex2.png&#34;
 	
 	
 	

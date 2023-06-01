@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。
 準備 まずは制御点 $\mathbf{B} _ 1, \mathbf{B} _ 2, \mathbf{B} _ 3, \mathbf{B} _ 4$ によって表されるベジェ曲線 $\mathbf{P}(t)$ を次式で定義しておきます。 $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 &#43; 3t(1-t)^2 \mathbf{B} _ 2 &#43; 3t^2(1-t) \mathbf{B} _ 3 &#43; t^3 \mathbf{B} _ 4\ \ \ (0 \leq t \leq 1)$$
@@ -17,7 +17,7 @@ $t = 0$ で始点、$t = 1$ で終点の座標を取ります。
 またベジェ曲線を複数連結したものをベジェ曲線ズと呼ぶことにし、これを構成する各ベジェ曲線により表される曲線をセグメントと呼ぶことにします。具体的な式でベジェ曲線ズ $\mathbf{P}(t)$ を定義しておきます。
 $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \mathbf{P} _ {1}(t) &amp;amp; if\ 0 &amp;lt; t \leq 1\\ \mathbf{P} _ {2}(t - 1) &amp;amp; if \ 1 &amp;lt; \leq 2\\ \vdots &amp;amp; \vdots \\ \mathbf{P} _ {n}(t - n &#43; 1) &amp;amp; if\ n - 1 &amp;lt; t \leq n\\ \end{cases} $$'>
 <meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/'>
-<meta property='og:site_name' content='Example Site'>
+<meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='math' /><meta property='article:tag' content='algorithm' /><meta property='article:published_time' content='2021-01-04T21:03:57&#43;09:00'/><meta property='article:modified_time' content='2021-01-04T21:03:57&#43;09:00'/>
 <meta name="twitter:title" content="連結されたベジェ曲線状を等速で動こう">
 <meta name="twitter:description" content="はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。
@@ -52,7 +52,7 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
     })();
 </script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -68,27 +68,25 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
                     
                     
                         
-                        <img src="/blog/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
                 
-                    <span class="emoji">🍥</span>
+                    <span class="emoji">🐧</span>
                 
             </figure>
             
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/blog">Example Site</a></h1>
-            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
+            <h2 class="site-description">はい</h2>
         </div>
     </header><ol class="social-menu">
             
                 <li>
                     <a 
-                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        href='https://github.com/mitsu1119'
                         target="_blank"
                         title="GitHub"
                         rel="me"
@@ -108,7 +106,7 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
             
                 <li>
                     <a 
-                        href='https://twitter.com'
+                        href='https://twitter.com/meowricator'
                         target="_blank"
                         title="Twitter"
                         rel="me"
@@ -131,29 +129,6 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
         
 
         <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected>English</option>
-                        
-                            <option value="https://mitsu1119.github.io/blog/zh-cn/" >中文</option>
-                        
-                            <option value="https://mitsu1119.github.io/blog/ar/" >عربي</option>
-                        
-                    </select>
-                </li>
-            
             
             
                 <li id="dark-mode-toggle">
@@ -173,7 +148,7 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
 
 
 
-                    <span>Dark Mode</span>
+                    <span>ダークモード</span>
                 </li>
             
         </div>
@@ -217,20 +192,6 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
             </div>
         
 
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    7 minute read
-                </time>
-            </div>
         
     </footer>
     
@@ -693,6 +654,30 @@ $$</p>
 
 
     
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
 </article>
 
     
@@ -702,48 +687,6 @@ $$</p>
      
     
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">
@@ -752,12 +695,12 @@ $$</p>
         
             2020 - 
         
-        2023 Example Site
+        2023 みつみつみつですか？
     </section>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 

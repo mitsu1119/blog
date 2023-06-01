@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tags on Example Site</title>
+        <title>Tags on みつみつみつですか？</title>
         <link>https://mitsu1119.github.io/blog/tags/</link>
-        <description>Recent content in Tags on Example Site</description>
+        <description>Recent content in Tags on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
+        <language>ja</language>
         <lastBuildDate>Tue, 09 Mar 2021 06:15:12 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>elliptic curve</title>
         <link>https://mitsu1119.github.io/blog/tags/elliptic-curve/</link>
