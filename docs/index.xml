@@ -3038,7 +3038,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 &lt;p&gt;full-rankでない例は $ m &amp;gt; n$ の場合を適当に考えれば作れます．例えば $ {} ^ t\!b _ 1 = \begin{pmatrix} 1 &amp;amp; 0 &amp;amp; 1 \end{pmatrix},\ {} ^ t\!b _ 2 = \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 2 \end{pmatrix}$ とすれば $ b _ 1$ と $ b _ 2$ は線形独立ですが，これによって作られる二次元の格子 $ \mathcal{L}(b _ 1,b _ 2)$ は明らかにfull-rankになりません．また， $ m &amp;lt; n$ の時は各ベクトルが線形独立にならないので注意してください．&lt;/p&gt;
 &lt;p&gt;格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\}$$と表すこともあります．このときの $B$ のことを&lt;strong&gt;基底行列&lt;/strong&gt;と言います．&lt;/p&gt;
 &lt;p&gt;一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-&lt;img src=&#34;https://mitsu1119.github.io/blog/lattice_ex1.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lattice_ex1.png&#34;
 	
 	
 	
@@ -3049,7 +3049,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 	
 &gt;
 $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 0 \\ 0 &amp;amp; 1 \end{pmatrix}$$
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/lattice_ex2.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lattice_ex2.png&#34;
 	
 	
 	
@@ -3146,7 +3146,9 @@ $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i
 &lt;p&gt;&lt;strong&gt;定理 4.2:&lt;/strong&gt;
 格子 $  \Lambda $ の基底を $  \left\{ b _ 1,\cdots,b _ n \right\} $ とする．この時，格子の行列式 $  \det \Lambda $ をグラムシュミットベクトル $  b _ 1 ^ *,\cdots,b _ n ^ * $ を用いて次のように表すことができる．$$  \displaystyle \det \Lambda = \prod _ {i = 1} ^ n |b _ i ^ * | $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;証明:&lt;/strong&gt;
-$  B = \begin{pmatrix} b _ {1} &amp;amp; b _ {2} &amp;amp; \cdots  &amp;amp; b _ {n} \end{pmatrix} $ とする．このとき， $  b _ i = b _ i ^ * + \sum  ^ {i-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} $ なので次の式が成り立つ．$$  \displaystyle \begin{eqnarray*} B &amp;amp; = &amp;amp; \begin{pmatrix} b ^ {*} _ {1} &amp;amp; b ^ {*} _ {2} +\mu _ {2,1} b ^ {*} _ {1} &amp;amp; b ^ {*} _ {3} +\mu _ {3,1} b ^ {*} _ {1} +\mu _ {3,2} b ^ {*} _ {2} &amp;amp; \cdots  &amp;amp; b ^ {*} _ {n} +\sum  ^ {n-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} \end{pmatrix}\\  &amp;amp; = &amp;amp; \begin{pmatrix} b ^ {*} _ {1} &amp;amp; b ^ {*} _ {2} &amp;amp; b ^ {*} _ {3} &amp;amp; \cdots  &amp;amp; b ^ {*} _ {n} \end{pmatrix}\begin{pmatrix} 1 &amp;amp; \mu _ {2,1} &amp;amp; \mu _ {3,1} &amp;amp; \cdots  &amp;amp; \mu _ {n,1}\\ 0 &amp;amp; 1 &amp;amp; \mu _ {3,2} &amp;amp; \cdots  &amp;amp; \mu _ {n,2}\\ 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots  &amp;amp; \mu _ {n,3}\\ \vdots  &amp;amp; \vdots  &amp;amp; \vdots  &amp;amp; \ddots  &amp;amp; \vdots \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots  &amp;amp; 1 \end{pmatrix}\\  &amp;amp; = &amp;amp; QR \end{eqnarray*} $$従って，$$  \displaystyle \begin{eqnarray*} \det \Lambda &amp;amp; = &amp;amp; \sqrt{\det ( ^ t\!BB)}\\ &amp;amp; = &amp;amp; \sqrt{\det ( ^ t\!R ^ t\!QQR)}\\ &amp;amp; = &amp;amp; \sqrt{\det ( ^ t\!QQ)}\\ &amp;amp; = &amp;amp; \prod _ {i = 1} ^ n |b _ i ^ * | \end{eqnarray*} $$
+$  B = \begin{pmatrix} b _ {1} &amp;amp; b _ {2} &amp;amp; \cdots  &amp;amp; b _ {n} \end{pmatrix} $ とする．このとき， $  b _ i = b _ i ^ * + \sum  ^ {i-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} $ なので次の式が成り立つ．
+$$\begin{aligned} B &amp;amp; = \begin{pmatrix} b ^ {*} _ {1} &amp;amp; b ^ {*} _ {2} +\mu _ {2,1} b ^ {*} _ {1} &amp;amp; b ^ {*} _ {3} +\mu _ {3,1} b ^ {*} _ {1} +\mu _ {3,2} b ^ {*} _ {2} &amp;amp; \cdots  &amp;amp; b ^ {*} _ {n} +\sum  ^ {n-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} \end{pmatrix}\\  &amp;amp; = \begin{pmatrix} b ^ {*} _ {1} &amp;amp; b ^ {*} _ {2} &amp;amp; b ^ {*} _ {3} &amp;amp; \cdots  &amp;amp; b ^ {*} _ {n} \end{pmatrix}\begin{pmatrix} 1 &amp;amp; \mu _ {2,1} &amp;amp; \mu _ {3,1} &amp;amp; \cdots  &amp;amp; \mu _ {n,1}\\ 0 &amp;amp; 1 &amp;amp; \mu _ {3,2} &amp;amp; \cdots  &amp;amp; \mu _ {n,2}\\ 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots  &amp;amp; \mu _ {n,3}\\ \vdots  &amp;amp; \vdots  &amp;amp; \vdots  &amp;amp; \ddots  &amp;amp; \vdots \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots  &amp;amp; 1 \end{pmatrix}\\  &amp;amp; = QR \end{aligned} $$
+従って，$$  \displaystyle \begin{aligned} \det \Lambda &amp;amp; = \sqrt{\det ( ^ t\!BB)}\\ &amp;amp; = \sqrt{\det ( ^ t\!R ^ t\!QQR)}\\ &amp;amp; = \sqrt{\det ( ^ t\!QQ)}\\ &amp;amp; = \prod _ {i = 1} ^ n |b _ i ^ * | \end{aligned} $$
 よって示された．$  ■ $&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 4.2:&lt;/strong&gt;
 格子 $  \Lambda $ の基底を $  \left\{b _ 1,\cdots,b _ n\right\} $ とする．この時次の式で定義される量 $  \delta $ を&lt;strong&gt;直交欠陥&lt;/strong&gt;と言う．$$  \displaystyle \delta = \frac{\prod  ^ {n} _ {i=1} | b _ {i} | }{\det \Lambda } $$$  \det \Lambda $ は，スパンの直交化した基底ベクトルのノルムの総乗でした．そのため直交欠陥は，元の基底がどのくらい直交していないかを表す指標となります．また，元のベクトルが直交していた場合，グラム・シュミットの直交化法を行っても基底は変わらないので直交欠陥は $  1 $ になります．&lt;/p&gt;
@@ -3162,7 +3164,7 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 &lt;p&gt;&lt;strong&gt;定理 5.1:&lt;/strong&gt;
 二次元の格子 $  \Lambda $ の簡約基底を $  \left\{b _ 1,b _ 2\right\} \in \mathbb{R} ^ {m \times 2} $ とし，逐次最小を $  \lambda _ 1,\lambda _ 2 $ とする．この時次の式が成り立つ．$$  |b _ 1| = \lambda _ 1,\ |b _ 2| = \lambda _ 2 $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;証明:&lt;/strong&gt;
-適当な格子ベクトル $  v = l _ 1b _ 1 + l _ 2b _ 2 \neq 0 $ を考える． $  l _ 2 = 0 $ なら $  |v| \geq |b _ 1| $ となり，また $  l _ 2 \neq 0 $ の時は， $  l _ 1 = ql _ 2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &amp;lt; |l _ 2| $ と書けば $  v = rb _ 1 + l _ 2(b _ 2 + qb _ 1) $ である．従って，$$  \displaystyle \begin{eqnarray*} |v| &amp;amp;\geq&amp;amp; |l _ 2||b _ 2 + qb _ 1| - r|b _ 1|\\ &amp;amp;=&amp;amp; (|l _ 2| - r)|b _ 2+qb _ 1|  + r(|b _ 2 + qb _ 1| - |b _ 1|)\\ &amp;amp;\geq&amp;amp; |b _ 2 + qb _ 1|\\ &amp;amp;\geq&amp;amp; |b _ 2| \geq |b _ 1| \end{eqnarray*} $$よって示された． $ ■ $&lt;/p&gt;
+適当な格子ベクトル $  v = l _ 1b _ 1 + l _ 2b _ 2 \neq 0 $ を考える． $  l _ 2 = 0 $ なら $  |v| \geq |b _ 1| $ となり，また $  l _ 2 \neq 0 $ の時は， $  l _ 1 = ql _ 2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &amp;lt; |l _ 2| $ と書けば $  v = rb _ 1 + l _ 2(b _ 2 + qb _ 1) $ である．従って，$$  \displaystyle \begin{aligned} |v| &amp;amp;\geq |l _ 2||b _ 2 + qb _ 1| - r|b _ 1|\\ &amp;amp;= (|l _ 2| - r)|b _ 2+qb _ 1|  + r(|b _ 2 + qb _ 1| - |b _ 1|)\\ &amp;amp;\geq |b _ 2 + qb _ 1|\\ &amp;amp;\geq |b _ 2| \geq |b _ 1| \end{aligned} $$よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;簡約であることと同値な次の条件を考えれば，具体的にどんなベクトルによって構成されるか考えやすくなると思います．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 5.2:&lt;/strong&gt;
 二次元の格子 $  \Lambda $ の基底 $  \left\{b _ 1,b _ 2 \right\} \in \mathbb{R} ^ {m \times 2} $ が簡約基底であるための必要十分条件は次の式を満たすことである．$$  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $$&lt;/p&gt;

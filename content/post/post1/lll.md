@@ -34,9 +34,9 @@ full-rankでない例は $ m > n$ の場合を適当に考えれば作れます�
 格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\\}$$と表すこともあります．このときの $B$ のことを**基底行列**と言います．
 
 一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-![lattice_ex1](/lattice_ex1.png)
+![lattice_ex1](post1/lattice_ex1.png)
 $$ \displaystyle B=\begin{pmatrix} 1 &amp; 0 \\\\ 0 &amp; 1 \end{pmatrix}$$
-![lattice_ex2](./lattice_ex2.png)
+![lattice_ex2](post1/lattice_ex2.png)
 $$ \displaystyle B=\begin{pmatrix} 1 &amp; 1 \\\\ 1 &amp; 2 \end{pmatrix}$$
 
 この例を見て気づいた方は多いと思いますが，実は倍数全体の集合 $ m\mathbb{Z} ^ n$ も格子です．基底行列を $ mI$ と取ればうまく張れると思います．
@@ -160,7 +160,9 @@ $$  \displaystyle b  ^  {\*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {
 格子 $  \Lambda $ の基底を $  \left\\{ b _ 1,\cdots,b _ n \right\\} $ とする．この時，格子の行列式 $  \det \Lambda $ をグラムシュミットベクトル $  b _ 1 ^ \*,\cdots,b _ n ^ \* $ を用いて次のように表すことができる．$$  \displaystyle \det \Lambda = \prod _ {i = 1} ^ n \|b _ i ^ \* \| $$
 
 **証明:**
- $  B = \begin{pmatrix} b _ {1} &amp; b _ {2} &amp; \cdots  &amp; b _ {n} \end{pmatrix} $ とする．このとき， $  b _ i = b _ i ^ \* + \sum  ^ {i-1} _ {j=1} \mu _ {i,j} b ^ {\*} _ {j} $ なので次の式が成り立つ．$$  \displaystyle \begin{eqnarray\*} B &amp; = &amp; \begin{pmatrix} b ^ {\*} _ {1} &amp; b ^ {\*} _ {2} +\mu _ {2,1} b ^ {\*} _ {1} &amp; b ^ {\*} _ {3} +\mu _ {3,1} b ^ {\*} _ {1} +\mu _ {3,2} b ^ {\*} _ {2} &amp; \cdots  &amp; b ^ {\*} _ {n} +\sum  ^ {n-1} _ {j=1} \mu _ {i,j} b ^ {\*} _ {j} \end{pmatrix}\\\\  &amp; = &amp; \begin{pmatrix} b ^ {\*} _ {1} &amp; b ^ {\*} _ {2} &amp; b ^ {\*} _ {3} &amp; \cdots  &amp; b ^ {\*} _ {n} \end{pmatrix}\begin{pmatrix} 1 &amp; \mu _ {2,1} &amp; \mu _ {3,1} &amp; \cdots  &amp; \mu _ {n,1}\\\\ 0 &amp; 1 &amp; \mu _ {3,2} &amp; \cdots  &amp; \mu _ {n,2}\\\\ 0 &amp; 0 &amp; 1 &amp; \cdots  &amp; \mu _ {n,3}\\\\ \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\\\ 0 &amp; 0 &amp; 0 &amp; \cdots  &amp; 1 \end{pmatrix}\\\\  &amp; = &amp; QR \end{eqnarray\*} $$従って，$$  \displaystyle \begin{eqnarray\*} \det \Lambda &amp; = &amp; \sqrt{\det ( ^ t\\!BB)}\\\\ &amp; = &amp; \sqrt{\det ( ^ t\\!R ^ t\\!QQR)}\\\\ &amp; = &amp; \sqrt{\det ( ^ t\\!QQ)}\\\\ &amp; = &amp; \prod _ {i = 1} ^ n \|b _ i ^ \* \| \end{eqnarray\*} $$
+ $  B = \begin{pmatrix} b _ {1} &amp; b _ {2} &amp; \cdots  &amp; b _ {n} \end{pmatrix} $ とする．このとき， $  b _ i = b _ i ^ \* + \sum  ^ {i-1} _ {j=1} \mu _ {i,j} b ^ {\*} _ {j} $ なので次の式が成り立つ．
+$$\begin{aligned} B &amp; = \begin{pmatrix} b ^ {\*} _ {1} &amp; b ^ {\*} _ {2} +\mu _ {2,1} b ^ {\*} _ {1} &amp; b ^ {\*} _ {3} +\mu _ {3,1} b ^ {\*} _ {1} +\mu _ {3,2} b ^ {\*} _ {2} &amp; \cdots  &amp; b ^ {\*} _ {n} +\sum  ^ {n-1} _ {j=1} \mu _ {i,j} b ^ {\*} _ {j} \end{pmatrix}\\\\  &amp; = \begin{pmatrix} b ^ {\*} _ {1} &amp; b ^ {\*} _ {2} &amp; b ^ {\*} _ {3} &amp; \cdots  &amp; b ^ {\*} _ {n} \end{pmatrix}\begin{pmatrix} 1 &amp; \mu _ {2,1} &amp; \mu _ {3,1} &amp; \cdots  &amp; \mu _ {n,1}\\\\ 0 &amp; 1 &amp; \mu _ {3,2} &amp; \cdots  &amp; \mu _ {n,2}\\\\ 0 &amp; 0 &amp; 1 &amp; \cdots  &amp; \mu _ {n,3}\\\\ \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\\\ 0 &amp; 0 &amp; 0 &amp; \cdots  &amp; 1 \end{pmatrix}\\\\  &amp; = QR \end{aligned} $$
+ 従って，$$  \displaystyle \begin{aligned} \det \Lambda &amp; = \sqrt{\det ( ^ t\\!BB)}\\\\ &amp; = \sqrt{\det ( ^ t\\!R ^ t\\!QQR)}\\\\ &amp; = \sqrt{\det ( ^ t\\!QQ)}\\\\ &amp; = \prod _ {i = 1} ^ n \|b _ i ^ \* \| \end{aligned} $$
 よって示された．$  ■ $
 
 **定義 4.2:**
@@ -184,7 +186,7 @@ $$  \displaystyle b  ^  {\*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {
 二次元の格子 $  \Lambda $ の簡約基底を $  \left\\{b _ 1,b _ 2\right\\} \in \mathbb{R} ^ {m \times 2} $ とし，逐次最小を $  \lambda _ 1,\lambda _ 2 $ とする．この時次の式が成り立つ．$$  \|b _ 1\| = \lambda _ 1,\ \|b _ 2\| = \lambda _ 2 $$
 
 **証明:**
-適当な格子ベクトル $  v = l _ 1b _ 1 + l _ 2b _ 2 \neq 0 $ を考える． $  l _ 2 = 0 $ なら $  \|v\| \geq \|b _ 1\| $ となり，また $  l _ 2 \neq 0 $ の時は， $  l _ 1 = ql _ 2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &lt; |l _ 2| $ と書けば $  v = rb _ 1 + l _ 2(b _ 2 + qb _ 1) $ である．従って，$$  \displaystyle \begin{eqnarray\*} \|v\| &amp;\geq&amp; |l _ 2|\|b _ 2 + qb _ 1\| - r\|b _ 1\|\\\\ &amp;=&amp; (|l _ 2| - r)\|b _ 2+qb _ 1\|  + r(\|b _ 2 + qb _ 1\| - \|b _ 1\|)\\\\ &amp;\geq&amp; \|b _ 2 + qb _ 1\|\\\\ &amp;\geq&amp; \|b _ 2\| \geq \|b _ 1\| \end{eqnarray\*} $$よって示された． $ ■ $ 
+適当な格子ベクトル $  v = l _ 1b _ 1 + l _ 2b _ 2 \neq 0 $ を考える． $  l _ 2 = 0 $ なら $  \|v\| \geq \|b _ 1\| $ となり，また $  l _ 2 \neq 0 $ の時は， $  l _ 1 = ql _ 2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &lt; |l _ 2| $ と書けば $  v = rb _ 1 + l _ 2(b _ 2 + qb _ 1) $ である．従って，$$  \displaystyle \begin{aligned} \|v\| &amp;\geq |l _ 2|\|b _ 2 + qb _ 1\| - r\|b _ 1\|\\\\ &amp;= (|l _ 2| - r)\|b _ 2+qb _ 1\|  + r(\|b _ 2 + qb _ 1\| - \|b _ 1\|)\\\\ &amp;\geq \|b _ 2 + qb _ 1\|\\\\ &amp;\geq \|b _ 2\| \geq \|b _ 1\| \end{aligned} $$よって示された． $ ■ $ 
 
 簡約であることと同値な次の条件を考えれば，具体的にどんなベクトルによって構成されるか考えやすくなると思います．
 

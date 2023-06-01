@@ -68,6 +68,8 @@
                     
                     
                         
+                        <img src="/blog/images/avatar_hue826f7618f9cc2b57667fa2afe82ca09_527985_300x0_resize_box_3.png" width="300"
+                            height="268" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
                 </a>
@@ -260,7 +262,7 @@
 <p>full-rankでない例は $ m &gt; n$ の場合を適当に考えれば作れます．例えば $ {} ^ t\!b _ 1 = \begin{pmatrix} 1 &amp; 0 &amp; 1 \end{pmatrix},\ {} ^ t\!b _ 2 = \begin{pmatrix} 0 &amp; 1 &amp; 2 \end{pmatrix}$ とすれば $ b _ 1$ と $ b _ 2$ は線形独立ですが，これによって作られる二次元の格子 $ \mathcal{L}(b _ 1,b _ 2)$ は明らかにfull-rankになりません．また， $ m &lt; n$ の時は各ベクトルが線形独立にならないので注意してください．</p>
 <p>格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\}$$と表すこともあります．このときの $B$ のことを<strong>基底行列</strong>と言います．</p>
 <p>一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-<img src="/lattice_ex1.png"
+<img src="/blog/post1/lattice_ex1.png"
 	
 	
 	
@@ -271,7 +273,7 @@
 	
 >
 $$ \displaystyle B=\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}$$
-<img src="/blog/lattice_ex2.png"
+<img src="/blog/post1/lattice_ex2.png"
 	
 	
 	
@@ -368,7 +370,9 @@ $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i
 <p><strong>定理 4.2:</strong>
 格子 $  \Lambda $ の基底を $  \left\{ b _ 1,\cdots,b _ n \right\} $ とする．この時，格子の行列式 $  \det \Lambda $ をグラムシュミットベクトル $  b _ 1 ^ *,\cdots,b _ n ^ * $ を用いて次のように表すことができる．$$  \displaystyle \det \Lambda = \prod _ {i = 1} ^ n |b _ i ^ * | $$</p>
 <p><strong>証明:</strong>
-$  B = \begin{pmatrix} b _ {1} &amp; b _ {2} &amp; \cdots  &amp; b _ {n} \end{pmatrix} $ とする．このとき， $  b _ i = b _ i ^ * + \sum  ^ {i-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} $ なので次の式が成り立つ．$$  \displaystyle \begin{eqnarray*} B &amp; = &amp; \begin{pmatrix} b ^ {*} _ {1} &amp; b ^ {*} _ {2} +\mu _ {2,1} b ^ {*} _ {1} &amp; b ^ {*} _ {3} +\mu _ {3,1} b ^ {*} _ {1} +\mu _ {3,2} b ^ {*} _ {2} &amp; \cdots  &amp; b ^ {*} _ {n} +\sum  ^ {n-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} \end{pmatrix}\\  &amp; = &amp; \begin{pmatrix} b ^ {*} _ {1} &amp; b ^ {*} _ {2} &amp; b ^ {*} _ {3} &amp; \cdots  &amp; b ^ {*} _ {n} \end{pmatrix}\begin{pmatrix} 1 &amp; \mu _ {2,1} &amp; \mu _ {3,1} &amp; \cdots  &amp; \mu _ {n,1}\\ 0 &amp; 1 &amp; \mu _ {3,2} &amp; \cdots  &amp; \mu _ {n,2}\\ 0 &amp; 0 &amp; 1 &amp; \cdots  &amp; \mu _ {n,3}\\ \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\ 0 &amp; 0 &amp; 0 &amp; \cdots  &amp; 1 \end{pmatrix}\\  &amp; = &amp; QR \end{eqnarray*} $$従って，$$  \displaystyle \begin{eqnarray*} \det \Lambda &amp; = &amp; \sqrt{\det ( ^ t\!BB)}\\ &amp; = &amp; \sqrt{\det ( ^ t\!R ^ t\!QQR)}\\ &amp; = &amp; \sqrt{\det ( ^ t\!QQ)}\\ &amp; = &amp; \prod _ {i = 1} ^ n |b _ i ^ * | \end{eqnarray*} $$
+$  B = \begin{pmatrix} b _ {1} &amp; b _ {2} &amp; \cdots  &amp; b _ {n} \end{pmatrix} $ とする．このとき， $  b _ i = b _ i ^ * + \sum  ^ {i-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} $ なので次の式が成り立つ．
+$$\begin{aligned} B &amp; = \begin{pmatrix} b ^ {*} _ {1} &amp; b ^ {*} _ {2} +\mu _ {2,1} b ^ {*} _ {1} &amp; b ^ {*} _ {3} +\mu _ {3,1} b ^ {*} _ {1} +\mu _ {3,2} b ^ {*} _ {2} &amp; \cdots  &amp; b ^ {*} _ {n} +\sum  ^ {n-1} _ {j=1} \mu _ {i,j} b ^ {*} _ {j} \end{pmatrix}\\  &amp; = \begin{pmatrix} b ^ {*} _ {1} &amp; b ^ {*} _ {2} &amp; b ^ {*} _ {3} &amp; \cdots  &amp; b ^ {*} _ {n} \end{pmatrix}\begin{pmatrix} 1 &amp; \mu _ {2,1} &amp; \mu _ {3,1} &amp; \cdots  &amp; \mu _ {n,1}\\ 0 &amp; 1 &amp; \mu _ {3,2} &amp; \cdots  &amp; \mu _ {n,2}\\ 0 &amp; 0 &amp; 1 &amp; \cdots  &amp; \mu _ {n,3}\\ \vdots  &amp; \vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots \\ 0 &amp; 0 &amp; 0 &amp; \cdots  &amp; 1 \end{pmatrix}\\  &amp; = QR \end{aligned} $$
+従って，$$  \displaystyle \begin{aligned} \det \Lambda &amp; = \sqrt{\det ( ^ t\!BB)}\\ &amp; = \sqrt{\det ( ^ t\!R ^ t\!QQR)}\\ &amp; = \sqrt{\det ( ^ t\!QQ)}\\ &amp; = \prod _ {i = 1} ^ n |b _ i ^ * | \end{aligned} $$
 よって示された．$  ■ $</p>
 <p><strong>定義 4.2:</strong>
 格子 $  \Lambda $ の基底を $  \left\{b _ 1,\cdots,b _ n\right\} $ とする．この時次の式で定義される量 $  \delta $ を<strong>直交欠陥</strong>と言う．$$  \displaystyle \delta = \frac{\prod  ^ {n} _ {i=1} | b _ {i} | }{\det \Lambda } $$$  \det \Lambda $ は，スパンの直交化した基底ベクトルのノルムの総乗でした．そのため直交欠陥は，元の基底がどのくらい直交していないかを表す指標となります．また，元のベクトルが直交していた場合，グラム・シュミットの直交化法を行っても基底は変わらないので直交欠陥は $  1 $ になります．</p>
@@ -384,7 +388,7 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 <p><strong>定理 5.1:</strong>
 二次元の格子 $  \Lambda $ の簡約基底を $  \left\{b _ 1,b _ 2\right\} \in \mathbb{R} ^ {m \times 2} $ とし，逐次最小を $  \lambda _ 1,\lambda _ 2 $ とする．この時次の式が成り立つ．$$  |b _ 1| = \lambda _ 1,\ |b _ 2| = \lambda _ 2 $$</p>
 <p><strong>証明:</strong>
-適当な格子ベクトル $  v = l _ 1b _ 1 + l _ 2b _ 2 \neq 0 $ を考える． $  l _ 2 = 0 $ なら $  |v| \geq |b _ 1| $ となり，また $  l _ 2 \neq 0 $ の時は， $  l _ 1 = ql _ 2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &lt; |l _ 2| $ と書けば $  v = rb _ 1 + l _ 2(b _ 2 + qb _ 1) $ である．従って，$$  \displaystyle \begin{eqnarray*} |v| &amp;\geq&amp; |l _ 2||b _ 2 + qb _ 1| - r|b _ 1|\\ &amp;=&amp; (|l _ 2| - r)|b _ 2+qb _ 1|  + r(|b _ 2 + qb _ 1| - |b _ 1|)\\ &amp;\geq&amp; |b _ 2 + qb _ 1|\\ &amp;\geq&amp; |b _ 2| \geq |b _ 1| \end{eqnarray*} $$よって示された． $ ■ $</p>
+適当な格子ベクトル $  v = l _ 1b _ 1 + l _ 2b _ 2 \neq 0 $ を考える． $  l _ 2 = 0 $ なら $  |v| \geq |b _ 1| $ となり，また $  l _ 2 \neq 0 $ の時は， $  l _ 1 = ql _ 2 + r,\ q,r \in \mathbb{Z},\ 0 \leq r &lt; |l _ 2| $ と書けば $  v = rb _ 1 + l _ 2(b _ 2 + qb _ 1) $ である．従って，$$  \displaystyle \begin{aligned} |v| &amp;\geq |l _ 2||b _ 2 + qb _ 1| - r|b _ 1|\\ &amp;= (|l _ 2| - r)|b _ 2+qb _ 1|  + r(|b _ 2 + qb _ 1| - |b _ 1|)\\ &amp;\geq |b _ 2 + qb _ 1|\\ &amp;\geq |b _ 2| \geq |b _ 1| \end{aligned} $$よって示された． $ ■ $</p>
 <p>簡約であることと同値な次の条件を考えれば，具体的にどんなベクトルによって構成されるか考えやすくなると思います．</p>
 <p><strong>定理 5.2:</strong>
 二次元の格子 $  \Lambda $ の基底 $  \left\{b _ 1,b _ 2 \right\} \in \mathbb{R} ^ {m \times 2} $ が簡約基底であるための必要十分条件は次の式を満たすことである．$$  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $$</p>
