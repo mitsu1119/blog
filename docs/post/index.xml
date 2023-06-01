@@ -78,8 +78,7 @@
         <pubDate>Mon, 13 Dec 2021 00:09:54 +0900</pubDate>
         
         <guid>https://mitsu1119.github.io/blog/p/merry-cryptomath/</guid>
-        <description>&lt;hr&gt;
-&lt;h1 id=&#34;merry-cryptomath-&#34;&gt;Merry CryptoMath !!!!!!&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;merry-cryptomath-&#34;&gt;Merry CryptoMath !!!!!!&lt;/h1&gt;
 &lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://adventar.org/calendars/6914&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;CTF Advent Calendar 2021&lt;/a&gt; の25日目の記事です。昨日の記事はSatokiさんによる &lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@satoki/BkeNHyWot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【文学】 Flagを読む&lt;/a&gt; で、面白いフラグを紹介してくれたりLeetについて説明してくれました。&lt;/p&gt;
@@ -87,7 +86,6 @@
 　ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）&lt;/p&gt;
 &lt;p&gt;　別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。&lt;/p&gt;
 &lt;p&gt;　あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;クリスマスについて&#34;&gt;クリスマスについて&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;クリスマス&lt;/strong&gt;
 　キリストの降誕祭。十二月二十五日。&lt;br&gt;
@@ -98,12 +96,10 @@
 　⑤ &lt;strong&gt;―ツリー&lt;/strong&gt;　クリスマスのときに立てて飾る常緑樹。&lt;br&gt;
 　⑥ &lt;strong&gt;―プレゼント&lt;/strong&gt;　クリスマスの贈り物。&lt;/p&gt;
 &lt;p&gt;　ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;cvp&#34;&gt;CVP&lt;/h1&gt;
 &lt;p&gt;　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。&lt;/p&gt;
 &lt;p&gt;　CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。&lt;/p&gt;
 &lt;p&gt;　しかし（？！） CVP は SVP よろしく近似解法があります。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;kannans-embedding-method&#34;&gt;Kannan&amp;rsquo;s embedding method&lt;/h1&gt;
 &lt;p&gt;　埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。&lt;/p&gt;
 &lt;p&gt;　uSVP（正確には uSVP$_ \gamma$）というのは、格子の逐次最小について $\gamma \lambda _ {1} &amp;lt; \lambda _ {2}$ みたいなのが成り立つ格子での SVP です。単に SVP と思ってもらって構いません。  　&lt;/p&gt;
@@ -193,7 +189,6 @@ $$&lt;/p&gt;
 &lt;li&gt;$y = \sum y_ i$ が求めたかった一番最初の $w$ の最近ベクトル $y$ となります。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;コード書くの、怠惰すぎてやめちゃった。簡単ですし適当にググると出てきます。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;最後に&#34;&gt;最後に&lt;/h1&gt;
 &lt;p&gt;有名ガチプロCTFerが素晴らしい記事を生やしている中、自分はこんなカスみたいな記事を錬成していていいのか……という感じです。それなのにここまで読んでいただいて本当に感謝です。それではよいお年を！&lt;/p&gt;
 </description>
