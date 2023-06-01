@@ -199,17 +199,14 @@ $$&lt;/p&gt;
         <pubDate>Mon, 06 Sep 2021 18:07:38 +0900</pubDate>
         
         <guid>https://mitsu1119.github.io/blog/p/nitic-ctf-2-crypto/</guid>
-        <description>&lt;hr&gt;
-&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
 &lt;p&gt;茨城高専の学生さん+ α で開催の CTF のようです。自分も高専生なので同じ高専生が開くということで親近感が湧き、頑張って取り組もうと思いました。(寝坊したけど)&lt;/p&gt;
 &lt;p&gt;全体的に問題は易しめに作られていて、自分でもなんとか取り組むことができました。初心者向け CTF の難易度周りの話は色々あると思いますが、何はともあれこの CTF ではまともな問題が出ていたのでとても良かったと思います。&lt;/p&gt;
 &lt;p&gt;自分たちのチーム zer0pts は、チームメンバーがむちゃくちゃ強いおかげで無事 1 位でした。さすがですね。個人で出ていた keymoon さんもさすがでした。自分も頑張らないとって焦ってきますね。研究のことが頭から離れずグダグダしてしまいます。悲しい。&lt;/p&gt;
 &lt;p&gt;ということで Crypto を解いたので writeup 書きます。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;caesar-cipher&#34;&gt;Caesar Cipher&lt;/h1&gt;
 &lt;p&gt;フラグの中身を暗号化したものが &amp;ldquo;fdhvdu&amp;rdquo; という文字列だそうです。いわゆるシーザー暗号なので全通りの ROT を試して解きました。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;nitic_ctf{caesar}&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;ord_xor&#34;&gt;ord_xor&lt;/h1&gt;
 &lt;p&gt;フラグの各文字を xor 演算で他の文字に変換した結果が渡されます。感覚的にこの文字の変換は一対一のものだと思ったので、アルファベットを全部変換してみて、暗号文の各文字と変換後の文字が一致するようなアルファベットを選んでいくことで、全探索みたいな感じで解けます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -340,8 +337,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# nitic_ctf{bit_full_search}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;h1 id=&#34;summersa&#34;&gt;summeRSA&lt;/h1&gt;
+&lt;/div&gt;&lt;h1 id=&#34;summersa&#34;&gt;summeRSA&lt;/h1&gt;
 &lt;p&gt;普通の RSA 暗号です。ただし 59 文字のフラグのうち先頭 51 文字が判明しています。今回、$e = 7$ なので $51 &amp;gt; 59 \times \frac{6}{7}$ より Coppersmith&amp;rsquo;s Attack がそのまま適用できます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

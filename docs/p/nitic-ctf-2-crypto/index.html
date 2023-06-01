@@ -228,17 +228,14 @@ ord_xor フラグの各文字を xor 演算で他の文字に変換した結果�
     <section class="article-content">
     
     
-    <hr>
-<h1 id="はじめに">はじめに</h1>
+    <h1 id="はじめに">はじめに</h1>
 <p>茨城高専の学生さん+ α で開催の CTF のようです。自分も高専生なので同じ高専生が開くということで親近感が湧き、頑張って取り組もうと思いました。(寝坊したけど)</p>
 <p>全体的に問題は易しめに作られていて、自分でもなんとか取り組むことができました。初心者向け CTF の難易度周りの話は色々あると思いますが、何はともあれこの CTF ではまともな問題が出ていたのでとても良かったと思います。</p>
 <p>自分たちのチーム zer0pts は、チームメンバーがむちゃくちゃ強いおかげで無事 1 位でした。さすがですね。個人で出ていた keymoon さんもさすがでした。自分も頑張らないとって焦ってきますね。研究のことが頭から離れずグダグダしてしまいます。悲しい。</p>
 <p>ということで Crypto を解いたので writeup 書きます。</p>
-<hr>
 <h1 id="caesar-cipher">Caesar Cipher</h1>
 <p>フラグの中身を暗号化したものが &ldquo;fdhvdu&rdquo; という文字列だそうです。いわゆるシーザー暗号なので全通りの ROT を試して解きました。</p>
 <p><code>nitic_ctf{caesar}</code></p>
-<hr>
 <h1 id="ord_xor">ord_xor</h1>
 <p>フラグの各文字を xor 演算で他の文字に変換した結果が渡されます。感覚的にこの文字の変換は一対一のものだと思ったので、アルファベットを全部変換してみて、暗号文の各文字と変換後の文字が一致するようなアルファベットを選んでいくことで、全探索みたいな感じで解けます。</p>
 <div class="highlight"><div class="chroma">
@@ -369,8 +366,7 @@ ord_xor フラグの各文字を xor 演算で他の文字に変換した結果�
 </span></span><span class="line"><span class="cl"><span class="c1"># nitic_ctf{bit_full_search}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h1 id="summersa">summeRSA</h1>
+</div><h1 id="summersa">summeRSA</h1>
 <p>普通の RSA 暗号です。ただし 59 文字のフラグのうち先頭 51 文字が判明しています。今回、$e = 7$ なので $51 &gt; 59 \times \frac{6}{7}$ より Coppersmith&rsquo;s Attack がそのまま適用できます。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
