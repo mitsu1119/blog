@@ -10,7 +10,7 @@ math: true
 
 I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!  
 Thanks to my team members.
-![rank](../rank.png)
+![rank](post2/rank.png)
 
 I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.
 
