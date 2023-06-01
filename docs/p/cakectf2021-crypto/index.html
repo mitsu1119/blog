@@ -19,16 +19,18 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
 <meta name="twitter:description" content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。
 フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
 $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。">
+
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
 <script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-VQ0SEQSRZ0', { 'anonymize_ip': false });
-}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VQ0SEQSRZ0');
 </script>
+
+
 
     </head>
     <body class="

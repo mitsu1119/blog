@@ -34,16 +34,18 @@ Caesar Cipher フラグの中身を暗号化したものが &amp;ldquo;fdhvdu&am
 nitic_ctf{caesar}
 ord_xor フラグの各文字を xor 演算で他の文字に変換した結果が渡されます。感覚的にこの文字の変換は一対一のものだと思ったので、アルファベットを全部変換してみて、暗号文の各文字と変換後の文字が一致するようなアルファベットを選んでいくことで、全探索みたいな感じで解けます。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 def xor(c: str, n: int) -&amp;gt; str: temp = ord(c) for _ in range(n): temp ^= n return chr(temp) alp = &amp;#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_!">
+
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
 <script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-VQ0SEQSRZ0', { 'anonymize_ip': false });
-}
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VQ0SEQSRZ0');
 </script>
+
+
 
     </head>
     <body class="
