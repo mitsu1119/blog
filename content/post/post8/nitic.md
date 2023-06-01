@@ -2,7 +2,7 @@
 title: "NITIC CTF 2 Crypto"
 date: 2021-09-06T18:07:38+09:00
 draft: false
-mathjax: true
+math: true
 ---
 
 ---

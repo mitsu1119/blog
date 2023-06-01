@@ -3,7 +3,7 @@ title: "yoshi-camp 2020 winter 参加記"
 date: 2020-12-28T17:32:33+09:00
 tags: ["angr", "lattice"]
 draft: false
-mathjax: true
+math: true
 ---
 
 <div class="section">

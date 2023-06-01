@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。
+Z3を完全に理解しよう by ptr-yudai Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。
+シンボリック変数の型 シンボリック変数で使える型をまずは教えてくれました。
+真偽変数(Bool) 整数・実数変数(Int, Real) ビットベクトル(BitVec) 列挙型(EnumSort or Consts) 文字列型(String) BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。
+BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。
+制約と論理式 制約はs.add(&amp;hellip;)みたいな感じで追加していきます。
+制約内で用いる論理演算はAnd,Or,Xor,Not&amp;hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。 また制約をかけるときに1 &amp;lt; a &amp;lt; 100みたいな不等式のチェーンは許されないらしいです。
+Implies(P, Q) ($P \Rightarrow Q$) Distinct(X) ($\lnot \exists (i, j)\ (x_i = x_j\ \land i \neq j)$) If(P, x, y) (PがTrueならx、PがFalseならy) あたりも使えるらしいです。便利。
+解の列挙 Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。
+Z3における「型」 実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。
+DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。
+Z3の変数の種類 Z3の変数は主に３種類あるらしいです。
+Applications (全称・存在記号なし。qf論理式。IntやRealなど) Quantifiers (全称・存在記号あり。Function) Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした) 例題 このあと例題を解きました。
+例題1 A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？
+A「BとEは正直者」 B「Cは嘘つき」 C「Dは嘘つき」 D「Eは嘘つき」 E「BとCは嘘つき」 xs = [Bool(&amp;ldquo;x%d&amp;rdquo; % i) for i in range(5)]'>
+<title>yoshi-camp 2020 winter 参加記</title>
+
+<link rel='canonical' href='https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='yoshi-camp 2020 winter 参加記'>
+<meta property='og:description' content='はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。
+Z3を完全に理解しよう by ptr-yudai Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。
+シンボリック変数の型 シンボリック変数で使える型をまずは教えてくれました。
+真偽変数(Bool) 整数・実数変数(Int, Real) ビットベクトル(BitVec) 列挙型(EnumSort or Consts) 文字列型(String) BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。
+BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。
+制約と論理式 制約はs.add(&amp;hellip;)みたいな感じで追加していきます。
+制約内で用いる論理演算はAnd,Or,Xor,Not&amp;hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。 また制約をかけるときに1 &amp;lt; a &amp;lt; 100みたいな不等式のチェーンは許されないらしいです。
+Implies(P, Q) ($P \Rightarrow Q$) Distinct(X) ($\lnot \exists (i, j)\ (x_i = x_j\ \land i \neq j)$) If(P, x, y) (PがTrueならx、PがFalseならy) あたりも使えるらしいです。便利。
+解の列挙 Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。
+Z3における「型」 実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。
+DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。
+Z3の変数の種類 Z3の変数は主に３種類あるらしいです。
+Applications (全称・存在記号なし。qf論理式。IntやRealなど) Quantifiers (全称・存在記号あり。Function) Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした) 例題 このあと例題を解きました。
+例題1 A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？
+A「BとEは正直者」 B「Cは嘘つき」 C「Dは嘘つき」 D「Eは嘘つき」 E「BとCは嘘つき」 xs = [Bool(&amp;ldquo;x%d&amp;rdquo; % i) for i in range(5)]'>
+<meta property='og:url' content='https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+<meta property='og:site_name' content='Example Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='angr' /><meta property='article:tag' content='lattice' /><meta property='article:published_time' content='2020-12-28T17:32:33&#43;09:00'/><meta property='article:modified_time' content='2020-12-28T17:32:33&#43;09:00'/>
+<meta name="twitter:title" content="yoshi-camp 2020 winter 参加記">
+<meta name="twitter:description" content="はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。
+Z3を完全に理解しよう by ptr-yudai Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。
+シンボリック変数の型 シンボリック変数で使える型をまずは教えてくれました。
+真偽変数(Bool) 整数・実数変数(Int, Real) ビットベクトル(BitVec) 列挙型(EnumSort or Consts) 文字列型(String) BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。
+BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。
+制約と論理式 制約はs.add(&amp;hellip;)みたいな感じで追加していきます。
+制約内で用いる論理演算はAnd,Or,Xor,Not&amp;hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。 また制約をかけるときに1 &amp;lt; a &amp;lt; 100みたいな不等式のチェーンは許されないらしいです。
+Implies(P, Q) ($P \Rightarrow Q$) Distinct(X) ($\lnot \exists (i, j)\ (x_i = x_j\ \land i \neq j)$) If(P, x, y) (PがTrueならx、PがFalseならy) あたりも使えるらしいです。便利。
+解の列挙 Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。
+Z3における「型」 実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。
+DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。
+Z3の変数の種類 Z3の変数は主に３種類あるらしいです。
+Applications (全称・存在記号なし。qf論理式。IntやRealなど) Quantifiers (全称・存在記号あり。Function) Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした) 例題 このあと例題を解きました。
+例題1 A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？
+A「BとEは正直者」 B「Cは嘘つき」 C「Dは嘘つき」 D「Eは嘘つき」 E「BとCは嘘つき」 xs = [Bool(&amp;ldquo;x%d&amp;rdquo; % i) for i in range(5)]">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/blog">
+                
+                    
+                    
+                    
+                        
+                        <img src="/blog/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/blog">Example Site</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://mitsu1119.github.io/blog/" selected>English</option>
+                        
+                            <option value="https://mitsu1119.github.io/blog/zh-cn/" >中文</option>
+                        
+                            <option value="https://mitsu1119.github.io/blog/ar/" >عربي</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#シンボリック変数の型">シンボリック変数の型</a></li>
+    <li><a href="#制約と論理式">制約と論理式</a></li>
+    <li><a href="#解の列挙">解の列挙</a></li>
+    <li><a href="#z3における型">Z3における「型」</a></li>
+    <li><a href="#z3の変数の種類">Z3の変数の種類</a></li>
+    <li><a href="#例題">例題</a>
+      <ol>
+        <li><a href="#例題1">例題1</a></li>
+      </ol>
+    </li>
+    <li><a href="#例題3">例題3</a></li>
+    <li><a href="#z3の便利機能">Z3の便利機能</a></li>
+    <li><a href="#z3の利用ミス集">Z3の利用ミス集</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#coppersmithの定理">Coppersmithの定理</a></li>
+    <li><a href="#truncated-lcg">Truncated LCG</a></li>
+    <li><a href="#lwe">LWE</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/">yoshi-camp 2020 winter 参加記</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 28, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <!-- raw HTML omitted -->
+<h1 id="はじめに">はじめに</h1>
+<p>年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。</p>
+<!-- raw HTML omitted -->
+<h1 id="z3を完全に理解しよう-by-ptr-yudai">Z3を完全に理解しよう by ptr-yudai</h1>
+<p>Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。</p>
+<h2 id="シンボリック変数の型">シンボリック変数の型</h2>
+<p>シンボリック変数で使える型をまずは教えてくれました。</p>
+<ul>
+<li>真偽変数(Bool)</li>
+<li>整数・実数変数(Int, Real)</li>
+<li>ビットベクトル(BitVec)</li>
+<li>列挙型(EnumSort or Consts)</li>
+<li>文字列型(String)</li>
+</ul>
+<p>BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。</p>
+<p>BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。</p>
+<h2 id="制約と論理式">制約と論理式</h2>
+<p>制約はs.add(&hellip;)みたいな感じで追加していきます。</p>
+<p>制約内で用いる論理演算はAnd,Or,Xor,Not&hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。
+また制約をかけるときに1 &lt; a &lt; 100みたいな不等式のチェーンは許されないらしいです。</p>
+<ul>
+<li>Implies(P, Q) ($P \Rightarrow Q$)</li>
+<li>Distinct(X) ($\lnot \exists (i, j)\ (x_i = x_j\ \land i \neq j)$)</li>
+<li>If(P, x, y) (PがTrueならx、PがFalseならy)</li>
+</ul>
+<p>あたりも使えるらしいです。便利。</p>
+<h2 id="解の列挙">解の列挙</h2>
+<p>Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。</p>
+<h2 id="z3における型">Z3における「型」</h2>
+<p>実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&ldquo;x&rdquo;)やReal(&ldquo;x&rdquo;)はConst(&ldquo;x&rdquo;, IntSort())みたいな糖衣構文らしいです。</p>
+<p>DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。</p>
+<h2 id="z3の変数の種類">Z3の変数の種類</h2>
+<p>Z3の変数は主に３種類あるらしいです。</p>
+<ul>
+<li>Applications (全称・存在記号なし。qf論理式。IntやRealなど)</li>
+<li>Quantifiers (全称・存在記号あり。Function)</li>
+<li>Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした)</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="例題">例題</h2>
+<p>このあと例題を解きました。</p>
+<h3 id="例題1">例題1</h3>
+<p>A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？</p>
+<ul>
+<li>A「BとEは正直者」</li>
+<li>B「Cは嘘つき」</li>
+<li>C「Dは嘘つき」</li>
+<li>D「Eは嘘つき」</li>
+<li>E「BとCは嘘つき」</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>xs = [Bool(&ldquo;x%d&rdquo; % i) for i in range(5)]</p>
+<p>s = Solver()</p>
+<p>s.add(Implies(xs[0], And(xs[1] == True, xs[4] == True)))
+s.add(Implies(xs[1], xs[2] == False))
+s.add(Implies(xs[2], xs[3] == False))
+s.add(Implies(xs[3], xs[4] == False))
+s.add(Implies(xs[4], And(xs[1] == False, xs[2] == False)))</p>
+<p>while True:
+r = s.check()
+if r == sat:
+m = s.model()
+cons = []
+num = 0
+for i in range(5):
+print(m[xs[i]], end=&quot;&quot;)
+if m[xs[i]] == True:
+num += 1
+cons.append(xs[i] == m[xs[i]])
+if num == 2:
+break
+s.add(Not(And(cons)))
+print()</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">正直者はBとDでした。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## 例題2
+</span></span><span class="line"><span class="cl">次の式を満たす有理数x,yを求めよ
+</span></span><span class="line"><span class="cl">1. $x^2 + y^2 = 533\/196$
+</span></span><span class="line"><span class="cl">2. $x^2 + y^2 = 3$
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">実はyoshi-camp参加者は何ヶ月か前に$x^2 + y^2 = 3$の有理数解が無いことを降下法で証明していました。その証明と比べるとZ3を使った証明は簡単だよという趣旨らしいです。問題設定がptr-yudaiクオリティでさすがでした。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">xとyをIntの変数2つで表し、またZ3は割り算が使いにくいので両辺に分母の2乗をかけて解くという奉仕でやりました。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">``` python
+</span></span><span class="line"><span class="cl">from z3 import *
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">a, b, c, d = Ints(&#34;a b c d&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">resa = 533
+</span></span><span class="line"><span class="cl">resb = 196
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">s = Solver()
+</span></span><span class="line"><span class="cl">s.add(a &gt;= 0, b &gt; 0, c &gt;= 0, d &gt; 0)
+</span></span><span class="line"><span class="cl">s.add(resb * a**2 * d**2 + resb * c**2 * b**2 == resa * b**2 * d**2)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">r = s.check()
+</span></span><span class="line"><span class="cl">if r == sat:
+</span></span><span class="line"><span class="cl">    m = s.model()
+</span></span><span class="line"><span class="cl">    print(f&#34;x = {m[a]}/{m[b]}&#34;)
+</span></span><span class="line"><span class="cl">    print(f&#34;y = {m[c]}/{m[d]}&#34;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>1番の答えは11/7と1/2で有ることがわかりました。また同じような方法で2番を解こうとしましたが当然解けませんでした。</p>
+<h2 id="例題3">例題3</h2>
+<p>Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。</p>
+<ul>
+<li>$\forall P, Q \in S,\ P * Q=Q * P$</li>
+<li>$\forall P, Q \in S,\ P * (P * Q) = Q$
+そこである元$O \in S$を固定して、新しい合成法+を
+$$ P + Q = O * (P * Q)$$
+と定義せよ。</li>
+</ul>
+<p>Sの元の個数を7個とし、(S, +)が群とならないものをもとめなさい。</p>
+<!-- raw HTML omitted -->
+<p>Functionを使って頑張って計算します。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">z3</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">S</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">EnumSort</span><span class="p">(</span><span class="s2">&#34;S&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="s2">&#34;d&#34;</span><span class="p">,</span> <span class="s2">&#34;e&#34;</span><span class="p">,</span> <span class="s2">&#34;f&#34;</span><span class="p">,</span> <span class="s2">&#34;g&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mul</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&#34;mul&#34;</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">add</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s2">&#34;add&#34;</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">Consts</span><span class="p">([</span><span class="s2">&#34;P&#34;</span><span class="p">,</span> <span class="s2">&#34;Q&#34;</span><span class="p">,</span> <span class="s2">&#34;R&#34;</span><span class="p">],</span> <span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">O</span> <span class="o">=</span> <span class="n">Const</span><span class="p">(</span><span class="s2">&#34;O&#34;</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ForAll</span><span class="p">([</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">],</span> <span class="n">mul</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="o">==</span> <span class="n">mul</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">P</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ForAll</span><span class="p">([</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">],</span> <span class="n">mul</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">mul</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">))</span> <span class="o">==</span> <span class="n">Q</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ForAll</span><span class="p">([</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">],</span> <span class="n">add</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="o">==</span> <span class="n">mul</span><span class="p">(</span><span class="n">O</span><span class="p">,</span> <span class="n">mul</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Not</span><span class="p">(</span><span class="n">ForAll</span><span class="p">([</span><span class="n">P</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">R</span><span class="p">],</span> <span class="n">add</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span> <span class="n">R</span><span class="p">)</span> <span class="o">==</span> <span class="n">add</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">add</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">R</span><span class="p">))))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">sat</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">model</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>この出力で群の結合法則を満たさない演算を手に入れることができました。とても便利で驚きです。</p>
+<!-- raw HTML omitted -->
+<h2 id="z3の便利機能">Z3の便利機能</h2>
+<ul>
+<li>Optimize (最大、最小問題が解ける。ベクトル解析めっちゃ使ってそう)</li>
+<li>Unsat Core (部分的な制約を満たすか否か推論。特に条件を1つ除けばsatになるようなものをMCUというらしいです)</li>
+<li>Goal, Tactic (ゴールを設定してより高速に計算ができるらしいです。Tacticには色々な種類があるらしいです。どういう場合に使えばいいかよくわからなかったので復習します)</li>
+</ul>
+<p>Unsat Coreを使ったデバッグ法を説明してくれました。とても便利そう。</p>
+<h2 id="z3の利用ミス集">Z3の利用ミス集</h2>
+<p>Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。</p>
+<p>1つ目の問題はBitVecの変数に対して単に&raquo;としてしまうとだめ、というものでした。LShRを使えば解決します。</p>
+<p>2つ目の問題はCのunsigned char同士の掛け算の問題でした。unsigned char同士の掛け算は暗黙の型変換で16bitの計算になってしまうので、単に8ビットのBitVecに対してZeroExt(8, x)みたいにして掛け算しないとだめ、というものでした。</p>
+<p>3つ目の問題は32bitのBitVecで出力に時間がかかるというものでした。32bitを使うのではなく8bitのBitVec4つで表して解けば短い実行時間ですむらしいです。ただ、うまく修正したはずがあまり速度向上が見えなかったのでうーん:thinking_face:という感じです。</p>
+<!-- raw HTML omitted -->
+<p>全体的に初めて知ることが多く、勉強になることがたくさんありました。ありがとうございました。</p>
+<!-- raw HTML omitted -->
+<h1 id="bkzで勝つ-by-mitsu">BKZで勝つ by mitsu</h1>
+<p>自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。</p>
+<p>内容はBKZ簡約基底、BKZ簡約のアルゴリズムについて雰囲気で説明し気持ちだけ汲み取ってもらおうというものでした。また問題を解いてもらったのですが、BKZを使う問題は基本的に基底をshuffleしてwhileで回す必要がありうまく解くのに時間がかかるため、結局その問題のフラグは講義中に得ることができませんでした。悲しい。ついでに部分和問題のCLOS法についても話しましたがこれは家庭普及率100%なのであまり必要なかった印象です。</p>
+<!-- raw HTML omitted -->
+<h1 id="lllで殴る2-by-theoldmoon0602">LLLで殴る(2) by theoldmoon0602</h1>
+<p>前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。</p>
+<h2 id="coppersmithの定理">Coppersmithの定理</h2>
+<p>sageのsmall_rootsを自力で実装しよう、という内容でした。</p>
+<p>monicな1変数多項式$f(x)$について、$f(x_0) \equiv 0 \mod N$を満たす小さい$x_0$を求めるプログラムを作ろうという話です。</p>
+<p><strong>定理(Coppersmithの定理)</strong></p>
+<p>monicな1変数$d$次多項式$f$の、$f(x_0) \equiv 0 \mod b$を満たす$|x_0 | &lt; N^{\beta^2 / d}$を、$\log N,\ d$の多項式時間で求めることができる。ただし$b$は$N$の因数で$N^\beta \leq b$。</p>
+<!-- raw HTML omitted -->
+<p>具体的な方針としては、modular多項式は難しいので整数係数の多項式変換しようというものでした。つまり、$f(x_0) - kN = 0$として$k=0$としようという話でした。これの条件がHowgrave-Grahamの補題で与えられていました。Howgrave-Grahamの補題によると、$f(x)$の係数はできるだけ小さいと嬉しいようです。</p>
+<p>また、多項式の根を変えずに係数だけを小さくするにはLLLを用いて係数を簡約するといいという話でした。LLLで変換しても張る格子自体は変化しないため根は変わりません。ところがLLLで簡約したいのですが方程式一つしか無いのでsだめで、独立な方程式をもっとたくさん増やさないといけません。この方法としては$\mod N$の世界の多項式$f$を$\mod N^m$の世界に持ち上げて、$f(x_0) = kN$の両辺を$i$乗するというものでした。こうすれば根は$f(x)^i = k^iN^i$なので$N^{m-i}x^i$をかければ同じ根は得られます。つまり
+$$g_{i,j} = N^{m-i}x^if^i$$
+とすればいい感じに持ち上げて多項式を増やすことができます。天才か？</p>
+<p>ということで、$g_{i,j}(xX)$を特別に係数を横に並べたベクトルとして見ると、
+$$
+\begin{pmatrix}
+g _ {0,0}( xX)\\
+g _ {0,1}( xX)\\<br>
+\vdots \\<br>
+g _ {0,d-1}( xX)\\<br>
+g _ {1,0}( xX)\\<br>
+\vdots \\<br>
+g _ {m-1,d-1}( xX)\\
+h _ {0}( xX)\\
+\vdots \\
+h _ {t-1}( xX)<br>
+\end{pmatrix}
+$$
+を簡約すれば根を変えずに小さい係数をもったいい感じの方程式が得られ、それを解けばいいとなります。ただし$h_i(x)$は$x^if^{m-i}$です。必ず必要なわけではありませんがあるといいと解釈しています)</p>
+<p>というわけでこれを実装しました。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">small_roots</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">M</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span><span class="o">.</span><span class="n">modulus</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">change_ring</span><span class="p">(</span><span class="n">ZZ</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span><span class="o">.</span><span class="n">gen</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 方程式を増やす</span>
+</span></span><span class="line"><span class="cl">    <span class="n">g</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">g</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">M</span><span class="o">^</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fm</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">^</span><span class="n">m</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fm</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">g</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 係数を行列へ</span>
+</span></span><span class="line"><span class="cl">    <span class="n">B</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">nrows</span><span class="p">()):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">ncols</span><span class="p">()):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># LLL</span>
+</span></span><span class="line"><span class="cl">    <span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">LLL</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">B</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Howgrave-Graham&#39;s theorem</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">RR</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">norm</span><span class="p">())</span> <span class="o">&gt;=</span> <span class="n">RR</span><span class="p">(</span><span class="n">M</span><span class="o">^</span><span class="n">m</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">))):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 方程式の復元</span>
+</span></span><span class="line"><span class="cl">        <span class="n">poly</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">poly</span> <span class="o">+=</span> <span class="n">ZZ</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">X</span><span class="o">^</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">i</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">roots</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">roots</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>やっていることは意外とシンプルで驚きました。やろうやろうと思ってやれていなかったのでとてもいい機会になりました。</p>
+<h2 id="truncated-lcg">Truncated LCG</h2>
+<p>LCGの漸化式
+$$
+\begin{array}{ c c }
+x_{1} &amp; =ax_{0} +b\bmod m\\
+x2 &amp; =ax_{1} +b\bmod m\\
+\vdots  &amp; \vdots
+\end{array}
+$$
+について、普通なら欄数列が6つくらい得られれば各係数を計算することができますが、今回は$x_i$の下位半分のビットがわかりませんというものでした。多分実際に使う場合も乱数列にあまりをとって使うことが多いのでとても現実的な設定でした。$x_i$について、未知数$z_i$として$x_i=2^ky_i + z_i$とします。</p>
+<!-- raw HTML omitted -->
+<p>$x = s^ky + z$なので$(2^ky + z)B = lm$となるようなベクトル$l$が存在し、$zB = lm - 2^kyB$となります。
+ここで$zB \simeq 0$と近似できるようで、$l$が求められるそうです。ここから$l$がわかったので$z$も求めることができます、という内容でした。なんで$zB \simeq 0$とできるのかイマイチ理解ができませんでした。</p>
+<h2 id="lwe">LWE</h2>
+<p>時間がなくてほとんど解説されませんでした。</p>
+<p>$$
+\begin{pmatrix}
+a_{11} &amp; a_{21} &amp; \cdots  &amp; a_{m1}\\
+a_{12} &amp; \ddots  &amp;  &amp; \vdots \\
+\vdots  &amp;  &amp; \ddots  &amp; \vdots \\
+a_{1n} &amp; \cdots  &amp; \cdots  &amp; a_{mn}\\
+-p &amp;  &amp;  &amp; \\
+&amp; -p &amp;  &amp; \\
+&amp;  &amp; \ddots  &amp; \\
+&amp;  &amp;  &amp; -p
+\end{pmatrix}
+$$</p>
+<p>みたいな行列を作ってLLLしてBabaiです。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="prngと戯れる">PRNGと戯れる</h1>
+<p>yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。</p>
+<!-- raw HTML omitted -->
+<h1 id="感想">感想</h1>
+<p>午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。</p>
+<p>あとは単に問題を解くのに実行時間がかかるBKZはこういうところで発表するものじゃないなと身にしみて思いました。ごめんなさい</p>
+<!-- raw HTML omitted -->
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/blog/tags/angr/">angr</a>
+        
+            <a href="/blog/tags/lattice/">lattice</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 Example Site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

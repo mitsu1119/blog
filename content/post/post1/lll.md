@@ -3,7 +3,7 @@ date: "2020-05-10 20:51:59 +0000 UTC"
 title: "LLLを理解するぞ"
 tags: ["lattice", "algorithm"]
 draft: false
-mathjax: true
+math: true
 ---
 
 <div class="section">

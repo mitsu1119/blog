@@ -3,7 +3,7 @@ title: "WMCTF 2020 writeup"
 date: 2020-08-03T15:11:32+09:00
 tags: ["writeup", "lattice"]
 draft: false
-mathjax: true
+math: true
 ---
 
 <div class="section">

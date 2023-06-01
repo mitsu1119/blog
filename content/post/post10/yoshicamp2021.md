@@ -2,7 +2,7 @@
 title: "yoshi-camp 2021 autumn 参加記"
 date: 2021-11-15T08:57:59+09:00
 draft: true
-mathjax: true
+math: true
 ---
 
 ---

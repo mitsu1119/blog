@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>misc on みつみつみつですか？</title>
-    <link>https://mitsu1119.github.io/blog/tags/misc/</link>
-    <description>Recent content in misc on みつみつみつですか？</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 08 Mar 2021 19:06:07 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/misc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>zer0pts ctf 2021 開催記</title>
-      <link>https://mitsu1119.github.io/blog/post/post6/zer0pts2021/</link>
-      <pubDate>Mon, 08 Mar 2021 19:06:07 +0900</pubDate>
-      
-      <guid>https://mitsu1119.github.io/blog/post/post6/zer0pts2021/</guid>
-      <description>はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとて</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>misc on Example Site</title>
+        <link>https://mitsu1119.github.io/blog/tags/misc/</link>
+        <description>Recent content in misc on Example Site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Mon, 08 Mar 2021 19:06:07 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/misc/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>zer0pts ctf 2021 開催記</title>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</link>
+        <pubDate>Mon, 08 Mar 2021 19:06:07 +0900</pubDate>
+        
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</guid>
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
+&lt;p&gt;zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。
+zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。
+また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！&lt;/p&gt;
+&lt;p&gt;出題した問題の公式writeupは &lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@ptr-yudai/B1bk04fmu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hackmd.io/@ptr-yudai/B1bk04fmu&lt;/a&gt; で公開されているので、ぜひ参考にしてください。&lt;/p&gt;
+&lt;h1 id=&#34;作問&#34;&gt;作問&lt;/h1&gt;
+&lt;p&gt;cryptoの&amp;quot;easy pseudo random&amp;quot;と&amp;quot;pure division&amp;quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。&lt;/p&gt;
+&lt;p&gt;easy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。&lt;/p&gt;
+&lt;p&gt;pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。&lt;/p&gt;
+&lt;p&gt;作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。&lt;/p&gt;
+&lt;h1 id=&#34;おわりに&#34;&gt;おわりに&lt;/h1&gt;
+&lt;p&gt;運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。&lt;/p&gt;
+&lt;p&gt;めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

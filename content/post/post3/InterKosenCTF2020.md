@@ -3,7 +3,7 @@ title: "InterKosenCTF2020 writeup"
 date: 2020-09-07T01:14:23+09:00
 tags: ["writeup", "kosen"]
 draft: false
-mathjax: true
+math: true
 ---
 
 <div class="section">

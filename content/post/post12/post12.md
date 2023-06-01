@@ -2,7 +2,7 @@
 title: "Lawrence-Krammer表現がわからん"
 date: 2022-06-01T13:29:46+09:00
 draft: true
-mathjax: true
+math: true
 ---
 
 # なんもわからん

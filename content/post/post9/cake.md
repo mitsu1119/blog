@@ -2,7 +2,7 @@
 title: "CakeCTF2021 Crypto"
 date: 2021-09-06T12:01:57+09:00
 draft: false
-mathjax: true
+math: true
 ---
 
 # discrete log

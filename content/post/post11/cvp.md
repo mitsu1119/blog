@@ -2,7 +2,7 @@
 title: "Merry CryptoMath !!!!!"
 date: 2021-12-13T00:09:54+09:00
 draft: false
-mathjax: true
+math: true
 ---
 
 ---

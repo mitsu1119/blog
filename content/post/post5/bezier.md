@@ -3,7 +3,7 @@ title: "連結されたベジェ曲線状を等速で動こう"
 date: 2021-01-04T21:03:57+09:00
 tags: ["math", "algorithm"]
 draft: false
-mathjax: true
+math: true
 ---
 
 # はじめに
