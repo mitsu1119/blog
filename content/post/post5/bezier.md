@@ -72,10 +72,10 @@ $$f _ i (t) = \int ^ t _ 0 \left| \dfrac{d \mathbf{P} _ i}{dt} \right| dt$$
 とし、ベジェ曲線ズの始点から長さ $s$ の地点を含むセグメントの番号を $m$ とすれば
 
 $$
-\begin{eqnarray}
-s = f(t) &=& \sum^{m-1} _ {k=1} \int^1 _ 0 \left| \dfrac{d\mathbf{P} _ k}{dt}\right| dt + \int^t _ 0 \left| \dfrac{d\mathbf{P} _ m}{dt} \right| dt \\\\
-&=& \sum^{m-1} _ {k=1} l _ k + f _ m (t)
-\end{eqnarray}
+\begin{aligned}
+s = f(t) &= \sum^{m-1} _ {k=1} \int^1 _ 0 \left| \dfrac{d\mathbf{P} _ k}{dt}\right| dt + \int^t _ 0 \left| \dfrac{d\mathbf{P} _ m}{dt} \right| dt \\\\
+&= \sum^{m-1} _ {k=1} l _ k + f _ m (t)
+\end{aligned}
 $$
 
 と表せます。
