@@ -14,10 +14,7 @@ math: true
 もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．  
 とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．  
 
-<div class="github-card" data-user="mitsu1119" data-repo="Lattice_Reduction" data-width="500" data-height="" data-theme="default"></div>
 [![mitsu1119/Lattice_Reduction - GitHub](https://gh-card.dev/repos/mitsu1119/Lattice_Reduction.svg)](https://github.com/mitsu1119/Lattice_Reduction)
-<script src="https://cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-
 
 </div>
 <div class="section">
