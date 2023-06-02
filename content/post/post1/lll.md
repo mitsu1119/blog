@@ -1,7 +1,7 @@
 ---
 date: "2020-05-10 20:51:59 +0000 UTC"
 title: "LLLを理解するぞ"
-tags: ["lattice", "algorithm"]
+tags: ["lattice", "algorithm", "理解するぞ"]
 draft: false
 math: true
 ---
