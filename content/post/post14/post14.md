@@ -265,7 +265,7 @@ C_2 - sC_1 &= rD + M - srD_g
 \end{aligned}$$
 
 　sagemath で実装する場合は，HyperEllipticCurve(f, h) で超楕円曲線を生成し，C.jacobian() でヤコビアンを生成，J(GF(p)) で $\F$-有理点を作ってやりましょう．  
-　僕も実装してみた．かなりガバいのぜこの実装は全人類真似しないでください．
+　僕も実装してみた．かなりガバいのでこの実装は全人類真似しないでください．
 
 ```python
 # hcc.sage
