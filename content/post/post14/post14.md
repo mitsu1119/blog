@@ -265,6 +265,70 @@ C_2 - sC_1 &= rD + M - srD_g
 \end{aligned}$$
 
 　sagemath で実装する場合は，HyperEllipticCurve(f, h) で超楕円曲線を生成し，C.jacobian() でヤコビアンを生成，J(GF(p)) で $\F$-有理点を作ってやりましょう．  
-　それでは良き超楕円曲線ライフを！
+　僕も実装してみた．かなりガバいのぜこの実装は全人類真似しないでください．
 
-　ちなみに超楕円曲線暗号は安全な曲線の生成法や計算量に問題があり，まだ研究段階です……
+```python
+# hcc.sage
+
+# --------------------
+# 公開パラメータ
+# -------------------- 
+nbits = 64
+p = random_prime(2^nbits-1, false, 2^(nbits-1))
+Fp = GF(p)
+P.<x> = PolynomialRing(Fp)
+
+a, b, c = [Fp.random_element() for i in range(3)]
+f = x^5 + a*x^3 + b*x + c
+C = HyperellipticCurve(f)
+J = C.jacobian()(Fp)
+
+print("[Public Parameter]")
+print(f"p: {p}")
+print(f"C: {C}")
+print()
+
+# -------------------- 
+# 鍵生成
+# -------------------- 
+# この s と Dg の生成方法って大丈夫なんかな
+# なんか危ない気がする
+while True:
+	try:
+		x = Fp.random_element()
+		Dg = J(C.lift_x(x))
+		break
+	except:
+		pass
+
+# Weil の不等式から p^2 <= (sqrt(p) - 1)^(2g) <= J.order
+s = randint(2, p^2)
+D = s*Dg
+
+print("[Public Key]")
+print(f"D:  {D}")
+print(f"Dg: {Dg}")
+print()
+
+# -------------------- 
+# 暗号化
+# -------------------- 
+m = 8931
+M = J(C.lift_x(m))	# 平文のハッシュ化も悩みどころ．lift_x だと曲線上に平文がない可能性がある
+r = randint(2, p^2)
+C1 = r*Dg
+C2 = r*D + M
+print("[Cipher Text]")
+print(f"C1: {C1}")
+print(f"C2: {C2}")
+print()
+
+# -------------------- 
+# 複合
+# -------------------- 
+MM = C2 - s*C1
+print("[Decryption]")
+print(f"m: {-MM[0][0]}")
+```
+　それでは良き超楕円曲線ライフを！  
+　ちなみに超楕円曲線暗号は安全な曲線の生成法や計算量に問題があり，まだ研究段階です……なんもかんもヤコビアンの位数計算が悪い（気がする）
