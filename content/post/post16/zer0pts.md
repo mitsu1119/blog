@@ -83,3 +83,49 @@ for i in range(1, len(facs) + 1):
             r.sendline(str(abs(mul[1])).encode("utf-8"))
             r.interactive()
 ```
+
+Actually, sagemath has a method `Divisor`, which can be used to enumerate the factors of $N$ using `Divisor(ZZ[I](N))`.  
+Also sagemath has a method `two_squares`, which can be used to decompose $N$ into sum of square.  
+Furthermore, it seems that the Diophantine problem can be solved by simply applying the Diophantine problem solver in sympy.    
+
+I think easy_factoring was assumed to be easy in terms of difficulty, so there was little damage. But I regret that a non-intended solution was created that could be solved by just applying the tool.  
+At the beginning of the problem design, I was thinking of using the decomposition of the sum of squares to do collution attack with some system.  
+I wish I could have been more creative in that area. (I lacked the ability to create challenge...)
+
+## [crypto 178pts] Elliptic Ring RSA (27 solves)
+
+### Overview
+
+>RSA is hard over integer ring.  
+>What about RSA over elliptic curve ring (!?) 
+
+```python
+# q.sage
+(... omit)
+
+nbits = 8
+p = random_prime_bits(nbits)
+Fp = GF(p)
+
+a = Fp.random_element()
+b = Fp.random_element()
+E = EllipticCurve(Fp, [a, b])
+
+ER = EllipticRing(E)
+
+P = ER.encode(flag, 30)
+
+e = 13
+C = ER.pow(P, e)
+
+print(f"p: {p}")
+print(f"C: {C}")
+print(f"a: {a}")
+print(f"b: {b}")
+print(f"e: {e}")
+```
+The most important part of the given code is above.  
+Given a group ring constructed by coefficients $\mathbb{F}_p$ and basis $E(\mathbb{F}_p)$. (Sorry, the source code is complex to implement properly)  
+The task is to break the RSA on this group ring $\mathrm{ER}$.
+
+

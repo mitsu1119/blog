@@ -201,6 +201,11 @@ Can you decompose?
         <li><a href="#solution">Solution</a></li>
       </ol>
     </li>
+    <li><a href="#crypto-178pts-elliptic-ring-rsa-27-solves">[crypto 178pts] Elliptic Ring RSA (27 solves)</a>
+      <ol>
+        <li><a href="#overview-1">Overview</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -376,7 +381,74 @@ But, factoring $N$ may take a long time.  Note that we have to connect to the se
 </span></span><span class="line"><span class="cl">            <span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>Actually, sagemath has a method <code>Divisor</code>, which can be used to enumerate the factors of $N$ using <code>Divisor(ZZ[I](N))</code>.<br>
+Also sagemath has a method <code>two_squares</code>, which can be used to decompose $N$ into sum of square.<br>
+Furthermore, it seems that the Diophantine problem can be solved by simply applying the Diophantine problem solver in sympy.</p>
+<p>I think easy_factoring was assumed to be easy in terms of difficulty, so there was little damage. But I regret that a non-intended solution was created that could be solved by just applying the tool.<br>
+At the beginning of the problem design, I was thinking of using the decomposition of the sum of squares to do collution attack with some system.<br>
+I wish I could have been more creative in that area. (I lacked the ability to create challenge&hellip;)</p>
+<h2 id="crypto-178pts-elliptic-ring-rsa-27-solves">[crypto 178pts] Elliptic Ring RSA (27 solves)</h2>
+<h3 id="overview-1">Overview</h3>
+<blockquote>
+<p>RSA is hard over integer ring.<br>
+What about RSA over elliptic curve ring (!?)</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># q.sage</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="o">...</span> <span class="n">omit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">nbits</span> <span class="o">=</span> <span class="mi">8</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">random_prime_bits</span><span class="p">(</span><span class="n">nbits</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Fp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ER</span> <span class="o">=</span> <span class="n">EllipticRing</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">P</span> <span class="o">=</span> <span class="n">ER</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="mi">13</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="n">ER</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;p: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C: </span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;a: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;b: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;e: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
+</div><p>The most important part of the given code is above.<br>
+Given a group ring constructed by coefficients $\mathbb{F}_p$ and basis $E(\mathbb{F}_p)$. (Sorry, the source code is complex to implement properly)<br>
+The task is to break the RSA on this group ring $\mathrm{ER}$.</p>
+
 </section>
 
 
