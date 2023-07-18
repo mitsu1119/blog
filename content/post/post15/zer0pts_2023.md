@@ -12,7 +12,6 @@ $$
 \gdef\RB{\mathrm{RB} _ r}
 $$
 
-## はじめに
 チーム [zer0pts](https://zer0pts.com/) は，今年の 7/15 に [zer0pts ctf 2023](https://ctftime.org/event/1972/) を開催しました．
 多くの方々に参加していただいて感謝しております．
 

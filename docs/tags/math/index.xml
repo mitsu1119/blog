@@ -7,6 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <lastBuildDate>Tue, 18 Jul 2023 05:15:52 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/math/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>zer0pts ctf 2023 writeup (English)</title>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</link>
+        <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
+        
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
+        <description>&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+</description>
+        </item>
+        <item>
         <title>zer0pts ctf 2023 writeup（日本語）</title>
         <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
@@ -17,7 +26,6 @@
 \gdef\LB{\mathrm{LB} _ l}
 \gdef\RB{\mathrm{RB} _ r}
 $$&lt;/p&gt;
-&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;チーム &lt;a class=&#34;link&#34; href=&#34;https://zer0pts.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;zer0pts&lt;/a&gt; は，今年の 7/15 に &lt;a class=&#34;link&#34; href=&#34;https://ctftime.org/event/1972/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;zer0pts ctf 2023&lt;/a&gt; を開催しました．
