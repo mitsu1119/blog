@@ -10,7 +10,7 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
 
 <link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='連結されたベジェ曲線状を等速で動こう'>
+<link rel="stylesheet" href="/blog/scss/style.min.4f17306c8b3b6187d853799b3e3ccff2d8efbb552fdddd9ee6c95cc99e893156.css"><meta property='og:title' content='連結されたベジェ曲線状を等速で動こう'>
 <meta property='og:description' content='はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。
 準備 まずは制御点 $\mathbf{B} _ 1, \mathbf{B} _ 2, \mathbf{B} _ 3, \mathbf{B} _ 4$ によって表されるベジェ曲線 $\mathbf{P}(t)$ を次式で定義しておきます。 $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 &#43; 3t(1-t)^2 \mathbf{B} _ 2 &#43; 3t^2(1-t) \mathbf{B} _ 3 &#43; t^3 \mathbf{B} _ 4\ \ \ (0 \leq t \leq 1)$$
 $t = 0$ で始点、$t = 1$ で終点の座標を取ります。
