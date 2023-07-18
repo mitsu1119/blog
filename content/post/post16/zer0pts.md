@@ -327,3 +327,49 @@ for _, coef in spoints:
 print()
 ```
 
+## [crypto 226pts] moduhash (16 solves)
+### Overview
+
+>This is related to a base of the theory of elliptic curves!
+
+```python
+CC = ComplexField(256)
+for _ in range(100):
+	n = randint(32, 64)
+	h1 = to_hash(gen_random_hash(n))
+
+	zi = CC.random_element()
+	print(f"zi	: {zi}")
+	print(f"h1(zi): {hash(zi, h1)}")
+
+	h2 = input("your hash> ")
+
+	if not hash_eq(h1, h2, CC):
+		print("your hash is incorrect")
+		quit()
+
+print(flag)
+```
+
+The most important part of the given code is above.  
+Let $S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$ and $T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ be the maps.  
+There is also a secret hash function $h$, which consists of random composition of $S$ and $T$.  
+This challenge is to recover $h$ given some $z \in \mathbb{C}$ and its hash $h(z)$.
+
+### Solution
+At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.  
+Modular group $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ is a group action of $H$.  
+Since $H$ can be classified by orbits due to this action, so we can consider its orbit space $\Gamma \backslash H$. And, if the representatives are picked properly, this can be identify with fundamental domain $F$ defined below.
+$$
+F := \left\lbrace \tau \in H \mid |\tau| \geq 1,\ -1/2 < \mathrm{Re}(\tau) \leq 1/2 \right\rbrace
+$$
+In other words, the following proposition holds.
+$$
+\forall \tau \in H.\ \exists \gamma \in \Gamma\ s.t.\ \gamma (\tau) \in F.
+$$
+
+Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.  
+Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.  
+Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.  
+
+![](post16/diagram.png)

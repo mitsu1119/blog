@@ -207,6 +207,12 @@ Can you decompose?
         <li><a href="#solution-1">Solution</a></li>
       </ol>
     </li>
+    <li><a href="#crypto-226pts-moduhash-16-solves">[crypto 226pts] moduhash (16 solves)</a>
+      <ol>
+        <li><a href="#overview-2">Overview</a></li>
+        <li><a href="#solution-2">Solution</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -829,7 +835,76 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="crypto-226pts-moduhash-16-solves">[crypto 226pts] moduhash (16 solves)</h2>
+<h3 id="overview-2">Overview</h3>
+<blockquote>
+<p>This is related to a base of the theory of elliptic curves!</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">CC</span> <span class="o">=</span> <span class="n">ComplexField</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">n</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">h1</span> <span class="o">=</span> <span class="n">to_hash</span><span class="p">(</span><span class="n">gen_random_hash</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">zi</span> <span class="o">=</span> <span class="n">CC</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;zi	: </span><span class="si">{</span><span class="n">zi</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;h1(zi): </span><span class="si">{</span><span class="nb">hash</span><span class="p">(</span><span class="n">zi</span><span class="p">,</span> <span class="n">h1</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">h2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;your hash&gt; &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="ow">not</span> <span class="n">hash_eq</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">CC</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;your hash is incorrect&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">quit</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
+</div><p>The most important part of the given code is above.<br>
+Let $S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$ and $T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ be the maps.<br>
+There is also a secret hash function $h$, which consists of random composition of $S$ and $T$.<br>
+This challenge is to recover $h$ given some $z \in \mathbb{C}$ and its hash $h(z)$.</p>
+<h3 id="solution-2">Solution</h3>
+<p>At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.<br>
+Modular group $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ is a group action of $H$.<br>
+Since $H$ can be classified by orbits due to this action, so we can consider its orbit space $\Gamma \backslash H$. And, if the representatives are picked properly, this can be identify with fundamental domain $F$ defined below.
+$$
+F := \left\lbrace \tau \in H \mid |\tau| \geq 1,\ -1/2 &lt; \mathrm{Re}(\tau) \leq 1/2 \right\rbrace
+$$
+In other words, the following proposition holds.
+$$
+\forall \tau \in H.\ \exists \gamma \in \Gamma\ s.t.\ \gamma (\tau) \in F.
+$$</p>
+<p>Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.<br>
+Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.<br>
+Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.</p>
+<p><img src="/blog/post16/diagram.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+
 </section>
 
 
