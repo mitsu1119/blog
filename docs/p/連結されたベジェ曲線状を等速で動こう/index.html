@@ -27,6 +27,34 @@ $t = 0$ で始点、$t = 1$ で終点の座標を取ります。
 $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \mathbf{P} _ {1}(t) &amp;amp; if\ 0 &amp;lt; t \leq 1\\ \mathbf{P} _ {2}(t - 1) &amp;amp; if \ 1 &amp;lt; \leq 2\\ \vdots &amp;amp; \vdots \\ \mathbf{P} _ {n}(t - n &#43; 1) &amp;amp; if\ n - 1 &amp;lt; t \leq n\\ \end{cases} $$">
 
 
+<style>
+  :root {
+    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
+      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
+      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
+
+    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
+    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
+      var(--zh-font-family), sans-serif;
+    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
+      'Courier New', monospace;
+  }
+</style>
+
+<script>
+  (function () {
+    const customFont = document.createElement('link');
+    customFont.href =
+      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
+
+    customFont.type = 'text/css';
+    customFont.rel = 'stylesheet';
+
+    document.head.appendChild(customFont);
+  })();
+</script>
+
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

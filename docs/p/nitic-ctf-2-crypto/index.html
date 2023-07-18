@@ -36,6 +36,34 @@ ord_xor フラグの各文字を xor 演算で他の文字に変換した結果�
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 def xor(c: str, n: int) -&amp;gt; str: temp = ord(c) for _ in range(n): temp ^= n return chr(temp) alp = &amp;#34;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_!">
 
 
+<style>
+  :root {
+    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
+      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
+      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
+
+    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
+    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
+      var(--zh-font-family), sans-serif;
+    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
+      'Courier New', monospace;
+  }
+</style>
+
+<script>
+  (function () {
+    const customFont = document.createElement('link');
+    customFont.href =
+      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
+
+    customFont.type = 'text/css';
+    customFont.rel = 'stylesheet';
+
+    document.head.appendChild(customFont);
+  })();
+</script>
+
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
