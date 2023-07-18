@@ -3,11 +3,13 @@ title: "zer0pts ctf 2023 writeup（日本語）"
 date: "2023-07-18T05:15:52+09:00"
 math: true
 tags: ["elliptic curve", "math", "writeup"]
-draft: true
+draft: false
 ---
 
 $$
 \gdef\Fp {\mathbb{F} _ p}
+\gdef\LB{\mathrm{LB} _ l}
+\gdef\RB{\mathrm{RB} _ r}
 $$
 
 ## はじめに
@@ -512,3 +514,216 @@ p.interactive()
 
 実は元々 moduhash が warmup になる予定でした．  
 天才 ptr-yudai 氏が SquareRNG を作ってくれていなかったら，今頃僕は責任を取って切腹することになっていたでしょう．
+
+## [crypto 340pts] Unlimited Braid Works (6 solves)
+### Overview
+>This is probably hard problem.
+>Is this commutative or non-commutative?
+
+```python
+(...omit)
+
+n = int(input("Input the security parameter> "))
+if n < 16:
+	print("The security parameter is too small !!")
+	sys.exit(1)
+
+if (n & 1) == 1:
+	print("The security parameter must be even !!")
+	sys.exit(1)
+
+print(f"n: {n}")
+
+## ------------------
+## Key Generation
+## ------------------
+
+Bn = BraidGroup(n)
+gs = Bn.gens()
+
+K = 32
+u = random.choices(gs, k=K)
+
+# u must be twisted
+if not gs[n // 2 - 1] in u:
+	u[randint(0, K - 1)] = gs[n // 2 - 1]
+
+u = prod(u)
+print(f"u: {prod(u.right_normal_form())}")
+
+al = prod(random.choices(gs[: n//2-2], k=K))
+v = al * u * al^-1
+
+print(f"v: {prod(v.right_normal_form())}")
+
+## ------------------
+## Encryption
+## ------------------
+
+pad_length = 64 - len(flag)
+left_length = random.randint(0, pad_length)
+pad1 = "".join(random.choices(string.ascii_letters, k=left_length)).encode("utf-8")
+pad2 = "".join(random.choices(string.ascii_letters, k=pad_length-left_length)).encode("utf-8")
+flag = pad1 + flag + pad2
+
+br = prod(random.choices(gs[n//2 + 1 :], k=K))
+w = br * u * br^-1
+c = br * v * br^-1
+h = hash(prod(c.right_normal_form()))
+
+d = []
+for i in range(len(h)):
+	d.append(chr(flag[i] ^^ h[i]))
+d = bytes_to_long("".join(d).encode("utf-8"))
+
+print(f"w: {prod(w.right_normal_form())}")
+print(f"d: {d}")
+```
+
+上のようなコードが与えられます．  
+これは Braid群を利用した非可換な暗号システムで，Braid群の Conjugacy Problem を基にしています．（問題文の probably hard は conjugacy problem を指している）  
+
+$B _ n$ を$n$ 本の組み紐による Braid群とし，そのうち左側 $l$ 本の組み紐の集合を $\LB$，右側 $r$ 本の組み紐の集合を $\RB$ とします．  
+また $a _ l \in \LB$ を秘密鍵として，公開鍵を $v := a _ l u a _ l^{-1}$ とします．
+
+$m$ をメッセージとし，さらに $H \colon B _ n \to \left\lbrace 0, 1 \right\rbrace^{k}$ をシリアライズ用の関数とします．  
+このとき暗号化の処理は，ランダムな組み紐 $b _ r \in \RB$ を選び $w := b _ r u b _ r^{-1}$，$d := H(b _ r v b _ r ^{-1}) \oplus$ を計算し，最後に暗号文を $(w, d)$ とするものになっています．
+
+### Solution
+
+もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
+$$
+\begin{aligned}
+H(a_l w a_l^{-1}) \oplus d &= H(a_l b_r u b_r^{-1} a_l^{-1})\\\\ 
+&= H(b_r v b_r^{-1}) \oplus H(b_r v b_r^{-1}) \oplus m\\\\ 
+&= m
+\end{aligned}
+$$
+
+しかし当然 $a _ l$ はわかりません．  
+
+この暗号システムは正しく動いているように見えますが，実は $u$ の生成部分に脆弱性があります．  
+というのも，セキュリティパラメータ $n$ が十分に大きいとき $u$ を構成するための Artin generator がスパースに選ばれます．（ただし $n$ が大きすぎるとサーバ側での暗号化処理に時間がかかりすぎてしまうことに注意してください．問題の解法には全く影響がないため，コンテスト中に `alarm(30)` を追加して修正しました）  
+そのため $z$ を $\LB$ と $\RB$ を跨ぐような Artin Generator とすると，$x_1 \in \LB$，$x_2 \in RB$ で次を満たすようなものが存在する確率が非常に高くなります．
+$$
+\begin{cases}
+u = x_1 x_2 z\\\\ 
+z \text{ is commutive with } a_l,b_r,x_1,x_2
+\end{cases}
+$$
+したがって
+$$
+\begin{aligned}
+v &= a_l u a_l^{-1}\\\\ 
+&= a_l (x_1 x_2 z) a_l^{-1}\\\\ 
+&= (a_l x_1 a_l^{-1}) x_2 z
+\end{aligned}
+$$と
+$$
+\begin{aligned}
+w &= b_r u b_r^{-1}\\\\ 
+&= b_r (x_1 x_2 z) b_r^{-1}\\\\ 
+&= x_1 (b_r x_2 b_r^{-1}) z
+\end{aligned}
+$$
+により次の式が得られます．
+$$
+\begin{aligned}
+a_l x_1 a_l^{-1} &= v z^{-1} x_2^{-1}\\\\ 
+b_r x_2 b_r^{-1} &= x_1^{-1} w z^{-1}
+\end{aligned}
+$$
+
+よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ とすることで複合することができます．
+
+![](post15/neco.jpg)
+
+ソルバどぺ
+```python
+from pwn import *
+import re
+import sys
+from Crypto.Util.number import long_to_bytes
+
+sys.setrecursionlimit(30000)
+
+def hash(b):
+	return hashlib.sha512(str(b).encode("utf-8")).digest()
+
+p = process(["sage", "./server.sage"])
+
+p.sendline(b"50")
+
+log.info(p.recvuntil(b": "))
+
+n = int(p.recvline().strip())
+log.info(f"n: {n}")
+
+Bn = BraidGroup(n)
+gs = Bn.gens()
+
+def braid_eval(x):
+	res = gs[0] / gs[0]
+	x = x.split("*")
+	for i in x:
+		res *= sage_eval(i, locals={"gs": gs})
+	return res
+
+log.info(p.recvuntil(b": "))
+u = p.recvuntil(b": ")[:-3].strip()
+u = re.sub("s([0-9]+)", "gs[\\1]", u.decode())
+u = sage_eval(u, locals={"gs": gs})
+log.info(f"u: {u}")
+
+v = p.recvuntil(b": ")[:-3].strip()
+v = re.sub("\\\\\n", "", v.decode())
+v = re.sub("s([0-9]+)", "gs[\\1]", v)
+log.info(f"{len(v)}")
+v = sage_eval(v, locals={"gs": gs})
+log.info(f"v: {v}")
+
+w = p.recvuntil(b": ")[:-3].strip()
+w = re.sub("\\\\\n", "", w.decode())
+w = re.sub("s([0-9]+)", "gs[\\1]", w)
+w = sage_eval(w, locals={"gs": gs})
+# log.info(f"w: {w}")
+
+d = int(p.recvline().strip())
+log.info(f"d: {d}")
+
+factors = []
+for i in u.Tietze():
+	factors.append(i - 1)
+log.info(f"factors: {factors}")
+
+x1 = gs[0] / gs[0]
+x2 = gs[0] / gs[0]
+cnt = 0
+for i in factors:
+	if i < (n // 2) - 1:
+		x1 *= gs[i]
+	elif i >= (n // 2) + 1:
+		x2 *= gs[i]
+	else:
+		cnt += 1
+z = gs[n // 2 - 1]^cnt
+print(x1)
+print(x2)
+print(z)
+print(x1 * x2 * z == u)
+
+r1 = v * z^-1 * x2^-1
+r2 = x1^-1 * w * z^-1
+r = r1 * r2 * z
+r = prod(r.right_normal_form())
+r = hash(r)
+
+dd = list(long_to_bytes(d).decode())
+xx = []
+for i in range(len(r)):
+	xx.append(chr(ord(dd[i]) ^^ r[i]))
+flag = "".join(xx).encode("utf-8")
+log.info(f"flag: {flag}")
+
+p.interactive()
+```
