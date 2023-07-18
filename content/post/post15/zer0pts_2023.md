@@ -322,3 +322,193 @@ for _, coef in spoints:
 	print(chr(coef), end="")
 print()
 ```
+
+## [crypto 226pts] moduhash (16 solves)
+### Overview
+
+>This is related to a base of the theory of elliptic curves!
+
+```python
+CC = ComplexField(256)
+for _ in range(100):
+	n = randint(32, 64)
+	h1 = to_hash(gen_random_hash(n))
+
+	zi = CC.random_element()
+	print(f"zi	: {zi}")
+	print(f"h1(zi): {hash(zi, h1)}")
+
+	h2 = input("your hash> ")
+
+	if not hash_eq(h1, h2, CC):
+		print("your hash is incorrect")
+		quit()
+
+print(flag)
+```
+
+与えられたソースコードの中で重要なのは上の部分です．
+
+$S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$，$T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ とします．  
+また秘匿されたハッシュ関数 $h$ があり，これは $S$ と $T$ のランダムな関数合成によって構成されています．  
+問題としては，ある $z \in \mathbb{C}$ とそのハッシュによる出力 $h(z)$ が与えられるので $h$ を復元してくださいという問題です．
+
+### Solution
+
+まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．  
+モジュラー群 $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ は $H$ に作用します．  
+この作用による軌道で $H$ を類別できるためその軌道空間 $\Gamma \backslash H$ を考えることができ，そこからうまく代表元を取ってくれば次で定義される基本領域 $F$ と同一視することができます．
+$$
+F := \left\lbrace \tau \in H \mid |\tau| \geq 1,\ -1/2 < \mathrm{Re}(\tau) \leq 1/2 \right\rbrace
+$$
+つまり次の命題が成り立ちます．
+$$
+\forall \tau \in H.\ \exists \gamma \in \Gamma\ s.t.\ \gamma (\tau) \in F.
+$$
+
+また後述する $\Gamma$ の生成元から $h \in \Gamma$ なので，$\tau$ と $h(\tau)$ の軌道について $\Gamma \tau = \Gamma h(\tau)$ が成り立ちます．  
+したがって $\tau, h(\tau) \in H$ が与えられたとき，$\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$ となる $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ を見つけることができれば $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ となります．  
+ここまでくればあとは簡単で，$\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$ となるため目的のハッシュ関数を計算することができます．
+
+![](post15/diagram.png)
+
+あとは $H$ の元を $F$ に移す $\gamma$ ですが，これは $\Gamma$ のある性質から求めることができます．
+$S,T$ を $H$ への作用と見ると
+$$
+ \begin{array}{l}
+S=\begin{pmatrix}
+0 & -1\\\\
+1 & 0
+\end{pmatrix},\\ 
+T=\begin{pmatrix}
+1 & 1\\\\
+0 & 1
+\end{pmatrix}
+\end{array}
+$$
+と表現できます．実は $\Gamma$ は $S,T$ によって生成される，つまり $\Gamma = \left< S, T \right>$ と書けることが知られています．（よって $h \in \Gamma$）
+
+この事実により，$\tau \in H$ が与えられたとき次のアルゴリズムで $F$ に写すことができます．
+1. $\mathrm{Re}(\tau) > 0.5$ なら $\tau$ に $T^{-1}$ を作用，$\mathrm{Re}(\tau) < -0.5$ なら $\tau$ に $T$ を作用させる
+2. $|\mathrm{Re}(\tau)| \leq 0.5$ になるまで step 1 を繰り返す（実部を $F$ に合わせる）
+3. $|\tau| < 1$ のとき $\tau$ に $S$ を作用させる（ノルムを合わせる）
+4. $\tau \in F$ でなければ step 1 に戻る
+
+ということでこのアルゴリズムを用いれば，上半平面について問題を解くことができます．（ただし $T^{-1} = STSTS$ であることに注意してください）  
+また下半平面については今までの $H$ の議論を $-H$ に取り替えるだけなので同じ方法で解くことができます．
+
+ソルバどぺ
+
+```python
+import math
+from pwn import *
+
+def S(z):
+	return -1/z
+
+def T(z):
+	return z + 1
+
+def U(z):
+	return z - 1
+
+def gen_random_hash(n):
+	r = bytes([getrandbits(8) for _ in range(0, n)])
+	return r
+
+def to_hash(st):
+	res = ""
+	for s in st:
+		sts = bin(s)[2:].zfill(8)
+		for x in sts:
+			if x == "0":
+				res += "S"
+			else:
+				res += "T"
+	return res
+
+def hash_inv(st):
+	res = ""
+	for s in st:
+		if s == "S":
+			res = "S" + res
+		else:
+			res = "U" + res
+	res = res.replace("U", "STSTS").replace("SS", "").replace("TSTSTS", "")
+	return res
+
+def hash(z, h):
+	res = z
+	for s in h:
+		if s == "S":
+			res = S(res)
+		elif s == "T":
+			res = T(res)
+		elif s == "U":
+			res = U(res)
+		else:
+			exit()
+	return res
+
+def hash_eq(h1, h2, CC):
+	for _ in range(100):
+		zr = CC.random_element()
+		h1zr = hash(zr, h1)
+		h2zr = hash(zr, h2)
+		print(f"abs: {abs(h1zr - h2zr)}")
+		if abs(h1zr - h2zr) > 1e-15:
+			return False
+	return True
+
+def in_fundamental(z):
+	if -0.5 <= z.real() and z.real() <= 0.5 and abs(z) >= 1:
+		return True
+	return False
+
+def gen_to_fundamental_hash(z):
+	res = ""
+	while True:
+		while True:
+			if z.real() > 0.5:
+				res += "U"
+				z = U(z)
+			elif z.real() < -0.5:
+				res += "T"
+				z = T(z)
+			else:
+				break
+		if abs(z) < 1:
+			res += "S"
+			z = S(z)
+		if in_fundamental(z):
+			break
+	res = res.replace("U", "STSTS").replace("SS", "").replace("TSTSTS", "")
+	return res
+
+p = process(["sage", "./server.sage"])
+
+CC = ComplexField(256)
+for _ in range(100):
+	zi = CC(eval(p.recvline().decode("utf-8").strip().split(": ")[1]))
+	h1zi = CC(eval(p.recvline().decode("utf-8").strip().split(": ")[1]))
+	p.recvuntil("your hash> ")
+
+	print("zi:", zi)
+	print("h1zi:", h1zi)
+
+	hz = gen_to_fundamental_hash(zi)
+	hh1zi = gen_to_fundamental_hash(h1zi)
+	hh1zi_inv = hash_inv(hh1zi)
+
+	# print("hz:", hz)
+	# print("hh1zi_inv:", hh1zi_inv)
+
+	res = hz + hh1zi_inv
+
+	p.sendline(res.encode("utf-8"))
+
+p.interactive()
+```
+
+実は元々 moduhash が warmup になる予定でした．  
+天才 ptr-yudai 氏が SquareRNG を作ってくれていなかったら，今頃僕は責任を取って切腹することになっていたでしょう．
