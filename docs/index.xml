@@ -105,6 +105,7 @@ E_A @&amp;gt;\phi_B&amp;rsquo; &amp;gt;&amp;gt; E_{AB} \end{CD}$$&lt;/p&gt;
 &lt;li&gt;「SIDHは解読された」という報告が昨年ありました. 2023年3月時点では更に進化しているようです. 応募時点までで, SIDHの解読手法にはどのようなものがあるのでしょうか.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;csidh-と-sidh-の違い&#34;&gt;CSIDH と SIDH の違い&lt;/h3&gt;
 &lt;p&gt;CSIDH は SIDH と同じ超特異楕円曲線の同型類を利用したアルゴリズムですが，SIDH とは異なり計算効率の都合上，基本的には Montgomery曲線のみを使用します (Edwards曲線など他のタイプのものを利用した構成法の研究もされています [1] ) ．&lt;/p&gt;
 &lt;p&gt;Montgomery曲線は $E:y^2 = x^3+Ax^2 +x$ と表されるもので，後述しますが CSIDH の公開鍵は曲線のみなのでパラメータ $A$ のみとなります．そのため他ポスト量子暗号と比べて公開鍵のサイズが小さいことが利点であった SIDH よりも，さらに公開鍵が小さく [2]，64バイトで十分なセキュリティレベルを確保できます．&lt;/p&gt;
@@ -325,6 +326,7 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Q1で選択した暗号方式を実装してください.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;sidh-の実装&#34;&gt;SIDH の実装&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -497,6 +499,7 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;あなたが面白いと思った暗号方式を一つ取り上げ, それを説明・実装してください.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;p&gt;非可換群に関連する暗号はどんなものがあるのか気になったので調べてみると braid群を利用した暗号があったため，それについて勉強してみました．&lt;/p&gt;
 &lt;h3 id=&#34;braid群&#34;&gt;braid群&lt;/h3&gt;
 &lt;p&gt;braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．&lt;/p&gt;
@@ -745,6 +748,7 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; \ ( |
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;また, その暗号が安全かどうかを説明し, 解読手法が存在するなら, それを実装してみてください.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;暗号の安全性&#34;&gt;暗号の安全性&lt;/h3&gt;
 &lt;p&gt;braid暗号は，braid群の conjugacy problem の困難性と等価であると考えられており，また conjugacy problem の多項式時間解法はこの暗号が提案された当初は発見されていませんでした [2] ．
 conjugacy problem は 2018 年の時点でもまだ難しいようです [5] ．&lt;/p&gt;
@@ -1038,6 +1042,14 @@ $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} &amp;amp; =vz^{-1} x_{2}^{-1}\\ b_{r} x_
 [4] Chris Gatopoulos，&amp;ldquo;Braid Group Cryptography&amp;rdquo;&lt;br&gt;
 [5] Maxim Prasolov，&amp;ldquo;Small braids having a big Ultra Summit Set&amp;rdquo;&lt;br&gt;
 [6] 前田有宏，&amp;ldquo;ブレイド群を利用した公開鍵暗号系の実装&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;q4&#34;&gt;Q4&lt;/h2&gt;
+&lt;p&gt;**自己アピールできることがあれば, ここに書いてください. **&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;恥ずかしいので非公開です！！！&lt;br&gt;
+CTF をやっていたこと，今まで勉強してきた暗号関連の数学のこと（BKZ，Schoof のアルゴリズム，超楕円曲線暗号など），コンパイラやデバッガ，RISC-V 自作の話などブワーーーって書きました．&lt;/p&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
+&lt;p&gt;いかかでしたか？（迫真）&lt;/p&gt;
+&lt;p&gt;ゼミによっては簡潔にまとまっているものを評価するところもあるようなので，僕のこの記事が参考になるかはちょっと微妙です……．ただ何を書けばいいか困っている方などはぜひ参考にしてみてください．&lt;/p&gt;
 </description>
         </item>
         <item>
