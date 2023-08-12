@@ -1128,9 +1128,9 @@ $$\begin{cases}u=x_{1} x_{2} z &amp; \\  z\ は\ a_{l} ,b_{r} ,x_{1} ,x_{2}\ と
 となる $x_1,x_2,z$ が見つかってしまうと脆弱となります．</p>
 <p>というのも，
 $$\begin{aligned}a_{l} wa_{l}^{-1} &amp; =a_{l} b_{r} ub_{r}^{-1} a_{l}^{-1}\\  &amp; =a_{l} b_{r}( x_{1} x_{2} z) b_{r}^{-1} a_{l}^{-1}\\  &amp; =a_{l} b_{r} x_{1} x_{2} b_{r}^{-1} a_{l}^{-1} z\\  &amp; =a_{l} b_{r} x_{1} a_{l}^{-1} x_{2} b_{r}^{-1} z\\  &amp; =\left( a_{l} x_{1} a_{l}^{-1}\right)\left( b_{r} x_{2} b_{r}^{-1}\right) z \end{aligned}$$
-となり，ここで
-$$\begin{aligned}v &amp; =a_{l} ua_{l}^{-1}\ &amp; =a_{l}( x_{1} x_{2} z) a_{l}^{-1}\ &amp; =\left( a_{l} x_{1} a_{l}^{-1}\right) x_{2} z\ &amp; \w &amp; =b_{r} ub_{r}^{-1}\ &amp; =b_{r}( x_{1} x_{2} z) b_{r}^{-1}\ &amp; =x_{1}\left( b_{r} x_{2} b_{r}^{-1}\right) z\end{aligned}$$
-なので
+となり，ここで</p>
+<p>$$\begin{aligned}v &amp; =a_{l} ua_{l}^{-1}\\ &amp; =a_{l}( x_{1} x_{2} z) a_{l}^{-1}\\ &amp; =\left( a_{l} x_{1} a_{l}^{-1}\right) x_{2} z\\ &amp; \\ w &amp; =b_{r} ub_{r}^{-1}\\ &amp; =b_{r}( x_{1} x_{2} z) b_{r}^{-1}\\ &amp; =x_{1}\left( b_{r} x_{2} b_{r}^{-1}\right) z\end{aligned}$$</p>
+<p>なので
 $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} &amp; =vz^{-1} x_{2}^{-1}\\ b_{r} x_{2} b_{r}^{-1} &amp; =x_{1}^{-1} wz^{-1}\end{aligned}$$
 となります．</p>
 <p>よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ と言う感じで $(v,w,z,x_1,x_2)$ から計算できてしまうため，これを使って $H(a_lwa_l^{-1}) + d$ というように既定の方法で複合できてしまいます．</p>

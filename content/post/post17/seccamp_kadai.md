@@ -593,7 +593,9 @@ $$\begin{cases}u=x_{1} x_{2} z & \\\\  z\ は\ a_{l} ,b_{r} ,x_{1} ,x_{2}\ と�
 というのも，
 $$\begin{aligned}a_{l} wa_{l}^{-1} & =a_{l} b_{r} ub_{r}^{-1} a_{l}^{-1}\\\\  & =a_{l} b_{r}( x_{1} x_{2} z) b_{r}^{-1} a_{l}^{-1}\\\\  & =a_{l} b_{r} x_{1} x_{2} b_{r}^{-1} a_{l}^{-1} z\\\\  & =a_{l} b_{r} x_{1} a_{l}^{-1} x_{2} b_{r}^{-1} z\\\\  & =\left( a_{l} x_{1} a_{l}^{-1}\right)\left( b_{r} x_{2} b_{r}^{-1}\right) z \end{aligned}$$
 となり，ここで
-$$\begin{aligned}v & =a_{l} ua_{l}^{-1}\\ & =a_{l}( x_{1} x_{2} z) a_{l}^{-1}\\ & =\left( a_{l} x_{1} a_{l}^{-1}\right) x_{2} z\\ & \\w & =b_{r} ub_{r}^{-1}\\ & =b_{r}( x_{1} x_{2} z) b_{r}^{-1}\\ & =x_{1}\left( b_{r} x_{2} b_{r}^{-1}\right) z\end{aligned}$$
+
+$$\begin{aligned}v & =a_{l} ua_{l}^{-1}\\\\ & =a_{l}( x_{1} x_{2} z) a_{l}^{-1}\\\\ & =\left( a_{l} x_{1} a_{l}^{-1}\right) x_{2} z\\\\ & \\\\ w & =b_{r} ub_{r}^{-1}\\\\ & =b_{r}( x_{1} x_{2} z) b_{r}^{-1}\\\\ & =x_{1}\left( b_{r} x_{2} b_{r}^{-1}\right) z\end{aligned}$$
+
 なので
 $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} & =vz^{-1} x_{2}^{-1}\\\\ b_{r} x_{2} b_{r}^{-1} & =x_{1}^{-1} wz^{-1}\end{aligned}$$
 となります．
