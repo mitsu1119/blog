@@ -8,7 +8,7 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
 
 <link rel='canonical' href='https://mitsu1119.github.io/blog/p/cakectf2021-crypto/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.4f17306c8b3b6187d853799b3e3ccff2d8efbb552fdddd9ee6c95cc99e893156.css"><meta property='og:title' content='CakeCTF2021 Crypto'>
+<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='CakeCTF2021 Crypto'>
 <meta property='og:description' content='discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。
 フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
 $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。'>
@@ -567,7 +567,7 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$</p>
     
     <section class="powerby">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
