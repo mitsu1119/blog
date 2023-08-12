@@ -515,10 +515,10 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;/figure&gt;
 
 &lt;p&gt;組み紐の演算を想像すれば，次の性質が成り立つことが確かめられます．
-$$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; \ ( |i-j|&amp;gt;1)\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &amp;amp;\ ( |i-j| =1) \end{cases}$$&lt;/p&gt;
+$$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; \ ( |i-j|&amp;gt;1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &amp;amp;\ ( |i-j| =1) \end{cases}$$&lt;/p&gt;
 &lt;p&gt;この Artin Generator $\sigma_1,\sigma_2,\cdots,\sigma_{n-1}$ で braid群を生成することができます [1] ．&lt;/p&gt;
 &lt;p&gt;上の性質がまさに $B_n$ の基本関係となり，これによって finite presentation が与えられます．&lt;/p&gt;
-&lt;p&gt;$$B_{n} =\left&amp;lt; \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; &amp;amp; \ ( |i-j|&amp;gt;1)\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &amp;amp; &amp;amp; \ ( |i-j| =1)\end{aligned}\right&amp;gt;$$&lt;/p&gt;
+&lt;p&gt;$$B_{n} =\left&amp;lt; \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; &amp;amp; \ ( |i-j|&amp;gt;1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &amp;amp; &amp;amp; \ ( |i-j| =1)\end{aligned}\right&amp;gt;$$&lt;/p&gt;
 &lt;p&gt;数式処理ソフトで braid群を扱うには，例えば自由群を Artin Generator の関係式で剰余をとることなどで使用できます．また sagemath には BraidGroup() というメソッドがあり，これで比較的簡単に計算が行えます．&lt;/p&gt;
 &lt;h3 id=&#34;braid暗号-23&#34;&gt;braid暗号 [2][3]&lt;/h3&gt;
 &lt;p&gt;braid暗号は，braid群 $B_n$ の部分群，$LB_l,RB_r$ によって構成されます．&lt;/p&gt;

@@ -415,13 +415,13 @@ Artin Generator $\sigma_i\ (0 \leq i < n)$ は，$i$ 番から $i+1$ 番に紐�
 {{< figure src="/blog/post17/artin.png" class="center" width="30%" >}}
 
 組み紐の演算を想像すれば，次の性質が成り立つことが確かめられます．
-$$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} & \ ( |i-j|>1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &\ ( |i-j| =1) \end{cases}$$
+$$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} & \ ( |i-j|>1)\\\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &\ ( |i-j| =1) \end{cases}$$
 
 この Artin Generator $\sigma_1,\sigma_2,\cdots,\sigma_{n-1}$ で braid群を生成することができます [1] ．
 
 上の性質がまさに $B_n$ の基本関係となり，これによって finite presentation が与えられます．
 
-$$B_{n} =\left< \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} & & \ ( |i-j|>1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} & & \ ( |i-j| =1)\end{aligned}\right>$$
+$$B_{n} =\left< \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} & & \ ( |i-j|>1)\\\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} & & \ ( |i-j| =1)\end{aligned}\right>$$
 
 数式処理ソフトで braid群を扱うには，例えば自由群を Artin Generator の関係式で剰余をとることなどで使用できます．また sagemath には BraidGroup() というメソッドがあり，これで比較的簡単に計算が行えます．
 
