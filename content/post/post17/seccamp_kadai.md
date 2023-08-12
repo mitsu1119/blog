@@ -2,7 +2,7 @@
 title: "セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)"
 date: 2023-08-12T20:40:36+09:00
 math: true
-draft: true
+draft: false
 ---
 
 $$
@@ -282,3 +282,276 @@ $l_A^{e_A}$ と $l_B^{e_B}$ の数値のバランスが悪いとき，特に $l_
 [12] Damien Robert，"Breaking SIDH in polynomial time"  
 [13] Luciano Maino，Chloe Martindale1，Lorenz Panny，Giacomo Pope，Benjamin Wesolowski，"A Direct Key Recovery Attack on SIDH"  
 [14] Jean-Marc Couveignes，"Hard Homogeneous"  
+
+## Q2
+> **Q1で選択した暗号方式を実装してください.**
+
+### SIDH の実装
+
+```python
+# sidh.sage
+
+# Public Parameters
+(la, ea), (lb, eb) = (2, 91), (3, 57)  # $IKEp182
+p = la^ea * lb^eb - 1
+assert is_prime(p)
+
+Fp2 = GF(p^2)
+E = EllipticCurve(Fp2, [1, 0])
+Pa, Qa = lb^eb * E.gen(0), lb^eb * E.gen(1)
+Pb, Qb = la^ea * E.gen(0), la^ea * E.gen(1)
+
+# Alice
+ma = randrange(0, la^ea)
+na = randrange(0, la^ea)
+phi = E.isogeny(ma * Pa + na * Qa, algorithm="factored")
+Ua, Va = phi(Pb), phi(Qb)
+Ea = phi.codomain()
+
+# Bob
+mb = randrange(0, lb^ea)
+nb = randrange(0, lb^ea)
+phi = E.isogeny(mb * Pb + nb * Qb, algorithm="factored")
+Ub, Vb = phi(Pa), phi(Qa)
+Eb = phi.codomain()
+
+# shared key
+shared_a = Eb.isogeny(ma * Ub + na * Vb, algorithm="factored").codomain().j_invariant()
+shared_b = Ea.isogeny(mb * Ua + nb * Va, algorithm="factored").codomain().j_invariant()
+
+assert shared_a == shared_b, "sharing missed"
+print("sharing complete", shared_a)
+```
+
+**実行結果**
+```shell
+$ sage sidh.sage
+sharing complete 605725309534756129961216154885818743552050541118776976*z2 + 3839126000240784862404930106327311737040660763038229734
+```
+
+sharing complete と表示されてうまく共有できていることが確認できました。
+
+## Q2 (発展)
+
+> **Q2の回答に関して, 「なぜその実装は正しいのですか」と聞かれたとき, あなたならどう返答しますか?**
+
+これがすごく難しかったです．Q2 の実装で shared_a と shared_b が等しいこと確認するのではなく，すでにあるパラメータですでにある計算結果と比較してみるべきでした．（講師の先生曰く，その意味では Q2 で \$IKEp182 のパラメータを使っているのは良いとのこと）
+
+100回計算してちゃんと鍵共有できてることを確認したのですが，僕自身「これはギャグだろ……」って思ってたのでちゃんとした解答を講師の先生から聞けたのはよかったです．
+
+### 検証
+
+以下のコードで、Q2 で実装した SIDH のアルゴリズムを 100回計算しました。
+
+```python
+# sidh_test.sage
+for _ in range(100):
+	# ==================================== Q2 implementation ====================================
+	# Public Parameters
+	(la, ea), (lb, eb) = (2, 91), (3, 57)  # $IKEp182
+	p = la^ea * lb^eb - 1
+	assert is_prime(p)
+
+	Fp2 = GF(p^2)
+	E = EllipticCurve(Fp2, [1, 0])
+	Pa, Qa = lb^eb * E.gen(0), lb^eb * E.gen(1)
+	Pb, Qb = la^ea * E.gen(0), la^ea * E.gen(1)
+
+	# Alice
+	ma = randrange(0, la^ea)
+	na = randrange(0, la^ea)
+	phi = E.isogeny(ma * Pa + na * Qa, algorithm="factored")
+	Ua, Va = phi(Pb), phi(Qb)
+	Ea = phi.codomain()
+
+	# Bob
+	mb = randrange(0, lb^ea)
+	nb = randrange(0, lb^ea)
+	phi = E.isogeny(mb * Pb + nb * Qb, algorithm="factored")
+	Ub, Vb = phi(Pa), phi(Qa)
+	Eb = phi.codomain()
+
+	# shared key
+	shared_a = Eb.isogeny(ma * Ub + na * Vb, algorithm="factored").codomain().j_invariant()
+	shared_b = Ea.isogeny(mb * Ua + nb * Va, algorithm="factored").codomain().j_invariant()
+
+	assert shared_a == shared_b, "sharing missed"
+	print("sharing complete")
+	# ===========================================================================================
+```
+
+これを実行すると、一度も 41行目の assert に引っかからず正常終了しました。そのため、Alice と Bob の秘密鍵によって鍵共有が失敗することはないと考えます。
+
+ただ shared の共有ができてアルゴリズムが正しそうでも、電力解析や時間計測系の攻撃のような理論で保障されていない部分に対してもセキュアであるかはわかりません。暗号実装の正しさはそこまで調べなくてはいけませんが、これを判断するのは一人ではとても大変で、また非常に長い時間をかけて精査しなくてはいけません。
+
+そのため、この SIDH の実装に関して「正しい」といえるのは「shared の交換が $IKEp182 のパラメータでできる」というところまでで、これ以上の検証できませんでした。
+
+## Q3
+> **あなたが面白いと思った暗号方式を一つ取り上げ, それを説明・実装してください.**
+
+非可換群に関連する暗号はどんなものがあるのか気になったので調べてみると braid群を利用した暗号があったため、それについて勉強してみました。
+
+### braid群
+braid群 $B_n$ は、対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] 。
+
+{{< figure src="/blog/post17/braids.png" class="center" width="30%" >}}
+   
+この紐の交差の回数に制限がないため、$B_n$ は無限群です。例えば、二本の組み紐があって、その交差の回数を絶対値、最初の交差が左側の紐が上なのか右側の紐が上なのかで符号を対応させれば $B_2 \simeq \Z$ です。
+
+組み紐が等しいというのは、空間上の紐を動かして全く同じ形にできるときを言います。この等号条件により、組み紐という幾何的な表現から、置換と紐の重なりを抽象化して代数的に考えることができるようになります。
+
+演算は対称群と同じように、左側の項による置換操作を行った後に右側の項による置換操作を行うものとなります。逆元としては上下を鏡像反転した組み紐が対応します。
+
+#### Artin Generator
+
+Artin Generator $\sigma_i\ (0 \leq i < n)$ は、$i$ 番から $i+1$ 番に紐を伸ばしたあと、$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] 。
+
+{{< figure src="/blog/post17/artin.png" class="center" width="30%" >}}
+
+組み紐の演算を想像すれば、次の性質が成り立つことが確かめられます。
+$$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} & \ ( |i-j|>1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &\ ( |i-j| =1) \end{cases}$$
+
+この Artin Generator $\sigma_1,\sigma_2,\cdots,\sigma_{n-1}$ で braid群を生成することができます [1] 。
+
+上の性質がまさに $B_n$ の基本関係となり、これによって finite presentation が与えられます。
+
+$$B_{n} =\left< \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} & & \ ( |i-j|>1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} & & \ ( |i-j| =1)\end{aligned}\right>$$
+
+数式処理ソフトで braid群を扱うには、例えば自由群を Artin Generator の関係式で剰余をとることなどで使用できます。また sagemath には BraidGroup() というメソッドがあり、これで比較的簡単に計算が行えます。
+
+### braid暗号 [2][3]
+
+braid暗号は、braid群 $B_n$ の部分群、$LB_l,RB_r$ によって構成されます。
+
+- $LB_l$：$B_n$ の紐のうち左側 $l$ 本を用いて構成されるもの
+- $RB_r$：$B_n$ の紐のうち右側 $r$ 本を用いて構成されるもの
+
+定義から $LB_l = (\sigma_1,\sigma_2,\cdots,\sigma_{l-1}),RB_r = (\sigma_{n-r-1}, \sigma_{n-r-2}, \cdots, \sigma_{n-1})$ なので、任意の $a_l \in LB_l, b_r \in RB_r$ に対して $a_l b_r = b_r a_l$ となります。
+
+#### Base Problem
+braid暗号は以下の仮定を基に実現されています。
+
+##### conjugacy problem
+- 秘密 $a \in LB_l,b \in RB_r$ に対して、$y_1 = axa^{-1},y_2 = bxb^{-1}$ となる $(x,y_1,y_2)$ から秘密 $(a, b)$ を求めるのは計算量的に困難である。
+
+#### 鍵生成
+
+1. $u \in B_n$ を選択
+2. $a_l \in LB_l$ を選択
+3. $v = a_l u a_l^{-1}$ を計算し、秘密鍵を $a_l$、公開鍵を $(u,v)$ とする
+
+#### 暗号化
+メッセージを $m = \{0,1\}^k$ とし、$H:B_n \rightarrow \{0,1\}^k$ をハッシュ関数とする。
+1. $b_r \in RB_r$ を選択
+2. $w = b_rub_r^{-1}$ を計算
+3. $d = H(b_rvb_r^{-1}) \oplus m$ を計算し、暗号文を $(w, d)$ とする
+
+#### 複合
+以下の式で複合ができます。
+
+$$\begin{aligned} H(a_lwa_l^{-1}) \oplus d &= H(a_lb_rub_r^{-1}a_l^{-1}) \oplus d \\ &= H(b_rvb_r^{-1}) \oplus H(b_rvb_r^{-1}) \oplus m \\ &= m \end{aligned}$$
+
+#### 実装
+
+```python
+# braid.sage
+import sys
+import random
+import string
+import hashlib
+from Crypto.Util.number import *
+
+message = b"Braid cryptosystem"
+
+# H: Bn -> {0,1}^k
+# 組み紐の normal form を受け取り、それを文字列とみて sha512 に変換
+def hash(b):
+	return hashlib.sha512(str(b).encode("utf-8")).digest()
+
+## ------------------
+## Key Generation
+## ------------------
+
+n = 50		# security parameter
+Bn = BraidGroup(n)
+gs = Bn.gens()	# Artin Generators
+
+K = 32		# 組み紐の長さが固定になってしまっている
+
+u = random.choices(gs, k=K)	# u の生成
+
+# u \in LB または u \in RB にならないように twist
+if not gs[n // 2 - 1] in u:
+	u[-1] = gs[n // 2 - 1]
+u = prod(u)
+
+# sagemath の left normal form は遅いので right normal form
+print(f"u: {prod(u.right_normal_form())}")
+
+al = prod(random.choices(gs[: n//2-2], k=K))	# al の生成
+v = al * u * al^-1		# v の生成
+
+# v はすごく長く、出力すると見にくいのでコメントアウト
+# print(f"v: {prod(v.right_normal_form())}")
+
+## ------------------
+## Encryption
+## ------------------
+
+br = prod(random.choices(gs[n//2 + 1 :], k=K))	# br の生成
+
+w = br * u * br^-1
+c = br * v * br^-1
+
+h = hash(prod(c.right_normal_form()))
+
+# メッセージを h の長さまでパディング
+# パディングがランダムだと複合されたのが確認しにくいため、全て _ でパディングする
+pad_length = len(h) - len(message)
+left_length = random.randint(0, pad_length)
+# pad1 = "".join(random.choices(string.ascii_letters, k=left_length)).encode("utf-8")
+# pad2 = "".join(random.choices(string.ascii_letters, k=pad_length-left_length)).encode("utf-8")
+pad1 = "".join(random.choices("_", k=left_length)).encode("utf-8")
+pad2 = "".join(random.choices("_", k=pad_length-left_length)).encode("utf-8")
+message = pad1 + message + pad2
+
+d = []
+for i in range(len(h)):
+	d.append(chr(message[i] ^^ h[i]))
+d = bytes_to_long("".join(d).encode("utf-8"))
+
+# 公開鍵
+# print(f"w: {prod(w.right_normal_form())}")	# w も長いので非表示
+print(f"d: {d}")
+
+## ------------------
+## Decryption
+## ------------------
+
+r = al * w * al^-1
+r = prod(r.right_normal_form())
+r = hash(r)
+
+dd = list(long_to_bytes(d).decode())
+xx = []
+for i in range(len(r)):
+	xx.append(chr(ord(dd[i]) ^^ r[i]))
+message = "".join(xx).encode("utf-8")
+print(f"message: {message}")
+```
+
+**実行結果**
+```shell
+$ sage braid.sage
+u: s0^2*s1*s9*s10*s17*s26*s41*s45*s46*s0*s1*s0*s4*s3*s6*s5*s10*s14*s13*s17*s22*s23*s24*s26*s27*s29*s34*s37*s41*s46*s48
+d: 19806161916573509237124676539947687984611237172364598797722173288900842526377722595466863883841047920017790014586600066990583932036270299669472095497855887498686362010501602955605223287447070670055647440631685561699451105007913455296089468
+message: b'______Braid cryptosystem________________________________________'
+```
+
+メッセージが暗号化され、また複合もうまく機能していることが確認できました。
+
+### 参考文献
+[1] E. Artin、"Theorie der Zöpfe"  
+[2] 田中裕子、"ブレイド群を利用した公開鍵暗号系の実装と性能評価実験"  
+[3] 上村恭子、"Braid 群の conjugacy algorithm について"  
+
