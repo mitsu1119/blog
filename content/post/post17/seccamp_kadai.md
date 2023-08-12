@@ -2,6 +2,7 @@
 title: "セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)"
 date: 2023-08-12T20:40:36+09:00
 math: true
+tags: ["elliptic curve", "math"]
 draft: false
 ---
 
