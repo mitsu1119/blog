@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
+応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．
+🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」
+🐣「そうだ 💡」
+というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．
+その結果，全ての課題の解答が hackmd に書かれる始末に……
+L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）
+個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．
+🐣「CSIDH の実装を書くいい機会になったピヨ」
+🐣「原著論文が実装レベルまで書かれていて助かったピヨ」
+ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）
+頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; サーベイ論文みたいですね（意訳）
+🐣 &amp;lt; 😀
+ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは例年（といってもコースが別れたのは今年からではありますが）TLS 自作をしているっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．
+この辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．
+６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）
+講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．
+ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．
+プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．
+僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．
+🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」
+セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．
+プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．'>
+<title>セキュリティキャンプ 2023 参加記</title>
+
+<link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+
+<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='セキュリティキャンプ 2023 参加記'>
+<meta property='og:description' content='ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
+応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．
+🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」
+🐣「そうだ 💡」
+というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．
+その結果，全ての課題の解答が hackmd に書かれる始末に……
+L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）
+個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．
+🐣「CSIDH の実装を書くいい機会になったピヨ」
+🐣「原著論文が実装レベルまで書かれていて助かったピヨ」
+ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）
+頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; サーベイ論文みたいですね（意訳）
+🐣 &amp;lt; 😀
+ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは例年（といってもコースが別れたのは今年からではありますが）TLS 自作をしているっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．
+この辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．
+６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）
+講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．
+ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．
+プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．
+僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．
+🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」
+セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．
+プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．'>
+<meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+<meta property='og:site_name' content='みつみつみつですか？'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-15T00:03:49&#43;09:00'/><meta property='article:modified_time' content='2023-08-15T00:03:49&#43;09:00'/>
+<meta name="twitter:title" content="セキュリティキャンプ 2023 参加記">
+<meta name="twitter:description" content="ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
+応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．
+🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」
+🐣「そうだ 💡」
+というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．
+その結果，全ての課題の解答が hackmd に書かれる始末に……
+L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）
+個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．
+🐣「CSIDH の実装を書くいい機会になったピヨ」
+🐣「原著論文が実装レベルまで書かれていて助かったピヨ」
+ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）
+頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; サーベイ論文みたいですね（意訳）
+🐣 &amp;lt; 😀
+ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは例年（といってもコースが別れたのは今年からではありますが）TLS 自作をしているっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．
+この辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．
+６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）
+講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．
+ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．
+プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．
+僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．
+🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」
+セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．
+プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．">
+
+
+<style>
+  :root {
+    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
+      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
+      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
+
+    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
+    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
+      var(--zh-font-family), sans-serif;
+    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
+      'Courier New', monospace;
+  }
+</style>
+
+<script>
+  (function () {
+    const customFont = document.createElement('link');
+    customFont.href =
+      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
+
+    customFont.type = 'text/css';
+    customFont.rel = 'stylesheet';
+
+    document.head.appendChild(customFont);
+  })();
+</script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VQ0SEQSRZ0');
+</script>
+
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/blog">
+                
+                    
+                    
+                    
+                        
+                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                            height="291" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐧</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
+            <h2 class="site-description">はい</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/mitsu1119'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/meowricator'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>ダークモード</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目次</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#応募課題パート">応募課題パート</a></li>
+    <li><a href="#６月頃">６月頃</a></li>
+    <li><a href="#７月中旬以降">７月中旬以降</a></li>
+    <li><a href="#１日目">１日目</a></li>
+    <li><a href="#２日目">２日目</a></li>
+    <li><a href="#３日目">３日目</a></li>
+    <li><a href="#４日目">４日目</a></li>
+    <li><a href="#５日目">５日目</a></li>
+    <li><a href="#感想">感想</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/">セキュリティキャンプ 2023 参加記</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 15, 2023</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>　ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．</p>
+<h2 id="応募課題パート">応募課題パート</h2>
+<p>　セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．</p>
+<p>　🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」<br>
+　🐣「そうだ 💡」</p>
+<p>　というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．</p>
+<p>　その結果，全ての課題の解答が hackmd に書かれる始末に……</p>
+<figure class="center"><img src="/blog/post18/oubokadai.png" width="30%"/>
+</figure>
+
+<p>　L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）<br>
+　個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．</p>
+<p>　🐣「CSIDH の実装を書くいい機会になったピヨ」<br>
+　🐣「原著論文が実装レベルまで書かれていて助かったピヨ」</p>
+<p>　ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の<a class="link" href="https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/"  target="_blank" rel="noopener"
+    >応募課題晒し</a>を見てください．（恥ずかしいので精読はしてほしくありませんが……）</p>
+<p>　頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．</p>
+<p>　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; サーベイ論文みたいですね（意訳）<br>
+　🐣 &lt; 😀</p>
+<p>　ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは例年（といってもコースが別れたのは今年からではありますが）TLS 自作をしているっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．<br>
+　この辺りの内容は，セキュリティキャンプの<a class="link" href="https://www.ipa.go.jp/jinzai/security-camp/2023/zenkoku/program_list_lx.html"  target="_blank" rel="noopener"
+    >公式サイト</a>とプロトコルコースの講師の先生の<a class="link" href="https://tex2e.github.io/blog/misc/seccamp2023"  target="_blank" rel="noopener"
+    >参加記</a>とプリミティブコースの講師のの先生の<a class="link" href="https://gist.github.com/elliptic-shiho/d26b5251d50347d6fbdb2336d960b9fc"  target="_blank" rel="noopener"
+    >参加記</a>が参考になるんじゃないかなあと思います．</p>
+<h2 id="６月頃">６月頃</h2>
+<p>　さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．</p>
+<p>　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; はよしろ（意訳）</p>
+<p>　講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．</p>
+<p>　ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．</p>
+<p>　プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．<br>
+　僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．</p>
+<p>　🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」</p>
+<p>　セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．</p>
+<p>　プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．</p>
+<p>　この頃は僕は頑張って Castryck と Decru の &ldquo;An efficient key recovery attack on SIDH&rdquo; の四章を読んでいました．全然わからなくて e_shisho さんに助けを求めたところ，まずは論文をしっかり読むにはどうすればいいかというところから教えてもらえました．</p>
+<p>　ということで代数幾何はあまりにも広大なので，ある一定のラインまで深ぼったらそれを公理として採用しその上から論理を積み立てていこうということになり，オレオレ公理系リファレンス作成作業が始まります．<br>
+　最終的にこの公理の部分は，大雑把ではありますが「主偏極アーベル曲面の分類」「種数 2 の超楕円曲線の諸性質」「Kani の定理」「Richelot Correspondence」に集約されたと思います．（今見てもおぞましい単語だ……🐣）</p>
+<p>　ただこれよりも上のレイヤ（例えば Kani の定理を認めた上での Graph Subgroup による剰余群の分類の話や，Richelot Correspondence を認めた上での Richelot Isogeny の構成アルゴリズム）はしっかりと理解に努め，丁寧に読み進めることを最初は特に意識的にやっていました．<br>
+　この理解の仕方に関しては，僕も腑に落ちる部分がたくさんありました．理解とはなにかみたいなメタ的な部分に繋がる話で非常に深く難しい部分だと思います．ただとりあえず今の段階では「十分に検証された自分の中でのベースがあり，そこから自分自身の言葉で紡いできたもの」みたいな感じになっています．</p>
+<p>　🐣（言語化が難しい……）</p>
+<p>　僕は前々から学問にもレイヤーがある（さらに言えば数学という学問の中にもレイヤーがある）ような気がしていて，それとも繋がる話だったのでとても腑に落ちています．</p>
+<p>　ということで話はそれましたが，ほぼ毎週僕が論文を読んでできたところまで数学のゼミのようなものをしていました．e_shiho さんにはすごくお世話になりました．<br>
+　写像の話とか数学の歴史的な話だとか面白いこともいっぱい聞けました．<br>
+　ただ，長時間拘束してしまいすみませんでした…… m(_ _)m</p>
+<h2 id="７月中旬以降">７月中旬以降</h2>
+<p>　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; 実装を見据えてやっていきましょうか</p>
+<p>　ということでゆっくりと進んでいた論文読みは一転，実装まで落とし込むことを見据えて今までやってきたことを活用していく方針に切り替わりました．（といってもこの辺の段階で必要なものは恐怖の Richelot Isogeny を除いてある程度自分の中に揃っていたので，６章を読むのはそれなりにサクサクといけたのもあります）</p>
+<p>　🐣「Richelot Isogeny わからん」<br>
+　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; わからんわからんと話題の Richelot Isogeny</p>
+<p>　７月の終盤には Castryck と Decru の例の論文の６章を読みつつ疑似コードを書きながらやるという方針で，実装まで落とし込める部分とパッとは落とし込めない部分の分別をしながらコードの大枠を作っていきました．</p>
+<p>　この辺りから僕は学校の期末試験であまり稼働できなくなり，ゼミをやることができなくなってしまいました．<br>
+　といってもゼミの纏まった時間が取れないだけで隙間時間に実装はできたので，例の論文の８章を読みつつ超特異楕円曲線の直積から種数 2 の超楕円曲線のヤコビアンへの (2, 2)-isogeny の実装を頑張っていました．</p>
+<p>　ここで問題が発生します！！！</p>
+<p>　SageMath では $\mathbb{F} _ {p^2}$ でグレブナー基底を計算するのに非常に時間がかかります．Magma では計算できる（Castryck と Decru はこれで実装していた）のですが，コマンドラインから呼び出すには有料版が必要であまりにも高く……</p>
+<p>　ということでグレブナー基底を使わない高速化手法が Oudompheng と Pope の &ldquo;A Note on Reimplementing the Castryck-Decru Attack and Lessons Learned for SageMath&rdquo; で解説されていたのでそれを実装しました．<br>
+　これでなんとか実装できたので，本番は Richelot Isogeny 全振りで挑むこととなりました．</p>
+<h2 id="１日目">１日目</h2>
+<p>　ついに始まりました．Richelot Isogeny の実装を考えながら会場へ向かい，いい感じに開会式をしたあと共通講義とグループワークが始まりました．</p>
+<p>　共通講義は検事の方が法律とコンピュータセキュリティの関わりを教えてくれてとてもためになる内容でした．色んな電車の放送の真似をしていたのが印象的です．<br>
+　グループワークではみんなでセキュリティ関連の何かを作ろうという感じで進みました．僕がなんか適当なことを喋りまくってたらグループ内で大量の案が出され，いつの間にかブレインストーミングの様相でした（そのつもりはなかったが）．同じ班になった受講生と喋るいいきっかけとなったので楽しかったです．</p>
+<p>　その他諸々が終わったあとはついに始まる開発の時間です．実装がうまくいくようにと願掛けの意味でこんなものを持っていきました．これによって L トラック全体が守られていたらいいなあという気持ちです．</p>
+<figure class="center"><img src="/blog/post18/mushiyoke.jpg" width="30%"/>
+</figure>
+
+<p>　共通講義中に Richelot Isogeny の実装の天啓が降りてきていたのでコードを書こうと思った矢先，楕円曲線の直積からヤコビアンへの (2, 2)-isogeny を構成するアルゴリズムがバグっていることが判明しました．<br>
+　虫よけの効力は一体どこへ……</p>
+<p>　その日は適当にクネクネした後，元々時間が短かったこともあって開発の時間が修了してしまいました．<br>
+　まあその後部屋でウロウロ歩き回りながらピヨピヨしつつ，Kunzweiler の &ldquo;Efficient Computation of (2n, 2n)-Isogenies&rdquo; とにらめっこしていたらなんか Richelot Isogeny が実装できていたんですが……</p>
+<p>　🐣（正しいものを正しく実装したら正しいものができた，それはそう）</p>
+<p>　それとこの日の夕食時にはスイーツバイキングがありました．といってもお肉が焼けるのが遅かったりまあ色々あったりであまり食べれませんでしたが……<br>
+　名刺交換も盛んに行われていたそうですが僕はそのときたまたま名刺を部屋に置いてきてしまい，悲しい思いをしていました．（なんか知らんが，キャンプ期間中の名刺が特に必要な場面でことごとく名刺を忘れていた気がする）</p>
+<p>　またこの日の 20時ごろにマネージャーさんから「スイーツが余りすぎている」という連絡がありました．<br>
+　絶好のチャンスだったので，食べれなかった分そこでたくさんスイーツを食べました．おいしかったです．<br>
+　チューターのあんこさんが大量のパイナップルをお皿に山盛りにしていた光景が印象的でした．そういった色々な要素が噛み合って，チューターや講師の先生方，プロトコルコースの受講生の子など L1 ゼミ内での距離が一気に縮まったと思います．</p>
+<h2 id="２日目">２日目</h2>
+<p>　ということで Richelot Isogeny が実装できたので，あとは大元のプログラムと繋げる作業が必要でした．<br>
+　これが終わったタイミングで，プロトコル側の講師のまこさんがこんなことを言ってきます．</p>
+<p>　🐧「プリミティブコースが今までやってきたことをざっくりでいいから教えてほしいなあ〜」</p>
+<p>　僕はうまく説明できるか不安になりながらも，頑張って解説を試みました．というのも最終的に成果発表スライドを作らないといけないので，どこをどんな風に説明するかの取捨選択はある程度考えておかないと行けなかったからです．<br>
+　それに人に説明するのは自分の頭を整理するのにも役立つので，そういった色んな意味も含めて言ってくれたんだと思います．</p>
+<p>　あとは事前学習期間は特に顕著だったのですが，プロトコルコースとプリミティブコースの間で特にやり取りもなかったので，講師として同じゼミがどんなことをしているのか把握する必要もあったのでしょうし，逆にそれを破ってコース間のやり取りを円滑にするというのもあったと思います．</p>
+<p>　ということで頑張って説明しようとしてみたんですが，例えば SIKE と SIDH の話だとか，Kani の定理で一意性が保証されている anti-isometry の話だとか話すべきか迷う部分がたくさんありました．僕はこの時間は説明の取捨選択をどうするかに焦点を当てていたので，例に挙げたこの２つは結局説明しませんでしたがそこを飛ばしてもある程度納得のいくように結果だけ説明するなど色々工夫してみました．<br>
+　とはいえ Castryck-Decru attack の一連の流れを説明したのは初めてだったのでぎこちなくなってしまい，話の内容が前後してしまったり説明に一時間強かかってしまったりなど課題点が山盛りでした．</p>
+<p>　あとは何と間違えたのかわかりませんが，このタイミングで脳みそがバグってこんなふうになっていました．</p>
+<p>　🐣（Castryck-Decru attack は 2021 年の 9 月に公開されたものだったはず……）<br>
+　⚠ これは間違っていて，正しくは 2022 年の 7 月</p>
+<p>　すみません．大嘘こきました．</p>
+<p>　🐧「なんかよくわかんなかった（意訳）」</p>
+<p>　ごめんなさい．僕の説明が下手だったからです．解説記事をいつかあげようと思っているのでもしこの文章を読んでいたらそれに期待してください……</p>
+<p>　このあとは仕上げ作業として，ある程度秘密が求まったら残りはブルートフォースをするなどの仕上げのプログラムを書きます．<br>
+　これらがあらかた完了した辺りで２日目は修了．とりあえず Castryck-Decru attack を実装することができたので安心しました．</p>
+<h2 id="３日目">３日目</h2>
+<p>　ついにキャンプ期間の半分が過ぎ去ろうとしている頃です．<br>
+　この日は社会科見学があったのですがとても楽しかったです！（小並感）</p>
+<p>　🐣（キャンプ期間，短いものだなあ）</p>
+<p>　そう思いながら，この日の作業はコードのリファクタリングに充ててました．ここで講師の先生から最近とある CTF で出題された問題が僕の書いたコードで解けるか試してみないかと言われました．<br>
+　とりあえずこの日は攻撃コードを試しながらリファクタリングを進めていってましたが，なかなか問題がとき終わらないことに気づきました．<br>
+　さらにどのくらい時間がかかるか概算したところ，とんでもなく時間がかかることが判明しました．というのもとある高速化をまだ実装しておらず，たまたまその問題のパラメータはその高速化がよく効くものだったのです．</p>
+<p>　ということでこの日はリファクタリングでクネクネしててあまり進捗が出せず，悲しい感じになりました．</p>
+<p>　🐣「キャンプ期間中って意外とコード書く時間無いですね」<br>
+　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; わかる（意訳）</p>
+<p>　この日の夜はその高速化を実装しようと思い頑張っていましたが，論文中に詳しくは書かれておらず内容がだいぶ省かれていました．</p>
+<p>　休憩ついでにプロトコルコースの様子をちょこちょこ見に行ってましたが，なかなか開発が大変そうでした．ネットワークは色んな人の色んなものが絡み合ってるので大変ですね……．<br>
+　リアル try-catch デバッグなどという悪い話も出てましたが，我々は人道と道徳を忘れませんでした．えらい．<br>
+　それとこの日辺りからプロトコルコースの先生と受講生が名刺交換関連の話をコソコソと計画していて，なんというかその様子が見ていて面白かったです．🐧 🕊<br>
+　またこの日はナ行の一文字をやっている方とずんだもん同盟を結び，僕たちは固い絆で結ばれました．🐈</p>
+<p>　まあなんやかんやありましたが，結局僕の方はなかなかうまくいかなくてとても困っていたまま４日目突入です．</p>
+<h2 id="４日目">４日目</h2>
+<p>　あんこさんの扉開け技術の練度も極まってきた頃，僕は色々な値を試して検証しつつ高速化を実装まで落とし込もうとなんやかんやしていました．<br>
+　しかしなかなかうまく行かず，少なくともキャンプ期間中では厳しそう（というのも３日目と４日目を過ぎたらあとは成果発表だから）だということになり，マルチスレッドに対応することで少しでも早くしようという風に切り替えました．</p>
+<p>　ここで問題が発生します．SageMath で Pari を使ってる部分はスレッドセーフに実装されていないのです！！<br>
+　ということでマルチスレッドや Pool を使うのでは実装できませんでした．そのため sage プロセスをいくつか立ち上げて，プロセス間通信でいい感じにやる愚直な方法を実装しました．</p>
+<p>　これは午前中の比較的早い段階で終わり，あとは成果発表スライドを作成する作業です．<br>
+　僕は Linux 環境だったので Google Slide で作っていましたが，数式関連のサポートが無いのもあってクネクネしてました．Beamer で書こうとも思ったのですが成果スライドのデザインが質素になりそうで，ちょっとなあという気持ちでした．</p>
+<p>　数式の画像をペタペタしながら気合でスライドを作り 8 割くらい完成した頃，L トラック内での成果発表会がありました．<br>
+　まこさんに説明するのに一時間強かかっていたくらいなので当然 2 分で終わるわけもなく，本番の成果発表はタキオンでいこうと L トラックのプロデューサーさんには言われました．</p>
+<p>　今まで L トラックの他のゼミがどんなことをしていたのかほとんど知らなかったので，この機会に色々と知ることができました．</p>
+<p>　また，この日の夜はプロトコルコースの受講生が開いた名刺交換会で賑わっていました．あまりの賑わいで暑すぎて僕は退場……．涼しい X トラックの教室の中で FPGA の話を色々聞いてました．</p>
+<h2 id="５日目">５日目</h2>
+<p>　最終日は主に成果発表です．いい感じにグループワークの発表をしたあと，ついに本題が始まります．</p>
+<p>　最初は専門コース，ジュニア，ネクストの成果発表でした．どこもすごく面白そうなことをしていて，僕も体が百個くらい会ったら参加したい内容でした．<br>
+　個人的にはジュニアの方がすごく大人で，しかも技術レベルも高く関心していました．</p>
+<p>　適当に最後のお昼を挟んだあと，ついに開発コースの発表です．</p>
+<p>　やはりというかなんというか，開発コースは全体的に各々がやりたいことをやる印象だったのでユニークな内容が多かった印象です．いい意味でニッチかつ技術に関して変態で，聞いててとても面白かったです．</p>
+<p>　僕の発表ですが，直前になって緊張しまくって講師の先生に泣き言を言っていました．すみません．<br>
+　発表内容ですが，時間が短かったのもあり光を超えるスピードで終わらせて，会場にいる方々全てを置き去りにしたと思います．すみません．</p>
+<p>　ということで無事成果発表も終わり，セキュリティキャンプ修了となります．<br>
+　最後の方は何枚か集合写真を撮っていただきました．また L トラック内でも写真を撮ったのですが，このときのポーズがみんなで L 字に腕を作るものでした．大量の L が並んでいたので LLL ですね！（？？？）<br>
+　ところでなぜ L トラックは L なんでしょうか……（歴史的経緯は色々あったみたいですが）</p>
+<p>　L トラックの L の謎を引きずりつつついに解散となります．後ろ髪引かれる思い出名残惜しかったです．</p>
+<h2 id="感想">感想</h2>
+<p>　そんなこんなで楽しいキャンプ期間となりました．講師やチューター，受講生の方々，協議会の方々を含めその他セキュリティキャンプに関わってくださった皆様，本当にありがとうございました．<br>
+　講師の方が強いのはもちろんのこと，受講生のみんなも主体的に何かに取り組んでなにかに熱中している方ばかりで，日常の技術的な雑談のどれもが刺激的でした．</p>
+<p>　ということで，お疲れ様でした！</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-mitsu1119-github-io-blog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 みつみつみつですか？
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
