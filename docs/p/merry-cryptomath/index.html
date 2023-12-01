@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
-ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Merry CryptoMath !!!!!! 　この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
+　ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
 ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）
-別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
-あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
+　別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
+　あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
 クリスマスについて クリスマス キリストの降誕祭。十二月二十五日。
 ① ―イブ　クリスマス前夜祭。
 ② ―カード　クリスマスを祝っておくる絵入りのカード。
@@ -13,21 +13,20 @@
 ④ ―ケーキ　クリスマス用の飾りケーキ。
 ⑤ ―ツリー　クリスマスのときに立てて飾る常緑樹。
 ⑥ ―プレゼント　クリスマスの贈り物。
-ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
-CVP 格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
-CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
-しかし（？！） CVP は SVP よろしく近似解法があります。
-Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。'>
+　ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
+CVP 　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
+　CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
+　しかし（？！） CVP は SVP よろしく近似解法があります。'>
 <title>Merry CryptoMath !!!!!</title>
 
 <link rel='canonical' href='https://mitsu1119.github.io/blog/p/merry-cryptomath/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='Merry CryptoMath !!!!!'>
-<meta property='og:description' content='Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
-ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
+<meta property='og:description' content='Merry CryptoMath !!!!!! 　この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
+　ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
 ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）
-別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
-あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
+　別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
+　あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
 クリスマスについて クリスマス キリストの降誕祭。十二月二十五日。
 ① ―イブ　クリスマス前夜祭。
 ② ―カード　クリスマスを祝っておくる絵入りのカード。
@@ -35,20 +34,19 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
 ④ ―ケーキ　クリスマス用の飾りケーキ。
 ⑤ ―ツリー　クリスマスのときに立てて飾る常緑樹。
 ⑥ ―プレゼント　クリスマスの贈り物。
-ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
-CVP 格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
-CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
-しかし（？！） CVP は SVP よろしく近似解法があります。
-Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。'>
+　ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
+CVP 　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
+　CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
+　しかし（？！） CVP は SVP よろしく近似解法があります。'>
 <meta property='og:url' content='https://mitsu1119.github.io/blog/p/merry-cryptomath/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-12-13T00:09:54&#43;09:00'/><meta property='article:modified_time' content='2021-12-13T00:09:54&#43;09:00'/>
 <meta name="twitter:title" content="Merry CryptoMath !!!!!">
-<meta name="twitter:description" content="Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
-ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
+<meta name="twitter:description" content="Merry CryptoMath !!!!!! 　この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
+　ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
 ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）
-別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
-あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
+　別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
+　あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
 クリスマスについて クリスマス キリストの降誕祭。十二月二十五日。
 ① ―イブ　クリスマス前夜祭。
 ② ―カード　クリスマスを祝っておくる絵入りのカード。
@@ -56,11 +54,10 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
 ④ ―ケーキ　クリスマス用の飾りケーキ。
 ⑤ ―ツリー　クリスマスのときに立てて飾る常緑樹。
 ⑥ ―プレゼント　クリスマスの贈り物。
-ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
-CVP 格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
-CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
-しかし（？！） CVP は SVP よろしく近似解法があります。
-Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。">
+　ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
+CVP 　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
+　CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
+　しかし（？！） CVP は SVP よろしく近似解法があります。">
 
 
 <style>
@@ -313,12 +310,12 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
 <p>　また、目標ベクトル $w$ と解ベクトル $v$ の差 $e = w - v$ のノルム $||e||$ も小さいと仮定します。<br>
 　このとき、ある正数 $M \in \mathbb{Z}$ を使って次のような行列を構成します。
 $$
-B&rsquo; = \begin{pmatrix}
+B' = \begin{pmatrix}
 B &amp; \mathbf{0}\\
 w &amp; M
 \end{pmatrix}
 $$</p>
-<p>　$||e||$ が十分小さい時、この行列から生成される格子 $L = \mathcal{L}(B&rsquo;)$ の SVP がまさに $\begin{pmatrix} e &amp; M \end{pmatrix}$ になります。<br>
+<p>　$||e||$ が十分小さい時、この行列から生成される格子 $L = \mathcal{L}(B')$ の SVP がまさに $\begin{pmatrix} e &amp; M \end{pmatrix}$ になります。<br>
 　ちなみに具遺体的な $||e||$ の大きさですが、$L$ の逐次最小について $||e|| &lt; \lambda_ 1 / 2$ が成り立っていることが条件です。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -351,34 +348,34 @@ $$</p>
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;---------- generate ---------------------------&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">B</span> <span class="o">=</span> <span class="n">random_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;echelonizable&#39;</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">		<span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="n">random_matrix</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;e =&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">v</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;v =&#34;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">w</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;w =&#34;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">M</span> <span class="o">=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">B</span> <span class="o">=</span> <span class="n">block_matrix</span><span class="p">([[</span><span class="n">B</span><span class="p">,</span> <span class="n">matrix</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()],</span> <span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">M</span><span class="p">]])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;---------- solve ---------------------------&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">LLL</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;e =&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;v =&#34;</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">e</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;---------- generate ---------------------------&#34;</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">random_matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;echelonizable&#39;</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+	<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+		<span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">random_matrix</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;e =&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;v =&#34;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">v</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">(</span><span class="n">ZZ</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;w =&#34;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">block_matrix</span><span class="p">([[</span><span class="n">B</span><span class="p">,</span> <span class="n">matrix</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()],</span> <span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">M</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;---------- solve ---------------------------&#34;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">LLL</span><span class="p">()</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;e =&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;v =&#34;</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h1 id="babais-algorithm">Babai&rsquo;s algorithm</h1>
@@ -455,7 +452,7 @@ $$</p>
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     

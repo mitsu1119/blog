@@ -2,59 +2,53 @@
 <html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='$$ \gdef\F{\mathbb{F}} \gdef\Z{\mathbb{Z}} \gdef\End{\mathrm{End}} \gdef\cl{\mathrm{cl}(\Z[\pi])} \gdef\ell{\mathcal{Ell} _ p (\Z[\pi],\pi)} \gdef\a{\mathfrak{a}} \gdef\b{\mathfrak{b}} \gdef\l{\mathfrak{l}} \gdef\O{\mathcal{O}} $$
-はじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
-興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
-より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
-プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
-それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
+はじめに 　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
+　興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
+　より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
+　プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
+　それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
 それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．
-ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
+　ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
 Q1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)
-以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
-AES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
+ 以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
+ AES-128-GCM McEliece暗号 Grøstl SIDH    SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
 RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．
-同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．
-base problem
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．'>
+同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．'>
 <title>セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)</title>
 
 <link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)'>
 <meta property='og:description' content='$$ \gdef\F{\mathbb{F}} \gdef\Z{\mathbb{Z}} \gdef\End{\mathrm{End}} \gdef\cl{\mathrm{cl}(\Z[\pi])} \gdef\ell{\mathcal{Ell} _ p (\Z[\pi],\pi)} \gdef\a{\mathfrak{a}} \gdef\b{\mathfrak{b}} \gdef\l{\mathfrak{l}} \gdef\O{\mathcal{O}} $$
-はじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
-興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
-より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
-プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
-それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
+はじめに 　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
+　興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
+　より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
+　プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
+　それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
 それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．
-ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
+　ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
 Q1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)
-以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
-AES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
+ 以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
+ AES-128-GCM McEliece暗号 Grøstl SIDH    SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
 RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．
-同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．
-base problem
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．'>
+同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．'>
 <meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='elliptic curve' /><meta property='article:tag' content='math' /><meta property='article:published_time' content='2023-08-12T20:40:36&#43;09:00'/><meta property='article:modified_time' content='2023-08-12T20:40:36&#43;09:00'/>
 <meta name="twitter:title" content="セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)">
 <meta name="twitter:description" content="$$ \gdef\F{\mathbb{F}} \gdef\Z{\mathbb{Z}} \gdef\End{\mathrm{End}} \gdef\cl{\mathrm{cl}(\Z[\pi])} \gdef\ell{\mathcal{Ell} _ p (\Z[\pi],\pi)} \gdef\a{\mathfrak{a}} \gdef\b{\mathfrak{b}} \gdef\l{\mathfrak{l}} \gdef\O{\mathcal{O}} $$
-はじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
-興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
-より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
-プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
-それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
+はじめに 　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
+　興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
+　より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
+　プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
+　それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
 それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．
-ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
+　ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
 Q1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)
-以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
-AES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
+ 以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
+ AES-128-GCM McEliece暗号 Grøstl SIDH    SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
 RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．
-同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．
-base problem
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．">
+同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．">
 
 
 <style>
@@ -417,12 +411,12 @@ $$</p>
 <h4 id="同種写像問題">同種写像問題</h4>
 <p>SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．</p>
 <p><strong>base problem</strong><br>
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．</p>
+楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E' = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．</p>
 <h4 id="sidh-の鍵交換アルゴリズム">SIDH の鍵交換アルゴリズム</h4>
 <p>同種写像問題を利用した鍵交換をする基本的な手続きは，次の同種関係による可換図式に基づいています．</p>
 <p>$$\begin{CD} E @&gt;\phi_B&gt;&gt; E_B\\
-@V\phi_A V V @V V\phi_A&rsquo; V\\
-E_A @&gt;\phi_B&rsquo; &gt;&gt; E_{AB} \end{CD}$$</p>
+@V\phi_A V V @V V\phi_A' V\\
+E_A @&gt;\phi_B' &gt;&gt; E_{AB} \end{CD}$$</p>
 <p>実際の鍵交換アルゴリズムは次に従います [2]．</p>
 <h5 id="public-parameter">public parameter</h5>
 <ul>
@@ -562,70 +556,70 @@ E_A @&gt;[\b] &gt;&gt; E_{AB} \end{CD}$$</p>
 </span><span class="lnt">63
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># csidh.sage</span>
-</span></span><span class="line"><span class="cl"><span class="n">ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prime_range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">73</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">prod</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">Fp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Fp2</span><span class="o">.&lt;</span><span class="n">j</span><span class="o">&gt;</span> <span class="o">=</span>  <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">modulus</span><span class="o">=</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">montgomery</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 曲線を双有理同値な Montgomery曲線へと変換</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">to_montgomery</span><span class="p">(</span><span class="n">E</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Ep</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">change_ring</span><span class="p">(</span><span class="n">Fp</span><span class="p">)</span><span class="o">.</span><span class="n">short_weierstrass_model</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Ep</span><span class="o">.</span><span class="n">a4</span><span class="p">(),</span> <span class="n">Ep</span><span class="o">.</span><span class="n">a6</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">Fp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">roots</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="n">s</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_square</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="n">s</span>
-</span></span><span class="line"><span class="cl">    <span class="n">A</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="n">s</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Fp</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 群作用</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># [3] &#34;CSIDH: An Efficient Post-Quantum Commutative Group Action&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">group_action</span><span class="p">(</span><span class="n">pub</span><span class="p">,</span> <span class="n">priv</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">E</span> <span class="o">=</span> <span class="n">montgomery</span><span class="p">(</span><span class="n">pub</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">es</span> <span class="o">=</span> <span class="n">priv</span><span class="p">[:]</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="nb">any</span><span class="p">(</span><span class="n">es</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="n">P</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">lift_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Fp</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl">        <span class="n">S</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">es</span><span class="p">)</span> <span class="k">if</span> <span class="n">sign</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="n">s</span> <span class="ow">and</span> <span class="n">e</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">        <span class="n">k</span> <span class="o">=</span> <span class="n">prod</span><span class="p">([</span><span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">S</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Q</span> <span class="o">=</span> <span class="p">((</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">//</span> <span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">Q</span>
-</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">                <span class="k">continue</span>
-</span></span><span class="line"><span class="cl">            <span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="n">E</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">            <span class="n">Q</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">s</span>
-</span></span><span class="line"><span class="cl">            <span class="n">k</span> <span class="o">//=</span> <span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">to_montgomery</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># e の範囲</span>
-</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">((</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Alice</span>
-</span></span><span class="line"><span class="cl"><span class="n">alice_priv</span> <span class="o">=</span> <span class="p">[</span><span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">))]</span>
-</span></span><span class="line"><span class="cl"><span class="n">alice_pub</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">alice_priv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Bob</span>
-</span></span><span class="line"><span class="cl"><span class="n">bob_priv</span> <span class="o">=</span> <span class="p">[</span><span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">))]</span>
-</span></span><span class="line"><span class="cl"><span class="n">bob_pub</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bob_priv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 鍵交換</span>
-</span></span><span class="line"><span class="cl"><span class="n">shared_alice</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="n">bob_pub</span><span class="p">,</span> <span class="n">alice_priv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">shared_bob</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="n">alice_pub</span><span class="p">,</span> <span class="n">bob_priv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="n">shared_alice</span> <span class="o">==</span> <span class="n">shared_bob</span><span class="p">,</span> <span class="s2">&#34;sharing missed&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sharing complete&#34;</span><span class="p">,</span> <span class="n">shared_alice</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># csidh.sage</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prime_range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">73</span><span class="p">))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">prod</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">Fp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">Fp2</span><span class="o">.&lt;</span><span class="n">j</span><span class="o">&gt;</span> <span class="o">=</span>  <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">modulus</span><span class="o">=</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">montgomery</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># 曲線を双有理同値な Montgomery曲線へと変換</span>
+<span class="k">def</span> <span class="nf">to_montgomery</span><span class="p">(</span><span class="n">E</span><span class="p">):</span>
+    <span class="n">Ep</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">change_ring</span><span class="p">(</span><span class="n">Fp</span><span class="p">)</span><span class="o">.</span><span class="n">short_weierstrass_model</span><span class="p">()</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Ep</span><span class="o">.</span><span class="n">a4</span><span class="p">(),</span> <span class="n">Ep</span><span class="o">.</span><span class="n">a6</span><span class="p">()</span>
+    <span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">Fp</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">roots</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_square</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="n">s</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">Fp</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># 群作用</span>
+<span class="c1"># [3] &#34;CSIDH: An Efficient Post-Quantum Commutative Group Action&#34;</span>
+<span class="k">def</span> <span class="nf">group_action</span><span class="p">(</span><span class="n">pub</span><span class="p">,</span> <span class="n">priv</span><span class="p">):</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">montgomery</span><span class="p">(</span><span class="n">pub</span><span class="p">)</span>
+    <span class="n">es</span> <span class="o">=</span> <span class="n">priv</span><span class="p">[:]</span>
+    
+    <span class="k">while</span> <span class="nb">any</span><span class="p">(</span><span class="n">es</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">lift_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Fp</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">es</span><span class="p">)</span> <span class="k">if</span> <span class="n">sign</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">==</span> <span class="n">s</span> <span class="ow">and</span> <span class="n">e</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">prod</span><span class="p">([</span><span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">S</span><span class="p">])</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="p">((</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">//</span> <span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">Q</span>
+            <span class="k">if</span> <span class="n">R</span><span class="o">.</span><span class="n">is_zero</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+            <span class="n">E</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
+            <span class="n">Q</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+            <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">s</span>
+            <span class="n">k</span> <span class="o">//=</span> <span class="n">ls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">to_montgomery</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+
+<span class="c1"># e の範囲</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">((</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Alice</span>
+<span class="n">alice_priv</span> <span class="o">=</span> <span class="p">[</span><span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">))]</span>
+<span class="n">alice_pub</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">alice_priv</span><span class="p">)</span>
+
+<span class="c1"># Bob</span>
+<span class="n">bob_priv</span> <span class="o">=</span> <span class="p">[</span><span class="n">randrange</span><span class="p">(</span><span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ls</span><span class="p">))]</span>
+<span class="n">bob_pub</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bob_priv</span><span class="p">)</span>
+
+<span class="c1"># 鍵交換</span>
+<span class="n">shared_alice</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="n">bob_pub</span><span class="p">,</span> <span class="n">alice_priv</span><span class="p">)</span>
+<span class="n">shared_bob</span> <span class="o">=</span> <span class="n">group_action</span><span class="p">(</span><span class="n">alice_pub</span><span class="p">,</span> <span class="n">bob_priv</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">shared_alice</span> <span class="o">==</span> <span class="n">shared_bob</span><span class="p">,</span> <span class="s2">&#34;sharing missed&#34;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sharing complete&#34;</span><span class="p">,</span> <span class="n">shared_alice</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>実行結果</strong></p>
 <div class="highlight"><div class="chroma">
@@ -634,9 +628,9 @@ E_A @&gt;[\b] &gt;&gt; E_{AB} \end{CD}$$</p>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sage csidh.sage
-</span></span><span class="line"><span class="cl">sharing <span class="nb">complete</span> <span class="m">546546252294264083140485008</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sage csidh.sage
+sharing <span class="nb">complete</span> <span class="m">546546252294264083140485008</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>sharing complete と表示されて，うまく共有できていることが確認できました．</p>
 <h3 id="sidh-への攻撃手法と-cd-attack">SIDH への攻撃手法と CD attack</h3>
@@ -730,39 +724,39 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># sidh.sage</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Public Parameters</span>
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">la</span><span class="p">,</span> <span class="n">ea</span><span class="p">),</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">eb</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">57</span><span class="p">)</span>  <span class="c1"># $IKEp182</span>
-</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">-</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">Fp2</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="n">Pa</span><span class="p">,</span> <span class="n">Qa</span> <span class="o">=</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Pb</span><span class="p">,</span> <span class="n">Qb</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Alice</span>
-</span></span><span class="line"><span class="cl"><span class="n">ma</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">na</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Pa</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Qa</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Ua</span><span class="p">,</span> <span class="n">Va</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pb</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qb</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Ea</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Bob</span>
-</span></span><span class="line"><span class="cl"><span class="n">mb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">nb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Pb</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Qb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Ub</span><span class="p">,</span> <span class="n">Vb</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pa</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qa</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Eb</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># shared key</span>
-</span></span><span class="line"><span class="cl"><span class="n">shared_a</span> <span class="o">=</span> <span class="n">Eb</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Vb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">shared_b</span> <span class="o">=</span> <span class="n">Ea</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Ua</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Va</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">assert</span> <span class="n">shared_a</span> <span class="o">==</span> <span class="n">shared_b</span><span class="p">,</span> <span class="s2">&#34;sharing missed&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sharing complete&#34;</span><span class="p">,</span> <span class="n">shared_a</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># sidh.sage</span>
+
+<span class="c1"># Public Parameters</span>
+<span class="p">(</span><span class="n">la</span><span class="p">,</span> <span class="n">ea</span><span class="p">),</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">eb</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">57</span><span class="p">)</span>  <span class="c1"># $IKEp182</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">Fp2</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">Pa</span><span class="p">,</span> <span class="n">Qa</span> <span class="o">=</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Pb</span><span class="p">,</span> <span class="n">Qb</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Alice</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+<span class="n">na</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Pa</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Qa</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
+<span class="n">Ua</span><span class="p">,</span> <span class="n">Va</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pb</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qb</span><span class="p">)</span>
+<span class="n">Ea</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
+
+<span class="c1"># Bob</span>
+<span class="n">mb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Pb</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Qb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
+<span class="n">Ub</span><span class="p">,</span> <span class="n">Vb</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pa</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qa</span><span class="p">)</span>
+<span class="n">Eb</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
+
+<span class="c1"># shared key</span>
+<span class="n">shared_a</span> <span class="o">=</span> <span class="n">Eb</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Vb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
+<span class="n">shared_b</span> <span class="o">=</span> <span class="n">Ea</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Ua</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Va</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="n">shared_a</span> <span class="o">==</span> <span class="n">shared_b</span><span class="p">,</span> <span class="s2">&#34;sharing missed&#34;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sharing complete&#34;</span><span class="p">,</span> <span class="n">shared_a</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>実行結果</strong></p>
 <div class="highlight"><div class="chroma">
@@ -771,9 +765,9 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sage sidh.sage
-</span></span><span class="line"><span class="cl">sharing <span class="nb">complete</span> 605725309534756129961216154885818743552050541118776976*z2 + <span class="m">3839126000240784862404930106327311737040660763038229734</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sage sidh.sage
+sharing <span class="nb">complete</span> 605725309534756129961216154885818743552050541118776976*z2 + <span class="m">3839126000240784862404930106327311737040660763038229734</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>sharing complete と表示されてうまく共有できていることが確認できました．</p>
 <h2 id="q2-発展">Q2 (発展)</h2>
@@ -822,41 +816,41 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># sidh_test.sage</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="c1"># ==================================== Q2 implementation ====================================</span>
-</span></span><span class="line"><span class="cl">	<span class="c1"># Public Parameters</span>
-</span></span><span class="line"><span class="cl">	<span class="p">(</span><span class="n">la</span><span class="p">,</span> <span class="n">ea</span><span class="p">),</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">eb</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">57</span><span class="p">)</span>  <span class="c1"># $IKEp182</span>
-</span></span><span class="line"><span class="cl">	<span class="n">p</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">-</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">	<span class="k">assert</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="n">Fp2</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Pa</span><span class="p">,</span> <span class="n">Qa</span> <span class="o">=</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Pb</span><span class="p">,</span> <span class="n">Qb</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># Alice</span>
-</span></span><span class="line"><span class="cl">	<span class="n">ma</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">na</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Pa</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Qa</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Ua</span><span class="p">,</span> <span class="n">Va</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pb</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qb</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Ea</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># Bob</span>
-</span></span><span class="line"><span class="cl">	<span class="n">mb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">nb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Pb</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Qb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Ub</span><span class="p">,</span> <span class="n">Vb</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pa</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qa</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">Eb</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1"># shared key</span>
-</span></span><span class="line"><span class="cl">	<span class="n">shared_a</span> <span class="o">=</span> <span class="n">Eb</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Vb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="n">shared_b</span> <span class="o">=</span> <span class="n">Ea</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Ua</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Va</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="k">assert</span> <span class="n">shared_a</span> <span class="o">==</span> <span class="n">shared_b</span><span class="p">,</span> <span class="s2">&#34;sharing missed&#34;</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sharing complete&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="c1"># ===========================================================================================</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># sidh_test.sage</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+	<span class="c1"># ==================================== Q2 implementation ====================================</span>
+	<span class="c1"># Public Parameters</span>
+	<span class="p">(</span><span class="n">la</span><span class="p">,</span> <span class="n">ea</span><span class="p">),</span> <span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">eb</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">57</span><span class="p">)</span>  <span class="c1"># $IKEp182</span>
+	<span class="n">p</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">-</span> <span class="mi">1</span>
+	<span class="k">assert</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+	<span class="n">Fp2</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+	<span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="n">Fp2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+	<span class="n">Pa</span><span class="p">,</span> <span class="n">Qa</span> <span class="o">=</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">lb</span><span class="o">^</span><span class="n">eb</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="n">Pb</span><span class="p">,</span> <span class="n">Qb</span> <span class="o">=</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span> <span class="o">*</span> <span class="n">E</span><span class="o">.</span><span class="n">gen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+	<span class="c1"># Alice</span>
+	<span class="n">ma</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+	<span class="n">na</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">la</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+	<span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Pa</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Qa</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
+	<span class="n">Ua</span><span class="p">,</span> <span class="n">Va</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pb</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qb</span><span class="p">)</span>
+	<span class="n">Ea</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
+
+	<span class="c1"># Bob</span>
+	<span class="n">mb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+	<span class="n">nb</span> <span class="o">=</span> <span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lb</span><span class="o">^</span><span class="n">ea</span><span class="p">)</span>
+	<span class="n">phi</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Pb</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Qb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span>
+	<span class="n">Ub</span><span class="p">,</span> <span class="n">Vb</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">Pa</span><span class="p">),</span> <span class="n">phi</span><span class="p">(</span><span class="n">Qa</span><span class="p">)</span>
+	<span class="n">Eb</span> <span class="o">=</span> <span class="n">phi</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span>
+
+	<span class="c1"># shared key</span>
+	<span class="n">shared_a</span> <span class="o">=</span> <span class="n">Eb</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">ma</span> <span class="o">*</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">na</span> <span class="o">*</span> <span class="n">Vb</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
+	<span class="n">shared_b</span> <span class="o">=</span> <span class="n">Ea</span><span class="o">.</span><span class="n">isogeny</span><span class="p">(</span><span class="n">mb</span> <span class="o">*</span> <span class="n">Ua</span> <span class="o">+</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">Va</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&#34;factored&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">codomain</span><span class="p">()</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
+
+	<span class="k">assert</span> <span class="n">shared_a</span> <span class="o">==</span> <span class="n">shared_b</span><span class="p">,</span> <span class="s2">&#34;sharing missed&#34;</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;sharing complete&#34;</span><span class="p">)</span>
+	<span class="c1"># ===========================================================================================</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>これを実行すると，一度も 41行目の assert に引っかからず正常終了しました．そのため，Alice と Bob の秘密鍵によって鍵共有が失敗することはないと考えます．</p>
 <p>ただ shared の共有ができてアルゴリズムが正しそうでも，電力解析や時間計測系の攻撃のような理論で保障されていない部分に対してもセキュアであるかはわかりません．暗号実装の正しさはそこまで調べなくてはいけませんが，これを判断するのは一人ではとても大変で，また非常に長い時間をかけて精査しなくてはいけません．</p>
@@ -1004,91 +998,91 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp; \ ( |i-j|
 </span><span class="lnt">84
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># braid.sage</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;Braid cryptosystem&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># H: Bn -&gt; {0,1}^k</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 組み紐の normal form を受け取り，それを文字列とみて sha512 に変換</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## Key Generation</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>		<span class="c1"># security parameter</span>
-</span></span><span class="line"><span class="cl"><span class="n">Bn</span> <span class="o">=</span> <span class="n">BraidGroup</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">gs</span> <span class="o">=</span> <span class="n">Bn</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>	<span class="c1"># Artin Generators</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">K</span> <span class="o">=</span> <span class="mi">32</span>		<span class="c1"># 組み紐の長さが固定になってしまっている</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>	<span class="c1"># u の生成</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># u \in LB または u \in RB にならないように twist</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="ow">not</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">	<span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># sagemath の left normal form は遅いので right normal form</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;u: </span><span class="si">{</span><span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">al</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># al の生成</span>
-</span></span><span class="line"><span class="cl"><span class="n">v</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">al</span><span class="o">^-</span><span class="mi">1</span>		<span class="c1"># v の生成</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># v はすごく長く，出力すると見にくいのでコメントアウト</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># print(f&#34;v: {prod(v.right_normal_form())}&#34;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## Encryption</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">br</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># br の生成</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">w</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">h</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">prod</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># メッセージを h の長さまでパディング</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># パディングがランダムだと複合されたのが確認しにくいため，全て _ でパディングする</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">left_length</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_length</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># pad1 = &#34;&#34;.join(random.choices(string.ascii_letters, k=left_length)).encode(&#34;utf-8&#34;)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># pad2 = &#34;&#34;.join(random.choices(string.ascii_letters, k=pad_length-left_length)).encode(&#34;utf-8&#34;)</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad1</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad2</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">pad_length</span><span class="o">-</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="n">pad1</span> <span class="o">+</span> <span class="n">message</span> <span class="o">+</span> <span class="n">pad2</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^^</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 公開鍵</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># print(f&#34;w: {prod(w.right_normal_form())}&#34;)	# w も長いので非表示</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;d: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## Decryption</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">w</span> <span class="o">*</span> <span class="n">al</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">dd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="n">xx</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">xx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">dd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;message: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># braid.sage</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">message</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;Braid cryptosystem&#34;</span>
+
+<span class="c1"># H: Bn -&gt; {0,1}^k</span>
+<span class="c1"># 組み紐の normal form を受け取り，それを文字列とみて sha512 に変換</span>
+<span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+
+<span class="c1">## ------------------</span>
+<span class="c1">## Key Generation</span>
+<span class="c1">## ------------------</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>		<span class="c1"># security parameter</span>
+<span class="n">Bn</span> <span class="o">=</span> <span class="n">BraidGroup</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">Bn</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>	<span class="c1"># Artin Generators</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="mi">32</span>		<span class="c1"># 組み紐の長さが固定になってしまっている</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>	<span class="c1"># u の生成</span>
+
+<span class="c1"># u \in LB または u \in RB にならないように twist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>
+	<span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># sagemath の left normal form は遅いので right normal form</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;u: </span><span class="si">{</span><span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+<span class="n">al</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># al の生成</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">al</span><span class="o">^-</span><span class="mi">1</span>		<span class="c1"># v の生成</span>
+
+<span class="c1"># v はすごく長く，出力すると見にくいのでコメントアウト</span>
+<span class="c1"># print(f&#34;v: {prod(v.right_normal_form())}&#34;)</span>
+
+<span class="c1">## ------------------</span>
+<span class="c1">## Encryption</span>
+<span class="c1">## ------------------</span>
+
+<span class="n">br</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># br の生成</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">prod</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">()))</span>
+
+<span class="c1"># メッセージを h の長さまでパディング</span>
+<span class="c1"># パディングがランダムだと複合されたのが確認しにくいため，全て _ でパディングする</span>
+<span class="n">pad_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="n">left_length</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_length</span><span class="p">)</span>
+<span class="c1"># pad1 = &#34;&#34;.join(random.choices(string.ascii_letters, k=left_length)).encode(&#34;utf-8&#34;)</span>
+<span class="c1"># pad2 = &#34;&#34;.join(random.choices(string.ascii_letters, k=pad_length-left_length)).encode(&#34;utf-8&#34;)</span>
+<span class="n">pad1</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+<span class="n">pad2</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">pad_length</span><span class="o">-</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">pad1</span> <span class="o">+</span> <span class="n">message</span> <span class="o">+</span> <span class="n">pad2</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)):</span>
+	<span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^^</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
+
+<span class="c1"># 公開鍵</span>
+<span class="c1"># print(f&#34;w: {prod(w.right_normal_form())}&#34;)	# w も長いので非表示</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;d: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+<span class="c1">## ------------------</span>
+<span class="c1">## Decryption</span>
+<span class="c1">## ------------------</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">w</span> <span class="o">*</span> <span class="n">al</span><span class="o">^-</span><span class="mi">1</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span>
+<span class="n">r</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="n">dd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)):</span>
+	<span class="n">xx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">dd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">message</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;message: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>実行結果</strong></p>
 <div class="highlight"><div class="chroma">
@@ -1099,11 +1093,11 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp; \ ( |i-j|
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sage braid.sage
-</span></span><span class="line"><span class="cl">u: s0^2*s1*s9*s10*s17*s26*s41*s45*s46*s0*s1*s0*s4*s3*s6*s5*s10*s14*s13*s17*s22*s23*s24*s26*s27*s29*s34*s37*s41*s46*s48
-</span></span><span class="line"><span class="cl">d: <span class="m">19806161916573509237124676539947687984611237172364598797722173288900842526377722595466863883841047920017790014586600066990583932036270299669472095497855887498686362010501602955605223287447070670055647440631685561699451105007913455296089468</span>
-</span></span><span class="line"><span class="cl">message: b<span class="s1">&#39;______Braid cryptosystem________________________________________&#39;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sage braid.sage
+u: s0^2*s1*s9*s10*s17*s26*s41*s45*s46*s0*s1*s0*s4*s3*s6*s5*s10*s14*s13*s17*s22*s23*s24*s26*s27*s29*s34*s37*s41*s46*s48
+d: <span class="m">19806161916573509237124676539947687984611237172364598797722173288900842526377722595466863883841047920017790014586600066990583932036270299669472095497855887498686362010501602955605223287447070670055647440631685561699451105007913455296089468</span>
+message: b<span class="s1">&#39;______Braid cryptosystem________________________________________&#39;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>メッセージが暗号化され，また複合もうまく機能していることが確認できました．</p>
 <h3 id="参考文献-2">参考文献</h3>
@@ -1257,122 +1251,122 @@ $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} &amp; =vz^{-1} x_{2}^{-1}\\ b_{r} x_{2} 
 </span><span class="lnt">115
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># braid_attack.py</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;Weak braid cryptosystem&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># H: Bn -&gt; {0,1}^k</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 組み紐の normal form を受け取り，それを文字列とみて sha512 に変換</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## Key Generation</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>		<span class="c1"># security parameter</span>
-</span></span><span class="line"><span class="cl"><span class="n">Bn</span> <span class="o">=</span> <span class="n">BraidGroup</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">gs</span> <span class="o">=</span> <span class="n">Bn</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>	<span class="c1"># Artin Generators</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">K</span> <span class="o">=</span> <span class="mi">32</span>		<span class="c1"># 組み紐の長さが固定になってしまっている</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>	<span class="c1"># u の生成</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># u \in LB または u \in RB にならないように twist</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="ow">not</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">	<span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">u</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># sagemath の left normal form は遅いので right normal form</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;u: </span><span class="si">{</span><span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">al</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># al の生成</span>
-</span></span><span class="line"><span class="cl"><span class="n">v</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">al</span><span class="o">^-</span><span class="mi">1</span>		<span class="c1"># v の生成</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># v はすごく長く，出力すると見にくいのでコメントアウト</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># print(f&#34;v: {prod(v.right_normal_form())}&#34;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## Encryption</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">br</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># br の生成</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">w</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">h</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">prod</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># メッセージを h の長さまでパディング</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># パディングがランダムだと複合されたのが確認しにくいため，全て _ でパディングする</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">left_length</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_length</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># pad1 = &#34;&#34;.join(random.choices(string.ascii_letters, k=left_length)).encode(&#34;utf-8&#34;)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># pad2 = &#34;&#34;.join(random.choices(string.ascii_letters, k=pad_length-left_length)).encode(&#34;utf-8&#34;)</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad1</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad2</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">pad_length</span><span class="o">-</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="n">pad1</span> <span class="o">+</span> <span class="n">message</span> <span class="o">+</span> <span class="n">pad2</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^^</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 公開鍵</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># print(f&#34;w: {prod(w.right_normal_form())}&#34;)	# w も長いので非表示</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;d: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## Attack</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## ------------------</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># u を分解し，B_n の中心の Artin Generator がどのくらい含まれているか計算</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Tietze() メソッドで Artin Generator による分解ができる</span>
-</span></span><span class="line"><span class="cl"><span class="n">factors</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">Tietze</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">	<span class="n">factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;factors: </span><span class="si">{</span><span class="n">factors</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">x1</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">x2</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">		<span class="n">x1</span> <span class="o">*=</span> <span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">	<span class="k">elif</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">		<span class="n">x2</span> <span class="o">*=</span> <span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">	<span class="k">else</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">		<span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># u に B_n の中心の Artin Generator が cnt 個含まれている</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># この Artin Generator の左右の Artin Generator が因数に含まれていないと仮定</span>
-</span></span><span class="line"><span class="cl"><span class="n">z</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="n">cnt</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">z</span> <span class="o">==</span> <span class="n">u</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;we can attack&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;we cant attack&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 攻撃</span>
-</span></span><span class="line"><span class="cl"><span class="n">r1</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">z</span><span class="o">^-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">x2</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">r2</span> <span class="o">=</span> <span class="n">x1</span><span class="o">^-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">w</span> <span class="o">*</span> <span class="n">z</span><span class="o">^-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">r1</span> <span class="o">*</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">z</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">dd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="n">xx</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)):</span>
-</span></span><span class="line"><span class="cl">	<span class="n">xx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">dd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;message: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># braid_attack.py</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">message</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;Weak braid cryptosystem&#34;</span>
+
+<span class="c1"># H: Bn -&gt; {0,1}^k</span>
+<span class="c1"># 組み紐の normal form を受け取り，それを文字列とみて sha512 に変換</span>
+<span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha512</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+
+<span class="c1">## ------------------</span>
+<span class="c1">## Key Generation</span>
+<span class="c1">## ------------------</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>		<span class="c1"># security parameter</span>
+<span class="n">Bn</span> <span class="o">=</span> <span class="n">BraidGroup</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">Bn</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>	<span class="c1"># Artin Generators</span>
+
+<span class="n">K</span> <span class="o">=</span> <span class="mi">32</span>		<span class="c1"># 組み紐の長さが固定になってしまっている</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>	<span class="c1"># u の生成</span>
+
+<span class="c1"># u \in LB または u \in RB にならないように twist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">u</span><span class="p">:</span>
+	<span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># sagemath の left normal form は遅いので right normal form</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;u: </span><span class="si">{</span><span class="n">prod</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+<span class="n">al</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># al の生成</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">al</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">al</span><span class="o">^-</span><span class="mi">1</span>		<span class="c1"># v の生成</span>
+
+<span class="c1"># v はすごく長く，出力すると見にくいのでコメントアウト</span>
+<span class="c1"># print(f&#34;v: {prod(v.right_normal_form())}&#34;)</span>
+
+<span class="c1">## ------------------</span>
+<span class="c1">## Encryption</span>
+<span class="c1">## ------------------</span>
+
+<span class="n">br</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:],</span> <span class="n">k</span><span class="o">=</span><span class="n">K</span><span class="p">))</span>	<span class="c1"># br の生成</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">br</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">br</span><span class="o">^-</span><span class="mi">1</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">prod</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">()))</span>
+
+<span class="c1"># メッセージを h の長さまでパディング</span>
+<span class="c1"># パディングがランダムだと複合されたのが確認しにくいため，全て _ でパディングする</span>
+<span class="n">pad_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="n">left_length</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_length</span><span class="p">)</span>
+<span class="c1"># pad1 = &#34;&#34;.join(random.choices(string.ascii_letters, k=left_length)).encode(&#34;utf-8&#34;)</span>
+<span class="c1"># pad2 = &#34;&#34;.join(random.choices(string.ascii_letters, k=pad_length-left_length)).encode(&#34;utf-8&#34;)</span>
+<span class="n">pad1</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+<span class="n">pad2</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="s2">&#34;_&#34;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">pad_length</span><span class="o">-</span><span class="n">left_length</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+<span class="n">message</span> <span class="o">=</span> <span class="n">pad1</span> <span class="o">+</span> <span class="n">message</span> <span class="o">+</span> <span class="n">pad2</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)):</span>
+	<span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">^^</span> <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">))</span>
+
+<span class="c1"># 公開鍵</span>
+<span class="c1"># print(f&#34;w: {prod(w.right_normal_form())}&#34;)	# w も長いので非表示</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;d: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+<span class="c1">## ------------------</span>
+<span class="c1">## Attack</span>
+<span class="c1">## ------------------</span>
+
+<span class="c1"># u を分解し，B_n の中心の Artin Generator がどのくらい含まれているか計算</span>
+<span class="c1"># Tietze() メソッドで Artin Generator による分解ができる</span>
+<span class="n">factors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">u</span><span class="o">.</span><span class="n">Tietze</span><span class="p">():</span>
+	<span class="n">factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;factors: </span><span class="si">{</span><span class="n">factors</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">:</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">x1</span> <span class="o">*=</span> <span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+	<span class="k">elif</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">x2</span> <span class="o">*=</span> <span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># u に B_n の中心の Artin Generator が cnt 個含まれている</span>
+<span class="c1"># この Artin Generator の左右の Artin Generator が因数に含まれていないと仮定</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">gs</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="n">cnt</span>
+
+<span class="k">if</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">z</span> <span class="o">==</span> <span class="n">u</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;we can attack&#34;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;we cant attack&#34;</span><span class="p">)</span>
+	<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 攻撃</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">z</span><span class="o">^-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">x2</span><span class="o">^-</span><span class="mi">1</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">x1</span><span class="o">^-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">w</span> <span class="o">*</span> <span class="n">z</span><span class="o">^-</span><span class="mi">1</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">r1</span> <span class="o">*</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">z</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">prod</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">right_normal_form</span><span class="p">())</span>
+<span class="n">r</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="n">dd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)):</span>
+	<span class="n">xx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">dd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">message</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;message: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>実行結果</strong></p>
 <div class="highlight"><div class="chroma">
@@ -1385,13 +1379,13 @@ $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} &amp; =vz^{-1} x_{2}^{-1}\\ b_{r} x_{2} 
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sage braid_attack.sage
-</span></span><span class="line"><span class="cl">u: s18*s6*s13*s18*s39*s42*s41*s4*s3*s6*s13*s14*s13*s15*s18*s17*s22*s24*s30*s29*s34*s33*s35*s34*s36*s35*s39*s38*s41*s45*s48*s47
-</span></span><span class="line"><span class="cl">d: <span class="m">21772296693486893607149289408660948126947688202738207310405629983816089234225256322774801319789601456755628764147585532520857892920666158747602907879344571304639730721601713491848500596574372321443310046266121413232866464868946691002801110711030587253</span>
-</span></span><span class="line"><span class="cl">factors: <span class="o">[</span>30, 18, 39, 42, 6, 48, 13, 4, 22, 45, 34, 6, 35, 33, 34, 36, 13, 41, 39, 29, 14, 3, 13, 18, 38, 47, 41, 18, 15, 17, 35, 24<span class="o">]</span>
-</span></span><span class="line"><span class="cl">we can attack
-</span></span><span class="line"><span class="cl">message: b<span class="s1">&#39;_________________________Weak braid cryptosystem________________&#39;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ sage braid_attack.sage
+u: s18*s6*s13*s18*s39*s42*s41*s4*s3*s6*s13*s14*s13*s15*s18*s17*s22*s24*s30*s29*s34*s33*s35*s34*s36*s35*s39*s38*s41*s45*s48*s47
+d: <span class="m">21772296693486893607149289408660948126947688202738207310405629983816089234225256322774801319789601456755628764147585532520857892920666158747602907879344571304639730721601713491848500596574372321443310046266121413232866464868946691002801110711030587253</span>
+factors: <span class="o">[</span>30, 18, 39, 42, 6, 48, 13, 4, 22, 45, 34, 6, 35, 33, 34, 36, 13, 41, 39, 29, 14, 3, 13, 18, 38, 47, 41, 18, 15, 17, 35, 24<span class="o">]</span>
+we can attack
+message: b<span class="s1">&#39;_________________________Weak braid cryptosystem________________&#39;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>秘密なしでうまく複合されてしまっていることが確認できました．</p>
 <p>この攻撃が発生するケースを考察してみると，$u$ が十分に捩じれていない元を選んでしまった時だと考えられます．例えば $u$ に，$LB_l$ の操作の対象となる組み紐と $RB_r$ の操作の対象となる組み紐の間の内側二本を捩じる元 $\sigma$ が含まれていたとします．またその内側二本を捩じる元の両隣，つまり $LB_l$ を構成する Artin Generator の最大のものと $RB_r$ を構成する Artin Generator の最小のものが $u$ に含まれていなければ $\sigma$ は $u$ の因数全体と可換になるため，$z = \sigma$ として攻撃が成立する可能性が高いと考えます．</p>
@@ -1537,7 +1531,7 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
     <div class="disqus-container">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
