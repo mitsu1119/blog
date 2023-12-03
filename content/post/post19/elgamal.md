@@ -9,7 +9,7 @@ math: true
 　この記事は [Lumos Advent Calendar](https://qiita.com/advent-calendar/2023/lumos) の Day 2 の記事です！ 
 
 　Day 1 の記事は @tomoyahiroe さんによる [【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい](https://qiita.com/tomoyahiroe/items/343f158905ac7a65ca35) でした。  
-　次回の記事（Day 3）はくっきーさんによる [ISUCON13 に参加した話]() です。お楽しみに。
+　次回の記事（Day 3）はくっきーさんによる [ISUCON13 に参加した話](https://blog.ck9.jp/post/240/) です。お楽しみに。
 
 　ということで本題へレッツラゴー。
 
