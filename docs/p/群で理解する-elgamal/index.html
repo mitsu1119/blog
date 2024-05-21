@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 　この記事は Lumos Advent Calendar の Day 2 の記事です！
-　Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！
+Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
 次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。
-　ということで本題へレッツラゴー。
-ElGamal 暗号 　ElGamal 暗号ってご存じですか？
-　公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
+ということで本題へレッツラゴー。
+ElGamal 暗号 ElGamal 暗号ってご存じですか？
+公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
 ちなみに私はあまりよく知りませんでした。
-　ElGamal 暗号って何？現在は？base problem は？
+ElGamal 暗号って何？現在は？base problem は？
 調べてみました！
-ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
+ElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
 古参ですね！
-　個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
-　公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
-　CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。'>
+個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
+公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
+CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。'>
 <title>群で理解する ElGamal</title>
 
 <link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='群で理解する ElGamal'>
-<meta property='og:description' content='はじめに 　この記事は Lumos Advent Calendar の Day 2 の記事です！
-　Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
+<meta property='og:description' content='はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！
+Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
 次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。
-　ということで本題へレッツラゴー。
-ElGamal 暗号 　ElGamal 暗号ってご存じですか？
-　公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
+ということで本題へレッツラゴー。
+ElGamal 暗号 ElGamal 暗号ってご存じですか？
+公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
 ちなみに私はあまりよく知りませんでした。
-　ElGamal 暗号って何？現在は？base problem は？
+ElGamal 暗号って何？現在は？base problem は？
 調べてみました！
-ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
+ElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
 古参ですね！
-　個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
-　公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
-　CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。'>
+個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
+公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
+CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。'>
 <meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-01T18:56:50&#43;09:00'/><meta property='article:modified_time' content='2023-12-01T18:56:50&#43;09:00'/>
 <meta name="twitter:title" content="群で理解する ElGamal">
-<meta name="twitter:description" content="はじめに 　この記事は Lumos Advent Calendar の Day 2 の記事です！
-　Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
+<meta name="twitter:description" content="はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！
+Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
 次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。
-　ということで本題へレッツラゴー。
-ElGamal 暗号 　ElGamal 暗号ってご存じですか？
-　公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
+ということで本題へレッツラゴー。
+ElGamal 暗号 ElGamal 暗号ってご存じですか？
+公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
 ちなみに私はあまりよく知りませんでした。
-　ElGamal 暗号って何？現在は？base problem は？
+ElGamal 暗号って何？現在は？base problem は？
 調べてみました！
-ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
+ElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
 古参ですね！
-　個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
-　公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
-　CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。">
+個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
+公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
+CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。">
 
 
 <style>
@@ -130,7 +130,7 @@ ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 �
         
             
             <figure class="site-avatar">
-                <a href="/blog">
+                <a href="/blog/">
                 
                     
                     
@@ -199,6 +199,25 @@ ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 �
         
 
         <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://mitsu1119.github.io/blog/" selected></option>
+                        
+                    </select>
+                </li>
+            
             
             
                 <li id="dark-mode-toggle">
@@ -472,8 +491,8 @@ ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 �
         
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -520,7 +539,7 @@ ElGamal 暗号とは 　公開鍵暗号の種類の一つで、なんと 1980 �
         
             2020 - 
         
-        2023 みつみつみつですか？
+        2024 みつみつみつですか？
     </section>
     
     <section class="powerby">

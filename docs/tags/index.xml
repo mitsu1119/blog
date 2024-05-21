@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <lastBuildDate>Sat, 12 Aug 2023 20:40:36 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>elliptic curve</title>
+        <title>Elliptic Curve</title>
         <link>https://mitsu1119.github.io/blog/tags/elliptic-curve/</link>
         <pubDate>Sat, 12 Aug 2023 20:40:36 +0900</pubDate>
         
@@ -15,7 +15,7 @@
         <description></description>
         </item>
         <item>
-        <title>math</title>
+        <title>Math</title>
         <link>https://mitsu1119.github.io/blog/tags/math/</link>
         <pubDate>Sat, 12 Aug 2023 20:40:36 +0900</pubDate>
         
@@ -23,7 +23,7 @@
         <description></description>
         </item>
         <item>
-        <title>writeup</title>
+        <title>Writeup</title>
         <link>https://mitsu1119.github.io/blog/tags/writeup/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
@@ -39,7 +39,7 @@
         <description></description>
         </item>
         <item>
-        <title>misc</title>
+        <title>Misc</title>
         <link>https://mitsu1119.github.io/blog/tags/misc/</link>
         <pubDate>Mon, 08 Mar 2021 19:06:07 +0900</pubDate>
         
@@ -47,7 +47,7 @@
         <description></description>
         </item>
         <item>
-        <title>algorithm</title>
+        <title>Algorithm</title>
         <link>https://mitsu1119.github.io/blog/tags/algorithm/</link>
         <pubDate>Mon, 04 Jan 2021 21:03:57 +0900</pubDate>
         
@@ -55,7 +55,7 @@
         <description></description>
         </item>
         <item>
-        <title>angr</title>
+        <title>Angr</title>
         <link>https://mitsu1119.github.io/blog/tags/angr/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
@@ -63,7 +63,7 @@
         <description></description>
         </item>
         <item>
-        <title>lattice</title>
+        <title>Lattice</title>
         <link>https://mitsu1119.github.io/blog/tags/lattice/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
@@ -71,7 +71,7 @@
         <description></description>
         </item>
         <item>
-        <title>kosen</title>
+        <title>Kosen</title>
         <link>https://mitsu1119.github.io/blog/tags/kosen/</link>
         <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
         

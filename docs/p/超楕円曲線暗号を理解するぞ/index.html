@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます． $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$
-定義とか 　今まで扱ってきた楕円曲線は $v^2 &#43; h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます． $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$
+定義とか 今まで扱ってきた楕円曲線は $v^2 &#43; h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．
 曲線の右辺の多項式 $f$ の次数に関して，種数 $g$ を $\deg f = 2g &#43; 1$ となる整数と定義します．
 通常の楕円曲線は種数 $1$ の曲線で，またその自然な拡張として $g = 2$ のものや $g = 3$ のものも考えることができるようになります．これらの種数が $1$ よりも大きい代数曲線を超楕円曲線といいます．
 定義
@@ -12,8 +12,8 @@
 <link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='超楕円曲線暗号を理解するぞ'>
-<meta property='og:description' content='はじめに 　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます． $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$
-定義とか 　今まで扱ってきた楕円曲線は $v^2 &#43; h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．
+<meta property='og:description' content='はじめに 超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます． $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$
+定義とか 今まで扱ってきた楕円曲線は $v^2 &#43; h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．
 曲線の右辺の多項式 $f$ の次数に関して，種数 $g$ を $\deg f = 2g &#43; 1$ となる整数と定義します．
 通常の楕円曲線は種数 $1$ の曲線で，またその自然な拡張として $g = 2$ のものや $g = 3$ のものも考えることができるようになります．これらの種数が $1$ よりも大きい代数曲線を超楕円曲線といいます．
 定義
@@ -22,8 +22,8 @@
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='elliptic curve' /><meta property='article:tag' content='math' /><meta property='article:tag' content='理解するぞ' /><meta property='article:published_time' content='2023-06-01T16:46:29&#43;09:00'/><meta property='article:modified_time' content='2023-06-01T16:46:29&#43;09:00'/>
 <meta name="twitter:title" content="超楕円曲線暗号を理解するぞ">
-<meta name="twitter:description" content="はじめに 　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます． $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$
-定義とか 　今まで扱ってきた楕円曲線は $v^2 &#43; h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．
+<meta name="twitter:description" content="はじめに 超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます． $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$
+定義とか 今まで扱ってきた楕円曲線は $v^2 &#43; h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．
 曲線の右辺の多項式 $f$ の次数に関して，種数 $g$ を $\deg f = 2g &#43; 1$ となる整数と定義します．
 通常の楕円曲線は種数 $1$ の曲線で，またその自然な拡張として $g = 2$ のものや $g = 3$ のものも考えることができるようになります．これらの種数が $1$ よりも大きい代数曲線を超楕円曲線といいます．
 定義
@@ -106,7 +106,7 @@
         
             
             <figure class="site-avatar">
-                <a href="/blog">
+                <a href="/blog/">
                 
                     
                     
@@ -175,6 +175,25 @@
         
 
         <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://mitsu1119.github.io/blog/" selected></option>
+                        
+                    </select>
+                </li>
+            
             
             
                 <li id="dark-mode-toggle">
@@ -325,7 +344,7 @@ $$\frac{\partial F}{\partial v} = 2v + h$$
 $$
 \begin{cases}
 y^2 + h(x)y = f(x) \\
-h'(x)y = f'(x) \\
+h&rsquo;(x)y = f&rsquo;(x) \\
 2y+h(x)=0 \\
 \end{cases}$$
 となる曲線だということがわかります．</p>
@@ -576,68 +595,68 @@ C_2 - sC_1 &amp;= rD + M - srD_g
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># hcc.sage</span>
-
-<span class="c1"># --------------------</span>
-<span class="c1"># 公開パラメータ</span>
-<span class="c1"># -------------------- </span>
-<span class="n">nbits</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">random_prime</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">Fp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-<span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">Fp</span><span class="p">)</span>
-
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">HyperellipticCurve</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">J</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">jacobian</span><span class="p">()(</span><span class="n">Fp</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Public Parameter]&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;p: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C: </span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="c1"># -------------------- </span>
-<span class="c1"># 鍵生成</span>
-<span class="c1"># -------------------- </span>
-<span class="c1"># この s と Dg の生成方法って大丈夫なんかな</span>
-<span class="c1"># なんか危ない気がする</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-	<span class="k">try</span><span class="p">:</span>
-		<span class="n">x</span> <span class="o">=</span> <span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
-		<span class="n">Dg</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">lift_x</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-		<span class="k">break</span>
-	<span class="k">except</span><span class="p">:</span>
-		<span class="k">pass</span>
-
-<span class="c1"># Weil の不等式から p^2 &lt;= (sqrt(p) - 1)^(2g) &lt;= J.order</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">Dg</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Public Key]&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;D:  </span><span class="si">{</span><span class="n">D</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Dg: </span><span class="si">{</span><span class="n">Dg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="c1"># -------------------- </span>
-<span class="c1"># 暗号化</span>
-<span class="c1"># -------------------- </span>
-<span class="n">m</span> <span class="o">=</span> <span class="mi">8931</span>
-<span class="n">M</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">lift_x</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>	<span class="c1"># 平文のハッシュ化も悩みどころ．lift_x だと曲線上に平文がない可能性がある</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">C1</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">Dg</span>
-<span class="n">C2</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">D</span> <span class="o">+</span> <span class="n">M</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Cipher Text]&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C1: </span><span class="si">{</span><span class="n">C1</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C2: </span><span class="si">{</span><span class="n">C2</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-
-<span class="c1"># -------------------- </span>
-<span class="c1"># 複合</span>
-<span class="c1"># -------------------- </span>
-<span class="n">MM</span> <span class="o">=</span> <span class="n">C2</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">C1</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Decryption]&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;m: </span><span class="si">{</span><span class="o">-</span><span class="n">MM</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># hcc.sage</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 公開パラメータ</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="n">nbits</span> <span class="o">=</span> <span class="mi">64</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">random_prime</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">false</span><span class="p">,</span> <span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="n">nbits</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">Fp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">Fp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">5</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="n">HyperellipticCurve</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">J</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">jacobian</span><span class="p">()(</span><span class="n">Fp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Public Parameter]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;p: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C: </span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 鍵生成</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># この s と Dg の生成方法って大丈夫なんかな</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># なんか危ない気がする</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x</span> <span class="o">=</span> <span class="n">Fp</span><span class="o">.</span><span class="n">random_element</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="n">Dg</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">lift_x</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">break</span>
+</span></span><span class="line"><span class="cl">	<span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Weil の不等式から p^2 &lt;= (sqrt(p) - 1)^(2g) &lt;= J.order</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">D</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">Dg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Public Key]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;D:  </span><span class="si">{</span><span class="n">D</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Dg: </span><span class="si">{</span><span class="n">Dg</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 暗号化</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="mi">8931</span>
+</span></span><span class="line"><span class="cl"><span class="n">M</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">lift_x</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>	<span class="c1"># 平文のハッシュ化も悩みどころ．lift_x だと曲線上に平文がない可能性がある</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">C1</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">Dg</span>
+</span></span><span class="line"><span class="cl"><span class="n">C2</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">D</span> <span class="o">+</span> <span class="n">M</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Cipher Text]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C1: </span><span class="si">{</span><span class="n">C1</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;C2: </span><span class="si">{</span><span class="n">C2</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 複合</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -------------------- </span>
+</span></span><span class="line"><span class="cl"><span class="n">MM</span> <span class="o">=</span> <span class="n">C2</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">C1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[Decryption]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;m: </span><span class="si">{</span><span class="o">-</span><span class="n">MM</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>　それでは良き超楕円曲線ライフを！<br>
 　ちなみに超楕円曲線暗号は安全な曲線の生成法や計算量に問題があり，まだ研究段階です……なんもかんもヤコビアンの位数計算が悪い（気がする）</p>
@@ -649,9 +668,9 @@ C_2 - sC_1 &amp;= rD + M - srD_g
     
     <section class="article-tags">
         
-            <a href="/blog/tags/elliptic-curve/">elliptic curve</a>
+            <a href="/blog/tags/elliptic-curve/">Elliptic Curve</a>
         
-            <a href="/blog/tags/math/">math</a>
+            <a href="/blog/tags/math/">Math</a>
         
             <a href="/blog/tags/%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/">理解するぞ</a>
         
@@ -757,8 +776,8 @@ C_2 - sC_1 &amp;= rD + M - srD_g
         
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -805,7 +824,7 @@ C_2 - sC_1 &amp;= rD + M - srD_g
         
             2020 - 
         
-        2023 みつみつみつですか？
+        2024 みつみつみつですか？
     </section>
     
     <section class="powerby">

@@ -103,7 +103,7 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
         
             
             <figure class="site-avatar">
-                <a href="/blog">
+                <a href="/blog/">
                 
                     
                     
@@ -172,6 +172,25 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
         
 
         <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://mitsu1119.github.io/blog/" selected></option>
+                        
+                    </select>
+                </li>
+            
             
             
                 <li id="dark-mode-toggle">
@@ -249,7 +268,7 @@ $$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp;amp; if\ t = 0\\ \math
     
     <h1 id="はじめに">はじめに</h1>
 <p>いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。</p>
-<!-- raw HTML omitted -->
+<br />
 <h1 id="準備">準備</h1>
 <p>まずは制御点 $\mathbf{B} _ 1, \mathbf{B} _ 2, \mathbf{B} _ 3, \mathbf{B} _ 4$ によって表されるベジェ曲線 $\mathbf{P}(t)$ を次式で定義しておきます。
 $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 + 3t(1-t)^2 \mathbf{B} _ 2 + 3t^2(1-t) \mathbf{B} _ 3 + t^3 \mathbf{B} _ 4\ \ \ (0 \leq t \leq 1)$$</p>
@@ -265,7 +284,7 @@ $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 + 3t(1-t)^2 \mathbf{B} _ 2 + 3t^2(1-t
 \end{cases}
 $$</p>
 <p>ただし $\mathbf{P} _ i$ は $i$ 番目のセグメントのベジェ曲線を表し、$\mathbf{P} _ i(1) = \mathbf{P} _ {i + 1}(0)\ \ (1 \leq i &lt; n)$ を満たすものとします。</p>
-<!-- raw HTML omitted -->
+<br />
 <h1 id="ベジェ曲線を長さの関数で表す">ベジェ曲線を長さの関数で表す</h1>
 <p>まずベジェ曲線 $\mathbf{P}(t)$ を曲線に沿った長さ $s$ を使って $\mathbf{Q}(s)\ \ 0 \leq s \leq l$ と表すことを考えます。ただし $l$ はベジェ曲線の孤長とします。</p>
 <p>連鎖律から</p>
@@ -296,7 +315,7 @@ $$</p>
 <p>なので</p>
 <p>$$\mathbf{Q}(s) = (\mathbf{P} \circ f^{-1})(s)$$</p>
 <p>となります。</p>
-<!-- raw HTML omitted -->
+<br />
 <h1 id="ソースコード">ソースコード</h1>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -482,187 +501,187 @@ $$</p>
 </span><span class="lnt">180
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="cm">/* -------------------- 二次元座標クラス -------------------- */</span>
-<span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
-	<span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
-
-<span class="k">public</span><span class="o">:</span>
-	<span class="n">Point</span><span class="p">()</span><span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="p">{};</span>
-	<span class="n">Point</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{};</span>
-
-	<span class="kt">double</span> <span class="nf">getX</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="nf">getY</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="nf">getAbs</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-
-	<span class="n">Point</span> <span class="k">operator</span> <span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">right</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-	<span class="p">}</span>
-
-	<span class="n">Point</span> <span class="k">operator</span> <span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">right</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">-</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">-</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-	<span class="p">}</span>
-<span class="p">};</span>
-<span class="kr">inline</span> <span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">getX</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span> <span class="p">}</span>
-<span class="kr">inline</span> <span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">getY</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span> <span class="p">}</span>
-<span class="kr">inline</span> <span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">getAbs</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
-
-<span class="cm">/* -------------------- ベジェ曲線のノード構造体 -------------------- */</span>
-<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">_BezierNode</span> <span class="p">{</span>
-	<span class="n">Point</span> <span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">B3</span><span class="p">,</span> <span class="n">B4</span><span class="p">;</span>
-	<span class="n">_BezierNode</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B1</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B2</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B3</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B4</span><span class="p">)</span><span class="o">:</span> <span class="n">B1</span><span class="p">(</span><span class="n">B1</span><span class="p">),</span> <span class="n">B2</span><span class="p">(</span><span class="n">B2</span><span class="p">),</span> <span class="n">B3</span><span class="p">(</span><span class="n">B3</span><span class="p">),</span> <span class="n">B4</span><span class="p">(</span><span class="n">B4</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">}</span> <span class="n">BezierNode</span><span class="p">;</span>
-
-<span class="c1">// &#34;bz&#34; で表されるベジェ曲線のパラメータ &#34;t&#34; における座標を計算
-</span><span class="c1"></span><span class="n">Point</span> <span class="nf">calcBezierPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">BezierNode</span> <span class="o">&amp;</span><span class="n">bz</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getX</span><span class="p">();</span>
-	<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getY</span><span class="p">();</span>
-	<span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="c1">// 微分係数版
-</span><span class="c1"></span><span class="n">Point</span> <span class="nf">calcDerivateBezier</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">BezierNode</span> <span class="o">&amp;</span><span class="n">bz</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span> <span class="n">b</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span> <span class="n">c</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span> <span class="n">d</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getX</span><span class="p">();</span>
-	<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
-
-	<span class="n">a</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span> <span class="n">b</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span> <span class="n">c</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span> <span class="n">d</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getY</span><span class="p">();</span>
-	<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
-
-	<span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// ベジェ曲線ズ
-</span><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BezierNode</span><span class="o">&gt;</span> <span class="n">beziers</span><span class="p">;</span>
-
-<span class="c1">// 各セグメントの終端の t パラメータ
-</span><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">t_segend</span><span class="p">;</span>
-
-<span class="c1">// ベジェ曲線ズの t パラメータの始点と終点
-</span><span class="c1"></span><span class="kt">double</span> <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">;</span>
-
-<span class="c1">// 各セグメントの長さとその累積和
-</span><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">,</span> <span class="n">cl</span><span class="p">;</span>
-
-<span class="c1">// ベジェ曲線ズの長さ
-</span><span class="c1"></span><span class="kt">double</span> <span class="n">L</span><span class="p">;</span>
-
-<span class="c1">// ベジェ曲線ズのパラメータ  &#34;t&#34; に対応する座標を計算
-</span><span class="c1"></span><span class="n">Point</span> <span class="nf">calcBeziersPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
-	<span class="n">size_t</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">tmax</span><span class="p">)</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">;</span>
-	<span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
-		<span class="n">t</span> <span class="o">-=</span> <span class="mf">1.0</span><span class="p">;</span>
-		<span class="n">m</span><span class="o">++</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="n">calcBezierPoint</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">beziers</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span>
-<span class="p">}</span>
-<span class="c1">// 微分係数版
-</span><span class="c1"></span><span class="n">Point</span> <span class="nf">calcDerivateBeziers</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
-	<span class="n">size_t</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">tmax</span><span class="p">)</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">;</span>
-	<span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
-		<span class="n">t</span> <span class="o">-=</span> <span class="mf">1.0</span><span class="p">;</span>
-		<span class="n">m</span><span class="o">++</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="n">calcDerivateBezier</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">beziers</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span>
-<span class="p">}</span>
-
-<span class="c1">// &#34;i&#34; 番のセグメントの始点からベジェ曲線ズのパラメータ &#34;t&#34; までの弧長
-</span><span class="c1"></span><span class="kt">double</span> <span class="nf">arcLength</span><span class="p">(</span><span class="n">size_t</span> <span class="n">i</span><span class="p">,</span> <span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">i</span><span class="o">--</span><span class="p">;</span>
-
-	<span class="n">size_t</span> <span class="n">accurate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="n">len</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-	<span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">accurate</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">accurate</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">j</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
-		<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">;</span>
-		<span class="n">len</span> <span class="o">+=</span> <span class="p">((</span><span class="n">calcDerivateBeziers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">calcDerivateBeziers</span><span class="p">(</span><span class="n">y</span><span class="p">)).</span><span class="n">getAbs</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="n">len</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// &#34;s&#34; からベジェ曲線ズのパラメータ t を計算
-</span><span class="c1"></span><span class="kt">double</span> <span class="nf">calct</span><span class="p">(</span><span class="kt">double</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">tmin</span><span class="p">;</span>
-	<span class="k">if</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="p">)</span> <span class="k">return</span> <span class="n">tmax</span><span class="p">;</span>
-
-	<span class="c1">// s の属するセグメントの番号を決定
-</span><span class="c1"></span>	<span class="n">size_t</span> <span class="n">m</span><span class="p">;</span>
-	<span class="n">size_t</span> <span class="n">p</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">;</span> <span class="n">m</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">if</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="n">cl</span><span class="p">[</span><span class="n">m</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="c1">// ニュートン法 + 二分法
-</span><span class="c1"></span>	<span class="kt">double</span> <span class="n">segs</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="n">cl</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
-	<span class="kt">double</span> <span class="n">segl</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">m</span><span class="p">];</span>
-	<span class="kt">double</span> <span class="n">segtmin</span> <span class="o">=</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
-	<span class="kt">double</span> <span class="n">segtmax</span> <span class="o">=</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">m</span><span class="p">];</span>
-	<span class="kt">double</span> <span class="n">segt</span> <span class="o">=</span> <span class="n">segtmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">segtmax</span> <span class="o">-</span> <span class="n">segtmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">segs</span> <span class="o">/</span> <span class="n">segl</span><span class="p">);</span>
-
-	<span class="kt">double</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">segtmin</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">segtmax</span><span class="p">;</span>
-
-	<span class="n">size_t</span> <span class="n">accurate</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-	<span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">accurate</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="kt">double</span> <span class="n">F</span> <span class="o">=</span> <span class="n">arcLength</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">segt</span><span class="p">)</span> <span class="o">-</span> <span class="n">segs</span><span class="p">;</span>
-		<span class="k">if</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">eps</span><span class="p">)</span> <span class="k">return</span> <span class="n">segt</span><span class="p">;</span>
-
-		<span class="kt">double</span> <span class="n">dfdt</span> <span class="o">=</span> <span class="n">calcDerivateBeziers</span><span class="p">(</span><span class="n">segt</span><span class="p">).</span><span class="n">getAbs</span><span class="p">();</span>
-		<span class="kt">double</span> <span class="n">cen</span> <span class="o">=</span> <span class="n">segt</span> <span class="o">-</span> <span class="n">F</span> <span class="o">/</span> <span class="n">dfdt</span><span class="p">;</span>
-
-		<span class="k">if</span><span class="p">(</span><span class="n">F</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-			<span class="n">upper</span> <span class="o">=</span> <span class="n">segt</span><span class="p">;</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">cen</span> <span class="o">&lt;=</span> <span class="n">lower</span><span class="p">)</span> <span class="n">segt</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper</span> <span class="o">+</span> <span class="n">lower</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-			<span class="k">else</span> <span class="n">segt</span> <span class="o">=</span> <span class="n">cen</span><span class="p">;</span>
-		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-			<span class="n">lower</span> <span class="o">=</span> <span class="n">segt</span><span class="p">;</span>
-			<span class="k">if</span><span class="p">(</span><span class="n">cen</span> <span class="o">&gt;=</span> <span class="n">upper</span><span class="p">)</span> <span class="n">segt</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper</span> <span class="o">+</span> <span class="n">lower</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-			<span class="k">else</span> <span class="n">segt</span> <span class="o">=</span> <span class="n">cen</span><span class="p">;</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="n">segt</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-	<span class="n">beziers</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
-	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
-	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">167</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">99</span><span class="p">));</span>
-	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">133</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">68</span><span class="p">,</span> <span class="mi">107</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="mi">121</span><span class="p">));</span>
-	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="mi">121</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="mi">135</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">233</span><span class="p">,</span> <span class="mi">178</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">265</span><span class="p">,</span> <span class="mi">73</span><span class="p">));</span>
-
-	<span class="n">t_segend</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
-	<span class="n">tmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="n">tmax</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-
-	<span class="n">l</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-	<span class="n">cl</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arcLength</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-		<span class="n">cl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cl</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-	<span class="p">}</span>
-	<span class="n">L</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
-
-	<span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-		<span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="n">calct</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-		<span class="n">s</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;cmath&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* -------------------- 二次元座標クラス -------------------- */</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Point</span><span class="p">()</span><span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Point</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="nf">getX</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="nf">getY</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="nf">getAbs</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">Point</span> <span class="k">operator</span> <span class="o">+</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">right</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">Point</span> <span class="k">operator</span> <span class="o">-</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span> <span class="o">&amp;</span><span class="n">right</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">-</span> <span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">-</span> <span class="n">right</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">getX</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">getY</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> <span class="kt">double</span> <span class="n">Point</span><span class="o">::</span><span class="n">getAbs</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">*</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* -------------------- ベジェ曲線のノード構造体 -------------------- */</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">_BezierNode</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Point</span> <span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">B3</span><span class="p">,</span> <span class="n">B4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_BezierNode</span><span class="p">(</span><span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B1</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B2</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B3</span><span class="p">,</span> <span class="n">Point</span> <span class="o">&amp;&amp;</span><span class="n">B4</span><span class="p">)</span><span class="o">:</span> <span class="n">B1</span><span class="p">(</span><span class="n">B1</span><span class="p">),</span> <span class="n">B2</span><span class="p">(</span><span class="n">B2</span><span class="p">),</span> <span class="n">B3</span><span class="p">(</span><span class="n">B3</span><span class="p">),</span> <span class="n">B4</span><span class="p">(</span><span class="n">B4</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">BezierNode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// &#34;bz&#34; で表されるベジェ曲線のパラメータ &#34;t&#34; における座標を計算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="nf">calcBezierPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">BezierNode</span> <span class="o">&amp;</span><span class="n">bz</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getX</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getY</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 微分係数版
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="nf">calcDerivateBezier</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">,</span> <span class="k">const</span> <span class="n">BezierNode</span> <span class="o">&amp;</span><span class="n">bz</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span> <span class="n">b</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span> <span class="n">c</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getX</span><span class="p">(),</span> <span class="n">d</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getX</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">a</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B1</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span> <span class="n">b</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B2</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span> <span class="n">c</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B3</span><span class="p">.</span><span class="n">getY</span><span class="p">(),</span> <span class="n">d</span> <span class="o">=</span> <span class="n">bz</span><span class="p">.</span><span class="n">B4</span><span class="p">.</span><span class="n">getY</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ベジェ曲線ズ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BezierNode</span><span class="o">&gt;</span> <span class="n">beziers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 各セグメントの終端の t パラメータ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">t_segend</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ベジェ曲線ズの t パラメータの始点と終点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">double</span> <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 各セグメントの長さとその累積和
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">,</span> <span class="n">cl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ベジェ曲線ズの長さ
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">double</span> <span class="n">L</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ベジェ曲線ズのパラメータ  &#34;t&#34; に対応する座標を計算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="nf">calcBeziersPoint</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">size_t</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">tmax</span><span class="p">)</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">t</span> <span class="o">-=</span> <span class="mf">1.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">m</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">calcBezierPoint</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">beziers</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 微分係数版
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Point</span> <span class="nf">calcDerivateBeziers</span><span class="p">(</span><span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">size_t</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">tmax</span><span class="p">)</span> <span class="n">t</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">t</span> <span class="o">-=</span> <span class="mf">1.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">m</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">calcDerivateBezier</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">beziers</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// &#34;i&#34; 番のセグメントの始点からベジェ曲線ズのパラメータ &#34;t&#34; までの弧長
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">double</span> <span class="nf">arcLength</span><span class="p">(</span><span class="n">size_t</span> <span class="n">i</span><span class="p">,</span> <span class="kt">double</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">size_t</span> <span class="n">accurate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">len</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">accurate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">accurate</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">j</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">len</span> <span class="o">+=</span> <span class="p">((</span><span class="n">calcDerivateBeziers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">calcDerivateBeziers</span><span class="p">(</span><span class="n">y</span><span class="p">)).</span><span class="n">getAbs</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">len</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// &#34;s&#34; からベジェ曲線ズのパラメータ t を計算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">double</span> <span class="nf">calct</span><span class="p">(</span><span class="kt">double</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">tmin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="p">)</span> <span class="k">return</span> <span class="n">tmax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// s の属するセグメントの番号を決定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">size_t</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">size_t</span> <span class="n">p</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">;</span> <span class="n">m</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;</span> <span class="n">cl</span><span class="p">[</span><span class="n">m</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// ニュートン法 + 二分法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">double</span> <span class="n">segs</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="n">cl</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">segl</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">m</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">segtmin</span> <span class="o">=</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">segtmax</span> <span class="o">=</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">m</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">segt</span> <span class="o">=</span> <span class="n">segtmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">segtmax</span> <span class="o">-</span> <span class="n">segtmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">segs</span> <span class="o">/</span> <span class="n">segl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">segtmin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">segtmax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">size_t</span> <span class="n">accurate</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">accurate</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">F</span> <span class="o">=</span> <span class="n">arcLength</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">segt</span><span class="p">)</span> <span class="o">-</span> <span class="n">segs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">eps</span><span class="p">)</span> <span class="k">return</span> <span class="n">segt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">dfdt</span> <span class="o">=</span> <span class="n">calcDerivateBeziers</span><span class="p">(</span><span class="n">segt</span><span class="p">).</span><span class="n">getAbs</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">cen</span> <span class="o">=</span> <span class="n">segt</span> <span class="o">-</span> <span class="n">F</span> <span class="o">/</span> <span class="n">dfdt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">F</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">upper</span> <span class="o">=</span> <span class="n">segt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span><span class="p">(</span><span class="n">cen</span> <span class="o">&lt;=</span> <span class="n">lower</span><span class="p">)</span> <span class="n">segt</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper</span> <span class="o">+</span> <span class="n">lower</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">else</span> <span class="n">segt</span> <span class="o">=</span> <span class="n">cen</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">lower</span> <span class="o">=</span> <span class="n">segt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span><span class="p">(</span><span class="n">cen</span> <span class="o">&gt;=</span> <span class="n">upper</span><span class="p">)</span> <span class="n">segt</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper</span> <span class="o">+</span> <span class="n">lower</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">else</span> <span class="n">segt</span> <span class="o">=</span> <span class="n">cen</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">segt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">beziers</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">167</span><span class="p">,</span> <span class="mi">65</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">99</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">103</span><span class="p">,</span> <span class="mi">133</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">68</span><span class="p">,</span> <span class="mi">107</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="mi">121</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="n">beziers</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">57</span><span class="p">,</span> <span class="mi">121</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="mi">135</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">233</span><span class="p">,</span> <span class="mi">178</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">265</span><span class="p">,</span> <span class="mi">73</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">t_segend</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="n">tmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">tmax</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">l</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cl</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arcLength</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">t_segend</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cl</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cl</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">L</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="n">calct</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">s</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>main関数にあるように、beziersにベジェ曲線ズを登録しその他変数を初期化すれば動きます。calctが肝心の関数で、sを渡すことでそれに対応したベジェ曲線ズのtを計算してくれます。main関数内のコードは速さ10でのbeziers上の等速度運動における変位を計算し表示するものになっています。</p>
 <p>弧長は台形公式を用いて積分を禁じ、fの逆関数はニュートン法と二分法を用いて近似しています。</p>
@@ -674,9 +693,9 @@ $$</p>
     
     <section class="article-tags">
         
-            <a href="/blog/tags/math/">math</a>
+            <a href="/blog/tags/math/">Math</a>
         
-            <a href="/blog/tags/algorithm/">algorithm</a>
+            <a href="/blog/tags/algorithm/">Algorithm</a>
         
     </section>
 
@@ -732,8 +751,8 @@ $$</p>
         
     <div class="disqus-container">
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -780,7 +799,7 @@ $$</p>
         
             2020 - 
         
-        2023 みつみつみつですか？
+        2024 みつみつみつですか？
     </section>
     
     <section class="powerby">
