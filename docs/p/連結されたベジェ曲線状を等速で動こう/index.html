@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。
-準備 まずは制御点 $\mathbf{B} _ 1, \mathbf{B} _ 2, \mathbf{B} _ 3, \mathbf{B} _ 4$ によって表されるベジェ曲線 $\mathbf{P}(t)$ を次式で定義しておきます。 $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 &#43; 3t(1-t)^2 \mathbf{B} _ 2 &#43; 3t^2(1-t) \mathbf{B} _ 3 &#43; t^3 \mathbf{B} _ 4\ \ \ (0 \leq t \leq 1)$$
-$t = 0$ で始点、$t = 1$ で終点の座標を取ります。
-またベジェ曲線を複数連結したものをベジェ曲線ズと呼ぶことにし、これを構成する各ベジェ曲線により表される曲線をセグメントと呼ぶことにします。具体的な式でベジェ曲線ズ $\mathbf{P}(t)$ を定義しておきます。
-$$ \mathbf{P}(t) = \begin{cases} \mathbf{P} _ {1}(0) &amp; if\ t = 0\\ \mathbf{P} _ {1}(t) &amp; if\ 0 &lt; t \leq 1\\ \mathbf{P} _ {2}(t - 1) &amp; if \ 1 &lt; \leq 2\\ \vdots &amp; \vdots \\ \mathbf{P} _ {n}(t - n &#43; 1) &amp; if\ n - 1 &lt; t \leq n\\ \end{cases} $$
 '>
 <title>連結されたベジェ曲線状を等速で動こう</title>
 
-<link rel='canonical' href='http://localhost:1313/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/'>
+<link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="連結されたベジェ曲線状を等速で動こう">
-<meta property='og:description' content="はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。\n準備 まずは制御点 $\\mathbf{B} _ 1, \\mathbf{B} _ 2, \\mathbf{B} _ 3, \\mathbf{B} _ 4$ によって表されるベジェ曲線 $\\mathbf{P}(t)$ を次式で定義しておきます。 $$\\mathbf{P}(t) = (1 - t)^3 \\mathbf{B} _ 1 + 3t(1-t)^2 \\mathbf{B} _ 2 + 3t^2(1-t) \\mathbf{B} _ 3 + t^3 \\mathbf{B} _ 4\\ \\ \\ (0 \\leq t \\leq 1)$$\n$t = 0$ で始点、$t = 1$ で終点の座標を取ります。\nまたベジェ曲線を複数連結したものをベジェ曲線ズと呼ぶことにし、これを構成する各ベジェ曲線により表される曲線をセグメントと呼ぶことにします。具体的な式でベジェ曲線ズ $\\mathbf{P}(t)$ を定義しておきます。\n$$ \\mathbf{P}(t) = \\begin{cases} \\mathbf{P} _ {1}(0) &amp; if\\ t = 0\\\\ \\mathbf{P} _ {1}(t) &amp; if\\ 0 &lt; t \\leq 1\\\\ \\mathbf{P} _ {2}(t - 1) &amp; if \\ 1 &lt; \\leq 2\\\\ \\vdots &amp; \\vdots \\\\ \\mathbf{P} _ {n}(t - n + 1) &amp; if\\ n - 1 &lt; t \\leq n\\\\ \\end{cases} $$\n">
-<meta property='og:url' content='http://localhost:1313/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/'>
+<meta property='og:description' content="はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。\n">
+<meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='math' /><meta property='article:tag' content='algorithm' /><meta property='article:published_time' content='2021-01-04T21:03:57&#43;09:00'/><meta property='article:modified_time' content='2021-01-04T21:03:57&#43;09:00'/>
 <meta name="twitter:title" content="連結されたベジェ曲線状を等速で動こう">
-<meta name="twitter:description" content="はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。\n準備 まずは制御点 $\\mathbf{B} _ 1, \\mathbf{B} _ 2, \\mathbf{B} _ 3, \\mathbf{B} _ 4$ によって表されるベジェ曲線 $\\mathbf{P}(t)$ を次式で定義しておきます。 $$\\mathbf{P}(t) = (1 - t)^3 \\mathbf{B} _ 1 + 3t(1-t)^2 \\mathbf{B} _ 2 + 3t^2(1-t) \\mathbf{B} _ 3 + t^3 \\mathbf{B} _ 4\\ \\ \\ (0 \\leq t \\leq 1)$$\n$t = 0$ で始点、$t = 1$ で終点の座標を取ります。\nまたベジェ曲線を複数連結したものをベジェ曲線ズと呼ぶことにし、これを構成する各ベジェ曲線により表される曲線をセグメントと呼ぶことにします。具体的な式でベジェ曲線ズ $\\mathbf{P}(t)$ を定義しておきます。\n$$ \\mathbf{P}(t) = \\begin{cases} \\mathbf{P} _ {1}(0) &amp; if\\ t = 0\\\\ \\mathbf{P} _ {1}(t) &amp; if\\ 0 &lt; t \\leq 1\\\\ \\mathbf{P} _ {2}(t - 1) &amp; if \\ 1 &lt; \\leq 2\\\\ \\vdots &amp; \\vdots \\\\ \\mathbf{P} _ {n}(t - n + 1) &amp; if\\ n - 1 &lt; t \\leq n\\\\ \\end{cases} $$\n">
+<meta name="twitter:description" content="はじめに いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。\n">
+
 
     </head>
     <body class="
@@ -830,7 +827,7 @@ $$</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。
-Z3を完全に理解しよう by ptr-yudai Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。
-シンボリック変数の型 シンボリック変数で使える型をまずは教えてくれました。
-真偽変数(Bool) 整数・実数変数(Int, Real) ビットベクトル(BitVec) 列挙型(EnumSort or Consts) 文字列型(String) BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。
-BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。
-制約と論理式 制約はs.add(&hellip;)みたいな感じで追加していきます。
-制約内で用いる論理演算はAnd,Or,Xor,Not&hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。 また制約をかけるときに1 &lt; a &lt; 100みたいな不等式のチェーンは許されないらしいです。
-Implies(P, Q) ($P \Rightarrow Q$) Distinct(X) ($\lnot \exists (i, j)\ (x_i = x_j\ \land i \neq j)$) If(P, x, y) (PがTrueならx、PがFalseならy) あたりも使えるらしいです。便利。
-解の列挙 Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。
-Z3における「型」 実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&ldquo;x&rdquo;)やReal(&ldquo;x&rdquo;)はConst(&ldquo;x&rdquo;, IntSort())みたいな糖衣構文らしいです。
-DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。
-Z3の変数の種類 Z3の変数は主に３種類あるらしいです。
-Applications (全称・存在記号なし。qf論理式。IntやRealなど) Quantifiers (全称・存在記号あり。Function) Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした) 例題 このあと例題を解きました。
-例題1 A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？
-A「BとEは正直者」 B「Cは嘘つき」 C「Dは嘘つき」 D「Eは嘘つき」 E「BとCは嘘つき」 Bool型の変数を5つつくって制約をつければ解けます。正直者を2人に特定するのがちょっと大変そうだったので、解を列挙して正直者が二人のパターンを見つけました。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 from z3 import * xs = [Bool(&#34;x%d&#34; % i) for i in range(5)] s = Solver() s.add(Implies(xs[0], And(xs[1] == True, xs[4] == True))) s.add(Implies(xs[1], xs[2] == False)) s.add(Implies(xs[2], xs[3] == False)) s.add(Implies(xs[3], xs[4] == False)) s.add(Implies(xs[4], And(xs[1] == False, xs[2] == False))) while True: r = s.check() if r == sat: m = s.model() cons = [] num = 0 for i in range(5): print(m[xs[i]], end=&#34;&#34;) if m[xs[i]] == True: num &#43;= 1 cons.append(xs[i] == m[xs[i]]) if num == 2: break s.add(Not(And(cons))) print() 正直者はBとDでした。
 '>
 <title>yoshi-camp 2020 winter 参加記</title>
 
-<link rel='canonical' href='http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+<link rel='canonical' href='https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="yoshi-camp 2020 winter 参加記">
-<meta property='og:description' content=" はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。\nZ3を完全に理解しよう by ptr-yudai Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。\nシンボリック変数の型 シンボリック変数で使える型をまずは教えてくれました。\n真偽変数(Bool) 整数・実数変数(Int, Real) ビットベクトル(BitVec) 列挙型(EnumSort or Consts) 文字列型(String) BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。\nBitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。\n制約と論理式 制約はs.add(&hellip;)みたいな感じで追加していきます。\n制約内で用いる論理演算はAnd,Or,Xor,Not&hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。 また制約をかけるときに1 &lt; a &lt; 100みたいな不等式のチェーンは許されないらしいです。\nImplies(P, Q) ($P \\Rightarrow Q$) Distinct(X) ($\\lnot \\exists (i, j)\\ (x_i = x_j\\ \\land i \\neq j)$) If(P, x, y) (PがTrueならx、PがFalseならy) あたりも使えるらしいです。便利。\n解の列挙 Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。\nZ3における「型」 実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&ldquo;x&rdquo;)やReal(&ldquo;x&rdquo;)はConst(&ldquo;x&rdquo;, IntSort())みたいな糖衣構文らしいです。\nDeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。\nZ3の変数の種類 Z3の変数は主に３種類あるらしいです。\nApplications (全称・存在記号なし。qf論理式。IntやRealなど) Quantifiers (全称・存在記号あり。Function) Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした) 例題 このあと例題を解きました。\n例題1 A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？\nA「BとEは正直者」 B「Cは嘘つき」 C「Dは嘘つき」 D「Eは嘘つき」 E「BとCは嘘つき」 Bool型の変数を5つつくって制約をつければ解けます。正直者を2人に特定するのがちょっと大変そうだったので、解を列挙して正直者が二人のパターンを見つけました。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 from z3 import * xs = [Bool(&#34;x%d&#34; % i) for i in range(5)] s = Solver() s.add(Implies(xs[0], And(xs[1] == True, xs[4] == True))) s.add(Implies(xs[1], xs[2] == False)) s.add(Implies(xs[2], xs[3] == False)) s.add(Implies(xs[3], xs[4] == False)) s.add(Implies(xs[4], And(xs[1] == False, xs[2] == False))) while True: r = s.check() if r == sat: m = s.model() cons = [] num = 0 for i in range(5): print(m[xs[i]], end=&#34;&#34;) if m[xs[i]] == True: num += 1 cons.append(xs[i] == m[xs[i]]) if num == 2: break s.add(Not(And(cons))) print() 正直者はBとDでした。\n">
-<meta property='og:url' content='http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+<meta property='og:description' content=" はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。\n">
+<meta property='og:url' content='https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='angr' /><meta property='article:tag' content='lattice' /><meta property='article:published_time' content='2020-12-28T17:32:33&#43;09:00'/><meta property='article:modified_time' content='2020-12-28T17:32:33&#43;09:00'/>
 <meta name="twitter:title" content="yoshi-camp 2020 winter 参加記">
-<meta name="twitter:description" content=" はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。\nZ3を完全に理解しよう by ptr-yudai Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。\nシンボリック変数の型 シンボリック変数で使える型をまずは教えてくれました。\n真偽変数(Bool) 整数・実数変数(Int, Real) ビットベクトル(BitVec) 列挙型(EnumSort or Consts) 文字列型(String) BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。\nBitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。\n制約と論理式 制約はs.add(&hellip;)みたいな感じで追加していきます。\n制約内で用いる論理演算はAnd,Or,Xor,Not&hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。 また制約をかけるときに1 &lt; a &lt; 100みたいな不等式のチェーンは許されないらしいです。\nImplies(P, Q) ($P \\Rightarrow Q$) Distinct(X) ($\\lnot \\exists (i, j)\\ (x_i = x_j\\ \\land i \\neq j)$) If(P, x, y) (PがTrueならx、PがFalseならy) あたりも使えるらしいです。便利。\n解の列挙 Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。\nZ3における「型」 実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&ldquo;x&rdquo;)やReal(&ldquo;x&rdquo;)はConst(&ldquo;x&rdquo;, IntSort())みたいな糖衣構文らしいです。\nDeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。\nZ3の変数の種類 Z3の変数は主に３種類あるらしいです。\nApplications (全称・存在記号なし。qf論理式。IntやRealなど) Quantifiers (全称・存在記号あり。Function) Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした) 例題 このあと例題を解きました。\n例題1 A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？\nA「BとEは正直者」 B「Cは嘘つき」 C「Dは嘘つき」 D「Eは嘘つき」 E「BとCは嘘つき」 Bool型の変数を5つつくって制約をつければ解けます。正直者を2人に特定するのがちょっと大変そうだったので、解を列挙して正直者が二人のパターンを見つけました。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 from z3 import * xs = [Bool(&#34;x%d&#34; % i) for i in range(5)] s = Solver() s.add(Implies(xs[0], And(xs[1] == True, xs[4] == True))) s.add(Implies(xs[1], xs[2] == False)) s.add(Implies(xs[2], xs[3] == False)) s.add(Implies(xs[3], xs[4] == False)) s.add(Implies(xs[4], And(xs[1] == False, xs[2] == False))) while True: r = s.check() if r == sat: m = s.model() cons = [] num = 0 for i in range(5): print(m[xs[i]], end=&#34;&#34;) if m[xs[i]] == True: num += 1 cons.append(xs[i] == m[xs[i]]) if num == 2: break s.add(Not(And(cons))) print() 正直者はBとDでした。\n">
+<meta name="twitter:description" content=" はじめに 年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。\n">
+
 
     </head>
     <body class="
@@ -906,7 +893,7 @@ $$</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

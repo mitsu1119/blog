@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Lattice on みつみつみつですか？</title>
-        <link>http://localhost:1313/blog/tags/lattice/</link>
+        <link>https://mitsu1119.github.io/blog/tags/lattice/</link>
         <description>Recent content in Lattice on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 28 Dec 2020 17:32:33 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/lattice/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 28 Dec 2020 17:32:33 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/lattice/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>yoshi-camp 2020 winter 参加記</title>
-        <link>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
@@ -451,14 +451,14 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>WMCTF 2020 writeup</title>
-        <link>http://localhost:1313/blog/p/wmctf-2020-writeup/</link>
+        <link>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/wmctf-2020-writeup/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!&lt;br&gt;
 Thanks to my team members.
-&lt;img src=&#34;http://localhost:1313/blog/post2/rank.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post2/rank.png&#34;
 	
 	
 	
@@ -605,10 +605,10 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
         </item>
         <item>
         <title>LLLを理解するぞ</title>
-        <link>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Sun, 10 May 2020 20:51:59 +0000</pubDate>
         
-        <guid>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;h2 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h2&gt;&lt;p&gt;大体タイトル通りの記事です．LLLを解説していきます．&lt;br&gt;
@@ -636,7 +636,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 &lt;p&gt;full-rankでない例は $ m &amp;gt; n$ の場合を適当に考えれば作れます．例えば $ {} ^ t\!b _ 1 = \begin{pmatrix} 1 &amp;amp; 0 &amp;amp; 1 \end{pmatrix},\ {} ^ t\!b _ 2 = \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 2 \end{pmatrix}$ とすれば $ b _ 1$ と $ b _ 2$ は線形独立ですが，これによって作られる二次元の格子 $ \mathcal{L}(b _ 1,b _ 2)$ は明らかにfull-rankになりません．また， $ m &amp;lt; n$ の時は各ベクトルが線形独立にならないので注意してください．&lt;/p&gt;
 &lt;p&gt;格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\}$$と表すこともあります．このときの $B$ のことを&lt;strong&gt;基底行列&lt;/strong&gt;と言います．&lt;/p&gt;
 &lt;p&gt;一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex1.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lattice_ex1.png&#34;
 	
 	
 	
@@ -647,7 +647,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 	
 &gt;
 $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 0 \\ 0 &amp;amp; 1 \end{pmatrix}$$
-&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex2.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lattice_ex2.png&#34;
 	
 	
 	
@@ -725,7 +725,7 @@ $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i
 &lt;p&gt;正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．
 また簡単のため，グラム・シュミットの直交化における係数 $  \mu _  {i,j}\ (1 \leq j &amp;lt; i \leq n) $ を&lt;strong&gt;グラムシュミット係数&lt;/strong&gt;と呼び， $  \left\{ b _  1,\cdots,b _  n \right\} $ をグラム・シュミットの直交化法で直交化したときに得られる新たなベクトル $  b _  1 ^ *,\cdots,b _  n ^ * $ を&lt;strong&gt;グラムシュミットベクトル&lt;/strong&gt;と呼ぶことにします．さらに，グラム・シュミットの直交化法を，基底行列 $  B = \begin{pmatrix} b _  {1} &amp;amp; \cdots  &amp;amp; b _  {n} \end{pmatrix} $ から $  B ^ * = \begin{pmatrix} b _  {1} ^ * &amp;amp; \cdots  &amp;amp; b _  {n} ^ * \end{pmatrix} $ を得る操作としても用いるようにします．
 一応疑似コードも載せておきます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/gramschmidt.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/gramschmidt.png&#34;
 	
 	
 	
@@ -777,7 +777,7 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 まず $  b _ 1,b _ 2 $ が簡約されていると仮定する．定義5.1において $  x = \pm 1 $ とすれば $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ ．
 次に $  b _ 1,b _ 2 $ が $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ を満たすと仮定する．ここで，関数 $  f(\mu) = |b _ 2 + \mu b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu \langle b _ 1,b _ 2 \rangle + \mu ^ 2|b _ 1| ^ 2 $ の最小値が $  -1 &amp;lt; \mu &amp;lt; 1 $ の時取られることを考えれば， $  f(\mu) $ は二次関数なので $  |x| &amp;gt; 1 $ を満たす整数 $  x $ に対し $  f(0) \leq f(x) $ となり，同じ $  x $ に対し $  |b _ 2| \leq |b _ 2 + xb _ 1 | $ となる．従って仮定より任意の $  x \in \mathbb{Z} $ に対し $  |b _ 1| \leq |b _ 2| \leq |b _ 2 + xb _ 1| $ が成り立つ．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;基底の簡約化は一般には難しい問題です．ところが二次元の場合は，厳密解が多項式時間で求まるLagrangeの方法というアルゴリズムが存在し，具体的には次のような操作で簡約することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lagrange.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lagrange.png&#34;
 	
 	
 	
@@ -801,7 +801,7 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 &lt;br/&gt;
 &lt;p&gt;一つ目の条件はLLL以外の格子アルゴリズムでも度々出てくる重要な条件で，これ満たす基底は&lt;strong&gt;サイズ簡約されている&lt;/strong&gt;と言います．また二つ目の条件はLovászの条件と呼ばれ，これのおかげで簡約の定義の強さを緩めることができます．&lt;/p&gt;
 &lt;p&gt;次に，格子の基底が与えられたとき，グラムシュミットベクトルを変えないようにサイズ簡約された基底を作るアルゴリズムを示します．これを使えばサイズ簡約の条件を簡単に達成できます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/size_reduction.png&#34;
 	
 	
 	
@@ -854,7 +854,7 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 &lt;h2 id=&#34;8-lll簡約と計算量&#34;&gt;8. LLL簡約と計算量
 &lt;/h2&gt;&lt;p&gt;遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
 下に愚直な疑似コードを示します．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lll_1.png&#34;
 	
 	
 	
@@ -865,7 +865,7 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 	
 &gt;
 さすがに愚直が過ぎるので，ある程度無駄な計算を省いたものとして下のコードも示しておきます．主な解析はこっちのコードで行います．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lll_2.png&#34;
 	
 	
 	
@@ -911,7 +911,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 &lt;h2 id=&#34;9-最適化&#34;&gt;9. 最適化
 &lt;/h2&gt;&lt;p&gt;この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．&lt;/p&gt;
 &lt;p&gt;前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  \Theta(n ^ 2m) $ から $  \Theta(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/size_reduction_2.png&#34;
 	
 	
 	
@@ -936,7 +936,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 さらに，自然数 $  k+1 \leq j \leq n $ についても同様に，$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k} \rangle }{| b ^ {&#39;*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,\frac{| b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k-1} -\mu _ {k,k-1}\frac{| b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k} \rangle }{\frac{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}}\\ &amp;amp; =\frac{\langle b _ {j} ,| b ^ {*} _ {k} |  ^ {2} b ^ {*} _ {k-1} -\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} | }\\ &amp;amp; =\mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k} \end{aligned} $$となり， $  \mu _ {j,k-1} ^ {\prime} $ についても$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k-1} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k-1} \rangle }{| b ^ {&#39;*} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} +\mu _ {k,k-1} b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\left( | b ^ {\prime *} _ {k-1} |  ^ {2} -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}\right) \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle -\mu _ {k,k-1} \langle b _ {k} ,b ^ {*} _ {k-1} \rangle \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} -\frac{\mu _ {k,k-1} \langle b _ {j} ,b ^ {*} _ {k} \rangle \langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}} -\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu _ {j,k-1} -\mu  ^ {\prime } _ {k,k-1} \mu _ {k,k-1} \mu _ {j,k}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1}( \mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k})\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu  ^ {\prime } _ {j,k} \end{aligned} $$となる．
 他のグラムシュミット係数については， $  b _ k $ と $  b _ {k-1} $ しか交換してないことから変化しないことは明らかである．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;補題9.1の結果を用いれば，Algorithm 5の13行目のグラム・シュミットの直交化を $  \Theta(n) $ の処理で置き換えることができ，最終的にLLL全体は次のようになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lll_3.png&#34;
 	
 	
 	

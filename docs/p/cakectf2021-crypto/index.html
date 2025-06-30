@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。
 フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
-$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。
 '>
 <title>CakeCTF2021 Crypto</title>
 
-<link rel='canonical' href='http://localhost:1313/blog/p/cakectf2021-crypto/'>
+<link rel='canonical' href='https://mitsu1119.github.io/blog/p/cakectf2021-crypto/'>
 
 <link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="CakeCTF2021 Crypto">
-<meta property='og:description' content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\\ \\mathrm{mod}\\ p$ が計算されている。$p,g,c_i$ が既知。\nフラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \\equiv g^{rm_0 s_0} g^{rm_1 s_1} \\equiv g^{r(m_0 s_0 + m_1 s_1)} \\equiv g^r \\mod p$$ となり、$g^r$ が計算できる。\n$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \\equiv c_i \\mod p$ となるような $m_i$ を全探索すればフラグが求まる。\n">
-<meta property='og:url' content='http://localhost:1313/blog/p/cakectf2021-crypto/'>
+<meta property='og:description' content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\\ \\mathrm{mod}\\ p$ が計算されている。$p,g,c_i$ が既知。\nフラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \\equiv g^{rm_0 s_0} g^{rm_1 s_1} \\equiv g^{r(m_0 s_0 + m_1 s_1)} \\equiv g^r \\mod p$$ となり、$g^r$ が計算できる。\n">
+<meta property='og:url' content='https://mitsu1119.github.io/blog/p/cakectf2021-crypto/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-09-06T12:01:57&#43;09:00'/><meta property='article:modified_time' content='2021-09-06T12:01:57&#43;09:00'/>
 <meta name="twitter:title" content="CakeCTF2021 Crypto">
-<meta name="twitter:description" content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\\ \\mathrm{mod}\\ p$ が計算されている。$p,g,c_i$ が既知。\nフラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \\equiv g^{rm_0 s_0} g^{rm_1 s_1} \\equiv g^{r(m_0 s_0 + m_1 s_1)} \\equiv g^r \\mod p$$ となり、$g^r$ が計算できる。\n$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \\equiv c_i \\mod p$ となるような $m_i$ を全探索すればフラグが求まる。\n">
+<meta name="twitter:description" content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\\ \\mathrm{mod}\\ p$ が計算されている。$p,g,c_i$ が既知。\nフラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \\equiv g^{rm_0 s_0} g^{rm_1 s_1} \\equiv g^{r(m_0 s_0 + m_1 s_1)} \\equiv g^r \\mod p$$ となり、$g^r$ が計算できる。\n">
+
 
     </head>
     <body class="
@@ -616,7 +616,7 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

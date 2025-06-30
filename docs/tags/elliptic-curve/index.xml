@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Elliptic Curve on みつみつみつですか？</title>
-        <link>http://localhost:1313/blog/tags/elliptic-curve/</link>
+        <link>https://mitsu1119.github.io/blog/tags/elliptic-curve/</link>
         <description>Recent content in Elliptic Curve on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 12 Aug 2023 20:40:36 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/elliptic-curve/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 12 Aug 2023 20:40:36 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/elliptic-curve/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)</title>
-        <link>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</link>
         <pubDate>Sat, 12 Aug 2023 20:40:36 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</guid>
         <description>&lt;p&gt;$$
 \gdef\F{\mathbb{F}}
 \gdef\Z{\mathbb{Z}}
@@ -498,7 +498,7 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;p&gt;非可換群に関連する暗号はどんなものがあるのか気になったので調べてみると braid群を利用した暗号があったため，それについて勉強してみました．&lt;/p&gt;
 &lt;h3 id=&#34;braid群&#34;&gt;braid群
 &lt;/h3&gt;&lt;p&gt;braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post17/braids.png&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post17/braids.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;この紐の交差の回数に制限がないため，$B_n$ は無限群です．例えば，二本の組み紐があって，その交差の回数を絶対値，最初の交差が左側の紐が上なのか右側の紐が上なのかで符号を対応させれば $B_2 \simeq \Z$ です．&lt;/p&gt;
@@ -506,7 +506,7 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;p&gt;演算は対称群と同じように，左側の項による置換操作を行った後に右側の項による置換操作を行うものとなります．逆元としては上下を鏡像反転した組み紐が対応します．&lt;/p&gt;
 &lt;h4 id=&#34;artin-generator&#34;&gt;Artin Generator
 &lt;/h4&gt;&lt;p&gt;Artin Generator $\sigma_i\ (0 \leq i &amp;lt; n)$ は，$i$ 番から $i+1$ 番に紐を伸ばしたあと，$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] ．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post17/artin.png&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post17/artin.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;組み紐の演算を想像すれば，次の性質が成り立つことが確かめられます．
@@ -1054,10 +1054,10 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup (English)</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -1681,7 +1681,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.&lt;br&gt;
 Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.&lt;br&gt;
 Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post16/diagram.png&#34;
 	
 	
 	
@@ -2099,7 +2099,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$
 Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post16/neco.jpg&#34;
 	
 	
 	
@@ -2290,10 +2290,10 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup（日本語）</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -2914,7 +2914,7 @@ $$&lt;/p&gt;
 &lt;p&gt;また後述する $\Gamma$ の生成元から $h \in \Gamma$ なので，$\tau$ と $h(\tau)$ の軌道について $\Gamma \tau = \Gamma h(\tau)$ が成り立ちます．&lt;br&gt;
 したがって $\tau, h(\tau) \in H$ が与えられたとき，$\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$ となる $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ を見つけることができれば $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ となります．&lt;br&gt;
 ここまでくればあとは簡単で，$\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$ となるため目的のハッシュ関数を計算することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post15/diagram.png&#34;
 	
 	
 	
@@ -3344,7 +3344,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$&lt;/p&gt;
 &lt;p&gt;よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ とすることで複合することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post15/neco.jpg&#34;
 	
 	
 	
@@ -3535,10 +3535,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>超楕円曲線暗号を理解するぞ</title>
-        <link>http://localhost:1313/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Thu, 01 Jun 2023 16:46:29 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
         <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h2&gt;&lt;p&gt;　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます．
 $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$&lt;/p&gt;
@@ -3553,7 +3553,7 @@ $$C: v^2 + h(u)v = f(u)$$
 &lt;p&gt;　普通超楕円曲線という場合は非特異なものに限りますが，慣用的に特異点を持つ超楕円曲線という言い方をする場合もあります（楕円曲線でもそういうノリはありますよね……気のせい？）．&lt;/p&gt;
 &lt;p&gt;　ちなみに種数の概念が急に出てきて曲線の次数を $2$ ずつ増やしていくのに違和感があるかもしれません．この種数というものは位相幾何の言葉だと「閉曲面の切断によって生じる多様体が連結なままである最大回数」みたいな感じで定義されています．&lt;br&gt;
 　楕円曲線は $\wp$ 関数のパラメータから生成される格子 $\Lambda$ を使うと $E(\C) \simeq \C / \Lambda$ でした．また $\C/\Lambda$ は幾何学的にはトーラスだったので種数の定義と合致しており，天下り的に見える種数の登場は代数曲線を複素多様体の世界から見たときに自然な導入となるのです．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/reinoare.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post14/reinoare.png&#34;
 	
 	
 	
@@ -3576,7 +3576,7 @@ h&amp;rsquo;(x)y = f&amp;rsquo;(x) \\
 2y+h(x)=0 \\
 \end{cases}$$
 となる曲線だということがわかります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/singular_cat.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post14/singular_cat.png&#34;
 	
 	
 	
@@ -3598,7 +3598,7 @@ v^2 &amp;amp;= f(u) + h(u)^2 / 2
 &lt;p&gt;&lt;strong&gt;命題&lt;/strong&gt;&lt;br&gt;
 　$K$ 上の超楕円曲線 $C$ について，$\mathrm{char}(K) \neq 2$ であるとき $C$ と双有理同値な $v^2 = f(u)$ 型の種数が同じ超楕円曲線が存在する．&lt;/p&gt;
 &lt;p&gt;　例として $\R$ 上の曲線 $y^2 + (x^2 - 2x - 3)y = 3x^5 - x^4 + x^3 + x^2 - x - 3$ の標準形を求めてみると $y^2 = 3x^5 - x^4 / 2 - x^3  + 5x  + 3/2$ となります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/hyoujun.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post14/hyoujun.png&#34;
 	
 	
 	
@@ -3892,10 +3892,10 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
         </item>
         <item>
         <title>zer0pts ctf 2021 writeup (日本語)</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 09 Mar 2021 06:15:12 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
 &lt;ul&gt;

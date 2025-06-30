@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Writeup on みつみつみつですか？</title>
-        <link>http://localhost:1313/blog/tags/writeup/</link>
+        <link>https://mitsu1119.github.io/blog/tags/writeup/</link>
         <description>Recent content in Writeup on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Tue, 18 Jul 2023 05:15:52 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/writeup/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Jul 2023 05:15:52 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/writeup/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>zer0pts ctf 2023 writeup (English)</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -635,7 +635,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.&lt;br&gt;
 Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.&lt;br&gt;
 Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post16/diagram.png&#34;
 	
 	
 	
@@ -1053,7 +1053,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$
 Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post16/neco.jpg&#34;
 	
 	
 	
@@ -1244,10 +1244,10 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup（日本語）</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -1868,7 +1868,7 @@ $$&lt;/p&gt;
 &lt;p&gt;また後述する $\Gamma$ の生成元から $h \in \Gamma$ なので，$\tau$ と $h(\tau)$ の軌道について $\Gamma \tau = \Gamma h(\tau)$ が成り立ちます．&lt;br&gt;
 したがって $\tau, h(\tau) \in H$ が与えられたとき，$\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$ となる $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ を見つけることができれば $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ となります．&lt;br&gt;
 ここまでくればあとは簡単で，$\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$ となるため目的のハッシュ関数を計算することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post15/diagram.png&#34;
 	
 	
 	
@@ -2298,7 +2298,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$&lt;/p&gt;
 &lt;p&gt;よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ とすることで複合することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post15/neco.jpg&#34;
 	
 	
 	
@@ -2489,10 +2489,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>zer0pts ctf 2021 writeup (日本語)</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 09 Mar 2021 06:15:12 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
 &lt;ul&gt;
@@ -2852,10 +2852,10 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
         </item>
         <item>
         <title>InterKosenCTF2020 writeup</title>
-        <link>http://localhost:1313/blog/p/interkosenctf2020-writeup/</link>
+        <link>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</link>
         <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/interkosenctf2020-writeup/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめました．運営は3人しかいないらしくとても大変そうです．本当にお疲れ様でした．&lt;br&gt;
 では自分が解いた問題のwirteupを書いていこうと思います．&lt;/p&gt;
@@ -3886,14 +3886,14 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
         </item>
         <item>
         <title>WMCTF 2020 writeup</title>
-        <link>http://localhost:1313/blog/p/wmctf-2020-writeup/</link>
+        <link>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/wmctf-2020-writeup/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!&lt;br&gt;
 Thanks to my team members.
-&lt;img src=&#34;http://localhost:1313/blog/post2/rank.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post2/rank.png&#34;
 	
 	
 	

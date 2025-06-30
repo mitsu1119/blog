@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on みつみつみつですか？</title>
-        <link>http://localhost:1313/blog/post/</link>
+        <link>https://mitsu1119.github.io/blog/post/</link>
         <description>Recent content in Posts on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Fri, 01 Dec 2023 18:56:50 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 01 Dec 2023 18:56:50 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>群で理解する ElGamal</title>
-        <link>http://localhost:1313/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</link>
         <pubDate>Fri, 01 Dec 2023 18:56:50 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</guid>
         <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h2&gt;&lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://qiita.com/advent-calendar/2023/lumos&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Lumos Advent Calendar&lt;/a&gt; の Day 2 の記事です！&lt;/p&gt;
@@ -108,10 +108,10 @@
         </item>
         <item>
         <title>セキュリティキャンプ 2023 参加記</title>
-        <link>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Tue, 15 Aug 2023 00:03:49 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;p&gt;　ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．&lt;/p&gt;
 &lt;h2 id=&#34;応募課題パート&#34;&gt;応募課題パート
 &lt;/h2&gt;&lt;p&gt;　セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．&lt;/p&gt;
@@ -119,7 +119,7 @@
 　🐣「そうだ 💡」&lt;/p&gt;
 &lt;p&gt;　というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．&lt;/p&gt;
 &lt;p&gt;　その結果，全ての課題の解答が hackmd に書かれる始末に……&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post18/oubokadai.png&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post18/oubokadai.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;　L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）&lt;br&gt;
@@ -173,7 +173,7 @@
 &lt;p&gt;　共通講義は検事の方が法律とコンピュータセキュリティの関わりを教えてくれてとてもためになる内容でした．色んな電車の放送の真似をしていたのが印象的です．&lt;br&gt;
 　グループワークではみんなでセキュリティ関連の何かを作ろうという感じで進みました．僕がなんか適当なことを喋りまくってたらグループ内で大量の案が出され，いつの間にかブレインストーミングの様相でした（そのつもりはなかったが）．同じ班になった受講生と喋るいいきっかけとなったので楽しかったです．&lt;/p&gt;
 &lt;p&gt;　その他諸々が終わったあとはついに始まる開発の時間です．実装がうまくいくようにと願掛けの意味でこんなものを持っていきました．これによって L トラック全体が守られていたらいいなあという気持ちです．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post18/mushiyoke.jpg&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post18/mushiyoke.jpg&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;　共通講義中に Richelot Isogeny の実装の天啓が降りてきていたのでコードを書こうと思った矢先，楕円曲線の直積からヤコビアンへの (2, 2)-isogeny を構成するアルゴリズムがバグっていることが判明しました．&lt;br&gt;
@@ -258,10 +258,10 @@
         </item>
         <item>
         <title>セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)</title>
-        <link>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</link>
         <pubDate>Sat, 12 Aug 2023 20:40:36 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</guid>
         <description>&lt;p&gt;$$
 \gdef\F{\mathbb{F}}
 \gdef\Z{\mathbb{Z}}
@@ -748,7 +748,7 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;p&gt;非可換群に関連する暗号はどんなものがあるのか気になったので調べてみると braid群を利用した暗号があったため，それについて勉強してみました．&lt;/p&gt;
 &lt;h3 id=&#34;braid群&#34;&gt;braid群
 &lt;/h3&gt;&lt;p&gt;braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post17/braids.png&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post17/braids.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;この紐の交差の回数に制限がないため，$B_n$ は無限群です．例えば，二本の組み紐があって，その交差の回数を絶対値，最初の交差が左側の紐が上なのか右側の紐が上なのかで符号を対応させれば $B_2 \simeq \Z$ です．&lt;/p&gt;
@@ -756,7 +756,7 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;p&gt;演算は対称群と同じように，左側の項による置換操作を行った後に右側の項による置換操作を行うものとなります．逆元としては上下を鏡像反転した組み紐が対応します．&lt;/p&gt;
 &lt;h4 id=&#34;artin-generator&#34;&gt;Artin Generator
 &lt;/h4&gt;&lt;p&gt;Artin Generator $\sigma_i\ (0 \leq i &amp;lt; n)$ は，$i$ 番から $i+1$ 番に紐を伸ばしたあと，$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] ．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post17/artin.png&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post17/artin.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;組み紐の演算を想像すれば，次の性質が成り立つことが確かめられます．
@@ -1304,10 +1304,10 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup (English)</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -1931,7 +1931,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.&lt;br&gt;
 Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.&lt;br&gt;
 Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post16/diagram.png&#34;
 	
 	
 	
@@ -2349,7 +2349,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$
 Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post16/neco.jpg&#34;
 	
 	
 	
@@ -2540,10 +2540,10 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup（日本語）</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -3164,7 +3164,7 @@ $$&lt;/p&gt;
 &lt;p&gt;また後述する $\Gamma$ の生成元から $h \in \Gamma$ なので，$\tau$ と $h(\tau)$ の軌道について $\Gamma \tau = \Gamma h(\tau)$ が成り立ちます．&lt;br&gt;
 したがって $\tau, h(\tau) \in H$ が与えられたとき，$\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$ となる $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ を見つけることができれば $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ となります．&lt;br&gt;
 ここまでくればあとは簡単で，$\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$ となるため目的のハッシュ関数を計算することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post15/diagram.png&#34;
 	
 	
 	
@@ -3594,7 +3594,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$&lt;/p&gt;
 &lt;p&gt;よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ とすることで複合することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post15/neco.jpg&#34;
 	
 	
 	
@@ -3785,10 +3785,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>超楕円曲線暗号を理解するぞ</title>
-        <link>http://localhost:1313/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Thu, 01 Jun 2023 16:46:29 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
         <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h2&gt;&lt;p&gt;　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます．
 $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$&lt;/p&gt;
@@ -3803,7 +3803,7 @@ $$C: v^2 + h(u)v = f(u)$$
 &lt;p&gt;　普通超楕円曲線という場合は非特異なものに限りますが，慣用的に特異点を持つ超楕円曲線という言い方をする場合もあります（楕円曲線でもそういうノリはありますよね……気のせい？）．&lt;/p&gt;
 &lt;p&gt;　ちなみに種数の概念が急に出てきて曲線の次数を $2$ ずつ増やしていくのに違和感があるかもしれません．この種数というものは位相幾何の言葉だと「閉曲面の切断によって生じる多様体が連結なままである最大回数」みたいな感じで定義されています．&lt;br&gt;
 　楕円曲線は $\wp$ 関数のパラメータから生成される格子 $\Lambda$ を使うと $E(\C) \simeq \C / \Lambda$ でした．また $\C/\Lambda$ は幾何学的にはトーラスだったので種数の定義と合致しており，天下り的に見える種数の登場は代数曲線を複素多様体の世界から見たときに自然な導入となるのです．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/reinoare.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post14/reinoare.png&#34;
 	
 	
 	
@@ -3826,7 +3826,7 @@ h&amp;rsquo;(x)y = f&amp;rsquo;(x) \\
 2y+h(x)=0 \\
 \end{cases}$$
 となる曲線だということがわかります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/singular_cat.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post14/singular_cat.png&#34;
 	
 	
 	
@@ -3848,7 +3848,7 @@ v^2 &amp;amp;= f(u) + h(u)^2 / 2
 &lt;p&gt;&lt;strong&gt;命題&lt;/strong&gt;&lt;br&gt;
 　$K$ 上の超楕円曲線 $C$ について，$\mathrm{char}(K) \neq 2$ であるとき $C$ と双有理同値な $v^2 = f(u)$ 型の種数が同じ超楕円曲線が存在する．&lt;/p&gt;
 &lt;p&gt;　例として $\R$ 上の曲線 $y^2 + (x^2 - 2x - 3)y = 3x^5 - x^4 + x^3 + x^2 - x - 3$ の標準形を求めてみると $y^2 = 3x^5 - x^4 / 2 - x^3  + 5x  + 3/2$ となります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/hyoujun.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post14/hyoujun.png&#34;
 	
 	
 	
@@ -4142,10 +4142,10 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
         </item>
         <item>
         <title>数学ノートの取り方について振り返ってみた</title>
-        <link>http://localhost:1313/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</link>
         <pubDate>Fri, 06 Jan 2023 17:15:37 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</guid>
         <description>&lt;p&gt;最近、数学書を読むときのノートのとり方を変えてみようかな〜なんて思ってたのですが、今まで自分はどのように数学ノートをとっていたのか振り返ってみたら、過去にどんなことを考えていたのか、どんな気持ちで勉強していたのかが透けて見えて面白かったのでまとめてみたくなりカス記事を書いてみました。&lt;/p&gt;
 &lt;p&gt;あとは数学のノートのとり方に困っているのはきっと僕だけじゃないので、まだまだひよっこの僕ですが自分なりに勉強の仕方を変えて試してみてたので、数学に限らず何かの参考にでもなれば嬉しいかもしれないです。&lt;/p&gt;
 &lt;p&gt;といっても、まだ学部生で真面目に勉強に向き合うようになってからもそこまで月日が経っていないため、本当にひよっこでむしろ僕が誰かに導いてほしいという気持ちでいっぱいです。&lt;/p&gt;
@@ -4200,10 +4200,10 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
         </item>
         <item>
         <title>Merry CryptoMath !!!!!</title>
-        <link>http://localhost:1313/blog/p/merry-cryptomath/</link>
+        <link>https://mitsu1119.github.io/blog/p/merry-cryptomath/</link>
         <pubDate>Mon, 13 Dec 2021 00:09:54 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/merry-cryptomath/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/merry-cryptomath/</guid>
         <description>&lt;h1 id=&#34;merry-cryptomath-&#34;&gt;Merry CryptoMath !!!!!!
 &lt;/h1&gt;&lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://adventar.org/calendars/6914&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;CTF Advent Calendar 2021&lt;/a&gt; の25日目の記事です。昨日の記事はSatokiさんによる &lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@satoki/BkeNHyWot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4321,10 +4321,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>NITIC CTF 2 Crypto</title>
-        <link>http://localhost:1313/blog/p/nitic-ctf-2-crypto/</link>
+        <link>https://mitsu1119.github.io/blog/p/nitic-ctf-2-crypto/</link>
         <pubDate>Mon, 06 Sep 2021 18:07:38 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/nitic-ctf-2-crypto/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/nitic-ctf-2-crypto/</guid>
         <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;茨城高専の学生さん+ α で開催の CTF のようです。自分も高専生なので同じ高専生が開くということで親近感が湧き、頑張って取り組もうと思いました。(寝坊したけど)&lt;/p&gt;
 &lt;p&gt;全体的に問題は易しめに作られていて、自分でもなんとか取り組むことができました。初心者向け CTF の難易度周りの話は色々あると思いますが、何はともあれこの CTF ではまともな問題が出ていたのでとても良かったと思います。&lt;/p&gt;
@@ -4519,10 +4519,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>CakeCTF2021 Crypto</title>
-        <link>http://localhost:1313/blog/p/cakectf2021-crypto/</link>
+        <link>https://mitsu1119.github.io/blog/p/cakectf2021-crypto/</link>
         <pubDate>Mon, 06 Sep 2021 12:01:57 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/cakectf2021-crypto/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/cakectf2021-crypto/</guid>
         <description>&lt;h1 id=&#34;discrete-log&#34;&gt;discrete log
 &lt;/h1&gt;&lt;p&gt;ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\  \mathrm{mod}\  p$ が計算されている。$p,g,c_i$ が既知。&lt;/p&gt;
 &lt;p&gt;フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。
@@ -4742,10 +4742,10 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$&lt;/p&gt;
         </item>
         <item>
         <title>zer0pts ctf 2021 writeup (日本語)</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 09 Mar 2021 06:15:12 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
 &lt;ul&gt;
@@ -5105,10 +5105,10 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
         </item>
         <item>
         <title>zer0pts ctf 2021 開催記</title>
-        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</link>
+        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</link>
         <pubDate>Mon, 08 Mar 2021 19:06:07 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</guid>
         <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。
 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。
@@ -5127,10 +5127,10 @@ zer0pts ctf 2021では、正の得点を得たチームが951チームもいて�
         </item>
         <item>
         <title>連結されたベジェ曲線状を等速で動こう</title>
-        <link>http://localhost:1313/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</link>
+        <link>https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</link>
         <pubDate>Mon, 04 Jan 2021 21:03:57 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</guid>
         <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。&lt;/p&gt;
 &lt;br /&gt;
@@ -5554,10 +5554,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>yoshi-camp 2020 winter 参加記</title>
-        <link>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;h1 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h1&gt;&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
@@ -5997,10 +5997,10 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>InterKosenCTF2020 writeup</title>
-        <link>http://localhost:1313/blog/p/interkosenctf2020-writeup/</link>
+        <link>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</link>
         <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/interkosenctf2020-writeup/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめました．運営は3人しかいないらしくとても大変そうです．本当にお疲れ様でした．&lt;br&gt;
 では自分が解いた問題のwirteupを書いていこうと思います．&lt;/p&gt;
@@ -7031,14 +7031,14 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
         </item>
         <item>
         <title>WMCTF 2020 writeup</title>
-        <link>http://localhost:1313/blog/p/wmctf-2020-writeup/</link>
+        <link>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <guid>http://localhost:1313/blog/p/wmctf-2020-writeup/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!&lt;br&gt;
 Thanks to my team members.
-&lt;img src=&#34;http://localhost:1313/blog/post2/rank.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post2/rank.png&#34;
 	
 	
 	
@@ -7185,10 +7185,10 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
         </item>
         <item>
         <title>LLLを理解するぞ</title>
-        <link>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Sun, 10 May 2020 20:51:59 +0000</pubDate>
         
-        <guid>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <guid>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;h2 id=&#34;はじめに&#34;&gt;はじめに
 &lt;/h2&gt;&lt;p&gt;大体タイトル通りの記事です．LLLを解説していきます．&lt;br&gt;
@@ -7216,7 +7216,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 &lt;p&gt;full-rankでない例は $ m &amp;gt; n$ の場合を適当に考えれば作れます．例えば $ {} ^ t\!b _ 1 = \begin{pmatrix} 1 &amp;amp; 0 &amp;amp; 1 \end{pmatrix},\ {} ^ t\!b _ 2 = \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 2 \end{pmatrix}$ とすれば $ b _ 1$ と $ b _ 2$ は線形独立ですが，これによって作られる二次元の格子 $ \mathcal{L}(b _ 1,b _ 2)$ は明らかにfull-rankになりません．また， $ m &amp;lt; n$ の時は各ベクトルが線形独立にならないので注意してください．&lt;/p&gt;
 &lt;p&gt;格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\}$$と表すこともあります．このときの $B$ のことを&lt;strong&gt;基底行列&lt;/strong&gt;と言います．&lt;/p&gt;
 &lt;p&gt;一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex1.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lattice_ex1.png&#34;
 	
 	
 	
@@ -7227,7 +7227,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 	
 &gt;
 $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 0 \\ 0 &amp;amp; 1 \end{pmatrix}$$
-&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex2.png&#34;
+&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lattice_ex2.png&#34;
 	
 	
 	
@@ -7305,7 +7305,7 @@ $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i
 &lt;p&gt;正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．
 また簡単のため，グラム・シュミットの直交化における係数 $  \mu _  {i,j}\ (1 \leq j &amp;lt; i \leq n) $ を&lt;strong&gt;グラムシュミット係数&lt;/strong&gt;と呼び， $  \left\{ b _  1,\cdots,b _  n \right\} $ をグラム・シュミットの直交化法で直交化したときに得られる新たなベクトル $  b _  1 ^ *,\cdots,b _  n ^ * $ を&lt;strong&gt;グラムシュミットベクトル&lt;/strong&gt;と呼ぶことにします．さらに，グラム・シュミットの直交化法を，基底行列 $  B = \begin{pmatrix} b _  {1} &amp;amp; \cdots  &amp;amp; b _  {n} \end{pmatrix} $ から $  B ^ * = \begin{pmatrix} b _  {1} ^ * &amp;amp; \cdots  &amp;amp; b _  {n} ^ * \end{pmatrix} $ を得る操作としても用いるようにします．
 一応疑似コードも載せておきます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/gramschmidt.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/gramschmidt.png&#34;
 	
 	
 	
@@ -7357,7 +7357,7 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 まず $  b _ 1,b _ 2 $ が簡約されていると仮定する．定義5.1において $  x = \pm 1 $ とすれば $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ ．
 次に $  b _ 1,b _ 2 $ が $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ を満たすと仮定する．ここで，関数 $  f(\mu) = |b _ 2 + \mu b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu \langle b _ 1,b _ 2 \rangle + \mu ^ 2|b _ 1| ^ 2 $ の最小値が $  -1 &amp;lt; \mu &amp;lt; 1 $ の時取られることを考えれば， $  f(\mu) $ は二次関数なので $  |x| &amp;gt; 1 $ を満たす整数 $  x $ に対し $  f(0) \leq f(x) $ となり，同じ $  x $ に対し $  |b _ 2| \leq |b _ 2 + xb _ 1 | $ となる．従って仮定より任意の $  x \in \mathbb{Z} $ に対し $  |b _ 1| \leq |b _ 2| \leq |b _ 2 + xb _ 1| $ が成り立つ．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;基底の簡約化は一般には難しい問題です．ところが二次元の場合は，厳密解が多項式時間で求まるLagrangeの方法というアルゴリズムが存在し，具体的には次のような操作で簡約することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lagrange.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lagrange.png&#34;
 	
 	
 	
@@ -7381,7 +7381,7 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 &lt;br/&gt;
 &lt;p&gt;一つ目の条件はLLL以外の格子アルゴリズムでも度々出てくる重要な条件で，これ満たす基底は&lt;strong&gt;サイズ簡約されている&lt;/strong&gt;と言います．また二つ目の条件はLovászの条件と呼ばれ，これのおかげで簡約の定義の強さを緩めることができます．&lt;/p&gt;
 &lt;p&gt;次に，格子の基底が与えられたとき，グラムシュミットベクトルを変えないようにサイズ簡約された基底を作るアルゴリズムを示します．これを使えばサイズ簡約の条件を簡単に達成できます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/size_reduction.png&#34;
 	
 	
 	
@@ -7434,7 +7434,7 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 &lt;h2 id=&#34;8-lll簡約と計算量&#34;&gt;8. LLL簡約と計算量
 &lt;/h2&gt;&lt;p&gt;遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
 下に愚直な疑似コードを示します．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lll_1.png&#34;
 	
 	
 	
@@ -7445,7 +7445,7 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 	
 &gt;
 さすがに愚直が過ぎるので，ある程度無駄な計算を省いたものとして下のコードも示しておきます．主な解析はこっちのコードで行います．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lll_2.png&#34;
 	
 	
 	
@@ -7491,7 +7491,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 &lt;h2 id=&#34;9-最適化&#34;&gt;9. 最適化
 &lt;/h2&gt;&lt;p&gt;この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．&lt;/p&gt;
 &lt;p&gt;前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  \Theta(n ^ 2m) $ から $  \Theta(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/size_reduction_2.png&#34;
 	
 	
 	
@@ -7516,7 +7516,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 さらに，自然数 $  k+1 \leq j \leq n $ についても同様に，$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k} \rangle }{| b ^ {&#39;*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,\frac{| b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k-1} -\mu _ {k,k-1}\frac{| b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k} \rangle }{\frac{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}}\\ &amp;amp; =\frac{\langle b _ {j} ,| b ^ {*} _ {k} |  ^ {2} b ^ {*} _ {k-1} -\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} | }\\ &amp;amp; =\mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k} \end{aligned} $$となり， $  \mu _ {j,k-1} ^ {\prime} $ についても$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k-1} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k-1} \rangle }{| b ^ {&#39;*} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} +\mu _ {k,k-1} b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\left( | b ^ {\prime *} _ {k-1} |  ^ {2} -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}\right) \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle -\mu _ {k,k-1} \langle b _ {k} ,b ^ {*} _ {k-1} \rangle \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} -\frac{\mu _ {k,k-1} \langle b _ {j} ,b ^ {*} _ {k} \rangle \langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}} -\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu _ {j,k-1} -\mu  ^ {\prime } _ {k,k-1} \mu _ {k,k-1} \mu _ {j,k}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1}( \mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k})\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu  ^ {\prime } _ {j,k} \end{aligned} $$となる．
 他のグラムシュミット係数については， $  b _ k $ と $  b _ {k-1} $ しか交換してないことから変化しないことは明らかである．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;補題9.1の結果を用いれば，Algorithm 5の13行目のグラム・シュミットの直交化を $  \Theta(n) $ の処理で置き換えることができ，最終的にLLL全体は次のようになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/post1/lll_3.png&#34;
 	
 	
 	
