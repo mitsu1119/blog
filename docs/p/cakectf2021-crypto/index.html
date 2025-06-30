@@ -1,64 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。
-フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
-$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。'>
+フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
+$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。
+'>
 <title>CakeCTF2021 Crypto</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/cakectf2021-crypto/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/cakectf2021-crypto/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='CakeCTF2021 Crypto'>
-<meta property='og:description' content='discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。
-フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
-$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/cakectf2021-crypto/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="CakeCTF2021 Crypto">
+<meta property='og:description' content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\\ \\mathrm{mod}\\ p$ が計算されている。$p,g,c_i$ が既知。\nフラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \\equiv g^{rm_0 s_0} g^{rm_1 s_1} \\equiv g^{r(m_0 s_0 + m_1 s_1)} \\equiv g^r \\mod p$$ となり、$g^r$ が計算できる。\n$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \\equiv c_i \\mod p$ となるような $m_i$ を全探索すればフラグが求まる。\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/cakectf2021-crypto/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-09-06T12:01:57&#43;09:00'/><meta property='article:modified_time' content='2021-09-06T12:01:57&#43;09:00'/>
 <meta name="twitter:title" content="CakeCTF2021 Crypto">
-<meta name="twitter:description" content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\ \mathrm{mod}\ p$ が計算されている。$p,g,c_i$ が既知。
-フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x &#43; m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 &#43; m_1 s_1)} \equiv g^r \mod p$$ となり、$g^r$ が計算できる。
-$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mod p$ となるような $m_i$ を全探索すればフラグが求まる。">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="discrete log ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\\ \\mathrm{mod}\\ p$ が計算されている。$p,g,c_i$ が既知。\nフラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、 $$c_0^{s_0} c_1^{s_1} \\equiv g^{rm_0 s_0} g^{rm_1 s_1} \\equiv g^{r(m_0 s_0 + m_1 s_1)} \\equiv g^r \\mod p$$ となり、$g^r$ が計算できる。\n$g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \\equiv c_i \\mod p$ となるような $m_i$ を全探索すればフラグが求まる。\n">
 
     </head>
     <body class="
@@ -103,7 +60,7 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -119,7 +76,7 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -164,31 +121,12 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -196,7 +134,7 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -204,10 +142,11 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -244,7 +183,7 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Sep 06, 2021</time>
+                <time class="article-time--published">9月 06, 2021</time>
             </div>
         
 
@@ -260,8 +199,8 @@ $g^r$ がわかれば、あとは $c_i$ に対して $(g^r)^{m_i} \equiv c_i \mo
     <section class="article-content">
     
     
-    <h1 id="discrete-log">discrete log</h1>
-<p>ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\  \mathrm{mod}\  p$ が計算されている。$p,g,c_i$ が既知。</p>
+    <h1 id="discrete-log">discrete log
+</h1><p>ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\  \mathrm{mod}\  p$ が計算されている。$p,g,c_i$ が既知。</p>
 <p>フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &lsquo;C&rsquo; 及び &lsquo;a&rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。
 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、
 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 + m_1 s_1)} \equiv g^r \mod p$$
@@ -319,8 +258,8 @@ $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 + m_1
 </span></span><span class="line"><span class="cl">			<span class="k">break</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="improvisation">improvisation</h1>
-<p>LFSR でビット単位で暗号化されたフラグが与えられる。フラグの先頭が CakeCTF{ なので 63 ビット分の情報が手に入り、LFSR の状態をシミュレートできてしまう。よくある疑似乱数予測問。</p>
+</div><h1 id="improvisation">improvisation
+</h1><p>LFSR でビット単位で暗号化されたフラグが与えられる。フラグの先頭が CakeCTF{ なので 63 ビット分の情報が手に入り、LFSR の状態をシミュレートできてしまう。よくある疑似乱数予測問。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -405,8 +344,8 @@ $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 + m_1
 </span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="together-as-one">Together as one</h1>
-<p>$N = pqr$ の RSA。$x \equiv (p + q)^r \mod n$ と $y \equiv (p + qr)^r \mod n$ が与えられる。</p>
+</div><h1 id="together-as-one">Together as one
+</h1><p>$N = pqr$ の RSA。$x \equiv (p + q)^r \mod n$ と $y \equiv (p + qr)^r \mod n$ が与えられる。</p>
 <p>今 $x$ について、二項定理を使って展開すれば、$p^r$ と $q^r$ の項以外の二項係数は $r$ を約数に含むため $pqr$ で割り切れるので
 $$x \equiv (p + q)^r \equiv p^r + q^r \mod n$$
 である。また $y$ についても展開すれば $pqr$ の項が出てくるので
@@ -500,18 +439,19 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$</p>
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -521,6 +461,7 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$</p>
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -581,12 +522,12 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$</p>
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -675,7 +616,7 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

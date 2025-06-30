@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='　ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
 応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．
 🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」
 🐣「そうだ 💡」
@@ -13,118 +13,29 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 🐣「原著論文が実装レベルまで書かれていて助かったピヨ」
 ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）
 頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．
-₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; サーベイ論文みたいですね（意訳）
-🐣 &amp;lt; 😀
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; サーベイ論文みたいですね（意訳）
+🐣 &lt; 😀
 ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは（コースが別れたのは今年からではありますが）TLS 自作っぽい話をするっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．
 この辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．
 ６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．
-₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）
+₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; はよしろ（意訳）
 講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．
 ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．
 プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．
 僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．
 🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」
-セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．
-プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．'>
+'>
 <title>セキュリティキャンプ 2023 参加記</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='セキュリティキャンプ 2023 参加記'>
-<meta property='og:description' content='ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
-応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．
-🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」
-🐣「そうだ 💡」
-というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．
-その結果，全ての課題の解答が hackmd に書かれる始末に……
-L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）
-個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．
-🐣「CSIDH の実装を書くいい機会になったピヨ」
-🐣「原著論文が実装レベルまで書かれていて助かったピヨ」
-ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）
-頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．
-₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; サーベイ論文みたいですね（意訳）
-🐣 &amp;lt; 😀
-ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは（コースが別れたのは今年からではありますが）TLS 自作っぽい話をするっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．
-この辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．
-６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．
-₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）
-講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．
-ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．
-プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．
-僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．
-🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」
-セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．
-プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="セキュリティキャンプ 2023 参加記">
+<meta property='og:description' content="\u3000ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．\n応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．\n🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」\n🐣「そうだ 💡」\nというわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．\nその結果，全ての課題の解答が hackmd に書かれる始末に……\nL1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）\n個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．\n🐣「CSIDH の実装を書くいい機会になったピヨ」\n🐣「原著論文が実装レベルまで書かれていて助かったピヨ」\nということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）\n頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．\n₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; サーベイ論文みたいですね（意訳）\n🐣 &lt; 😀\nちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは（コースが別れたのは今年からではありますが）TLS 自作っぽい話をするっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．\nこの辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．\n６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．\n₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; はよしろ（意訳）\n講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．\nということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．\nプロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．\n僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．\n🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-15T00:03:49&#43;09:00'/><meta property='article:modified_time' content='2023-08-15T00:03:49&#43;09:00'/>
 <meta name="twitter:title" content="セキュリティキャンプ 2023 参加記">
-<meta name="twitter:description" content="ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．
-応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．
-🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」
-🐣「そうだ 💡」
-というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．
-その結果，全ての課題の解答が hackmd に書かれる始末に……
-L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）
-個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．
-🐣「CSIDH の実装を書くいい機会になったピヨ」
-🐣「原著論文が実装レベルまで書かれていて助かったピヨ」
-ということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）
-頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．
-₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; サーベイ論文みたいですね（意訳）
-🐣 &amp;lt; 😀
-ちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは（コースが別れたのは今年からではありますが）TLS 自作っぽい話をするっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．
-この辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．
-６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．
-₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）
-講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．
-ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．
-プロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．
-僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．
-🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」
-セキュキャンの事前学習期間は割とずっとこんな感じで音を上げてた気がします．ごめんなさい．
-プロトコルコースの方は，ちょっと僕はどういった流れでどうなったかあまり知らないのですがきっと彼からの参加記もあがるでしょう．そちらをご参照ください．">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="\u3000ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．\n応募課題パート セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．\n🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」\n🐣「そうだ 💡」\nというわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．\nその結果，全ての課題の解答が hackmd に書かれる始末に……\nL1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）\n個人的に印象的だったのは「CSIDH と SIDH」の違いを述べさせるものでした．このときの僕はまだ CSIDH の構成を原著で読んではいたが実装をしたことはありませんでした．ということで実装しました．\n🐣「CSIDH の実装を書くいい機会になったピヨ」\n🐣「原著論文が実装レベルまで書かれていて助かったピヨ」\nということで気合の応募課題執筆をしました．僕がどんな解答を作ったかはぜひ僕の応募課題晒しを見てください．（恥ずかしいので精読はしてほしくありませんが……）\n頑張って解答したのが功を奏し，無事セキュキャンの全国大会に参加できることに決まりました．\n₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; サーベイ論文みたいですね（意訳）\n🐣 &lt; 😀\nちなみに L1 ゼミの実態なのですが，名前の通り暗号化通信をメインにやるゼミです．とはいってもプロトコルコースとプリミティブコースがあり，プロトコルコースでは（コースが別れたのは今年からではありますが）TLS 自作っぽい話をするっぽいです（多分）．一方プリミティブコースは暗号の理論よりの内容をガリガリとやるところで，暗号の解読などを数学として頑張ってやるコースです．\nこの辺りの内容は，セキュリティキャンプの公式サイトとプロトコルコースの講師の先生の参加記とプリミティブコースの講師のの先生の参加記が参考になるんじゃないかなあと思います．\n６月頃 さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．\n₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; はよしろ（意訳）\n講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．\nということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．\nプロトコルコースの受講生や講師の方とも喋りながら，「キャンプで何を開発したいか」という目標を定めることをしました．\n僕は当然 Castryck-Decru attack の実装ですが，急に日和ってガチャガチャ言ってた記憶があります．まあいいや．\n🐣「Castryck-Decru attack できる気がしないﾋﾟﾖ…」\n">
 
     </head>
     <body class="
@@ -169,7 +80,7 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -185,7 +96,7 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -230,31 +141,12 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -262,7 +154,7 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -270,10 +162,11 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -349,7 +242,7 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 15, 2023</time>
+                <time class="article-time--published">8月 15, 2023</time>
             </div>
         
 
@@ -366,8 +259,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
     
     
     <p>　ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．</p>
-<h2 id="応募課題パート">応募課題パート</h2>
-<p>　セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．</p>
+<h2 id="応募課題パート">応募課題パート
+</h2><p>　セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．</p>
 <p>　🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」<br>
 　🐣「そうだ 💡」</p>
 <p>　というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．</p>
@@ -389,8 +282,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
     >公式サイト</a>とプロトコルコースの講師の先生の<a class="link" href="https://tex2e.github.io/blog/misc/seccamp2023"  target="_blank" rel="noopener"
     >参加記</a>とプリミティブコースの講師のの先生の<a class="link" href="https://gist.github.com/elliptic-shiho/d26b5251d50347d6fbdb2336d960b9fc"  target="_blank" rel="noopener"
     >参加記</a>が参考になるんじゃないかなあと思います．</p>
-<h2 id="６月頃">６月頃</h2>
-<p>　さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．</p>
+<h2 id="６月頃">６月頃
+</h2><p>　さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．</p>
 <p>　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; はよしろ（意訳）</p>
 <p>　講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．</p>
 <p>　ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．</p>
@@ -409,8 +302,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 <p>　ということで話はそれましたが，ほぼ毎週僕が論文を読んでできたところまで数学のゼミのようなものをしていました．e_shiho さんにはすごくお世話になりました．<br>
 　写像の話とか数学の歴史的な話だとか面白いこともいっぱい聞けました．<br>
 　ただ，長時間拘束してしまいすみませんでした…… m(_ _)m</p>
-<h2 id="７月中旬以降">７月中旬以降</h2>
-<p>　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; 実装を見据えてやっていきましょうか</p>
+<h2 id="７月中旬以降">７月中旬以降
+</h2><p>　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; 実装を見据えてやっていきましょうか</p>
 <p>　ということでゆっくりと進んでいた論文読みは一転，実装まで落とし込むことを見据えて今までやってきたことを活用していく方針に切り替わりました．（といってもこの辺の段階で必要なものは恐怖の Richelot Isogeny を除いてある程度自分の中に揃っていたので，６章を読むのはそれなりにサクサクといけたのもあります）</p>
 <p>　🐣「Richelot Isogeny わからん」<br>
 　₍₍ (ง ˘ω˘ )ว ⁾⁾ &lt; わからんわからんと話題の Richelot Isogeny</p>
@@ -421,8 +314,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 <p>　SageMath では $\mathbb{F} _ {p^2}$ でグレブナー基底を計算するのに非常に時間がかかります．Magma では計算できる（Castryck と Decru はこれで実装していた）のですが，コマンドラインから呼び出すには有料版が必要であまりにも高く……</p>
 <p>　ということでグレブナー基底を使わない高速化手法が Oudompheng と Pope の &ldquo;A Note on Reimplementing the Castryck-Decru Attack and Lessons Learned for SageMath&rdquo; で解説されていたのでそれを実装しました．<br>
 　これでなんとか実装できたので，本番は Richelot Isogeny 全振りで挑むこととなりました．</p>
-<h2 id="１日目">１日目</h2>
-<p>　ついに始まりました．Richelot Isogeny の実装を考えながら会場へ向かい，いい感じに開会式をしたあと共通講義とグループワークが始まりました．</p>
+<h2 id="１日目">１日目
+</h2><p>　ついに始まりました．Richelot Isogeny の実装を考えながら会場へ向かい，いい感じに開会式をしたあと共通講義とグループワークが始まりました．</p>
 <p>　共通講義は検事の方が法律とコンピュータセキュリティの関わりを教えてくれてとてもためになる内容でした．色んな電車の放送の真似をしていたのが印象的です．<br>
 　グループワークではみんなでセキュリティ関連の何かを作ろうという感じで進みました．僕がなんか適当なことを喋りまくってたらグループ内で大量の案が出され，いつの間にかブレインストーミングの様相でした（そのつもりはなかったが）．同じ班になった受講生と喋るいいきっかけとなったので楽しかったです．</p>
 <p>　その他諸々が終わったあとはついに始まる開発の時間です．実装がうまくいくようにと願掛けの意味でこんなものを持っていきました．これによって L トラック全体が守られていたらいいなあという気持ちです．</p>
@@ -439,8 +332,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 <p>　またこの日の 20時ごろにマネージャーさんから「スイーツが余りすぎている」という連絡がありました．<br>
 　絶好のチャンスだったので，食べれなかった分そこでたくさんスイーツを食べました．おいしかったです．<br>
 　チューターのあんこさんが大量のパイナップルをお皿に山盛りにしていた光景が印象的でした．そういった色々な要素が噛み合って，チューターや講師の先生方，プロトコルコースの受講生の子など L1 ゼミ内での距離が一気に縮まったと思います．</p>
-<h2 id="２日目">２日目</h2>
-<p>　ということで Richelot Isogeny が実装できたので，あとは大元のプログラムと繋げる作業が必要でした．<br>
+<h2 id="２日目">２日目
+</h2><p>　ということで Richelot Isogeny が実装できたので，あとは大元のプログラムと繋げる作業が必要でした．<br>
 　これが終わったタイミングで，プロトコル側の講師のまこさんがこんなことを言ってきます．</p>
 <p>　🐧「プリミティブコースが今までやってきたことをざっくりでいいから教えてほしいなあ〜」</p>
 <p>　僕はうまく説明できるか不安になりながらも，頑張って解説を試みました．というのも最終的に成果発表スライドを作らないといけないので，どこをどんな風に説明するかの取捨選択はある程度考えておかないと行けなかったからです．<br>
@@ -458,8 +351,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 　使ってなさそうなホワイトボードをもってきて使っていたのもあって，３面のホワイトボードにぎっしりと書かれた数式とネットワークのシーケンス図で取り囲まれて大学の研究室みたいな面白い雰囲気でした．</p>
 <p>　このあとは仕上げ作業として，ある程度秘密が求まったら残りはブルートフォースをするなどの仕上げのプログラムを書きます．<br>
 　これらがあらかた完了した辺りで２日目は修了．とりあえず Castryck-Decru attack を実装することができたので安心しました．</p>
-<h2 id="３日目">３日目</h2>
-<p>　ついにキャンプ期間の半分が過ぎ去ろうとしている頃です．<br>
+<h2 id="３日目">３日目
+</h2><p>　ついにキャンプ期間の半分が過ぎ去ろうとしている頃です．<br>
 　この日は社会科見学があったのですがとても楽しかったです！（小並感）</p>
 <p>　🐣（キャンプ期間，短いものだなあ）</p>
 <p>　そう思いながら，この日の作業はコードのリファクタリングに充ててました．ここで講師の先生から最近とある CTF で出題された問題が僕の書いたコードで解けるか試してみないかと言われました．<br>
@@ -474,8 +367,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 　それとこの日辺りからプロトコルコースの先生と受講生が名刺交換関連の話をコソコソと計画していて，なんというかその様子が見ていて面白かったです．🐧 🕊<br>
 　またこの日はナ行の一文字をやっている方とずんだもん同盟を結び，僕たちは固い絆で結ばれました．🐈</p>
 <p>　まあなんやかんやありましたが，結局僕の方はなかなかうまくいかなくてとても困っていたまま４日目突入です．</p>
-<h2 id="４日目">４日目</h2>
-<p>　あんこさんの扉開け技術の練度も極まってきた頃，僕は色々な値を試して検証しつつ高速化を実装まで落とし込もうとなんやかんやしていました．<br>
+<h2 id="４日目">４日目
+</h2><p>　あんこさんの扉開け技術の練度も極まってきた頃，僕は色々な値を試して検証しつつ高速化を実装まで落とし込もうとなんやかんやしていました．<br>
 　しかしなかなかうまく行かず，少なくともキャンプ期間中では厳しそう（というのも３日目と４日目を過ぎたらあとは成果発表だから）だということになり，マルチスレッドに対応することで少しでも早くしようという風に切り替えました．</p>
 <p>　ここで問題が発生します．SageMath で Pari を使ってる部分はスレッドセーフに実装されていないのです！！<br>
 　ということでマルチスレッドや Pool を使うのでは実装できませんでした．そのため sage プロセスをいくつか立ち上げて，プロセス間通信でいい感じにやる愚直な方法を実装しました．</p>
@@ -490,8 +383,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 　まこさんに説明するのに一時間強かかっていたくらいなので当然 2 分で終わるわけもなく，本番の成果発表はタキオンでいこうと L トラックのプロデューサーさんには言われました．</p>
 <p>　今まで L トラックの他のゼミがどんなことをしていたのかほとんど知らなかったので，この機会に色々と知ることができました．</p>
 <p>　また，この日の夜はプロトコルコースの受講生が開いた名刺交換会で賑わっていました．あまりの賑わいで暑すぎて僕は退場……．涼しい Y トラックの教室の中で FPGA の話を色々聞いてました．</p>
-<h2 id="５日目">５日目</h2>
-<p>　最終日は主に成果発表です．いい感じにグループワークの発表をしたあと，ついに本題が始まります．</p>
+<h2 id="５日目">５日目
+</h2><p>　最終日は主に成果発表です．いい感じにグループワークの発表をしたあと，ついに本題が始まります．</p>
 <p>　最初は専門コース，ジュニア，ネクストの成果発表でした．どこもすごく面白そうなことをしていて，僕も体が百個くらい会ったら参加したい内容でした．<br>
 　個人的にはジュニアの方がすごく大人で，しかも技術レベルも高く関心していました．</p>
 <p>　適当に最後のお昼を挟んだあと，ついに開発コースの発表です．</p>
@@ -502,8 +395,8 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
 　最後の方は何枚か集合写真を撮っていただきました．また L トラック内でも写真を撮ったのですが，このときのポーズがみんなで L 字に腕を作るものでした．大量の L が並んでいたので LLL ですね！（？？？）<br>
 　ところでなぜ L トラックは L なんでしょうか……（歴史的経緯は色々あったみたいですが）</p>
 <p>　L トラックの L の謎を引きずりつつついに解散となります．後ろ髪引かれる思いで名残惜しかったです．</p>
-<h2 id="感想">感想</h2>
-<p>　そんなこんなで楽しいキャンプ期間となりました．講師やチューター，受講生の方々，協議会の方々を含めその他セキュリティキャンプに関わってくださった皆様，本当にありがとうございました．<br>
+<h2 id="感想">感想
+</h2><p>　そんなこんなで楽しいキャンプ期間となりました．講師やチューター，受講生の方々，協議会の方々を含めその他セキュリティキャンプに関わってくださった皆様，本当にありがとうございました．<br>
 　講師の方が強いのはもちろんのこと，受講生のみんなも主体的に何かに取り組んでなにかに熱中している方ばかりで，日常の技術的な雑談のどれもが刺激的でした．</p>
 <p>　またセキュリティキャンプで学べたのは技術だけでなく，僕自身が目指す先にいる講師の先生にも会えるのでそういった方々から様々なエッセンスを受け取ることができました．僕は今まで暗号が好きで暗号の勉強を続けていたのですが，やはり数学は難しく広大です．それに対してどのように向け合えばいいのか僕自身かなり悩まされていました．e_shiho さんに色々教えてもらう中で，そんな数学にどう立ち向かっていけばいいか，その解答を僕の中で導けたのが一番の成果だなと思っています．</p>
 <p>　ということで，お疲れ様でした！</p>
@@ -532,18 +425,19 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -553,6 +447,7 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -613,12 +508,12 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -707,7 +602,7 @@ L1 の応募課題を開いてみると全体的に難しい印象でなかな�
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

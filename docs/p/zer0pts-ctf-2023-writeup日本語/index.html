@@ -1,73 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='$$ \gdef\Fp {\mathbb{F} _ p} \gdef\LB{\mathrm{LB} _ l} \gdef\RB{\mathrm{RB} _ r} $$
 チーム zer0pts は，今年の 7/15 に zer0pts ctf 2023 を開催しました． 多くの方々に参加していただいて感謝しております．
 僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．
 [crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.
 Can you decompose?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&amp;#34;Let&amp;#39;s factoring !'>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&#34;Let&#39;s factoring !&#34;) print(&#34;N:&#34;, N) p = int(input(&#34;p: &#34;)) q = int(input(&#34;q: &#34;)) if isPrime(p) and isPrime(q) and n == p * q: print(flag) 与えられたコードの中で特に重要な部分は上の部分です．
+$p,q$ を 128 bits の素数とし，$N := p^2 &#43; q^2$ が与えられます．このとき $p,q$ を発見することができたらフラグを取得できます．
+easy_factoring という問題名ですが，やることは素因数分解と見せかけて平方和での分解です．（といっても結局素因数分解が必要になりますが）
+'>
 <title>zer0pts ctf 2023 writeup（日本語）</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='zer0pts ctf 2023 writeup（日本語）'>
-<meta property='og:description' content='$$ \gdef\Fp {\mathbb{F} _ p} \gdef\LB{\mathrm{LB} _ l} \gdef\RB{\mathrm{RB} _ r} $$
-チーム zer0pts は，今年の 7/15 に zer0pts ctf 2023 を開催しました． 多くの方々に参加していただいて感謝しております．
-僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．
-[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.
-Can you decompose?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&amp;#34;Let&amp;#39;s factoring !'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="zer0pts ctf 2023 writeup（日本語）">
+<meta property='og:description' content="$$ \\gdef\\Fp {\\mathbb{F} _ p} \\gdef\\LB{\\mathrm{LB} _ l} \\gdef\\RB{\\mathrm{RB} _ r} $$\nチーム zer0pts は，今年の 7/15 に zer0pts ctf 2023 を開催しました． 多くの方々に参加していただいて感謝しております．\n僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．\n[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.\nCan you decompose?\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) + pow(q, 2) print(&#34;Let&#39;s factoring !&#34;) print(&#34;N:&#34;, N) p = int(input(&#34;p: &#34;)) q = int(input(&#34;q: &#34;)) if isPrime(p) and isPrime(q) and n == p * q: print(flag) 与えられたコードの中で特に重要な部分は上の部分です．\n$p,q$ を 128 bits の素数とし，$N := p^2 + q^2$ が与えられます．このとき $p,q$ を発見することができたらフラグを取得できます．\neasy_factoring という問題名ですが，やることは素因数分解と見せかけて平方和での分解です．（といっても結局素因数分解が必要になりますが）\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='elliptic curve' /><meta property='article:tag' content='math' /><meta property='article:tag' content='writeup' /><meta property='article:published_time' content='2023-07-18T05:15:52&#43;09:00'/><meta property='article:modified_time' content='2023-07-18T05:15:52&#43;09:00'/>
 <meta name="twitter:title" content="zer0pts ctf 2023 writeup（日本語）">
-<meta name="twitter:description" content="$$ \gdef\Fp {\mathbb{F} _ p} \gdef\LB{\mathrm{LB} _ l} \gdef\RB{\mathrm{RB} _ r} $$
-チーム zer0pts は，今年の 7/15 に zer0pts ctf 2023 を開催しました． 多くの方々に参加していただいて感謝しております．
-僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．
-[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.
-Can you decompose?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&amp;#34;Let&amp;#39;s factoring !">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="$$ \\gdef\\Fp {\\mathbb{F} _ p} \\gdef\\LB{\\mathrm{LB} _ l} \\gdef\\RB{\\mathrm{RB} _ r} $$\nチーム zer0pts は，今年の 7/15 に zer0pts ctf 2023 を開催しました． 多くの方々に参加していただいて感謝しております．\n僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．\n[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.\nCan you decompose?\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) + pow(q, 2) print(&#34;Let&#39;s factoring !&#34;) print(&#34;N:&#34;, N) p = int(input(&#34;p: &#34;)) q = int(input(&#34;q: &#34;)) if isPrime(p) and isPrime(q) and n == p * q: print(flag) 与えられたコードの中で特に重要な部分は上の部分です．\n$p,q$ を 128 bits の素数とし，$N := p^2 + q^2$ が与えられます．このとき $p,q$ を発見することができたらフラグを取得できます．\neasy_factoring という問題名ですが，やることは素因数分解と見せかけて平方和での分解です．（といっても結局素因数分解が必要になりますが）\n">
 
     </head>
     <body class="
@@ -112,7 +65,7 @@ Can you decompose?
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -128,7 +81,7 @@ Can you decompose?
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -173,31 +126,12 @@ Can you decompose?
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -205,7 +139,7 @@ Can you decompose?
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -213,10 +147,11 @@ Can you decompose?
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -307,7 +242,7 @@ Can you decompose?
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 18, 2023</time>
+                <time class="article-time--published">7月 18, 2023</time>
             </div>
         
 
@@ -333,12 +268,11 @@ $$</p>
     >zer0pts ctf 2023</a> を開催しました．
 多くの方々に参加していただいて感謝しております．</p>
 <p>僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．</p>
-<h2 id="crypto-102pts-easy_factoring-95-solves">[crypto 102pts] easy_factoring (95 solves)</h2>
-<h3 id="overview">Overview</h3>
-<blockquote>
+<h2 id="crypto-102pts-easy_factoring-95-solves">[crypto 102pts] easy_factoring (95 solves)
+</h2><h3 id="overview">Overview
+</h3><blockquote>
 <p>The word “decomposition” has multiple meanings.<br>
-Can you decompose?</p>
-</blockquote>
+Can you decompose?</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -378,8 +312,8 @@ Can you decompose?</p>
 </div><p>与えられたコードの中で特に重要な部分は上の部分です．<br>
 $p,q$ を 128 bits の素数とし，$N := p^2 + q^2$ が与えられます．このとき $p,q$ を発見することができたらフラグを取得できます．<br>
 easy_factoring という問題名ですが，やることは素因数分解と見せかけて平方和での分解です．（といっても結局素因数分解が必要になりますが）</p>
-<h3 id="solution">Solution</h3>
-<p>$N$ の平方和での分解は，ガウス整数環 $\mathbb{Z}[i]$ で $N$ の素元分解ができれば解けます．<br>
+<h3 id="solution">Solution
+</h3><p>$N$ の平方和での分解は，ガウス整数環 $\mathbb{Z}[i]$ で $N$ の素元分解ができれば解けます．<br>
 今 $N$ がガウス素数 $\pi_1,\pi_2,\cdots,\pi_s$ を用いて $N = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2)\cdots (\pi_s \bar \pi_s)$ と書けるとします．<br>
 このとき $N = a^2 + b^2$ となる $a,b\in \mathbb{Z}$ について，$N = (a + bi)(a - bi) = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2)\cdots (\pi_s \bar \pi_s)$ となります．</p>
 <p>つまり $N$ を平方和に分解するような整数 $a,b$ は，$a + bi$ として $N$ の $\mathbb{Z}[i]$ での因数に含まれています．<br>
@@ -446,12 +380,11 @@ easy_factoring という問題名ですが，やることは素因数分解と�
 <p>さらにさらに，普通にディオファントス問題としてみて sympy のディオファントス問題ソルバにかけるだでも解けるようです．<br>
 easy_factoring は難易度として easy 想定だったので被害は少なかったと思いますが，それでもツールにかけるだけで解けちゃうタイプの非想定解が生まれてしまったのは反省しています．（warmup より solves 多いし）<br>
 問題の構想の最初の頃は平方和の分解を使って何らかのシステムに結託攻撃することを考えていたので，そっち方面でもっと練れていたらなという気持ちです．（作問力ぅ……）</p>
-<h2 id="crypto-178pts-elliptic-ring-rsa-27-solves">[crypto 178pts] Elliptic Ring RSA (27 solves)</h2>
-<h3 id="overview-1">Overview</h3>
-<blockquote>
+<h2 id="crypto-178pts-elliptic-ring-rsa-27-solves">[crypto 178pts] Elliptic Ring RSA (27 solves)
+</h2><h3 id="overview-1">Overview
+</h3><blockquote>
 <p>RSA is hard over integer ring.<br>
-What about RSA over elliptic curve ring (!?)</p>
-</blockquote>
+What about RSA over elliptic curve ring (!?)</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -507,8 +440,8 @@ What about RSA over elliptic curve ring (!?)</p>
 </div><p>与えられたコードの中で重要な部分は上の部分です．<br>
 またこの暗号化処理の上には $\Fp$ を係数として基底を $E(\Fp)$ で張った群環の実装がなされています．（正確に実装するためにそこそこ長いコードになってしまいました）<br>
 この問題は，その群環 $\mathrm{ER}$ 上で行われている $e = 13$ の RSA を破ることがゴールとなります．</p>
-<h3 id="solution-1">Solution</h3>
-<p>群環なので，何らかの多項式環の剰余環と準同型で結べそうな気がしてきます．ということでまずは $E(\Fp)$ の構造とその位数 $o := \#E(\Fp)$ を計算したい気持ちになってきます．<br>
+<h3 id="solution-1">Solution
+</h3><p>群環なので，何らかの多項式環の剰余環と準同型で結べそうな気がしてきます．ということでまずは $E(\Fp)$ の構造とその位数 $o := \#E(\Fp)$ を計算したい気持ちになってきます．<br>
 実際に計算すると $o = 192$ であることと，$G := (189, 152)$ によって $E(\Fp) = \left&lt; G \right&gt;$ となることがわかります．<br>
 したがって $\mathrm{ER} = \Fp[G]$ となり，$[i]G \mapsto x^i$ とすれば同型 $\Fp[G] \simeq \Fp[x]/(x^o - 1)$ が作れます．<br>
 よって $\mathrm{ER}$ 上での RSA は多項式の剰余環での RSA が解ければ破れます．</p>
@@ -885,11 +818,10 @@ $e^{-1}$ の計算は，$x^o - 1$ の各因数 $f _ i$ について $e^{-1} \bmo
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="crypto-226pts-moduhash-16-solves">[crypto 226pts] moduhash (16 solves)</h2>
-<h3 id="overview-2">Overview</h3>
-<blockquote>
-<p>This is related to a base of the theory of elliptic curves!</p>
-</blockquote>
+</div><h2 id="crypto-226pts-moduhash-16-solves">[crypto 226pts] moduhash (16 solves)
+</h2><h3 id="overview-2">Overview
+</h3><blockquote>
+<p>This is related to a base of the theory of elliptic curves!</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -932,8 +864,8 @@ $e^{-1}$ の計算は，$x^o - 1$ の各因数 $f _ i$ について $e^{-1} \bmo
 <p>$S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$，$T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ とします．<br>
 また秘匿されたハッシュ関数 $h$ があり，これは $S$ と $T$ のランダムな関数合成によって構成されています．<br>
 問題としては，ある $z \in \mathbb{C}$ とそのハッシュによる出力 $h(z)$ が与えられるので $h$ を復元してくださいという問題です．</p>
-<h3 id="solution-2">Solution</h3>
-<p>まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．<br>
+<h3 id="solution-2">Solution
+</h3><p>まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．<br>
 モジュラー群 $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ は $H$ に作用します．<br>
 この作用による軌道で $H$ を類別できるためその軌道空間 $\Gamma \backslash H$ を考えることができ，そこからうまく代表元を取ってくれば次で定義される基本領域 $F$ と同一視することができます．
 $$
@@ -1203,12 +1135,11 @@ $$
 </div>
 </div><p>実は元々 moduhash が warmup になる予定でした．<br>
 天才 ptr-yudai 氏が SquareRNG を作ってくれていなかったら，今頃僕は責任を取って切腹することになっていたでしょう．</p>
-<h2 id="crypto-340pts-unlimited-braid-works-6-solves">[crypto 340pts] Unlimited Braid Works (6 solves)</h2>
-<h3 id="overview-3">Overview</h3>
-<blockquote>
+<h2 id="crypto-340pts-unlimited-braid-works-6-solves">[crypto 340pts] Unlimited Braid Works (6 solves)
+</h2><h3 id="overview-3">Overview
+</h3><blockquote>
 <p>This is probably hard problem.
-Is this commutative or non-commutative?</p>
-</blockquote>
+Is this commutative or non-commutative?</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1335,8 +1266,8 @@ Is this commutative or non-commutative?</p>
 また $a _ l \in \LB$ を秘密鍵として，公開鍵を $v := a _ l u a _ l^{-1}$ とします．</p>
 <p>$m$ をメッセージとし，さらに $H \colon B _ n \to \left\lbrace 0, 1 \right\rbrace^{k}$ をシリアライズ用の関数とします．<br>
 このとき暗号化の処理は，ランダムな組み紐 $b _ r \in \RB$ を選び $w := b _ r u b _ r^{-1}$，$d := H(b _ r v b _ r ^{-1}) \oplus$ を計算し，最後に暗号文を $(w, d)$ とするものになっています．</p>
-<h3 id="solution-3">Solution</h3>
-<p>もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
+<h3 id="solution-3">Solution
+</h3><p>もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
 $$
 \begin{aligned}
 H(a_l w a_l^{-1}) \oplus d &amp;= H(a_l b_r u b_r^{-1} a_l^{-1})\\
@@ -1599,18 +1530,19 @@ $$</p>
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -1620,6 +1552,7 @@ $$</p>
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -1741,12 +1674,12 @@ $$</p>
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -1835,7 +1768,7 @@ $$</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

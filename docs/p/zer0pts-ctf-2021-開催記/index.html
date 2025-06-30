@@ -1,79 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！
 出題した問題の公式writeupは https://hackmd.io/@ptr-yudai/B1bk04fmu で公開されているので、ぜひ参考にしてください。
-作問 cryptoの&amp;quot;easy pseudo random&amp;quot;と&amp;quot;pure division&amp;quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。
+作問 cryptoの&quot;easy pseudo random&quot;と&quot;pure division&quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。
 easy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。
 pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。
 作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。
 おわりに 運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。
-めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜'>
+めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜
+'>
 <title>zer0pts ctf 2021 開催記</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='zer0pts ctf 2021 開催記'>
-<meta property='og:description' content='はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！
-出題した問題の公式writeupは https://hackmd.io/@ptr-yudai/B1bk04fmu で公開されているので、ぜひ参考にしてください。
-作問 cryptoの&amp;quot;easy pseudo random&amp;quot;と&amp;quot;pure division&amp;quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。
-easy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。
-pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。
-作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。
-おわりに 運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。
-めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="zer0pts ctf 2021 開催記">
+<meta property='og:description' content="はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！\n出題した問題の公式writeupは https://hackmd.io/@ptr-yudai/B1bk04fmu で公開されているので、ぜひ参考にしてください。\n作問 cryptoの&quot;easy pseudo random&quot;と&quot;pure division&quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。\neasy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。\npure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。\n作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。\nおわりに 運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。\nめちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='misc' /><meta property='article:published_time' content='2021-03-08T19:06:07&#43;09:00'/><meta property='article:modified_time' content='2021-03-08T19:06:07&#43;09:00'/>
 <meta name="twitter:title" content="zer0pts ctf 2021 開催記">
-<meta name="twitter:description" content="はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！
-出題した問題の公式writeupは https://hackmd.io/@ptr-yudai/B1bk04fmu で公開されているので、ぜひ参考にしてください。
-作問 cryptoの&amp;quot;easy pseudo random&amp;quot;と&amp;quot;pure division&amp;quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。
-easy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。
-pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。
-作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。
-おわりに 運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。
-めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="はじめに zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！\n出題した問題の公式writeupは https://hackmd.io/@ptr-yudai/B1bk04fmu で公開されているので、ぜひ参考にしてください。\n作問 cryptoの&quot;easy pseudo random&quot;と&quot;pure division&quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。\neasy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。\npure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。\n作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。\nおわりに 運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。\nめちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜\n">
 
     </head>
     <body class="
@@ -118,7 +65,7 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -134,7 +81,7 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -179,31 +126,12 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -211,7 +139,7 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -219,10 +147,11 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -259,7 +188,7 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 08, 2021</time>
+                <time class="article-time--published">3月 08, 2021</time>
             </div>
         
 
@@ -275,19 +204,19 @@ pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定�
     <section class="article-content">
     
     
-    <h1 id="はじめに">はじめに</h1>
-<p>zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。
+    <h1 id="はじめに">はじめに
+</h1><p>zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。
 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。
 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！</p>
 <p>出題した問題の公式writeupは <a class="link" href="https://hackmd.io/@ptr-yudai/B1bk04fmu"  target="_blank" rel="noopener"
     >https://hackmd.io/@ptr-yudai/B1bk04fmu</a> で公開されているので、ぜひ参考にしてください。</p>
-<h1 id="作問">作問</h1>
-<p>cryptoの&quot;easy pseudo random&quot;と&quot;pure division&quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。</p>
+<h1 id="作問">作問
+</h1><p>cryptoの&quot;easy pseudo random&quot;と&quot;pure division&quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。</p>
 <p>easy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。</p>
 <p>pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。</p>
 <p>作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。</p>
-<h1 id="おわりに">おわりに</h1>
-<p>運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。</p>
+<h1 id="おわりに">おわりに
+</h1><p>運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。</p>
 <p>めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜</p>
 
 </section>
@@ -320,18 +249,19 @@ zer0pts ctf 2021では、正の得点を得たチームが951チームもいて�
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -341,6 +271,7 @@ zer0pts ctf 2021では、正の得点を得たチームが951チームもいて�
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -401,12 +332,12 @@ zer0pts ctf 2021では、正の得点を得たチームが951チームもいて�
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -495,7 +426,7 @@ zer0pts ctf 2021では、正の得点を得たチームが951チームもいて�
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

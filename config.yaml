@@ -2,8 +2,10 @@ baseurl: https://mitsu1119.github.io/blog
 languageCode: ja
 theme: stack
 publishDir: ./docs
-paginate: 5
 title: みつみつみつですか？
+
+pagination:
+  pagerSize: 5
 
 # Change it to your Disqus shortname before using
 disqusShortname: https-mitsu1119-github-io-blog

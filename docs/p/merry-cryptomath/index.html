@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
 ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
 ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）
@@ -17,90 +17,19 @@
 CVP 格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
 CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
 しかし（？！） CVP は SVP よろしく近似解法があります。
-Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。'>
+Kannan&rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。
+'>
 <title>Merry CryptoMath !!!!!</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/merry-cryptomath/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/merry-cryptomath/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='Merry CryptoMath !!!!!'>
-<meta property='og:description' content='Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
-ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
-ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）
-別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
-あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
-クリスマスについて クリスマス キリストの降誕祭。十二月二十五日。
-① ―イブ　クリスマス前夜祭。
-② ―カード　クリスマスを祝っておくる絵入りのカード。
-③ ―カロル　クリスマスを祝う賛美歌。
-④ ―ケーキ　クリスマス用の飾りケーキ。
-⑤ ―ツリー　クリスマスのときに立てて飾る常緑樹。
-⑥ ―プレゼント　クリスマスの贈り物。
-ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
-CVP 格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
-CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
-しかし（？！） CVP は SVP よろしく近似解法があります。
-Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/merry-cryptomath/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Merry CryptoMath !!!!!">
+<meta property='og:description' content="Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。\nところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。\nババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）\n別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。\nあとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。\nクリスマスについて クリスマス キリストの降誕祭。十二月二十五日。\n① ―イブ\u3000クリスマス前夜祭。\n② ―カード\u3000クリスマスを祝っておくる絵入りのカード。\n③ ―カロル\u3000クリスマスを祝う賛美歌。\n④ ―ケーキ\u3000クリスマス用の飾りケーキ。\n⑤ ―ツリー\u3000クリスマスのときに立てて飾る常緑樹。\n⑥ ―プレゼント\u3000クリスマスの贈り物。\nウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。\nCVP 格子 $\\Lambda$ について、目標ベクトル $w \\in \\mathrm{span}(\\Lambda)$ との距離が最も近い $v \\in \\Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。\nCVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。\nしかし（？！） CVP は SVP よろしく近似解法があります。\nKannan&rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/merry-cryptomath/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-12-13T00:09:54&#43;09:00'/><meta property='article:modified_time' content='2021-12-13T00:09:54&#43;09:00'/>
 <meta name="twitter:title" content="Merry CryptoMath !!!!!">
-<meta name="twitter:description" content="Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。
-ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。
-ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）
-別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。
-あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。
-クリスマスについて クリスマス キリストの降誕祭。十二月二十五日。
-① ―イブ　クリスマス前夜祭。
-② ―カード　クリスマスを祝っておくる絵入りのカード。
-③ ―カロル　クリスマスを祝う賛美歌。
-④ ―ケーキ　クリスマス用の飾りケーキ。
-⑤ ―ツリー　クリスマスのときに立てて飾る常緑樹。
-⑥ ―プレゼント　クリスマスの贈り物。
-ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。
-CVP 格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。
-CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。
-しかし（？！） CVP は SVP よろしく近似解法があります。
-Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="Merry CryptoMath !!!!!! この記事は CTF Advent Calendar 2021 の25日目の記事です。昨日の記事はSatokiさんによる 【文学】 Flagを読む で、面白いフラグを紹介してくれたりLeetについて説明してくれました。\nところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。\nババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）\n別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。\nあとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。\nクリスマスについて クリスマス キリストの降誕祭。十二月二十五日。\n① ―イブ\u3000クリスマス前夜祭。\n② ―カード\u3000クリスマスを祝っておくる絵入りのカード。\n③ ―カロル\u3000クリスマスを祝う賛美歌。\n④ ―ケーキ\u3000クリスマス用の飾りケーキ。\n⑤ ―ツリー\u3000クリスマスのときに立てて飾る常緑樹。\n⑥ ―プレゼント\u3000クリスマスの贈り物。\nウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。\nCVP 格子 $\\Lambda$ について、目標ベクトル $w \\in \\mathrm{span}(\\Lambda)$ との距離が最も近い $v \\in \\Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。\nCVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。\nしかし（？！） CVP は SVP よろしく近似解法があります。\nKannan&rsquo;s embedding method 埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。\n">
 
     </head>
     <body class="
@@ -145,7 +74,7 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -161,7 +90,7 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -206,31 +135,12 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -238,7 +148,7 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -246,10 +156,11 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -286,7 +197,7 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 13, 2021</time>
+                <time class="article-time--published">12月 13, 2021</time>
             </div>
         
 
@@ -302,16 +213,16 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
     <section class="article-content">
     
     
-    <h1 id="merry-cryptomath-">Merry CryptoMath !!!!!!</h1>
-<p>　この記事は <a class="link" href="https://adventar.org/calendars/6914"  target="_blank" rel="noopener"
+    <h1 id="merry-cryptomath-">Merry CryptoMath !!!!!!
+</h1><p>　この記事は <a class="link" href="https://adventar.org/calendars/6914"  target="_blank" rel="noopener"
     >CTF Advent Calendar 2021</a> の25日目の記事です。昨日の記事はSatokiさんによる <a class="link" href="https://hackmd.io/@satoki/BkeNHyWot"  target="_blank" rel="noopener"
     >【文学】 Flagを読む</a> で、面白いフラグを紹介してくれたりLeetについて説明してくれました。</p>
 <p>　ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。<br>
 　ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）</p>
 <p>　別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。</p>
 <p>　あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。</p>
-<h1 id="クリスマスについて">クリスマスについて</h1>
-<p><strong>クリスマス</strong>
+<h1 id="クリスマスについて">クリスマスについて
+</h1><p><strong>クリスマス</strong>
 　キリストの降誕祭。十二月二十五日。<br>
 　① <strong>―イブ</strong>　クリスマス前夜祭。<br>
 　② <strong>―カード</strong>　クリスマスを祝っておくる絵入りのカード。<br>
@@ -320,12 +231,12 @@ Kannan&amp;rsquo;s embedding method 埋め込み法とか呼ばれてるやつ�
 　⑤ <strong>―ツリー</strong>　クリスマスのときに立てて飾る常緑樹。<br>
 　⑥ <strong>―プレゼント</strong>　クリスマスの贈り物。</p>
 <p>　ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。</p>
-<h1 id="cvp">CVP</h1>
-<p>　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。</p>
+<h1 id="cvp">CVP
+</h1><p>　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。</p>
 <p>　CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。</p>
 <p>　しかし（？！） CVP は SVP よろしく近似解法があります。</p>
-<h1 id="kannans-embedding-method">Kannan&rsquo;s embedding method</h1>
-<p>　埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。</p>
+<h1 id="kannans-embedding-method">Kannan&rsquo;s embedding method
+</h1><p>　埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。</p>
 <p>　uSVP（正確には uSVP$_ \gamma$）というのは、格子の逐次最小について $\gamma \lambda _ {1} &lt; \lambda _ {2}$ みたいなのが成り立つ格子での SVP です。単に SVP と思ってもらって構いません。  　</p>
 <p>　考える格子を $\Lambda = \mathcal{L}(B) \subseteq \mathbb{Z}^n$ として、目標ベクトル $w \in \mathbb{Z}^n$、CVP の解ベクトルを $v = \sum v_ i b_ i$ とします。（つまり全部整数格子で考える）</p>
 <p>　まあ実際のところ暗号の文脈で出てくる格子点は計算機で扱う都合上、与えられる入力として面倒くさいものを考えても有限少数なので、簡単に線形同値な格子が作れますし別に問題ないです。</p>
@@ -400,8 +311,8 @@ $$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h1 id="babais-algorithm">Babai&rsquo;s algorithm</h1>
-<p>　ババイです。実は難しくないです。</p>
+<h1 id="babais-algorithm">Babai&rsquo;s algorithm
+</h1><p>　ババイです。実は難しくないです。</p>
 <p>　この名前を聞くとBaba is youを思い出すのですが人の名前がついたアルゴリズム名で遊ぶのは最悪なのでやめておきます。Baba is youやったことないし。</p>
 <p>　で、アルゴリズムの解説に入るのですが次の操作をやるだけです。</p>
 <ol>
@@ -413,8 +324,8 @@ $$</p>
 <li>$y = \sum y_ i$ が求めたかった一番最初の $w$ の最近ベクトル $y$ となります。</li>
 </ol>
 <p>コード書くの、怠惰すぎてやめちゃった。簡単ですし適当にググると出てきます。</p>
-<h1 id="最後に">最後に</h1>
-<p>有名ガチプロCTFerが素晴らしい記事を生やしている中、自分はこんなカスみたいな記事を錬成していていいのか……という感じです。それなのにここまで読んでいただいて本当に感謝です。それではよいお年を！</p>
+<h1 id="最後に">最後に
+</h1><p>有名ガチプロCTFerが素晴らしい記事を生やしている中、自分はこんなカスみたいな記事を錬成していていいのか……という感じです。それなのにここまで読んでいただいて本当に感謝です。それではよいお年を！</p>
 
 </section>
 
@@ -440,18 +351,19 @@ $$</p>
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -461,6 +373,7 @@ $$</p>
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -521,12 +434,12 @@ $$</p>
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -615,7 +528,7 @@ $$</p>
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

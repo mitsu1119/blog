@@ -1,70 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 大体タイトル通りの記事です．LLLを解説していきます．
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=' はじめに 大体タイトル通りの記事です．LLLを解説していきます．
 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください． もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．
 とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．
 1. 格子 一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．
-定義 1.1: 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の基底と呼び， $ n$ を格子の次数と言う． また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ はfull-rankであると言う．'>
+定義 1.1: 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の基底と呼び， $ n$ を格子の次数と言う． また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ はfull-rankであると言う．
+'>
 <title>LLLを理解するぞ</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='LLLを理解するぞ'>
-<meta property='og:description' content='はじめに 大体タイトル通りの記事です．LLLを解説していきます．
-性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください． もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．
-とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．
-1. 格子 一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．
-定義 1.1: 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の基底と呼び， $ n$ を格子の次数と言う． また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ はfull-rankであると言う．'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="LLLを理解するぞ">
+<meta property='og:description' content=" はじめに 大体タイトル通りの記事です．LLLを解説していきます．\n性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください． もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．\nとにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．\n1. 格子 一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．\n定義 1.1: 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\\cdots ,b _ n \\in \\mathbb{R} ^ m$ によって張られる格子 $ \\mathcal{L}(b _ 1,b _ 2,\\cdots,b _ n)$ を次のように定義する．$$\\displaystyle \\mathcal{L}(b _ 1,b _ 2,\\cdots,b _ n) = \\left\\{ \\sum x _ ib _ i \\mathrel{}\\middle|\\mathrel{} x _ i \\in \\mathbb{Z} \\right\\}$$この時， $ \\left\\{b _ 1,b _ 2,\\cdots,b _ n \\right\\}$ を格子の基底と呼び， $ n$ を格子の次数と言う． また $ n = m$ であるとき，格子 $ \\mathcal{L}(b _ 1,b _ 2,\\cdots,b _ n)$ はfull-rankであると言う．\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='lattice' /><meta property='article:tag' content='algorithm' /><meta property='article:tag' content='理解するぞ' /><meta property='article:published_time' content='2020-05-10T20:51:59&#43;00:00'/><meta property='article:modified_time' content='2020-05-10T20:51:59&#43;00:00'/>
 <meta name="twitter:title" content="LLLを理解するぞ">
-<meta name="twitter:description" content="はじめに 大体タイトル通りの記事です．LLLを解説していきます．
-性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください． もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．
-とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．
-1. 格子 一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．
-定義 1.1: 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の基底と呼び， $ n$ を格子の次数と言う． また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ はfull-rankであると言う．">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content=" はじめに 大体タイトル通りの記事です．LLLを解説していきます．\n性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください． もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．\nとにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．\n1. 格子 一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．\n定義 1.1: 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\\cdots ,b _ n \\in \\mathbb{R} ^ m$ によって張られる格子 $ \\mathcal{L}(b _ 1,b _ 2,\\cdots,b _ n)$ を次のように定義する．$$\\displaystyle \\mathcal{L}(b _ 1,b _ 2,\\cdots,b _ n) = \\left\\{ \\sum x _ ib _ i \\mathrel{}\\middle|\\mathrel{} x _ i \\in \\mathbb{Z} \\right\\}$$この時， $ \\left\\{b _ 1,b _ 2,\\cdots,b _ n \\right\\}$ を格子の基底と呼び， $ n$ を格子の次数と言う． また $ n = m$ であるとき，格子 $ \\mathcal{L}(b _ 1,b _ 2,\\cdots,b _ n)$ はfull-rankであると言う．\n">
 
     </head>
     <body class="
@@ -109,7 +62,7 @@
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -125,7 +78,7 @@
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -170,31 +123,12 @@
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -202,7 +136,7 @@
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -210,10 +144,11 @@
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -290,7 +225,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">May 10, 2020</time>
+                <time class="article-time--published">5月 10, 2020</time>
             </div>
         
 
@@ -307,8 +242,8 @@
     
     
     <div class="section">
-<h2 id="はじめに">はじめに</h2>
-<p>大体タイトル通りの記事です．LLLを解説していきます．<br>
+<h2 id="はじめに">はじめに
+</h2><p>大体タイトル通りの記事です．LLLを解説していきます．<br>
 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください．
 もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．<br>
 とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．</p>
@@ -325,8 +260,8 @@
 ></a></p>
 </div>
 <div class="section">
-<h2 id="1-格子">1. 格子</h2>
-<p>一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．</p>
+<h2 id="1-格子">1. 格子
+</h2><p>一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．</p>
 <p><strong>定義 1.1:</strong>
 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる<strong>格子</strong> $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の<strong>基底</strong>と呼び， $ n$ を格子の<strong>次数</strong>と言う．
 また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ は<strong>full-rankである</strong>と言う．</p>
@@ -369,8 +304,8 @@ $$ \displaystyle B=\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}$$</p>
 <p>このように，同じ格子の基底同士はユニモジュラ行列によって関連付けられています．</p>
 </div>
 <div class="section">
-<h2 id="2-格子の行列式">2. 格子の行列式</h2>
-<p><strong>定義 2.1:</strong>
+<h2 id="2-格子の行列式">2. 格子の行列式
+</h2><p><strong>定義 2.1:</strong>
 基底行列 $ B = \begin{pmatrix} b _  {1} &amp; \cdots  &amp; b _  {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n}$ の格子 $ \Lambda$ の<strong>スパン</strong> $ \mathrm{span}(\Lambda)$ とは，次のような線形包である．$$ \mathrm{span}(\Lambda) = \mathrm{span}(b _ 1,\cdots,b _ n) = \mathrm{span}(B) = \left\{ By \mathrel{}\middle|\mathrel{} y \in \mathbb{R} ^ n \right\}$$</p>
 <p>定義より，格子 $ \Lambda$ の基底行列 $ B$ は $ \mathrm{span}(\Lambda)$ の基底行列にもなります．また，格子 $ \Lambda$ がfull-rankな時， $ \mathrm{span}(\Lambda) = \mathbb{R} ^ n$ となります．このスパンのおかげで格子の点と点の隙間を考えることができ，格子上の計算をスパンにマッピングして行ってから元の格子に射影し直すという操作を使うことで，それなりに自由に計算が行えるようになります．後述のLLLアルゴリズムもこの方法を使っています．</p>
 <p><strong>定義 2.2:</strong>
@@ -385,8 +320,8 @@ $$ \displaystyle B=\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 2 \end{pmatrix}$$</p>
 <p>逆は言えないので注意してください（基底行列の次数が違う場合が反例としてあげられます）．</p>
 </div>
 <div class="section">
-<h2 id="3-逐次最小">3. 逐次最小</h2>
-<p><strong>定義 3.1:</strong>
+<h2 id="3-逐次最小">3. 逐次最小
+</h2><p><strong>定義 3.1:</strong>
 $ B \in \mathbb{R} ^ {m \times n}$ を基底行列とする格子 $ \Lambda$ について，自然数 $ 1 \leq i \leq n$ に対する $ i$ 番目の逐次最小 $ \lambda _ i = \lambda _ i(\Lambda)$ を次の式で定義する．$$\lambda _  {i} (\Lambda )=\inf\left\{r \mathrel{}\middle|\mathrel{} i\leq \dim (\mathrm{span} (\Lambda \cap B(0;r)))\right\} \ \\ \hspace{6em} \mathit{where} \ B(0;r)=\left\{x\in \mathbb{R} ^ {m} \mathrel{}\middle|\mathrel{} |x| \leq r \right\} $$</p>
 <p>多分ぱっと見ではこの式が何を言っているのかわかりにくいと思いますが（自分はわからなかった）言っていることは実は結構簡単で，要するに逐次最小 $ \lambda _ i$ とは， $ i$ 個の線形独立な格子の元を含む原点中心の最小の超球の半径です．
 この定義より，格子 $ \Lambda$ の線形独立な格子ベクトルを短い順に $ n$ 個とってできたベクトルの組 $ v _ 1,\cdots,v _ n$ の長さはそれぞれ $ \lambda _ 1,\cdots,\lambda _ n$ となることがわかります．ただし注意として，五次元以上の格子では $ \left\{ v _ 1,\cdots,v _ n \right\}$ が必ずしも $ \Lambda$ の基底になるとは限りません．
@@ -415,8 +350,8 @@ $  n $ 次のfull-rankな格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ �
 閉球 $  B(0; r) \subset \mathbb{R} ^ n $ について，立方体 $  X = \left[-\frac{r}{\sqrt{n}}, \frac{r}{\sqrt{n}} \right] ^ {n} \subset \mathbb{R} ^ n $ は $  X \subseteq B(0; r) $ を満たす．従って， $   \mathrm{vol}(X) = 2 ^ n(\frac{r}{\sqrt{n}}) ^ n \leq \mathrm{vol}(B(0;r)) $ となる．よって $  r = \sqrt{n}(\det \Lambda) ^ {\frac{1}{n}} $ とすれば $  \mathrm{vol}(B(0; r)) \geq 2 ^ n\det \Lambda $ が成り立ち，Minkowskiの凸体定理より $  B(0; r) $ の内側に格子点が存在するため， $  r =  \sqrt{n}(\det \Lambda) ^ {\frac{1}{n}} $ より短い格子ベクトルが存在する． $  ■ $</p>
 </div>
 <div class="section">
-<h2 id="4-グラムシュミットの直交化法">4. グラム・シュミットの直交化法</h2>
-<p><strong>定義 4.1:</strong>
+<h2 id="4-グラムシュミットの直交化法">4. グラム・シュミットの直交化法
+</h2><p><strong>定義 4.1:</strong>
 内積空間 $  V $ の基底 $  \left\{b _  1, b _  2,\cdots,b _  n \right\} $ から，同じ空間を張るような直交基底 $  \left\{b _  1  ^  *,b _  2  ^  *,\cdots,b _  n  ^  * \right\} $ を次の式から求める操作を<strong>グラム・シュミットの直交化法</strong>という．
 $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i,j} b  ^  {*} _  {j}\ \mathit{where}\ \mu _  {i,j} =\frac{\langle b _  {i} ,b  ^  {*} _  {j} \rangle }{\langle b  ^  {*} _  {j} ,b  ^  {*} _  {j} \rangle } $$</p>
 <p>正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．
@@ -460,8 +395,8 @@ $$\begin{aligned} B &amp; = \begin{pmatrix} b ^ {*} _ {1} &amp; b ^ {*} _ {2} +\
 $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，そのグラムシュミットベクトルを $  b _ 1 ^ *,\cdots,b _ n ^ * $ とする．この時，自然数 $  1 \leq i \leq n $ に対し $  | b _ i ^ * | \leq | b _ i | $ なので，$  | b _ 1 ^ * | | b _ 2 ^ * | \cdots | b _ n ^ * | \leq |b _ 1| |b _ 2| \cdots |b _ n| $ となる． 従って定理4.2より， $  \det \Lambda \leq \prod  ^ {n} _ {i=1} | b _ {i} | $ となる． $  ■ $</p>
 </div>
 <div class="section">
-<h2 id="5-lagrangeの方法">5. Lagrangeの方法</h2>
-<p><strong>定義 5.1:</strong>
+<h2 id="5-lagrangeの方法">5. Lagrangeの方法
+</h2><p><strong>定義 5.1:</strong>
 格子の基底 $  \left\{ b _ 1, b _ 2 \right\} \in \mathbb{R} ^ {m \times 2} $ が任意の $  x \in \mathbb{Z} $ に対し次の条件を満たすとき，<strong>簡約されている</strong>という．$$  |b _ 1| \leq |b _ 2| \leq |b _ 2+xb _ 1| $$ また，簡約されている基底のことを<strong>簡約基底</strong>と呼ぶ．ある格子の簡約基底は，同じ格子を張るような基底の中で直交欠陥が最も $  1 $ に近く，各ベクトルが短い基底です．また，ある格子が与えられたときその簡約基底を求めることを<strong>簡約化</strong>と言います．基底の簡約化は次のような性質から，最も長さの短い格子ベクトルの計算に用いられます．</p>
 <p><strong>定理 5.1:</strong>
 二次元の格子 $  \Lambda $ の簡約基底を $  \left\{b _ 1,b _ 2\right\} \in \mathbb{R} ^ {m \times 2} $ とし，逐次最小を $  \lambda _ 1,\lambda _ 2 $ とする．この時次の式が成り立つ．$$  |b _ 1| = \lambda _ 1,\ |b _ 2| = \lambda _ 2 $$</p>
@@ -487,8 +422,8 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ が最小となるような $  b _ 1 $ の係数を設定していることに注意してください． $  \mu _ {2,1} $ の最小値は，下に凸な二次関数 $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu _ {2,1} \langle b _ 1,b _ 2 \rangle + \mu _ {2,1} ^ 2|b _ 1| ^ 2 $ の最小値でもあるので，適当に微分して $  -2\langle b _ {1} ,b _ {2} \rangle +2\mu _ {2,1} | b _ {1} |  ^ {2} =0 $ の解を求めれば $  \mu _ {2, 1} = \langle b1, b2 \rangle / |b _ 1| ^ 2 $ が導けます．つまり，二つのベクトルの差のノルムができるだけ短くなるように計算しているだけです．</p>
 </div>
 <div class="section">
-<h2 id="6-lll簡約基底とサイズ簡約">6. LLL簡約基底とサイズ簡約</h2>
-<p>Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．</p>
+<h2 id="6-lll簡約基底とサイズ簡約">6. LLL簡約基底とサイズ簡約
+</h2><p>Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．</p>
 <p><strong>定義 6.1:</strong>
 格子 $  \Lambda $ の基底 $  \left\{ b _ 1,\cdots,b _ n \right\} \in \mathbb{R} ^ {m \times n} $ とそのグラムシュミットベクトル $  b _ 1 ^ *,\cdots,b _ n ^ * \in \mathbb{R} ^ {m \times n} $ について，ある $  \delta \in \mathbb{R}\ (\frac{1}{4} &lt; \delta &lt; 1) $ を用いて次の条件が成り立つとき，基底がパラメータ $  \delta $ で<strong>LLL簡約されている</strong>という．</p>
 <ol>
@@ -524,8 +459,8 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 <p>補題6.1より，Algorithm 3の正当性を確認することができました．また，補題6.1の1つ目の式から，Algorithm 3の6行目の処理は2つ目の式を使ってグラムシュミット係数のみ計算すればいいことがわかります．しかしここでは簡単のため，グラム・シュミットの直交化をするようにしています．この部分の最適化は，LLLの説明が終わった後の最適化の部分に纏めて書いてあるので安心してください．</p>
 </div>
 <div class="section">
-<h2 id="7-lovászの条件">7. Lovászの条件</h2>
-<p>LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
+<h2 id="7-lovászの条件">7. Lovászの条件
+</h2><p>LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
 また，サイズ簡約の条件より， $  \alpha = \frac{1}{\delta - 1 / 4} $ としたとき自然数 $  1 \leq j \leq i \leq n $ について$$  |b _ j ^ *| ^ 2 \leq \alpha ^ {i-j}|b _ i ^ *| ^ 2 $$となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．</p>
 <p><strong>定理 7.1:</strong>
 格子 $  \Lambda $ の基底行列を $  B=\begin{pmatrix} b _ {1} &amp; \cdots  &amp; b _ {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n} $ とし，そのグラムシュミットベクトルによる行列を $  B ^ *=\begin{pmatrix} b _ {1} ^ * &amp; \cdots  &amp; b _ {n} ^ * \end{pmatrix} $ とする．この時，格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ について次の不等式が成り立つ．$$  \lambda _ 1 \geq  \min _ i |b _ i ^ *| $$</p>
@@ -548,8 +483,8 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 定理7.2より，$$  \displaystyle \begin{aligned} \begin{aligned} | b _ {1} |  ^ {n} \end{aligned} &amp; \leq \prod  ^ {n} _ {i=1} \alpha  ^ {( i-1) /2} | b ^ {*} _ {i} | \\ &amp; =\alpha  ^ {n( n-1) /4}\det \Lambda \end{aligned} $$である．従って， $  | b _ {1} | \leq \alpha  ^ {( n-1) /4}\det( \Lambda ) ^ {1/n} $ ． $ ■ $</p>
 </div>
 <div class="section">
-<h2 id="8-lll簡約と計算量">8. LLL簡約と計算量</h2>
-<p>遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
+<h2 id="8-lll簡約と計算量">8. LLL簡約と計算量
+</h2><p>遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
 下に愚直な疑似コードを示します．</p>
 <p><img src="/blog/post1/lll_1.png"
 	
@@ -605,8 +540,8 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 よってAlgorithm 5全体の計算量は $  O(n ^ 2m + n ^ 5 m \log X) = O(n ^ 5 m \log X) $ となる． $ ■ $</p>
 </div>
 <div class="section">
-<h2 id="9-最適化">9. 最適化</h2>
-<p>この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．</p>
+<h2 id="9-最適化">9. 最適化
+</h2><p>この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．</p>
 <p>前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  \Theta(n ^ 2m) $ から $  \Theta(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．</p>
 <p><img src="/blog/post1/size_reduction_2.png"
 	
@@ -681,18 +616,19 @@ LLLの最適化は現在も研究されている分野で，例えばDeepLLLやS
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -702,6 +638,7 @@ LLLの最適化は現在も研究されている分野で，例えばDeepLLLやS
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -762,12 +699,12 @@ LLLの最適化は現在も研究されている分野で，例えばDeepLLLやS
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -856,7 +793,7 @@ LLLの最適化は現在も研究されている分野で，例えばDeepLLLやS
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

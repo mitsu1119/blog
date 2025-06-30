@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Lattice on みつみつみつですか？</title>
-        <link>https://mitsu1119.github.io/blog/tags/lattice/</link>
+        <link>http://localhost:1313/blog/tags/lattice/</link>
         <description>Recent content in Lattice on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 28 Dec 2020 17:32:33 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/lattice/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 28 Dec 2020 17:32:33 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/lattice/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>yoshi-camp 2020 winter 参加記</title>
-        <link>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
-&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
+&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;z3を完全に理解しよう-by-ptr-yudai&#34;&gt;Z3を完全に理解しよう by ptr-yudai&lt;/h1&gt;
-&lt;p&gt;Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。&lt;/p&gt;
-&lt;h2 id=&#34;シンボリック変数の型&#34;&gt;シンボリック変数の型&lt;/h2&gt;
-&lt;p&gt;シンボリック変数で使える型をまずは教えてくれました。&lt;/p&gt;
+&lt;h1 id=&#34;z3を完全に理解しよう-by-ptr-yudai&#34;&gt;Z3を完全に理解しよう by ptr-yudai
+&lt;/h1&gt;&lt;p&gt;Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。&lt;/p&gt;
+&lt;h2 id=&#34;シンボリック変数の型&#34;&gt;シンボリック変数の型
+&lt;/h2&gt;&lt;p&gt;シンボリック変数で使える型をまずは教えてくれました。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;真偽変数(Bool)&lt;/li&gt;
 &lt;li&gt;整数・実数変数(Int, Real)&lt;/li&gt;
@@ -29,8 +29,8 @@
 &lt;/ul&gt;
 &lt;p&gt;BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。&lt;/p&gt;
 &lt;p&gt;BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。&lt;/p&gt;
-&lt;h2 id=&#34;制約と論理式&#34;&gt;制約と論理式&lt;/h2&gt;
-&lt;p&gt;制約はs.add(&amp;hellip;)みたいな感じで追加していきます。&lt;/p&gt;
+&lt;h2 id=&#34;制約と論理式&#34;&gt;制約と論理式
+&lt;/h2&gt;&lt;p&gt;制約はs.add(&amp;hellip;)みたいな感じで追加していきます。&lt;/p&gt;
 &lt;p&gt;制約内で用いる論理演算はAnd,Or,Xor,Not&amp;hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。
 また制約をかけるときに1 &amp;lt; a &amp;lt; 100みたいな不等式のチェーンは許されないらしいです。&lt;/p&gt;
 &lt;ul&gt;
@@ -39,23 +39,23 @@
 &lt;li&gt;If(P, x, y) (PがTrueならx、PがFalseならy)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;あたりも使えるらしいです。便利。&lt;/p&gt;
-&lt;h2 id=&#34;解の列挙&#34;&gt;解の列挙&lt;/h2&gt;
-&lt;p&gt;Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。&lt;/p&gt;
-&lt;h2 id=&#34;z3における型&#34;&gt;Z3における「型」&lt;/h2&gt;
-&lt;p&gt;実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。&lt;/p&gt;
+&lt;h2 id=&#34;解の列挙&#34;&gt;解の列挙
+&lt;/h2&gt;&lt;p&gt;Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。&lt;/p&gt;
+&lt;h2 id=&#34;z3における型&#34;&gt;Z3における「型」
+&lt;/h2&gt;&lt;p&gt;実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。&lt;/p&gt;
 &lt;p&gt;DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。&lt;/p&gt;
-&lt;h2 id=&#34;z3の変数の種類&#34;&gt;Z3の変数の種類&lt;/h2&gt;
-&lt;p&gt;Z3の変数は主に３種類あるらしいです。&lt;/p&gt;
+&lt;h2 id=&#34;z3の変数の種類&#34;&gt;Z3の変数の種類
+&lt;/h2&gt;&lt;p&gt;Z3の変数は主に３種類あるらしいです。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Applications (全称・存在記号なし。qf論理式。IntやRealなど)&lt;/li&gt;
 &lt;li&gt;Quantifiers (全称・存在記号あり。Function)&lt;/li&gt;
 &lt;li&gt;Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;例題&#34;&gt;例題&lt;/h2&gt;
-&lt;p&gt;このあと例題を解きました。&lt;/p&gt;
-&lt;h3 id=&#34;例題1&#34;&gt;例題1&lt;/h3&gt;
-&lt;p&gt;A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？&lt;/p&gt;
+&lt;h2 id=&#34;例題&#34;&gt;例題
+&lt;/h2&gt;&lt;p&gt;このあと例題を解きました。&lt;/p&gt;
+&lt;h3 id=&#34;例題1&#34;&gt;例題1
+&lt;/h3&gt;&lt;p&gt;A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A「BとEは正直者」&lt;/li&gt;
 &lt;li&gt;B「Cは嘘つき」&lt;/li&gt;
@@ -126,8 +126,8 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;正直者はBとDでした。&lt;/p&gt;
-&lt;h2 id=&#34;例題2&#34;&gt;例題2&lt;/h2&gt;
-&lt;p&gt;次の式を満たす有理数x,yを求めよ&lt;/p&gt;
+&lt;h2 id=&#34;例題2&#34;&gt;例題2
+&lt;/h2&gt;&lt;p&gt;次の式を満たす有理数x,yを求めよ&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$x^2 + y^2 = 533/196$&lt;/li&gt;
 &lt;li&gt;$x^2 + y^2 = 3$&lt;/li&gt;
@@ -173,8 +173,8 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;1番の答えは11/7と1/2で有ることがわかりました。また同じような方法で2番を解こうとしましたが当然解けませんでした。&lt;/p&gt;
-&lt;h2 id=&#34;例題3&#34;&gt;例題3&lt;/h2&gt;
-&lt;p&gt;Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。&lt;/p&gt;
+&lt;h2 id=&#34;例題3&#34;&gt;例題3
+&lt;/h2&gt;&lt;p&gt;Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$\forall P, Q \in S,\ P * Q=Q * P$&lt;/li&gt;
 &lt;li&gt;$\forall P, Q \in S,\ P * (P * Q) = Q$
@@ -238,29 +238,29 @@ $$ P + Q = O * (P * Q)$$
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;この出力で群の結合法則を満たさない演算を手に入れることができました。とても便利で驚きです。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;z3の便利機能&#34;&gt;Z3の便利機能&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;z3の便利機能&#34;&gt;Z3の便利機能
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Optimize (最大、最小問題が解ける。ベクトル解析めっちゃ使ってそう)&lt;/li&gt;
 &lt;li&gt;Unsat Core (部分的な制約を満たすか否か推論。特に条件を1つ除けばsatになるようなものをMCUというらしいです)&lt;/li&gt;
 &lt;li&gt;Goal, Tactic (ゴールを設定してより高速に計算ができるらしいです。Tacticには色々な種類があるらしいです。どういう場合に使えばいいかよくわからなかったので復習します)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Unsat Coreを使ったデバッグ法を説明してくれました。とても便利そう。&lt;/p&gt;
-&lt;h2 id=&#34;z3の利用ミス集&#34;&gt;Z3の利用ミス集&lt;/h2&gt;
-&lt;p&gt;Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。&lt;/p&gt;
+&lt;h2 id=&#34;z3の利用ミス集&#34;&gt;Z3の利用ミス集
+&lt;/h2&gt;&lt;p&gt;Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。&lt;/p&gt;
 &lt;p&gt;1つ目の問題はBitVecの変数に対して単に&amp;raquo;としてしまうとだめ、というものでした。LShRを使えば解決します。&lt;/p&gt;
 &lt;p&gt;2つ目の問題はCのunsigned char同士の掛け算の問題でした。unsigned char同士の掛け算は暗黙の型変換で16bitの計算になってしまうので、単に8ビットのBitVecに対してZeroExt(8, x)みたいにして掛け算しないとだめ、というものでした。&lt;/p&gt;
 &lt;p&gt;3つ目の問題は32bitのBitVecで出力に時間がかかるというものでした。32bitを使うのではなく8bitのBitVec4つで表して解けば短い実行時間ですむらしいです。ただ、うまく修正したはずがあまり速度向上が見えなかったのでうーん:thinking_face:という感じです。&lt;/p&gt;
 &lt;br /&gt;
 &lt;p&gt;全体的に初めて知ることが多く、勉強になることがたくさんありました。ありがとうございました。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;bkzで勝つ-by-mitsu&#34;&gt;BKZで勝つ by mitsu&lt;/h1&gt;
-&lt;p&gt;自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。&lt;/p&gt;
+&lt;h1 id=&#34;bkzで勝つ-by-mitsu&#34;&gt;BKZで勝つ by mitsu
+&lt;/h1&gt;&lt;p&gt;自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。&lt;/p&gt;
 &lt;p&gt;内容はBKZ簡約基底、BKZ簡約のアルゴリズムについて雰囲気で説明し気持ちだけ汲み取ってもらおうというものでした。また問題を解いてもらったのですが、BKZを使う問題は基本的に基底をshuffleしてwhileで回す必要がありうまく解くのに時間がかかるため、結局その問題のフラグは講義中に得ることができませんでした。悲しい。ついでに部分和問題のCLOS法についても話しましたがこれは家庭普及率100%なのであまり必要なかった印象です。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;lllで殴る2-by-theoldmoon0602&#34;&gt;LLLで殴る(2) by theoldmoon0602&lt;/h1&gt;
-&lt;p&gt;前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。&lt;/p&gt;
-&lt;h2 id=&#34;coppersmithの定理&#34;&gt;Coppersmithの定理&lt;/h2&gt;
-&lt;p&gt;sageのsmall_rootsを自力で実装しよう、という内容でした。&lt;/p&gt;
+&lt;h1 id=&#34;lllで殴る2-by-theoldmoon0602&#34;&gt;LLLで殴る(2) by theoldmoon0602
+&lt;/h1&gt;&lt;p&gt;前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。&lt;/p&gt;
+&lt;h2 id=&#34;coppersmithの定理&#34;&gt;Coppersmithの定理
+&lt;/h2&gt;&lt;p&gt;sageのsmall_rootsを自力で実装しよう、という内容でした。&lt;/p&gt;
 &lt;p&gt;monicな1変数多項式$f(x)$について、$f(x_0) \equiv 0 \mod N$を満たす小さい$x_0$を求めるプログラムを作ろうという話です。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理(Coppersmithの定理)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;monicな1変数$d$次多項式$f$の、$f(x_0) \equiv 0 \mod b$を満たす$|x_0 | &amp;lt; N^{\beta^2 / d}$を、$\log N,\ d$の多項式時間で求めることができる。ただし$b$は$N$の因数で$N^\beta \leq b$。&lt;/p&gt;
@@ -385,8 +385,8 @@ $$
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;やっていることは意外とシンプルで驚きました。やろうやろうと思ってやれていなかったのでとてもいい機会になりました。&lt;/p&gt;
-&lt;h2 id=&#34;truncated-lcg&#34;&gt;Truncated LCG&lt;/h2&gt;
-&lt;p&gt;LCGの漸化式
+&lt;h2 id=&#34;truncated-lcg&#34;&gt;Truncated LCG
+&lt;/h2&gt;&lt;p&gt;LCGの漸化式
 $$
 \begin{array}{ c c }
 x_{1} &amp;amp; =ax_{0} +b\bmod m\\
@@ -422,8 +422,8 @@ $$
 $L$を基底簡約して$B$に変換しても格子は変わらないので$xB=0 \mod m$はなりたちます。
 &lt;p&gt;$x = s^ky + z$なので$(2^ky + z)B = lm$となるようなベクトル$l$が存在し、$zB = lm - 2^kyB$となります。
 ここで$zB \simeq 0$と近似できるようで、$l$が求められるそうです。ここから$l$がわかったので$z$も求めることができます、という内容でした。なんで$zB \simeq 0$とできるのかイマイチ理解ができませんでした。&lt;/p&gt;
-&lt;h2 id=&#34;lwe&#34;&gt;LWE&lt;/h2&gt;
-&lt;p&gt;時間がなくてほとんど解説されませんでした。&lt;/p&gt;
+&lt;h2 id=&#34;lwe&#34;&gt;LWE
+&lt;/h2&gt;&lt;p&gt;時間がなくてほとんど解説されませんでした。&lt;/p&gt;
 &lt;p&gt;$$
 \begin{pmatrix}
 a_{11} &amp;amp; a_{21} &amp;amp; \cdots  &amp;amp; a_{m1}\\
@@ -440,25 +440,25 @@ $$&lt;/p&gt;
 &lt;br /&gt;
 数学の話が多めでした。いつかやろうやろうと思っていたことをやる機会になったのでとてもありがたい発表でした。この発表と比べると自分のBKZの話がカス過ぎて悲しくなってしまいます。
 &lt;br /&gt;
-&lt;h1 id=&#34;prngと戯れる&#34;&gt;PRNGと戯れる&lt;/h1&gt;
-&lt;p&gt;yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。&lt;/p&gt;
+&lt;h1 id=&#34;prngと戯れる&#34;&gt;PRNGと戯れる
+&lt;/h1&gt;&lt;p&gt;yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;感想&#34;&gt;感想&lt;/h1&gt;
-&lt;p&gt;午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。&lt;/p&gt;
+&lt;h1 id=&#34;感想&#34;&gt;感想
+&lt;/h1&gt;&lt;p&gt;午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。&lt;/p&gt;
 &lt;p&gt;あとは単に問題を解くのに実行時間がかかるBKZはこういうところで発表するものじゃないなと身にしみて思いました。ごめんなさい&lt;/p&gt;
 &lt;/div&gt;
 </description>
         </item>
         <item>
         <title>WMCTF 2020 writeup</title>
-        <link>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</link>
+        <link>http://localhost:1313/blog/p/wmctf-2020-writeup/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</guid>
+        <guid>http://localhost:1313/blog/p/wmctf-2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!&lt;br&gt;
 Thanks to my team members.
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post2/rank.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post2/rank.png&#34;
 	
 	
 	
@@ -469,8 +469,8 @@ Thanks to my team members.
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.&lt;/p&gt;
-&lt;h2 id=&#34;crypto-606pts-babysum-14-solved&#34;&gt;[Crypto: 606pts] babySum (14 solved)&lt;/h2&gt;
-&lt;p&gt;We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.&lt;br&gt;
+&lt;h2 id=&#34;crypto-606pts-babysum-14-solved&#34;&gt;[Crypto: 606pts] babySum (14 solved)
+&lt;/h2&gt;&lt;p&gt;We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.&lt;br&gt;
 Reading check.py, we will see that we need to solve a typical subset sum problem.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -605,13 +605,13 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
         </item>
         <item>
         <title>LLLを理解するぞ</title>
-        <link>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Sun, 10 May 2020 20:51:59 +0000</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <guid>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;大体タイトル通りの記事です．LLLを解説していきます．&lt;br&gt;
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h2&gt;&lt;p&gt;大体タイトル通りの記事です．LLLを解説していきます．&lt;br&gt;
 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください．
 もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．&lt;br&gt;
 とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．&lt;/p&gt;
@@ -628,15 +628,15 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 &gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;1-格子&#34;&gt;1. 格子&lt;/h2&gt;
-&lt;p&gt;一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．&lt;/p&gt;
+&lt;h2 id=&#34;1-格子&#34;&gt;1. 格子
+&lt;/h2&gt;&lt;p&gt;一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 1.1:&lt;/strong&gt;
 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる&lt;strong&gt;格子&lt;/strong&gt; $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の&lt;strong&gt;基底&lt;/strong&gt;と呼び， $ n$ を格子の&lt;strong&gt;次数&lt;/strong&gt;と言う．
 また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ は&lt;strong&gt;full-rankである&lt;/strong&gt;と言う．&lt;/p&gt;
 &lt;p&gt;full-rankでない例は $ m &amp;gt; n$ の場合を適当に考えれば作れます．例えば $ {} ^ t\!b _ 1 = \begin{pmatrix} 1 &amp;amp; 0 &amp;amp; 1 \end{pmatrix},\ {} ^ t\!b _ 2 = \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 2 \end{pmatrix}$ とすれば $ b _ 1$ と $ b _ 2$ は線形独立ですが，これによって作られる二次元の格子 $ \mathcal{L}(b _ 1,b _ 2)$ は明らかにfull-rankになりません．また， $ m &amp;lt; n$ の時は各ベクトルが線形独立にならないので注意してください．&lt;/p&gt;
 &lt;p&gt;格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\}$$と表すこともあります．このときの $B$ のことを&lt;strong&gt;基底行列&lt;/strong&gt;と言います．&lt;/p&gt;
 &lt;p&gt;一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lattice_ex1.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex1.png&#34;
 	
 	
 	
@@ -647,7 +647,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 	
 &gt;
 $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 0 \\ 0 &amp;amp; 1 \end{pmatrix}$$
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lattice_ex2.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex2.png&#34;
 	
 	
 	
@@ -672,8 +672,8 @@ $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 1 \\ 1 &amp;amp; 2 \end{pmatrix}$
 &lt;p&gt;このように，同じ格子の基底同士はユニモジュラ行列によって関連付けられています．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;2-格子の行列式&#34;&gt;2. 格子の行列式&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 2.1:&lt;/strong&gt;
+&lt;h2 id=&#34;2-格子の行列式&#34;&gt;2. 格子の行列式
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 2.1:&lt;/strong&gt;
 基底行列 $ B = \begin{pmatrix} b _  {1} &amp;amp; \cdots  &amp;amp; b _  {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n}$ の格子 $ \Lambda$ の&lt;strong&gt;スパン&lt;/strong&gt; $ \mathrm{span}(\Lambda)$ とは，次のような線形包である．$$ \mathrm{span}(\Lambda) = \mathrm{span}(b _ 1,\cdots,b _ n) = \mathrm{span}(B) = \left\{ By \mathrel{}\middle|\mathrel{} y \in \mathbb{R} ^ n \right\}$$&lt;/p&gt;
 &lt;p&gt;定義より，格子 $ \Lambda$ の基底行列 $ B$ は $ \mathrm{span}(\Lambda)$ の基底行列にもなります．また，格子 $ \Lambda$ がfull-rankな時， $ \mathrm{span}(\Lambda) = \mathbb{R} ^ n$ となります．このスパンのおかげで格子の点と点の隙間を考えることができ，格子上の計算をスパンにマッピングして行ってから元の格子に射影し直すという操作を使うことで，それなりに自由に計算が行えるようになります．後述のLLLアルゴリズムもこの方法を使っています．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 2.2:&lt;/strong&gt;
@@ -688,8 +688,8 @@ $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 1 \\ 1 &amp;amp; 2 \end{pmatrix}$
 &lt;p&gt;逆は言えないので注意してください（基底行列の次数が違う場合が反例としてあげられます）．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;3-逐次最小&#34;&gt;3. 逐次最小&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 3.1:&lt;/strong&gt;
+&lt;h2 id=&#34;3-逐次最小&#34;&gt;3. 逐次最小
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 3.1:&lt;/strong&gt;
 $ B \in \mathbb{R} ^ {m \times n}$ を基底行列とする格子 $ \Lambda$ について，自然数 $ 1 \leq i \leq n$ に対する $ i$ 番目の逐次最小 $ \lambda _ i = \lambda _ i(\Lambda)$ を次の式で定義する．$$\lambda _  {i} (\Lambda )=\inf\left\{r \mathrel{}\middle|\mathrel{} i\leq \dim (\mathrm{span} (\Lambda \cap B(0;r)))\right\} \ \\ \hspace{6em} \mathit{where} \ B(0;r)=\left\{x\in \mathbb{R} ^ {m} \mathrel{}\middle|\mathrel{} |x| \leq r \right\} $$&lt;/p&gt;
 &lt;p&gt;多分ぱっと見ではこの式が何を言っているのかわかりにくいと思いますが（自分はわからなかった）言っていることは実は結構簡単で，要するに逐次最小 $ \lambda _ i$ とは， $ i$ 個の線形独立な格子の元を含む原点中心の最小の超球の半径です．
 この定義より，格子 $ \Lambda$ の線形独立な格子ベクトルを短い順に $ n$ 個とってできたベクトルの組 $ v _ 1,\cdots,v _ n$ の長さはそれぞれ $ \lambda _ 1,\cdots,\lambda _ n$ となることがわかります．ただし注意として，五次元以上の格子では $ \left\{ v _ 1,\cdots,v _ n \right\}$ が必ずしも $ \Lambda$ の基底になるとは限りません．
@@ -718,14 +718,14 @@ $  n $ 次のfull-rankな格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ �
 閉球 $  B(0; r) \subset \mathbb{R} ^ n $ について，立方体 $  X = \left[-\frac{r}{\sqrt{n}}, \frac{r}{\sqrt{n}} \right] ^ {n} \subset \mathbb{R} ^ n $ は $  X \subseteq B(0; r) $ を満たす．従って， $   \mathrm{vol}(X) = 2 ^ n(\frac{r}{\sqrt{n}}) ^ n \leq \mathrm{vol}(B(0;r)) $ となる．よって $  r = \sqrt{n}(\det \Lambda) ^ {\frac{1}{n}} $ とすれば $  \mathrm{vol}(B(0; r)) \geq 2 ^ n\det \Lambda $ が成り立ち，Minkowskiの凸体定理より $  B(0; r) $ の内側に格子点が存在するため， $  r =  \sqrt{n}(\det \Lambda) ^ {\frac{1}{n}} $ より短い格子ベクトルが存在する． $  ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;4-グラムシュミットの直交化法&#34;&gt;4. グラム・シュミットの直交化法&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 4.1:&lt;/strong&gt;
+&lt;h2 id=&#34;4-グラムシュミットの直交化法&#34;&gt;4. グラム・シュミットの直交化法
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 4.1:&lt;/strong&gt;
 内積空間 $  V $ の基底 $  \left\{b _  1, b _  2,\cdots,b _  n \right\} $ から，同じ空間を張るような直交基底 $  \left\{b _  1  ^  *,b _  2  ^  *,\cdots,b _  n  ^  * \right\} $ を次の式から求める操作を&lt;strong&gt;グラム・シュミットの直交化法&lt;/strong&gt;という．
 $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i,j} b  ^  {*} _  {j}\ \mathit{where}\ \mu _  {i,j} =\frac{\langle b _  {i} ,b  ^  {*} _  {j} \rangle }{\langle b  ^  {*} _  {j} ,b  ^  {*} _  {j} \rangle } $$&lt;/p&gt;
 &lt;p&gt;正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．
 また簡単のため，グラム・シュミットの直交化における係数 $  \mu _  {i,j}\ (1 \leq j &amp;lt; i \leq n) $ を&lt;strong&gt;グラムシュミット係数&lt;/strong&gt;と呼び， $  \left\{ b _  1,\cdots,b _  n \right\} $ をグラム・シュミットの直交化法で直交化したときに得られる新たなベクトル $  b _  1 ^ *,\cdots,b _  n ^ * $ を&lt;strong&gt;グラムシュミットベクトル&lt;/strong&gt;と呼ぶことにします．さらに，グラム・シュミットの直交化法を，基底行列 $  B = \begin{pmatrix} b _  {1} &amp;amp; \cdots  &amp;amp; b _  {n} \end{pmatrix} $ から $  B ^ * = \begin{pmatrix} b _  {1} ^ * &amp;amp; \cdots  &amp;amp; b _  {n} ^ * \end{pmatrix} $ を得る操作としても用いるようにします．
 一応疑似コードも載せておきます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/gramschmidt.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/gramschmidt.png&#34;
 	
 	
 	
@@ -763,8 +763,8 @@ $$\begin{aligned} B &amp;amp; = \begin{pmatrix} b ^ {*} _ {1} &amp;amp; b ^ {*} 
 $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，そのグラムシュミットベクトルを $  b _ 1 ^ *,\cdots,b _ n ^ * $ とする．この時，自然数 $  1 \leq i \leq n $ に対し $  | b _ i ^ * | \leq | b _ i | $ なので，$  | b _ 1 ^ * | | b _ 2 ^ * | \cdots | b _ n ^ * | \leq |b _ 1| |b _ 2| \cdots |b _ n| $ となる． 従って定理4.2より， $  \det \Lambda \leq \prod  ^ {n} _ {i=1} | b _ {i} | $ となる． $  ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;5-lagrangeの方法&#34;&gt;5. Lagrangeの方法&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 5.1:&lt;/strong&gt;
+&lt;h2 id=&#34;5-lagrangeの方法&#34;&gt;5. Lagrangeの方法
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 5.1:&lt;/strong&gt;
 格子の基底 $  \left\{ b _ 1, b _ 2 \right\} \in \mathbb{R} ^ {m \times 2} $ が任意の $  x \in \mathbb{Z} $ に対し次の条件を満たすとき，&lt;strong&gt;簡約されている&lt;/strong&gt;という．$$  |b _ 1| \leq |b _ 2| \leq |b _ 2+xb _ 1| $$ また，簡約されている基底のことを&lt;strong&gt;簡約基底&lt;/strong&gt;と呼ぶ．ある格子の簡約基底は，同じ格子を張るような基底の中で直交欠陥が最も $  1 $ に近く，各ベクトルが短い基底です．また，ある格子が与えられたときその簡約基底を求めることを&lt;strong&gt;簡約化&lt;/strong&gt;と言います．基底の簡約化は次のような性質から，最も長さの短い格子ベクトルの計算に用いられます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 5.1:&lt;/strong&gt;
 二次元の格子 $  \Lambda $ の簡約基底を $  \left\{b _ 1,b _ 2\right\} \in \mathbb{R} ^ {m \times 2} $ とし，逐次最小を $  \lambda _ 1,\lambda _ 2 $ とする．この時次の式が成り立つ．$$  |b _ 1| = \lambda _ 1,\ |b _ 2| = \lambda _ 2 $$&lt;/p&gt;
@@ -777,7 +777,7 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 まず $  b _ 1,b _ 2 $ が簡約されていると仮定する．定義5.1において $  x = \pm 1 $ とすれば $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ ．
 次に $  b _ 1,b _ 2 $ が $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ を満たすと仮定する．ここで，関数 $  f(\mu) = |b _ 2 + \mu b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu \langle b _ 1,b _ 2 \rangle + \mu ^ 2|b _ 1| ^ 2 $ の最小値が $  -1 &amp;lt; \mu &amp;lt; 1 $ の時取られることを考えれば， $  f(\mu) $ は二次関数なので $  |x| &amp;gt; 1 $ を満たす整数 $  x $ に対し $  f(0) \leq f(x) $ となり，同じ $  x $ に対し $  |b _ 2| \leq |b _ 2 + xb _ 1 | $ となる．従って仮定より任意の $  x \in \mathbb{Z} $ に対し $  |b _ 1| \leq |b _ 2| \leq |b _ 2 + xb _ 1| $ が成り立つ．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;基底の簡約化は一般には難しい問題です．ところが二次元の場合は，厳密解が多項式時間で求まるLagrangeの方法というアルゴリズムが存在し，具体的には次のような操作で簡約することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lagrange.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lagrange.png&#34;
 	
 	
 	
@@ -790,8 +790,8 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ が最小となるような $  b _ 1 $ の係数を設定していることに注意してください． $  \mu _ {2,1} $ の最小値は，下に凸な二次関数 $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu _ {2,1} \langle b _ 1,b _ 2 \rangle + \mu _ {2,1} ^ 2|b _ 1| ^ 2 $ の最小値でもあるので，適当に微分して $  -2\langle b _ {1} ,b _ {2} \rangle +2\mu _ {2,1} | b _ {1} |  ^ {2} =0 $ の解を求めれば $  \mu _ {2, 1} = \langle b1, b2 \rangle / |b _ 1| ^ 2 $ が導けます．つまり，二つのベクトルの差のノルムができるだけ短くなるように計算しているだけです．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;6-lll簡約基底とサイズ簡約&#34;&gt;6. LLL簡約基底とサイズ簡約&lt;/h2&gt;
-&lt;p&gt;Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．&lt;/p&gt;
+&lt;h2 id=&#34;6-lll簡約基底とサイズ簡約&#34;&gt;6. LLL簡約基底とサイズ簡約
+&lt;/h2&gt;&lt;p&gt;Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 6.1:&lt;/strong&gt;
 格子 $  \Lambda $ の基底 $  \left\{ b _ 1,\cdots,b _ n \right\} \in \mathbb{R} ^ {m \times n} $ とそのグラムシュミットベクトル $  b _ 1 ^ *,\cdots,b _ n ^ * \in \mathbb{R} ^ {m \times n} $ について，ある $  \delta \in \mathbb{R}\ (\frac{1}{4} &amp;lt; \delta &amp;lt; 1) $ を用いて次の条件が成り立つとき，基底がパラメータ $  \delta $ で&lt;strong&gt;LLL簡約されている&lt;/strong&gt;という．&lt;/p&gt;
 &lt;ol&gt;
@@ -801,7 +801,7 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 &lt;br/&gt;
 &lt;p&gt;一つ目の条件はLLL以外の格子アルゴリズムでも度々出てくる重要な条件で，これ満たす基底は&lt;strong&gt;サイズ簡約されている&lt;/strong&gt;と言います．また二つ目の条件はLovászの条件と呼ばれ，これのおかげで簡約の定義の強さを緩めることができます．&lt;/p&gt;
 &lt;p&gt;次に，格子の基底が与えられたとき，グラムシュミットベクトルを変えないようにサイズ簡約された基底を作るアルゴリズムを示します．これを使えばサイズ簡約の条件を簡単に達成できます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/size_reduction.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction.png&#34;
 	
 	
 	
@@ -827,8 +827,8 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 &lt;p&gt;補題6.1より，Algorithm 3の正当性を確認することができました．また，補題6.1の1つ目の式から，Algorithm 3の6行目の処理は2つ目の式を使ってグラムシュミット係数のみ計算すればいいことがわかります．しかしここでは簡単のため，グラム・シュミットの直交化をするようにしています．この部分の最適化は，LLLの説明が終わった後の最適化の部分に纏めて書いてあるので安心してください．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;7-lovászの条件&#34;&gt;7. Lovászの条件&lt;/h2&gt;
-&lt;p&gt;LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
+&lt;h2 id=&#34;7-lovászの条件&#34;&gt;7. Lovászの条件
+&lt;/h2&gt;&lt;p&gt;LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
 また，サイズ簡約の条件より， $  \alpha = \frac{1}{\delta - 1 / 4} $ としたとき自然数 $  1 \leq j \leq i \leq n $ について$$  |b _ j ^ *| ^ 2 \leq \alpha ^ {i-j}|b _ i ^ *| ^ 2 $$となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 7.1:&lt;/strong&gt;
 格子 $  \Lambda $ の基底行列を $  B=\begin{pmatrix} b _ {1} &amp;amp; \cdots  &amp;amp; b _ {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n} $ とし，そのグラムシュミットベクトルによる行列を $  B ^ *=\begin{pmatrix} b _ {1} ^ * &amp;amp; \cdots  &amp;amp; b _ {n} ^ * \end{pmatrix} $ とする．この時，格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ について次の不等式が成り立つ．$$  \lambda _ 1 \geq  \min _ i |b _ i ^ *| $$&lt;/p&gt;
@@ -851,10 +851,10 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 定理7.2より，$$  \displaystyle \begin{aligned} \begin{aligned} | b _ {1} |  ^ {n} \end{aligned} &amp;amp; \leq \prod  ^ {n} _ {i=1} \alpha  ^ {( i-1) /2} | b ^ {*} _ {i} | \\ &amp;amp; =\alpha  ^ {n( n-1) /4}\det \Lambda \end{aligned} $$である．従って， $  | b _ {1} | \leq \alpha  ^ {( n-1) /4}\det( \Lambda ) ^ {1/n} $ ． $ ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;8-lll簡約と計算量&#34;&gt;8. LLL簡約と計算量&lt;/h2&gt;
-&lt;p&gt;遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
+&lt;h2 id=&#34;8-lll簡約と計算量&#34;&gt;8. LLL簡約と計算量
+&lt;/h2&gt;&lt;p&gt;遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
 下に愚直な疑似コードを示します．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lll_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_1.png&#34;
 	
 	
 	
@@ -865,7 +865,7 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 	
 &gt;
 さすがに愚直が過ぎるので，ある程度無駄な計算を省いたものとして下のコードも示しておきます．主な解析はこっちのコードで行います．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lll_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_2.png&#34;
 	
 	
 	
@@ -908,10 +908,10 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 よってAlgorithm 5全体の計算量は $  O(n ^ 2m + n ^ 5 m \log X) = O(n ^ 5 m \log X) $ となる． $ ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;9-最適化&#34;&gt;9. 最適化&lt;/h2&gt;
-&lt;p&gt;この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．&lt;/p&gt;
+&lt;h2 id=&#34;9-最適化&#34;&gt;9. 最適化
+&lt;/h2&gt;&lt;p&gt;この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．&lt;/p&gt;
 &lt;p&gt;前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  \Theta(n ^ 2m) $ から $  \Theta(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/size_reduction_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction_2.png&#34;
 	
 	
 	
@@ -936,7 +936,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 さらに，自然数 $  k+1 \leq j \leq n $ についても同様に，$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k} \rangle }{| b ^ {&#39;*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,\frac{| b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k-1} -\mu _ {k,k-1}\frac{| b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k} \rangle }{\frac{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}}\\ &amp;amp; =\frac{\langle b _ {j} ,| b ^ {*} _ {k} |  ^ {2} b ^ {*} _ {k-1} -\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} | }\\ &amp;amp; =\mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k} \end{aligned} $$となり， $  \mu _ {j,k-1} ^ {\prime} $ についても$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k-1} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k-1} \rangle }{| b ^ {&#39;*} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} +\mu _ {k,k-1} b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\left( | b ^ {\prime *} _ {k-1} |  ^ {2} -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}\right) \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle -\mu _ {k,k-1} \langle b _ {k} ,b ^ {*} _ {k-1} \rangle \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} -\frac{\mu _ {k,k-1} \langle b _ {j} ,b ^ {*} _ {k} \rangle \langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}} -\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu _ {j,k-1} -\mu  ^ {\prime } _ {k,k-1} \mu _ {k,k-1} \mu _ {j,k}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1}( \mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k})\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu  ^ {\prime } _ {j,k} \end{aligned} $$となる．
 他のグラムシュミット係数については， $  b _ k $ と $  b _ {k-1} $ しか交換してないことから変化しないことは明らかである．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;補題9.1の結果を用いれば，Algorithm 5の13行目のグラム・シュミットの直交化を $  \Theta(n) $ の処理で置き換えることができ，最終的にLLL全体は次のようになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lll_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_3.png&#34;
 	
 	
 	

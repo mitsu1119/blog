@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='$$ \gdef\F{\mathbb{F}} \gdef\Z{\mathbb{Z}} \gdef\End{\mathrm{End}} \gdef\cl{\mathrm{cl}(\Z[\pi])} \gdef\ell{\mathcal{Ell} _ p (\Z[\pi],\pi)} \gdef\a{\mathfrak{a}} \gdef\b{\mathfrak{b}} \gdef\l{\mathfrak{l}} \gdef\O{\mathcal{O}} $$
 はじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
 興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
@@ -15,86 +15,19 @@ AES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明す�
 RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．
 同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．
 base problem
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．'>
+楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．
+'>
 <title>セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)'>
-<meta property='og:description' content='$$ \gdef\F{\mathbb{F}} \gdef\Z{\mathbb{Z}} \gdef\End{\mathrm{End}} \gdef\cl{\mathrm{cl}(\Z[\pi])} \gdef\ell{\mathcal{Ell} _ p (\Z[\pi],\pi)} \gdef\a{\mathfrak{a}} \gdef\b{\mathfrak{b}} \gdef\l{\mathfrak{l}} \gdef\O{\mathcal{O}} $$
-はじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
-興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
-より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
-プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
-それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
-それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．
-ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
-Q1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)
-以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
-AES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
-RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．
-同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．
-base problem
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)">
+<meta property='og:description' content="$$ \\gdef\\F{\\mathbb{F}} \\gdef\\Z{\\mathbb{Z}} \\gdef\\End{\\mathrm{End}} \\gdef\\cl{\\mathrm{cl}(\\Z[\\pi])} \\gdef\\ell{\\mathcal{Ell} _ p (\\Z[\\pi],\\pi)} \\gdef\\a{\\mathfrak{a}} \\gdef\\b{\\mathfrak{b}} \\gdef\\l{\\mathfrak{l}} \\gdef\\O{\\mathcal{O}} $$\nはじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．\n興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．\nより具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．\nプリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．\nそれはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．\nそれが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．\nということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）\nQ1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)\n以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.\nAES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．\nRSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．\n同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．\nbase problem\n楕円曲線 $E$ と同種写像 $\\phi$ による同種な曲線 $E&rsquo; = \\phi(E)$ が与えられたとき，その間にある $\\phi$ を求めることは困難である．\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='elliptic curve' /><meta property='article:tag' content='math' /><meta property='article:published_time' content='2023-08-12T20:40:36&#43;09:00'/><meta property='article:modified_time' content='2023-08-12T20:40:36&#43;09:00'/>
 <meta name="twitter:title" content="セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)">
-<meta name="twitter:description" content="$$ \gdef\F{\mathbb{F}} \gdef\Z{\mathbb{Z}} \gdef\End{\mathrm{End}} \gdef\cl{\mathrm{cl}(\Z[\pi])} \gdef\ell{\mathcal{Ell} _ p (\Z[\pi],\pi)} \gdef\a{\mathfrak{a}} \gdef\b{\mathfrak{b}} \gdef\l{\mathfrak{l}} \gdef\O{\mathcal{O}} $$
-はじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．
-興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．
-より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．
-プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．
-それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．
-それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．
-ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）
-Q1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)
-以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.
-AES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．
-RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．
-同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．
-base problem
-楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="$$ \\gdef\\F{\\mathbb{F}} \\gdef\\Z{\\mathbb{Z}} \\gdef\\End{\\mathrm{End}} \\gdef\\cl{\\mathrm{cl}(\\Z[\\pi])} \\gdef\\ell{\\mathcal{Ell} _ p (\\Z[\\pi],\\pi)} \\gdef\\a{\\mathfrak{a}} \\gdef\\b{\\mathfrak{b}} \\gdef\\l{\\mathfrak{l}} \\gdef\\O{\\mathcal{O}} $$\nはじめに どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．\n興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．\nより具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．\nプリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．\nそれはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．\nそれが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．\nということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）\nQ1 以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は ここ に色々書いてあります)\n以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.\nAES-128-GCM McEliece暗号 Grøstl SIDH SIDH 概要 SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．\nRSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．\n同種写像問題 SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．\nbase problem\n楕円曲線 $E$ と同種写像 $\\phi$ による同種な曲線 $E&rsquo; = \\phi(E)$ が与えられたとき，その間にある $\\phi$ を求めることは困難である．\n">
 
     </head>
     <body class="
@@ -139,7 +72,7 @@ base problem
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -155,7 +88,7 @@ base problem
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -200,31 +133,12 @@ base problem
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -232,7 +146,7 @@ base problem
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -240,10 +154,11 @@ base problem
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -381,7 +296,7 @@ base problem
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 12, 2023</time>
+                <time class="article-time--published">8月 12, 2023</time>
             </div>
         
 
@@ -408,16 +323,16 @@ base problem
 \gdef\l{\mathfrak{l}}
 \gdef\O{\mathcal{O}}
 $$</p>
-<h2 id="はじめに">はじめに</h2>
-<p>　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．</p>
+<h2 id="はじめに">はじめに
+</h2><p>　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．</p>
 <p>　興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．</p>
 <p>　より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．</p>
 <p>　プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．</p>
 <p>　それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．<br>
 　それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．</p>
 <p>　ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）</p>
-<h2 id="q1">Q1</h2>
-<p>以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は <a class="link" href="https://www.ipa.go.jp/jinzai/security-camp/2023/zenkoku/vote.html"  target="_blank" rel="noopener"
+<h2 id="q1">Q1
+</h2><p>以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は <a class="link" href="https://www.ipa.go.jp/jinzai/security-camp/2023/zenkoku/vote.html"  target="_blank" rel="noopener"
     >ここ</a> に色々書いてあります)</p>
 <blockquote>
 <p><strong>以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.</strong></p>
@@ -426,46 +341,45 @@ $$</p>
 <li>McEliece暗号</li>
 <li>Grøstl</li>
 <li>SIDH</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <hr>
-<h3 id="sidh">SIDH</h3>
-<h4 id="概要">概要</h4>
-<p>SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．</p>
+<h3 id="sidh">SIDH
+</h3><h4 id="概要">概要
+</h4><p>SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．</p>
 <p>RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．</p>
-<h4 id="同種写像問題">同種写像問題</h4>
-<p>SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．</p>
+<h4 id="同種写像問題">同種写像問題
+</h4><p>SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．</p>
 <p><strong>base problem</strong><br>
 楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．</p>
-<h4 id="sidh-の鍵交換アルゴリズム">SIDH の鍵交換アルゴリズム</h4>
-<p>同種写像問題を利用した鍵交換をする基本的な手続きは，次の同種関係による可換図式に基づいています．</p>
+<h4 id="sidh-の鍵交換アルゴリズム">SIDH の鍵交換アルゴリズム
+</h4><p>同種写像問題を利用した鍵交換をする基本的な手続きは，次の同種関係による可換図式に基づいています．</p>
 <p>$$\begin{CD} E @&gt;\phi_B&gt;&gt; E_B\\
 @V\phi_A V V @V V\phi_A&rsquo; V\\
 E_A @&gt;\phi_B&rsquo; &gt;&gt; E_{AB} \end{CD}$$</p>
 <p>実際の鍵交換アルゴリズムは次に従います [2]．</p>
-<h5 id="public-parameter">public parameter</h5>
-<ul>
+<h5 id="public-parameter">public parameter
+</h5><ul>
 <li>$p = l_A^{e_A}l_B^{e_B} - 1$</li>
 <li>super singular elliptic curve $E_0(\mathbb{F_{p^2}})$</li>
 <li>生成元 $P_A, Q_A \in E\lbrack l_A^{e_A}\rbrack$</li>
 <li>生成元 $P_B, Q_B \in E\lbrack l_B^{e_B}\rbrack$</li>
 </ul>
-<h5 id="alices-key">Alice&rsquo;s key</h5>
-<ul>
+<h5 id="alices-key">Alice&rsquo;s key
+</h5><ul>
 <li>(private) 乱数 $m_A,n_A \in (\Z/l_A^{e_A}\Z)^\times$</li>
 <li>(private) 同種写像 $\phi_A: E_0 \rightarrow E_A,$　ただし $\ker \phi_A = \left&lt; [m_A]P_A + [n_A]Q_A \right&gt;$</li>
 <li>(public) $\phi_A(P_B),\ \phi_A(Q_B)$</li>
 <li>(public) $E_A = \phi_A(E_0)$</li>
 </ul>
-<h5 id="bobs-key">Bob&rsquo;s key</h5>
-<ul>
+<h5 id="bobs-key">Bob&rsquo;s key
+</h5><ul>
 <li>(private) 乱数 $m_B, n_B \in (\Z/l_B^{e_B}\Z)^\times$</li>
 <li>(private) 同種写像 $\phi_B: E_0 \rightarrow E_B,$　ただし $\ker \phi_B = \left&lt; [m_B]P_B + [n_B]Q_B \right&gt;$</li>
 <li>(public) $\phi_B(P_A),\ \phi_B(Q_A)$</li>
 <li>(public) $E_B = \phi_B(E_0)$</li>
 </ul>
-<h5 id="鍵交換手順">鍵交換手順</h5>
-<p>[Alice]</p>
+<h5 id="鍵交換手順">鍵交換手順
+</h5><p>[Alice]</p>
 <ol>
 <li>同種写像 $\phi_A^0: E_B \rightarrow E_{AB}$ を計算．ただし $\ker \phi_A^0 = \left&lt; [m_A]\phi_B(P_A) + [n_A]\phi_B(Q_A) \right&gt;$</li>
 <li>$E_{AB} = \phi_A^0(E_B) = \phi_A^0(\phi_B(E_0))$ を計算</li>
@@ -479,30 +393,29 @@ E_A @&gt;\phi_B&rsquo; &gt;&gt; E_{AB} \end{CD}$$</p>
 <ul>
 <li>j不変量 $j(E_{AB})$</li>
 </ul>
-<h3 id="参考文献">参考文献</h3>
-<p>[1] 相川勇輔，&ldquo;同種写像暗号１：楕円曲線と同種写像グラフ&rdquo;．https://joint.imi.kyushu-u.ac.jp/wp-content/uploads/2022/08/220802_03aikawa.pdf<br>
+<h3 id="参考文献">参考文献
+</h3><p>[1] 相川勇輔，&ldquo;同種写像暗号１：楕円曲線と同種写像グラフ&rdquo;．https://joint.imi.kyushu-u.ac.jp/wp-content/uploads/2022/08/220802_03aikawa.pdf<br>
 [2] David Jao，Luca De Feo，&ldquo;Towards quantum-resistant cryptosystems from supersingular elliptic curve isogenies&rdquo;</p>
-<h2 id="q1-発展">Q1 (発展)</h2>
-<p>僕は上の問題で SIDH を選択したので次の設問でした．</p>
+<h2 id="q1-発展">Q1 (発展)
+</h2><p>僕は上の問題で SIDH を選択したので次の設問でした．</p>
 <blockquote>
 <ol>
 <li>似た名前のCSIDHという手法があります. CSIDHとSIDHはどのように異なるのでしょうか.</li>
 <li>「SIDHは解読された」という報告が昨年ありました. 2023年3月時点では更に進化しているようです. 応募時点までで, SIDHの解読手法にはどのようなものがあるのでしょうか.</li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <hr>
-<h3 id="csidh-と-sidh-の違い">CSIDH と SIDH の違い</h3>
-<p>CSIDH は SIDH と同じ超特異楕円曲線の同型類を利用したアルゴリズムですが，SIDH とは異なり計算効率の都合上，基本的には Montgomery曲線のみを使用します (Edwards曲線など他のタイプのものを利用した構成法の研究もされています [1] ) ．</p>
+<h3 id="csidh-と-sidh-の違い">CSIDH と SIDH の違い
+</h3><p>CSIDH は SIDH と同じ超特異楕円曲線の同型類を利用したアルゴリズムですが，SIDH とは異なり計算効率の都合上，基本的には Montgomery曲線のみを使用します (Edwards曲線など他のタイプのものを利用した構成法の研究もされています [1] ) ．</p>
 <p>Montgomery曲線は $E:y^2 = x^3+Ax^2 +x$ と表されるもので，後述しますが CSIDH の公開鍵は曲線のみなのでパラメータ $A$ のみとなります．そのため他ポスト量子暗号と比べて公開鍵のサイズが小さいことが利点であった SIDH よりも，さらに公開鍵が小さく [2]，64バイトで十分なセキュリティレベルを確保できます．</p>
-<h4 id="p-の生成法の違い">$p$ の生成法の違い</h4>
-<p>SIDH で使用する素数は $p = l_A^{e_A} l_B^{e_B} - 1$ で生成していました．しかし CSIDH では $p = 4l_1 l_2 \cdots l_n - 1$ で生成します [3] ．この $l$ の数が多ければ多いほど，同種写像グラフのパスの数が多くなり強固なアルゴリズムとなります．</p>
-<h4 id="鍵の違い">鍵の違い</h4>
-<p>SIDH における秘密鍵は，二種類の乱数とあるカーネルを持つ同種写像でした．また公開鍵は，公開情報の点と曲線を秘密鍵の同種写像で移したものでした．
+<h4 id="p-の生成法の違い">$p$ の生成法の違い
+</h4><p>SIDH で使用する素数は $p = l_A^{e_A} l_B^{e_B} - 1$ で生成していました．しかし CSIDH では $p = 4l_1 l_2 \cdots l_n - 1$ で生成します [3] ．この $l$ の数が多ければ多いほど，同種写像グラフのパスの数が多くなり強固なアルゴリズムとなります．</p>
+<h4 id="鍵の違い">鍵の違い
+</h4><p>SIDH における秘密鍵は，二種類の乱数とあるカーネルを持つ同種写像でした．また公開鍵は，公開情報の点と曲線を秘密鍵の同種写像で移したものでした．
 一方で CSIDH の秘密鍵は ${-m,\cdots,0,\cdots,m}$ からランダムにサンプルされた $n$ 個の整数 $(e_1,\cdots,e_n)$ となります [3] ．ただしこの時の $m$ は，$2m + 1 \geq \sqrt[2n]{p}$ となる最小の $m$ で，$-m$ から $m$ の範囲は非常に小さく $e$ は全体で $(\log p)/2$ ビット程度となります．
 また CSIDH の公開鍵はモンゴメリ曲線 $E:y^2 = x^3 + Ax^2 + x$ です．この曲線は $A \in \F_p$ のみで特徴づけられるため非常に小さいサイズで表すことができます．</p>
 <p>また CSIDH は SIDH と違って曲線上の点を公開情報とする必要がないため，それに対する特殊な攻撃手法を発見するのが難しくなっています．</p>
-<h4 id="可換図式の違い">可換図式の違い</h4>
-<p>SIDH では単に同種写像を持ってきて鍵交換の可換図式を作っていましたが，CSIDH では群作用による可換図式になります．</p>
+<h4 id="可換図式の違い">可換図式の違い
+</h4><p>SIDH では単に同種写像を持ってきて鍵交換の可換図式を作っていましたが，CSIDH では群作用による可換図式になります．</p>
 <p>$p = 4l_1 l_2 \cdots l_n - 1$ なので $p \equiv 3 \mod 8$ となり，このような超楕円曲線の自己準同型環は，$[n]$ を $n$，Frobenius写像を $\pi = \sqrt{-p}$ に対応させれば $\End(E) \simeq \Z[\pi]$ となります [3] ．そのためこれのイデアル類群 $\cl$ を考えることができ，これは CSIDH の対象となる曲線の同型類の集合 $\ell$ に対して作用し $(\ell, \cl)$ が hard homogenous space [14] になります．
 具体的には，$[\a] \in \cl,\ E \in \ell$ として準同型 $\phi_\a(E) = E / \a$ です．ただし $\ker \phi_\a$ は， $\alpha \in \Z[\pi]$ と $\End(E)$ を同一視して $\ker \phi_\a = \bigcap_{\alpha \in \a_s} \ker \alpha$ です．</p>
 <p>この群作用で以下の可換図式が作れ，これで鍵交換が行えます．</p>
@@ -658,10 +571,10 @@ E_A @&gt;[\b] &gt;&gt; E_{AB} \end{CD}$$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>sharing complete と表示されて，うまく共有できていることが確認できました．</p>
-<h3 id="sidh-への攻撃手法と-cd-attack">SIDH への攻撃手法と CD attack</h3>
-<p>SIDH への攻撃手法としては以下のようなものが挙げられます．</p>
-<h4 id="meet-in-the-middle-4">Meet-in-the-Middle [4]</h4>
-<p>一般的に楕円曲線の $l$-isogeny は $l+1$ 個あります．そのため同種写像グラフの各ノードからは $l+1$ 本のエッジが出ています．
+<h3 id="sidh-への攻撃手法と-cd-attack">SIDH への攻撃手法と CD attack
+</h3><p>SIDH への攻撃手法としては以下のようなものが挙げられます．</p>
+<h4 id="meet-in-the-middle-4">Meet-in-the-Middle [4]
+</h4><p>一般的に楕円曲線の $l$-isogeny は $l+1$ 個あります．そのため同種写像グラフの各ノードからは $l+1$ 本のエッジが出ています．
 同種写像問題で求めたい同種写像の始域と終域に相当するノードから，$l$-isogeny を計算していって同種写像グラフを探索するアルゴリズムが Meet-int-the-Middle です．</p>
 <p>$E_0$ と $E_A$ から Alice の $\phi_A$ を求めたいときは，次のようにします．</p>
 <ol>
@@ -671,8 +584,8 @@ E_A @&gt;[\b] &gt;&gt; E_{AB} \end{CD}$$</p>
 <li>2 と 3 で列挙した曲線のうち等しいものを探し，それぞれの $l_A$-isogeny の適用順から $\phi_A$ を復元する</li>
 </ol>
 <p>このアルゴリズムの計算量は $O(l_A^{e_A/2})$ で非常に時間がかかりますが一般的な解法で，また brute force のような素直な方法です．</p>
-<h4 id="gpst-attack">GPST attack</h4>
-<p>Alice が同じ秘密鍵を使いまわし，なおかつオラクルとして鍵交換の成功/失敗が得られるとき，evil な Bob が Alice の秘密鍵を復元できてしまうものです．ここでは簡単のため秘密鍵 $m_A,m_B = 1$ として，Alice の秘密鍵 $n_A$ を割り出す方法を説明します [5] ．</p>
+<h4 id="gpst-attack">GPST attack
+</h4><p>Alice が同じ秘密鍵を使いまわし，なおかつオラクルとして鍵交換の成功/失敗が得られるとき，evil な Bob が Alice の秘密鍵を復元できてしまうものです．ここでは簡単のため秘密鍵 $m_A,m_B = 1$ として，Alice の秘密鍵 $n_A$ を割り出す方法を説明します [5] ．</p>
 <p>本来 Bob は公開鍵として $\phi_B(P_A),\ \phi_B(Q_A),\ E_B = \phi_B(E_0)$ を Alice に渡します．ここで $\phi_B(Q_A)$ を渡す代わりに $[l_A^{e_A - 1}] \phi_B(P_A) + \phi_B(Q_A)$ を渡します．
 この状態で Alice が通常の鍵共有を行うと，得られる同種写像のカーネルは $\left&lt; \phi_B(P_A) + [n_A] ([l_A^{e_a - 1}] \phi_B(P_A) + \phi_B(Q_A)) \right&gt;$ となります．</p>
 <p>$[l_A^{e_a - 1}] \phi_B(P_A)$ は位数が 2 になるはずなので，もしも $n_A$ が偶数であれば $[n_A l_A^{e_a - 1}] \phi_B(P_A) = \O$ となります．逆に $n_A$ が奇数であればカーネルは無限遠点となりません．</p>
@@ -683,16 +596,16 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 <p>するとカーネルを構成する点の位数により，$n_A$ の $i$ ビット目が $0$ であれば鍵共有が成立します．
 よって鍵交換ができたか否かのオラクルで $n_A$ の各ビットが計算できます．</p>
 <p>この攻撃により，SIDH ベースの IND-CCA を満たす PKE は作れないと考えられています [5] ．</p>
-<h4 id="torsion-point-attack">Torsion-point attack</h4>
-<p>$l_A^{e_A}$ と $l_B^{e_B}$ の数値のバランスが悪いとき，特に $l_B^{e_B} \geq l_A^{5e_a}$ 程度 [6] の時に多項式時間で攻撃されてしまうようです．</p>
+<h4 id="torsion-point-attack">Torsion-point attack
+</h4><p>$l_A^{e_A}$ と $l_B^{e_B}$ の数値のバランスが悪いとき，特に $l_B^{e_B} \geq l_A^{5e_a}$ 程度 [6] の時に多項式時間で攻撃されてしまうようです．</p>
 <p>この攻撃は，特に SSI-T で $n$ 人のグループ間鍵共有を行う時に危険になり，例えば $p = l_1^{e_1} l_2^{e_2} \cdots l_n^{e_n} - 1$ として $l_i^{e_i} \simeq l_j^{e_j}$ であるとき，6 人以上の鍵共有なら  $A = l_1^{e_1},\ B=l_2^{e_2}\cdots l_n^{e_n}$ とすると $B \geq A^5$ くらいになって攻撃が成立します．</p>
-<h4 id="castryck-らによる攻撃">Castryck らによる攻撃</h4>
-<p>2022年に Castryck と Decru により発見された [7]，Kani の定理を利用した SIKE に対する多項式時間の攻撃法です．このアルゴリズムにより Microsoft の $IKEp217 challenge をシングルコアで 5分以内で解いたり，SIKEp434 や SIKEp751 などのパラメータを現実的な時間で破られています [8] ．また著者による Magma script が公開され [9]，これを基にさらに高速化した実装 [10] もあります．</p>
+<h4 id="castryck-らによる攻撃">Castryck らによる攻撃
+</h4><p>2022年に Castryck と Decru により発見された [7]，Kani の定理を利用した SIKE に対する多項式時間の攻撃法です．このアルゴリズムにより Microsoft の $IKEp217 challenge をシングルコアで 5分以内で解いたり，SIKEp434 や SIKEp751 などのパラメータを現実的な時間で破られています [8] ．また著者による Magma script が公開され [9]，これを基にさらに高速化した実装 [10] もあります．</p>
 <p>また Maino らによる Kani の定理を利用した攻撃 [11] も平衡して発見されており，これらを基に Robert によりさらに拡張された攻撃方法 [12] によって一般的な SIDH は破られてしまいました．
 さらに， Robert の攻撃は $E_0^4 \times E_A^4$ の　8次元の特殊な自己準同型の計算が必要になり，それによって実用に制約がかかる可能性がありますが，2023年に入ってからそれを解決するために SIDH の公開情報をうまく利用した手法 [13] も提案されているようです．</p>
 <p>攻撃の原理や仕組みはいまいち理解できませんでした．ただとてもクリティカルなアルゴリズムなのですごく理解したいです．</p>
-<h3 id="参考文献-1">参考文献</h3>
-<p>[1] 守谷共起，&ldquo;同種写像暗号 CSIDH の Edwards 曲線による構成と超特異曲線の信頼できる生成法&rdquo;<br>
+<h3 id="参考文献-1">参考文献
+</h3><p>[1] 守谷共起，&ldquo;同種写像暗号 CSIDH の Edwards 曲線による構成と超特異曲線の信頼できる生成法&rdquo;<br>
 [2] 川合豊，廣政良，相川勇輔，&ldquo;耐量子計算機暗号 ―量子コンピュータによる解読にも耐え得る次世代暗号―&rdquo;<br>
 [3] Wouter Castryck，Tanja Lange，Chloe Martindale，Lorenz Panny，Joost Renes，&ldquo;CSIDH: An Efficient Post-Quantum Commutative Group Action&rdquo;<br>
 [4] Brandon Langenberg，&ldquo;Cryptanalysis of known and attempted attacks on SIDH and SIKE&rdquo;<br>
@@ -707,13 +620,12 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 [12] Damien Robert，&ldquo;Breaking SIDH in polynomial time&rdquo;<br>
 [13] Luciano Maino，Chloe Martindale1，Lorenz Panny，Giacomo Pope，Benjamin Wesolowski，&ldquo;A Direct Key Recovery Attack on SIDH&rdquo;<br>
 [14] Jean-Marc Couveignes，&ldquo;Hard Homogeneous&rdquo;</p>
-<h2 id="q2">Q2</h2>
-<blockquote>
-<p><strong>Q1で選択した暗号方式を実装してください.</strong></p>
-</blockquote>
+<h2 id="q2">Q2
+</h2><blockquote>
+<p><strong>Q1で選択した暗号方式を実装してください.</strong></p></blockquote>
 <hr>
-<h3 id="sidh-の実装">SIDH の実装</h3>
-<div class="highlight"><div class="chroma">
+<h3 id="sidh-の実装">SIDH の実装
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -795,14 +707,13 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>sharing complete と表示されてうまく共有できていることが確認できました．</p>
-<h2 id="q2-発展">Q2 (発展)</h2>
-<blockquote>
-<p><strong>Q2の回答に関して, 「なぜその実装は正しいのですか」と聞かれたとき, あなたならどう返答しますか?</strong></p>
-</blockquote>
+<h2 id="q2-発展">Q2 (発展)
+</h2><blockquote>
+<p><strong>Q2の回答に関して, 「なぜその実装は正しいのですか」と聞かれたとき, あなたならどう返答しますか?</strong></p></blockquote>
 <p>これがすごく難しかったです．Q2 の実装で shared_a と shared_b が等しいこと確認するのではなく，すでにあるパラメータですでにある計算結果と比較してみるべきでした．（講師の先生曰く，その意味では Q2 で $IKEp182 のパラメータを使っているのは良いとのこと）</p>
 <p>100回計算してちゃんと鍵共有できてることを確認したのですが，僕自身「これはギャグだろ……」って思ってたのでちゃんとした解答を講師の先生から聞けたのはよかったです．</p>
-<h3 id="検証">検証</h3>
-<p>以下のコードで，Q2 で実装した SIDH のアルゴリズムを 100回計算しました．</p>
+<h3 id="検証">検証
+</h3><p>以下のコードで，Q2 で実装した SIDH のアルゴリズムを 100回計算しました．</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -880,22 +791,21 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 </div><p>これを実行すると，一度も 41行目の assert に引っかからず正常終了しました．そのため，Alice と Bob の秘密鍵によって鍵共有が失敗することはないと考えます．</p>
 <p>ただ shared の共有ができてアルゴリズムが正しそうでも，電力解析や時間計測系の攻撃のような理論で保障されていない部分に対してもセキュアであるかはわかりません．暗号実装の正しさはそこまで調べなくてはいけませんが，これを判断するのは一人ではとても大変で，また非常に長い時間をかけて精査しなくてはいけません．</p>
 <p>そのため，この SIDH の実装に関して「正しい」といえるのは「shared の交換が $IKEp182 のパラメータでできる」というところまでで，これ以上の検証できませんでした．</p>
-<h2 id="q3">Q3</h2>
-<blockquote>
-<p><strong>あなたが面白いと思った暗号方式を一つ取り上げ, それを説明・実装してください.</strong></p>
-</blockquote>
+<h2 id="q3">Q3
+</h2><blockquote>
+<p><strong>あなたが面白いと思った暗号方式を一つ取り上げ, それを説明・実装してください.</strong></p></blockquote>
 <hr>
 <p>非可換群に関連する暗号はどんなものがあるのか気になったので調べてみると braid群を利用した暗号があったため，それについて勉強してみました．</p>
-<h3 id="braid群">braid群</h3>
-<p>braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．</p>
+<h3 id="braid群">braid群
+</h3><p>braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．</p>
 <figure class="center"><img src="/blog/post17/braids.png" width="30%">
 </figure>
 
 <p>この紐の交差の回数に制限がないため，$B_n$ は無限群です．例えば，二本の組み紐があって，その交差の回数を絶対値，最初の交差が左側の紐が上なのか右側の紐が上なのかで符号を対応させれば $B_2 \simeq \Z$ です．</p>
 <p>組み紐が等しいというのは，空間上の紐を動かして全く同じ形にできるときを言います．この等号条件により，組み紐という幾何的な表現から，置換と紐の重なりを抽象化して代数的に考えることができるようになります．</p>
 <p>演算は対称群と同じように，左側の項による置換操作を行った後に右側の項による置換操作を行うものとなります．逆元としては上下を鏡像反転した組み紐が対応します．</p>
-<h4 id="artin-generator">Artin Generator</h4>
-<p>Artin Generator $\sigma_i\ (0 \leq i &lt; n)$ は，$i$ 番から $i+1$ 番に紐を伸ばしたあと，$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] ．</p>
+<h4 id="artin-generator">Artin Generator
+</h4><p>Artin Generator $\sigma_i\ (0 \leq i &lt; n)$ は，$i$ 番から $i+1$ 番に紐を伸ばしたあと，$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] ．</p>
 <figure class="center"><img src="/blog/post17/artin.png" width="30%">
 </figure>
 
@@ -905,37 +815,37 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp; \ ( |i-j|
 <p>上の性質がまさに $B_n$ の基本関係となり，これによって finite presentation が与えられます．</p>
 <p>$$B_{n} =\left&lt; \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp; &amp; \ ( |i-j|&gt;1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &amp; &amp; \ ( |i-j| =1)\end{aligned}\right&gt;$$</p>
 <p>数式処理ソフトで braid群を扱うには，例えば自由群を Artin Generator の関係式で剰余をとることなどで使用できます．また sagemath には BraidGroup() というメソッドがあり，これで比較的簡単に計算が行えます．</p>
-<h3 id="braid暗号-23">braid暗号 [2][3]</h3>
-<p>braid暗号は，braid群 $B_n$ の部分群，$LB_l,RB_r$ によって構成されます．</p>
+<h3 id="braid暗号-23">braid暗号 [2][3]
+</h3><p>braid暗号は，braid群 $B_n$ の部分群，$LB_l,RB_r$ によって構成されます．</p>
 <ul>
 <li>$LB_l$：$B_n$ の紐のうち左側 $l$ 本を用いて構成されるもの</li>
 <li>$RB_r$：$B_n$ の紐のうち右側 $r$ 本を用いて構成されるもの</li>
 </ul>
 <p>定義から $LB_l = (\sigma_1,\sigma_2,\cdots,\sigma_{l-1}),RB_r = (\sigma_{n-r-1}, \sigma_{n-r-2}, \cdots, \sigma_{n-1})$ なので，任意の $a_l \in LB_l, b_r \in RB_r$ に対して $a_l b_r = b_r a_l$ となります．</p>
-<h4 id="base-problem">Base Problem</h4>
-<p>braid暗号は以下の仮定を基に実現されています．</p>
-<h5 id="conjugacy-problem">conjugacy problem</h5>
-<ul>
+<h4 id="base-problem">Base Problem
+</h4><p>braid暗号は以下の仮定を基に実現されています．</p>
+<h5 id="conjugacy-problem">conjugacy problem
+</h5><ul>
 <li>秘密 $a \in LB_l,b \in RB_r$ に対して，$y_1 = axa^{-1},y_2 = bxb^{-1}$ となる $(x,y_1,y_2)$ から秘密 $(a, b)$ を求めるのは計算量的に困難である．</li>
 </ul>
-<h4 id="鍵生成">鍵生成</h4>
-<ol>
+<h4 id="鍵生成">鍵生成
+</h4><ol>
 <li>$u \in B_n$ を選択</li>
 <li>$a_l \in LB_l$ を選択</li>
 <li>$v = a_l u a_l^{-1}$ を計算し，秘密鍵を $a_l$，公開鍵を $(u,v)$ とする</li>
 </ol>
-<h4 id="暗号化">暗号化</h4>
-<p>メッセージを $m = {0,1}^k$ とし，$H:B_n \rightarrow {0,1}^k$ をハッシュ関数とする．</p>
+<h4 id="暗号化">暗号化
+</h4><p>メッセージを $m = {0,1}^k$ とし，$H:B_n \rightarrow {0,1}^k$ をハッシュ関数とする．</p>
 <ol>
 <li>$b_r \in RB_r$ を選択</li>
 <li>$w = b_rub_r^{-1}$ を計算</li>
 <li>$d = H(b_rvb_r^{-1}) \oplus m$ を計算し，暗号文を $(w, d)$ とする</li>
 </ol>
-<h4 id="複合">複合</h4>
-<p>以下の式で複合ができます．</p>
+<h4 id="複合">複合
+</h4><p>以下の式で複合ができます．</p>
 <p>$$\begin{aligned} H(a_lwa_l^{-1}) \oplus d &amp;= H(a_lb_rub_r^{-1}a_l^{-1}) \oplus d \ &amp;= H(b_rvb_r^{-1}) \oplus H(b_rvb_r^{-1}) \oplus m \ &amp;= m \end{aligned}$$</p>
-<h4 id="実装">実装</h4>
-<div class="highlight"><div class="chroma">
+<h4 id="実装">実装
+</h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1125,17 +1035,16 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp; \ ( |i-j|
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>メッセージが暗号化され，また複合もうまく機能していることが確認できました．</p>
-<h3 id="参考文献-2">参考文献</h3>
-<p>[1] E. Artin，&ldquo;Theorie der Zöpfe&rdquo;<br>
+<h3 id="参考文献-2">参考文献
+</h3><p>[1] E. Artin，&ldquo;Theorie der Zöpfe&rdquo;<br>
 [2] 田中裕子，&ldquo;ブレイド群を利用した公開鍵暗号系の実装と性能評価実験&rdquo;<br>
 [3] 上村恭子，&ldquo;Braid 群の conjugacy algorithm について&rdquo;</p>
-<h2 id="q3-発展">Q3 (発展)</h2>
-<blockquote>
-<p><strong>また, その暗号が安全かどうかを説明し, 解読手法が存在するなら, それを実装してみてください.</strong></p>
-</blockquote>
+<h2 id="q3-発展">Q3 (発展)
+</h2><blockquote>
+<p><strong>また, その暗号が安全かどうかを説明し, 解読手法が存在するなら, それを実装してみてください.</strong></p></blockquote>
 <hr>
-<h3 id="暗号の安全性">暗号の安全性</h3>
-<p>braid暗号は，braid群の conjugacy problem の困難性と等価であると考えられており，また conjugacy problem の多項式時間解法はこの暗号が提案された当初は発見されていませんでした [2] ．
+<h3 id="暗号の安全性">暗号の安全性
+</h3><p>braid暗号は，braid群の conjugacy problem の困難性と等価であると考えられており，また conjugacy problem の多項式時間解法はこの暗号が提案された当初は発見されていませんでした [2] ．
 conjugacy problem は 2018 年の時点でもまだ難しいようです [5] ．</p>
 <p>しかし braid群の共役問題全般に関連する非常に強力なツールは古くから知られているようです．Super Summit Set [1] や Ultra Summit Set と呼ばれる集合を列挙する問題に帰着して conjugacy problem を解くアルゴリズムが発見されています [3][4] ．</p>
 <p>どちらもある組み紐に対して共役な組み紐をある制限の下で列挙した集合なので，特に Super Summit Set の要素数は，braid群 $B_n$ の組み紐の長さに対して指数関数的に大きくなるため計算するのが大変です．しかし Ultra Summit Set は Super Summit Set にさらに制約を加えたもので，組み紐の長さに対して線形のサイズになる可能性があり，その場合は多項式時間で conjugacy problem が解かれてしまいます [4] ．</p>
@@ -1143,8 +1052,8 @@ conjugacy problem は 2018 年の時点でもまだ難しいようです [5] ．
 <p>他にも同じように Ultra Summit Set のさらに制約を強めた部分集合を定義して，その要素を列挙して conjugacy problem を解こうと研究されているようですが，まだまだ探索空間の上界を多項式で抑えられていないようです [5] ．
 そのためまだ多項式時間解法が得られておらず，暗号アルゴリズムの基礎問題としては十分に機能します．</p>
 <p>しかしうまくいくかわからないとはいえ，これらの conjugacy problem に対する非常に強力なツールが発見されていることは個人的には少し怖いと思う一方，braid群は数学や物理の世界で非常に有用なツールとて詳細に解析されているため，既存の問題に対応さえできればクリティカルに脆弱となる部分が発見されにくいとも考えています．</p>
-<h3 id="鍵生成時の-u-が脆弱な場合の解読手法">鍵生成時の $u$ が脆弱な場合の解読手法</h3>
-<p>braid暗号が多項式時間で解けてしまう場合の例として，鍵生成時の $u$ の選び方が不適切な場合があります [6] ．</p>
+<h3 id="鍵生成時の-u-が脆弱な場合の解読手法">鍵生成時の $u$ が脆弱な場合の解読手法
+</h3><p>braid暗号が多項式時間で解けてしまう場合の例として，鍵生成時の $u$ の選び方が不適切な場合があります [6] ．</p>
 <p>$x_1 \in LB_l, x_2 \in RB_r, z \in B_n$ で
 $$\begin{cases}u=x_{1} x_{2} z &amp; \\  z\ は\ a_{l} ,b_{r} ,x_{1} ,x_{2}\ と可換 &amp;\end{cases}$$
 となる $x_1,x_2,z$ が見つかってしまうと脆弱となります．</p>
@@ -1420,20 +1329,20 @@ $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} &amp; =vz^{-1} x_{2}^{-1}\\ b_{r} x_{2} 
 <p>これを防ぐには $u$ の因数に $B_n$ 全体を巡回置換するような元を含めればいいのではないかと考えます．そうすれば上の条件が成り立つ $z$ がないため，この攻撃に対しては安全になると考えます．
 ただ，巡回置換のような性質の良いもので対処するとまた別の攻撃が考えられてしまいそうな気もします．[5] によると，$\sigma_1 \sigma_2^{-1} \sigma_3 , \sigma_4^{-1}\cdots \sigma_{n-1}^{(-1)^n}$ のような元を利用すれば，十分に捩れるだけでなく Ultra Summit Set も大きくなりよさそうに思えますが，このような元をハードコーディングするのも $u$ をサンプリングする空間が限定的になってしまうため少し不安に感じます．
 組み紐の表示の一意性を担保するために長い組み紐が使いにくいことから $n$ をある程度大きくする必要もありますが，そうすると $u \in B_n$ のランダムサンプリングが意外と難しいのではないかと考えています．</p>
-<h3 id="参考文献-3">参考文献</h3>
-<p>[1] 上村恭子，&ldquo;Braid 群の conjugacy algorithm について&rdquo;<br>
+<h3 id="参考文献-3">参考文献
+</h3><p>[1] 上村恭子，&ldquo;Braid 群の conjugacy algorithm について&rdquo;<br>
 [2] Ki Hyoung Ko，Sang Jin Lee，Jung Hee Cheon，Jae Woo Han，Ju-sung Kang，Choonsik Park，&ldquo;New Public-key Cryptosystem Using Braid Groups&rdquo;<br>
 [3]  V. Gebhardt，&ldquo;A New Approach to the Conjugacy Problem in Garside Groups&rdquo;<br>
 [4] Chris Gatopoulos，&ldquo;Braid Group Cryptography&rdquo;<br>
 [5] Maxim Prasolov，&ldquo;Small braids having a big Ultra Summit Set&rdquo;<br>
 [6] 前田有宏，&ldquo;ブレイド群を利用した公開鍵暗号系の実装&rdquo;</p>
-<h2 id="q4">Q4</h2>
-<p><strong>自己アピールできることがあれば, ここに書いてください.</strong></p>
+<h2 id="q4">Q4
+</h2><p><strong>自己アピールできることがあれば, ここに書いてください.</strong></p>
 <hr>
 <p>恥ずかしいので非公開です！！！<br>
 CTF をやっていたこと，今まで勉強してきた暗号関連の数学のこと（BKZ，Schoof のアルゴリズム，超楕円曲線暗号など），コンパイラやデバッガ，RISC-V 自作の話などブワーーーって書きました．</p>
-<h2 id="まとめ">まとめ</h2>
-<p>いかかでしたか？（迫真）</p>
+<h2 id="まとめ">まとめ
+</h2><p>いかかでしたか？（迫真）</p>
 <p>ゼミによっては簡潔にまとまっているものを評価するところもあるようなので，僕のこの記事が参考になるかはちょっと微妙です……．<br>
 それに僕のこの解答はまだまだ甘い部分が多く僕自身知識が浅いので，もしこの記事を参考に課題を書こうとしている方がいればそれは<strong>非推奨</strong>です．僕の文章なんかよりもよく纏まった論文はたくさんありますし，講師の先生方は「原著にあたる」気持ちを重要視していたので，言葉通り原著にあたって真に理解してみてください．（暗号界隈はとてもオープンで，ePrint なんかで論文がサッと読めるのはありがたいですね）<br>
 これは僕の個人的な意見なのですが，ライブラリやツールに頼るだけでなく中身がどうなっているかを数学としてしっかり理解していくのが暗号の勉強で重要だと感じています．（暗号に限らない話だと思いますが）<br>
@@ -1474,18 +1383,19 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -1495,6 +1405,7 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -1603,12 +1514,12 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -1697,7 +1608,7 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

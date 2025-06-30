@@ -1,73 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='$$ \gdef\Fp {\mathbb{F} _ p} \gdef\LB{\mathrm{LB} _ l} \gdef\RB{\mathrm{RB} _ r} $$
-Team zer0pts held zer0pts ctf 2023 on July 15. I&amp;rsquo;m happy to see so meny people participating!
-I created 4 challenges in the crypto genre for this contest. Here, I&amp;rsquo;d like to explain the intended solution for me.
+Team zer0pts held zer0pts ctf 2023 on July 15. I&rsquo;m happy to see so meny people participating!
+I created 4 challenges in the crypto genre for this contest. Here, I&rsquo;d like to explain the intended solution for me.
 [crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.
 Can you decompose?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&amp;#34;Let&amp;#39;s factoring !'>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&#34;Let&#39;s factoring !&#34;) print(&#34;N:&#34;, N) p = int(input(&#34;p: &#34;)) q = int(input(&#34;q: &#34;)) if isPrime(p) and isPrime(q) and n == p * q: print(flag) The most important part of the given code is above.
+Let $p,q$ are large prime and $N := p^2 &#43; q^2$. Given $N$, we need restore $p,q$ from $N$ to get the flag.
+The name of the challenge is easy_factoring, but what it is supposed to be is a sum-of-squares decomposition disguised as prime factorization. (Although, in the end, prime factorization is required)
+'>
 <title>zer0pts ctf 2023 writeup (English)</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='zer0pts ctf 2023 writeup (English)'>
-<meta property='og:description' content='$$ \gdef\Fp {\mathbb{F} _ p} \gdef\LB{\mathrm{LB} _ l} \gdef\RB{\mathrm{RB} _ r} $$
-Team zer0pts held zer0pts ctf 2023 on July 15. I&amp;rsquo;m happy to see so meny people participating!
-I created 4 challenges in the crypto genre for this contest. Here, I&amp;rsquo;d like to explain the intended solution for me.
-[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.
-Can you decompose?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&amp;#34;Let&amp;#39;s factoring !'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="zer0pts ctf 2023 writeup (English)">
+<meta property='og:description' content="$$ \\gdef\\Fp {\\mathbb{F} _ p} \\gdef\\LB{\\mathrm{LB} _ l} \\gdef\\RB{\\mathrm{RB} _ r} $$\nTeam zer0pts held zer0pts ctf 2023 on July 15. I&rsquo;m happy to see so meny people participating!\nI created 4 challenges in the crypto genre for this contest. Here, I&rsquo;d like to explain the intended solution for me.\n[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.\nCan you decompose?\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) + pow(q, 2) print(&#34;Let&#39;s factoring !&#34;) print(&#34;N:&#34;, N) p = int(input(&#34;p: &#34;)) q = int(input(&#34;q: &#34;)) if isPrime(p) and isPrime(q) and n == p * q: print(flag) The most important part of the given code is above.\nLet $p,q$ are large prime and $N := p^2 + q^2$. Given $N$, we need restore $p,q$ from $N$ to get the flag.\nThe name of the challenge is easy_factoring, but what it is supposed to be is a sum-of-squares decomposition disguised as prime factorization. (Although, in the end, prime factorization is required)\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='elliptic curve' /><meta property='article:tag' content='math' /><meta property='article:tag' content='writeup' /><meta property='article:published_time' content='2023-07-18T05:15:52&#43;09:00'/><meta property='article:modified_time' content='2023-07-18T05:15:52&#43;09:00'/>
 <meta name="twitter:title" content="zer0pts ctf 2023 writeup (English)">
-<meta name="twitter:description" content="$$ \gdef\Fp {\mathbb{F} _ p} \gdef\LB{\mathrm{LB} _ l} \gdef\RB{\mathrm{RB} _ r} $$
-Team zer0pts held zer0pts ctf 2023 on July 15. I&amp;rsquo;m happy to see so meny people participating!
-I created 4 challenges in the crypto genre for this contest. Here, I&amp;rsquo;d like to explain the intended solution for me.
-[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.
-Can you decompose?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) &#43; pow(q, 2) print(&amp;#34;Let&amp;#39;s factoring !">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="$$ \\gdef\\Fp {\\mathbb{F} _ p} \\gdef\\LB{\\mathrm{LB} _ l} \\gdef\\RB{\\mathrm{RB} _ r} $$\nTeam zer0pts held zer0pts ctf 2023 on July 15. I&rsquo;m happy to see so meny people participating!\nI created 4 challenges in the crypto genre for this contest. Here, I&rsquo;d like to explain the intended solution for me.\n[crypto 102pts] easy_factoring (95 solves) Overview The word “decomposition” has multiple meanings.\nCan you decompose?\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 def main(): p = getPrime(128) q = getPrime(128) n = p * q N = pow(p, 2) + pow(q, 2) print(&#34;Let&#39;s factoring !&#34;) print(&#34;N:&#34;, N) p = int(input(&#34;p: &#34;)) q = int(input(&#34;q: &#34;)) if isPrime(p) and isPrime(q) and n == p * q: print(flag) The most important part of the given code is above.\nLet $p,q$ are large prime and $N := p^2 + q^2$. Given $N$, we need restore $p,q$ from $N$ to get the flag.\nThe name of the challenge is easy_factoring, but what it is supposed to be is a sum-of-squares decomposition disguised as prime factorization. (Although, in the end, prime factorization is required)\n">
 
     </head>
     <body class="
@@ -112,7 +65,7 @@ Can you decompose?
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -128,7 +81,7 @@ Can you decompose?
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -173,31 +126,12 @@ Can you decompose?
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -205,7 +139,7 @@ Can you decompose?
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -213,10 +147,11 @@ Can you decompose?
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -307,7 +242,7 @@ Can you decompose?
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 18, 2023</time>
+                <time class="article-time--published">7月 18, 2023</time>
             </div>
         
 
@@ -333,12 +268,11 @@ $$</p>
     >zer0pts ctf 2023</a> on July 15.
 I&rsquo;m happy to see so meny people participating!<br>
 I created 4 challenges in the crypto genre for this contest. Here, I&rsquo;d like to explain the intended solution for me.</p>
-<h2 id="crypto-102pts-easy_factoring-95-solves">[crypto 102pts] easy_factoring (95 solves)</h2>
-<h3 id="overview">Overview</h3>
-<blockquote>
+<h2 id="crypto-102pts-easy_factoring-95-solves">[crypto 102pts] easy_factoring (95 solves)
+</h2><h3 id="overview">Overview
+</h3><blockquote>
 <p>The word “decomposition” has multiple meanings.<br>
-Can you decompose?</p>
-</blockquote>
+Can you decompose?</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -378,8 +312,8 @@ Can you decompose?</p>
 </div><p>The most important part of the given code is above.<br>
 Let $p,q$ are large prime and $N := p^2 + q^2$. Given $N$, we need restore $p,q$ from $N$ to get the flag.<br>
 The name of the challenge is easy_factoring, but what it is supposed to be is a sum-of-squares decomposition disguised as prime factorization. (Although, in the end, prime factorization is required)</p>
-<h3 id="solution">Solution</h3>
-<p>The decomposition of $N$ into sums of squares can be solved if the Gaussian integer ring $\mathbb{Z}[i]$ can be solved for the prime elements of $N$.<br>
+<h3 id="solution">Solution
+</h3><p>The decomposition of $N$ into sums of squares can be solved if the Gaussian integer ring $\mathbb{Z}[i]$ can be solved for the prime elements of $N$.<br>
 Now, $N$ is expressed as $N = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2) \cdots (\pi_s \bar \pi_s)$ by Gaussian primes $\pi_1,\pi_2,\cdots,\pi_s$.<br>
 Then for $a,b \in \mathbb{Z}$ such that $N = a^2 + b^2$, $N = (a + bi)(a - bi) = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2) \cdots (\pi_s \bar \pi_s)$ holds.</p>
 <p>In short, integers $a,b$ such that $N$ decomposes into a sum of squares are included in the factors in $\mathbb{Z}[i]$ of $N$ as $a + bi$.<br>
@@ -447,12 +381,11 @@ Furthermore, it seems that the Diophantine problem can be solved by simply apply
 <p>I think easy_factoring was assumed to be easy in terms of difficulty, so there was little damage. But I regret that a non-intended solution was created that could be solved by just applying the tool.<br>
 At the beginning of the problem design, I was thinking of using the decomposition of the sum of squares to do collution attack with some system.<br>
 I wish I could have been more creative in that area. (I lacked the ability to create challenge&hellip;)</p>
-<h2 id="crypto-178pts-elliptic-ring-rsa-27-solves">[crypto 178pts] Elliptic Ring RSA (27 solves)</h2>
-<h3 id="overview-1">Overview</h3>
-<blockquote>
+<h2 id="crypto-178pts-elliptic-ring-rsa-27-solves">[crypto 178pts] Elliptic Ring RSA (27 solves)
+</h2><h3 id="overview-1">Overview
+</h3><blockquote>
 <p>RSA is hard over integer ring.<br>
-What about RSA over elliptic curve ring (!?)</p>
-</blockquote>
+What about RSA over elliptic curve ring (!?)</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -508,8 +441,8 @@ What about RSA over elliptic curve ring (!?)</p>
 </div><p>The most important part of the given code is above.<br>
 Given a group ring constructed by coefficients $\mathbb{F}_p$ and basis $E(\mathbb{F}_p)$. (Sorry, the source code is complex to implement properly)<br>
 The task is to break the RSA on this group ring $\mathrm{ER}$.</p>
-<h3 id="solution-1">Solution</h3>
-<p>Since it is a group ring, it seems to be homomorphic to the residue ring of some polynomial ring.<br>
+<h3 id="solution-1">Solution
+</h3><p>Since it is a group ring, it seems to be homomorphic to the residue ring of some polynomial ring.<br>
 So, first of all, I feel like computing the structure of $E(\Fp)$ and its order $o := \#E(\Fp)$.</p>
 <p>Actually, the calculation shows that $o = 192$ and $E(\Fp) = \left&lt; G \right&gt;$ by $G := (189, 152)$.</p>
 <p>Hence $\mathrm{ER} = \Fp[G]$, and if $[i]G \mapsto x^i$ then we can construct the isomorphism $\Fp[G] \simeq \Fp[x]/(x^o - 1)$.<br>
@@ -888,11 +821,10 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">()</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="crypto-226pts-moduhash-16-solves">[crypto 226pts] moduhash (16 solves)</h2>
-<h3 id="overview-2">Overview</h3>
-<blockquote>
-<p>This is related to a base of the theory of elliptic curves!</p>
-</blockquote>
+</div><h2 id="crypto-226pts-moduhash-16-solves">[crypto 226pts] moduhash (16 solves)
+</h2><h3 id="overview-2">Overview
+</h3><blockquote>
+<p>This is related to a base of the theory of elliptic curves!</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -935,8 +867,8 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 Let $S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$ and $T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ be the maps.<br>
 There is also a secret hash function $h$, which consists of random composition of $S$ and $T$.<br>
 This challenge is to recover $h$ given some $z \in \mathbb{C}$ and its hash $h(z)$.</p>
-<h3 id="solution-2">Solution</h3>
-<p>At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.<br>
+<h3 id="solution-2">Solution
+</h3><p>At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.<br>
 Modular group $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ is a group action of $H$.<br>
 Since $H$ can be classified by orbits due to this action, so we can consider its orbit space $\Gamma \backslash H$. And, if the representatives are picked properly, this can be identify with fundamental domain $F$ defined below.
 $$
@@ -1192,12 +1124,11 @@ The lower half-plane can be solved in the same way by simply replacing $H$ with 
 </div>
 </div><p>Actually, I had planned to use moduhash as a crypto warmup.<br>
 If genius ptr-yudai had not created SquareRNG, I would have committed Seppuku (ritual suicide).</p>
-<h2 id="crypto-340pts-unlimited-braid-works-6-solves">[crypto 340pts] Unlimited Braid Works (6 solves)</h2>
-<h3 id="overview-3">Overview</h3>
-<blockquote>
+<h2 id="crypto-340pts-unlimited-braid-works-6-solves">[crypto 340pts] Unlimited Braid Works (6 solves)
+</h2><h3 id="overview-3">Overview
+</h3><blockquote>
 <p>This is probably hard problem.
-Is this commutative or non-commutative?</p>
-</blockquote>
+Is this commutative or non-commutative?</p></blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1325,8 +1256,8 @@ The secret is $a_l \in \mathrm{LB}_l$ and public keys are $u \in B_n$, $v := a_l
 <p>Let $m$ is a message and $H\colon B_n \to {0,1}^k$ is a serialize function.<br>
 In encryption, server chooses $b_r \in \mathrm{RB}_r$ and calculate $w := b_r u b_r^{-1}$, $d := H(b_r v b_r^{-1}) \oplus m$.<br>
 And ciphertext is given as $(w,d)$.</p>
-<h3 id="solution-3">Solution</h3>
-<p>If we know $a_l$, we can decrypt as follows.
+<h3 id="solution-3">Solution
+</h3><p>If we know $a_l$, we can decrypt as follows.
 $$
 \begin{aligned}
 H(a_l w a_l^{-1}) \oplus d &amp;= H(a_l b_r u b_r^{-1} a_l^{-1})\\
@@ -1590,18 +1521,19 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -1611,6 +1543,7 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -1732,12 +1665,12 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -1826,7 +1759,7 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

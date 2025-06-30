@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Kosen on みつみつみつですか？</title>
-        <link>https://mitsu1119.github.io/blog/tags/kosen/</link>
+        <link>http://localhost:1313/blog/tags/kosen/</link>
         <description>Recent content in Kosen on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 07 Sep 2020 01:14:23 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/kosen/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 07 Sep 2020 01:14:23 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/kosen/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>InterKosenCTF2020 writeup</title>
-        <link>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</link>
+        <link>http://localhost:1313/blog/p/interkosenctf2020-writeup/</link>
         <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</guid>
+        <guid>http://localhost:1313/blog/p/interkosenctf2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめました．運営は3人しかいないらしくとても大変そうです．本当にお疲れ様でした．&lt;br&gt;
 では自分が解いた問題のwirteupを書いていこうと思います．&lt;/p&gt;
 &lt;br&gt;
-&lt;h1 id=&#34;pwn-105pts-babysort-49-solved&#34;&gt;[pwn: 105pts] babysort (49 solved)&lt;/h1&gt;
-&lt;p&gt;次のプログラムで動いているサービスがあります．&lt;/p&gt;
+&lt;h1 id=&#34;pwn-105pts-babysort-49-solved&#34;&gt;[pwn: 105pts] babysort (49 solved)
+&lt;/h1&gt;&lt;p&gt;次のプログラムで動いているサービスがあります．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -166,8 +166,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;pwn-300pts-authme-20-solved&#34;&gt;[pwn: 300pts] authme (20 solved)&lt;/h1&gt;
-&lt;p&gt;次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．&lt;/p&gt;
+&lt;h1 id=&#34;pwn-300pts-authme-20-solved&#34;&gt;[pwn: 300pts] authme (20 solved)
+&lt;/h1&gt;&lt;p&gt;次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -354,8 +354,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-201pts-ciphertexts-33-solved&#34;&gt;[crypto: 201pts] ciphertexts (33 solved)&lt;/h1&gt;
-&lt;p&gt;次のmulti-prime rsaのような暗号と，その出力結果が渡されました．&lt;/p&gt;
+&lt;h1 id=&#34;crypto-201pts-ciphertexts-33-solved&#34;&gt;[crypto: 201pts] ciphertexts (33 solved)
+&lt;/h1&gt;&lt;p&gt;次のmulti-prime rsaのような暗号と，その出力結果が渡されました．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -453,8 +453,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-326pts-bitcrypto-17-solved&#34;&gt;[crypto: 326pts] bitcrypto (17 solved)&lt;/h1&gt;
-&lt;p&gt;&amp;ldquo;&amp;ldquo;&amp;ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&amp;rdquo;&amp;rdquo;&amp;rdquo; ← これ好き&lt;/p&gt;
+&lt;h1 id=&#34;crypto-326pts-bitcrypto-17-solved&#34;&gt;[crypto: 326pts] bitcrypto (17 solved)
+&lt;/h1&gt;&lt;p&gt;&amp;ldquo;&amp;ldquo;&amp;ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&amp;rdquo;&amp;rdquo;&amp;rdquo; ← これ好き&lt;/p&gt;
 &lt;p&gt;次のコードが動いているサーバーに接続してフラグを取る問題です．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -715,8 +715,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-383pts-ochazuke-11-solved&#34;&gt;[crypto: 383pts] ochazuke (11 solved)&lt;/h1&gt;
-&lt;p&gt;次のsageのコードが動いているサーバーにアクセスできます．&lt;/p&gt;
+&lt;h1 id=&#34;crypto-383pts-ochazuke-11-solved&#34;&gt;[crypto: 383pts] ochazuke (11 solved)
+&lt;/h1&gt;&lt;p&gt;次のsageのコードが動いているサーバーにアクセスできます．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -932,8 +932,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;your messageにhexlify(b&amp;quot;ohayougozaimasu&amp;rdquo;)を送り，そのシグネチャをこの計算プログラムに入力すればochazukeのシグネチャが計算されます．この問題，あまり楕円曲線要素がなくただの法の下の計算みたいな感じだったので少し残念でした．でも面白かったです！&lt;/p&gt;
 &lt;br&gt;
-&lt;h1 id=&#34;reversing-182pts-harmagedon-36-solved&#34;&gt;[reversing: 182pts] harmagedon (36 solved)&lt;/h1&gt;
-&lt;p&gt;ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．&lt;/p&gt;
+&lt;h1 id=&#34;reversing-182pts-harmagedon-36-solved&#34;&gt;[reversing: 182pts] harmagedon (36 solved)
+&lt;/h1&gt;&lt;p&gt;ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．&lt;/p&gt;
 &lt;p&gt;頑張ってバイナリを読むと，$i$番目に選択したアルファベットのインデックス(例えば[fRd3]でRなら1)を$a_i$とすると，次のような漸化式と制約でフラグかどうか判別しているようでした．&lt;/p&gt;
 &lt;p&gt;$$x_1 = 0,\ x_{i+1} = 4(x_i + a_i + 1)$$
 $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
@@ -995,8 +995,8 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;reversing-182pts-in-question-36-solved&#34;&gt;[reversing: 182pts] in question (36 solved)&lt;/h1&gt;
-&lt;p&gt;ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．&lt;/p&gt;
+&lt;h1 id=&#34;reversing-182pts-in-question-36-solved&#34;&gt;[reversing: 182pts] in question (36 solved)
+&lt;/h1&gt;&lt;p&gt;ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．&lt;/p&gt;
 &lt;p&gt;そるばどぺー&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1031,8 +1031,8 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;reversing-252pts-trilemma-26-solved&#34;&gt;[reversing: 252pts] trilemma (26 solved)&lt;/h1&gt;
-&lt;p&gt;複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．&lt;br&gt;
+&lt;h1 id=&#34;reversing-252pts-trilemma-26-solved&#34;&gt;[reversing: 252pts] trilemma (26 solved)
+&lt;/h1&gt;&lt;p&gt;複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．&lt;br&gt;
 実行してみると各ライブラリのflag関数からエラーが出ます．エラーの文章からdl_iterate_phdrとlookupで落ちているようでした，ということで各ライブラリのlookup関数の中身を編集し，ライブラリの存在の有無でデータに1を書き込んでいる部分を0を書き込むように直しました．これは直接バイナリエディタでアセンブリをいじっています．&lt;/p&gt;
 &lt;p&gt;また，その後実行してもまたエラーで落ちます．そのエラーは，先程のエラーを回避するために0を代入したのに，そのデータの値が0であるときに発生するエラーでした．ということでそのジャンプ命令を変更してあげてそこもパスできるように編集しました．&lt;/p&gt;
 &lt;p&gt;その後またエラーが発生します．フラグを生成する部分のバッファのアドレスをmmapするとき，各ライブラリが使う部分が競合してしまっていました．gdbで頑張って色々命令を飛ばしながら動かすとフラグの断片が色々手に入るので，それを組みわせればオッケーです．&lt;/p&gt;

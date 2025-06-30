@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>みつみつみつですか？</title>
-        <link>https://mitsu1119.github.io/blog/</link>
+        <link>http://localhost:1313/blog/</link>
         <description>Recent content on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Fri, 01 Dec 2023 18:56:50 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 01 Dec 2023 18:56:50 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>群で理解する ElGamal</title>
-        <link>https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</link>
+        <link>http://localhost:1313/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</link>
         <pubDate>Fri, 01 Dec 2023 18:56:50 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</guid>
-        <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://qiita.com/advent-calendar/2023/lumos&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>http://localhost:1313/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/</guid>
+        <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h2&gt;&lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://qiita.com/advent-calendar/2023/lumos&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Lumos Advent Calendar&lt;/a&gt; の Day 2 の記事です！&lt;/p&gt;
 &lt;p&gt;　Day 1 の記事は @tomoyahiroe さんによる &lt;a class=&#34;link&#34; href=&#34;https://qiita.com/tomoyahiroe/items/343f158905ac7a65ca35&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい&lt;/a&gt; でした。&lt;br&gt;
 　次回の記事（Day 3）はくっきーさんによる &lt;a class=&#34;link&#34; href=&#34;https://blog.ck9.jp/post/240/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ISUCON13 に参加した話&lt;/a&gt; です。お楽しみに。&lt;/p&gt;
 &lt;p&gt;　ということで本題へレッツラゴー。&lt;/p&gt;
-&lt;h2 id=&#34;elgamal-暗号&#34;&gt;ElGamal 暗号&lt;/h2&gt;
-&lt;p&gt;　ElGamal 暗号ってご存じですか？&lt;/p&gt;
+&lt;h2 id=&#34;elgamal-暗号&#34;&gt;ElGamal 暗号
+&lt;/h2&gt;&lt;p&gt;　ElGamal 暗号ってご存じですか？&lt;/p&gt;
 &lt;p&gt;　公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？&lt;br&gt;
 　ちなみに私はあまりよく知りませんでした。&lt;/p&gt;
 &lt;p&gt;　ElGamal 暗号って何？現在は？base problem は？&lt;br&gt;
 　調べてみました！&lt;/p&gt;
-&lt;h3 id=&#34;elgamal-暗号とは&#34;&gt;ElGamal 暗号とは&lt;/h3&gt;
-&lt;p&gt;　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。&lt;br&gt;
+&lt;h3 id=&#34;elgamal-暗号とは&#34;&gt;ElGamal 暗号とは
+&lt;/h3&gt;&lt;p&gt;　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。&lt;br&gt;
 　古参ですね！&lt;/p&gt;
 &lt;p&gt;　個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^&lt;/p&gt;
 &lt;p&gt;　公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。
@@ -37,8 +37,8 @@
 &lt;p&gt;　仰々しい数式が出てきましたが、丁寧に見ていけば主張は意外とと単純なことがわかると思います！&lt;/p&gt;
 &lt;p&gt;　とりあえずなんか安全だと皆が願っているんだなってことがわかっていただければいいです。&lt;br&gt;
 　ということで次は暗号自体の説明です。&lt;/p&gt;
-&lt;h3 id=&#34;鍵生成&#34;&gt;鍵生成&lt;/h3&gt;
-&lt;p&gt;　まあ暗号化するには鍵が必要なわけです。&lt;br&gt;
+&lt;h3 id=&#34;鍵生成&#34;&gt;鍵生成
+&lt;/h3&gt;&lt;p&gt;　まあ暗号化するには鍵が必要なわけです。&lt;br&gt;
 　その鍵はどうやって作るんですか？というお話です。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;十分大きな素数$p$ を選ぶ&lt;/li&gt;
@@ -47,57 +47,57 @@
 &lt;li&gt;$h := g^x \pmod p$ を計算する&lt;/li&gt;
 &lt;li&gt;$(g, p, h)$ を公開鍵、$x$ を秘密鍵とする！&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;暗号化&#34;&gt;暗号化&lt;/h3&gt;
-&lt;p&gt;　暗号化は公開鍵で行います。&lt;/p&gt;
+&lt;h3 id=&#34;暗号化&#34;&gt;暗号化
+&lt;/h3&gt;&lt;p&gt;　暗号化は公開鍵で行います。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;平文 $m \in \{0,\cdots,p - 1\}$ を受け取る&lt;/li&gt;
 &lt;li&gt;$\{0,\cdots,p-1\}$ からランダムに選び $r$ とする&lt;/li&gt;
 &lt;li&gt;$c_1 := g^r \pmod p$、$c_2 := m\cdot h^r \pmod p$ を計算する&lt;/li&gt;
 &lt;li&gt;$(c_1, c_2)$ を暗号文とし送信する！&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;復号&#34;&gt;復号&lt;/h3&gt;
-&lt;p&gt;　暗号文を受け取って秘密鍵で複合します。&lt;/p&gt;
+&lt;h3 id=&#34;復号&#34;&gt;復号
+&lt;/h3&gt;&lt;p&gt;　暗号文を受け取って秘密鍵で複合します。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$m = c_2 \cdot (c_2^x)^{-1} \pmod p$&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;　実際、自分の持っている秘密鍵 $x$ が正しければ $c_2 \cdot (c_1^x)^{-1} \equiv m \cdot (g^x)^r \cdot ((g^r)^x)^{-1} \equiv m \mod p$ となることが確認できます。&lt;/p&gt;
 &lt;p&gt;　「$(c_1^x)^{-1}$ のマイナス 1 乗って？」とか「十分に大きな素数ってどのくらい大きいの？」とかは聞かないでください。&lt;br&gt;
 　暗号の標準化の話や、そもそも生の ElGamal 暗号は使わないでパディングをする話とか込み入った話をする必要があるのですが、今は Advent Calendar 執筆 RTA 中（つまり進捗が危うい）のでその辺雑にやります。&lt;/p&gt;
-&lt;h3 id=&#34;なるほどね&#34;&gt;なるほどね&lt;/h3&gt;
-&lt;p&gt;　いかがでしたか？&lt;/p&gt;
+&lt;h3 id=&#34;なるほどね&#34;&gt;なるほどね
+&lt;/h3&gt;&lt;p&gt;　いかがでしたか？&lt;/p&gt;
 &lt;p&gt;　ここまではよくある普通の ElGamal 暗号の説明です。&lt;br&gt;
 　ただこれまでの流れの話は、群論を使うとより簡潔により一般的に議論することができます。&lt;/p&gt;
 &lt;p&gt;　暗号をより一般的に議論すると、その暗号を暗号たらしめている核の部分が浮き彫りになり、より応用の利くものとなるのです！&lt;br&gt;
 　（というか上で普通の説明と書きましたが、周りを見てると暗号やってる人は群論の言葉で書かれた状態を普通として扱ってる気がしています。整数で書かれると具体的すぎてわかりづらい）&lt;/p&gt;
-&lt;h2 id=&#34;elgamal-暗号群論バージョン&#34;&gt;ElGamal 暗号（群論バージョン）&lt;/h2&gt;
-&lt;p&gt;　CDH 問題は整数の剰余の集合だけでなく、より一般的に次のように描くことができます。&lt;/p&gt;
+&lt;h2 id=&#34;elgamal-暗号群論バージョン&#34;&gt;ElGamal 暗号（群論バージョン）
+&lt;/h2&gt;&lt;p&gt;　CDH 問題は整数の剰余の集合だけでなく、より一般的に次のように描くことができます。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CDH 問題&lt;/strong&gt;&lt;br&gt;
 　$G$ を有限巡回群、$g$ をその生成元とする。$x, y \in \N$ について $g^x,\ g^y$ から $g^{xy}$ を求めよ&lt;/p&gt;
 &lt;p&gt;　この形で書けば、最初に説明した整数の形の CDH 問題は $G = (\Z/p\Z)^\times$ の特別な場合であることが目に見えると思います！&lt;br&gt;
 　（ちなみに $(\Z/p\Z)^\times$ をそのまま使って ElGamal するのはよくなくて、平文の $\mod p$ での平方剰余の情報がリークできます。そのために $(\Z/p\Z)^\times$ の適当な部分群を使ってやる方法など工夫があります）&lt;/p&gt;
 &lt;p&gt;　それでは鍵生成や暗号化/復号についてみていきましょう。&lt;/p&gt;
-&lt;h3 id=&#34;鍵生成-1&#34;&gt;鍵生成&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id=&#34;鍵生成-1&#34;&gt;鍵生成
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;有限巡回群 $G$ を選ぶ&lt;/li&gt;
 &lt;li&gt;$G$ の生成元 $g$ を選ぶ&lt;/li&gt;
 &lt;li&gt;$x \xleftarrow{U} \{0,\cdots,|G|-1\}$&lt;/li&gt;
 &lt;li&gt;$h := g^x$ を計算&lt;/li&gt;
 &lt;li&gt;$(g, |G|, h)$ を公開鍵、$x$ を秘密鍵とする&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;暗号化-1&#34;&gt;暗号化&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id=&#34;暗号化-1&#34;&gt;暗号化
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;平文 $m \in G$ を受け取る&lt;/li&gt;
 &lt;li&gt;$r \xleftarrow{U} \{0,\cdots,|G|-1\}$&lt;/li&gt;
 &lt;li&gt;$c_1 := g^r,\ c_2 := m \cdot h^r$ を計算する&lt;/li&gt;
 &lt;li&gt;$(c_1, c_2)$ を暗号文とする&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;復号-1&#34;&gt;復号&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id=&#34;復号-1&#34;&gt;復号
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;$m = c_2 \cdot (c_1^x)^{-1}$ を計算する&lt;br&gt;
 復号の正当性は、整数の時と同じです。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;応用例楕円曲線暗号&#34;&gt;応用例（楕円曲線暗号）&lt;/h2&gt;
-&lt;p&gt;　楕円曲線暗号は別名で&lt;strong&gt;楕円 ElGamal 暗号&lt;/strong&gt;と呼ばれますが、実はこれも ElGamal 暗号の特別な例だからです。（といっても演算は乗法群としての表記より加法群としての表記が多いですが、あくまで表記の話です）&lt;/p&gt;
+&lt;h2 id=&#34;応用例楕円曲線暗号&#34;&gt;応用例（楕円曲線暗号）
+&lt;/h2&gt;&lt;p&gt;　楕円曲線暗号は別名で&lt;strong&gt;楕円 ElGamal 暗号&lt;/strong&gt;と呼ばれますが、実はこれも ElGamal 暗号の特別な例だからです。（といっても演算は乗法群としての表記より加法群としての表記が多いですが、あくまで表記の話です）&lt;/p&gt;
 &lt;p&gt;　楕円曲線の $\mathbb{F}_p$ 有理点 $E(\mathbb{F}_p)$ は巡回群 or 二つの巡回群の直積となります。&lt;br&gt;
 　この巡回群を使って ElGamal してやろうというものが楕円曲線なのでした。&lt;/p&gt;
 &lt;p&gt;　楕円曲線暗号と聞くと難しそうに聞こえますが、やってることはただの巡回群の計算でめちゃくちゃ簡単なんです！（表面上は。例えばなぜ $E(\mathbb{F}_p)$ が巡回群になるのか、など基礎的な部分を考え始めると数学も高度になってきます）&lt;/p&gt;
@@ -108,18 +108,18 @@
         </item>
         <item>
         <title>セキュリティキャンプ 2023 参加記</title>
-        <link>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Tue, 15 Aug 2023 00:03:49 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97-2023-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;p&gt;　ども，mitsu です．今年は幸運にもセキュリティキャンプに通ったので，闇に隠れしその実態を暴いていきたいと思います．&lt;/p&gt;
-&lt;h2 id=&#34;応募課題パート&#34;&gt;応募課題パート&lt;/h2&gt;
-&lt;p&gt;　セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．&lt;/p&gt;
+&lt;h2 id=&#34;応募課題パート&#34;&gt;応募課題パート
+&lt;/h2&gt;&lt;p&gt;　セキュリティキャンプに参加しようと思ったのは，実は事前課題の締め切り一週間前くらいでした．&lt;/p&gt;
 &lt;p&gt;　🐣「Castryck-Decru attack の実装難しいな〜……誰かに教えてほしい」&lt;br&gt;
 　🐣「そうだ 💡」&lt;/p&gt;
 &lt;p&gt;　というわけで L1 ゼミに応募し，絶対に受かりたかったので絶対に受かる強い意志で応募課題を書きました．&lt;/p&gt;
 &lt;p&gt;　その結果，全ての課題の解答が hackmd に書かれる始末に……&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post18/oubokadai.png&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post18/oubokadai.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;　L1 の応募課題を開いてみると全体的に難しい印象でなかなか厳しい内容でした．ただ薄っすらと「完全解答を作る必要はなく，応募課題のためにどのようなことを学び調べたか」を重要視してるように感じられたので，真の意味で正しい回答ではなくとにかく頑張るのが大事なのかなって思いました．（実際僕は Q2 の発展問題の解答がギャグみたいになっていて十分に正しく書けていない）&lt;br&gt;
@@ -136,8 +136,8 @@
     &gt;公式サイト&lt;/a&gt;とプロトコルコースの講師の先生の&lt;a class=&#34;link&#34; href=&#34;https://tex2e.github.io/blog/misc/seccamp2023&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参加記&lt;/a&gt;とプリミティブコースの講師のの先生の&lt;a class=&#34;link&#34; href=&#34;https://gist.github.com/elliptic-shiho/d26b5251d50347d6fbdb2336d960b9fc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参加記&lt;/a&gt;が参考になるんじゃないかなあと思います．&lt;/p&gt;
-&lt;h2 id=&#34;６月頃&#34;&gt;６月頃&lt;/h2&gt;
-&lt;p&gt;　さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．&lt;/p&gt;
+&lt;h2 id=&#34;６月頃&#34;&gt;６月頃
+&lt;/h2&gt;&lt;p&gt;　さっそく小さめのやらかしをします．全国大会に通った人は専用の Discord サーバーに参加しなくてはいけないのですが，僕はダラダラしていたせいで入るのが遅れました．&lt;/p&gt;
 &lt;p&gt;　₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; はよしろ（意訳）&lt;/p&gt;
 &lt;p&gt;　講師の e_shiho さんからの連絡もあり無事参加できました．めでたしめでたし．&lt;/p&gt;
 &lt;p&gt;　ということで最初の顔合わせ会（VC）が始まりました．プロトコルコースとプリミティブコースそれぞれ一人ずつで，計二人と意外と少い印象でした．&lt;/p&gt;
@@ -156,8 +156,8 @@
 &lt;p&gt;　ということで話はそれましたが，ほぼ毎週僕が論文を読んでできたところまで数学のゼミのようなものをしていました．e_shiho さんにはすごくお世話になりました．&lt;br&gt;
 　写像の話とか数学の歴史的な話だとか面白いこともいっぱい聞けました．&lt;br&gt;
 　ただ，長時間拘束してしまいすみませんでした…… m(_ _)m&lt;/p&gt;
-&lt;h2 id=&#34;７月中旬以降&#34;&gt;７月中旬以降&lt;/h2&gt;
-&lt;p&gt;　₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; 実装を見据えてやっていきましょうか&lt;/p&gt;
+&lt;h2 id=&#34;７月中旬以降&#34;&gt;７月中旬以降
+&lt;/h2&gt;&lt;p&gt;　₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; 実装を見据えてやっていきましょうか&lt;/p&gt;
 &lt;p&gt;　ということでゆっくりと進んでいた論文読みは一転，実装まで落とし込むことを見据えて今までやってきたことを活用していく方針に切り替わりました．（といってもこの辺の段階で必要なものは恐怖の Richelot Isogeny を除いてある程度自分の中に揃っていたので，６章を読むのはそれなりにサクサクといけたのもあります）&lt;/p&gt;
 &lt;p&gt;　🐣「Richelot Isogeny わからん」&lt;br&gt;
 　₍₍ (ง ˘ω˘ )ว ⁾⁾ &amp;lt; わからんわからんと話題の Richelot Isogeny&lt;/p&gt;
@@ -168,12 +168,12 @@
 &lt;p&gt;　SageMath では $\mathbb{F} _ {p^2}$ でグレブナー基底を計算するのに非常に時間がかかります．Magma では計算できる（Castryck と Decru はこれで実装していた）のですが，コマンドラインから呼び出すには有料版が必要であまりにも高く……&lt;/p&gt;
 &lt;p&gt;　ということでグレブナー基底を使わない高速化手法が Oudompheng と Pope の &amp;ldquo;A Note on Reimplementing the Castryck-Decru Attack and Lessons Learned for SageMath&amp;rdquo; で解説されていたのでそれを実装しました．&lt;br&gt;
 　これでなんとか実装できたので，本番は Richelot Isogeny 全振りで挑むこととなりました．&lt;/p&gt;
-&lt;h2 id=&#34;１日目&#34;&gt;１日目&lt;/h2&gt;
-&lt;p&gt;　ついに始まりました．Richelot Isogeny の実装を考えながら会場へ向かい，いい感じに開会式をしたあと共通講義とグループワークが始まりました．&lt;/p&gt;
+&lt;h2 id=&#34;１日目&#34;&gt;１日目
+&lt;/h2&gt;&lt;p&gt;　ついに始まりました．Richelot Isogeny の実装を考えながら会場へ向かい，いい感じに開会式をしたあと共通講義とグループワークが始まりました．&lt;/p&gt;
 &lt;p&gt;　共通講義は検事の方が法律とコンピュータセキュリティの関わりを教えてくれてとてもためになる内容でした．色んな電車の放送の真似をしていたのが印象的です．&lt;br&gt;
 　グループワークではみんなでセキュリティ関連の何かを作ろうという感じで進みました．僕がなんか適当なことを喋りまくってたらグループ内で大量の案が出され，いつの間にかブレインストーミングの様相でした（そのつもりはなかったが）．同じ班になった受講生と喋るいいきっかけとなったので楽しかったです．&lt;/p&gt;
 &lt;p&gt;　その他諸々が終わったあとはついに始まる開発の時間です．実装がうまくいくようにと願掛けの意味でこんなものを持っていきました．これによって L トラック全体が守られていたらいいなあという気持ちです．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post18/mushiyoke.jpg&#34; width=&#34;30%&#34;&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post18/mushiyoke.jpg&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;　共通講義中に Richelot Isogeny の実装の天啓が降りてきていたのでコードを書こうと思った矢先，楕円曲線の直積からヤコビアンへの (2, 2)-isogeny を構成するアルゴリズムがバグっていることが判明しました．&lt;br&gt;
@@ -186,8 +186,8 @@
 &lt;p&gt;　またこの日の 20時ごろにマネージャーさんから「スイーツが余りすぎている」という連絡がありました．&lt;br&gt;
 　絶好のチャンスだったので，食べれなかった分そこでたくさんスイーツを食べました．おいしかったです．&lt;br&gt;
 　チューターのあんこさんが大量のパイナップルをお皿に山盛りにしていた光景が印象的でした．そういった色々な要素が噛み合って，チューターや講師の先生方，プロトコルコースの受講生の子など L1 ゼミ内での距離が一気に縮まったと思います．&lt;/p&gt;
-&lt;h2 id=&#34;２日目&#34;&gt;２日目&lt;/h2&gt;
-&lt;p&gt;　ということで Richelot Isogeny が実装できたので，あとは大元のプログラムと繋げる作業が必要でした．&lt;br&gt;
+&lt;h2 id=&#34;２日目&#34;&gt;２日目
+&lt;/h2&gt;&lt;p&gt;　ということで Richelot Isogeny が実装できたので，あとは大元のプログラムと繋げる作業が必要でした．&lt;br&gt;
 　これが終わったタイミングで，プロトコル側の講師のまこさんがこんなことを言ってきます．&lt;/p&gt;
 &lt;p&gt;　🐧「プリミティブコースが今までやってきたことをざっくりでいいから教えてほしいなあ〜」&lt;/p&gt;
 &lt;p&gt;　僕はうまく説明できるか不安になりながらも，頑張って解説を試みました．というのも最終的に成果発表スライドを作らないといけないので，どこをどんな風に説明するかの取捨選択はある程度考えておかないと行けなかったからです．&lt;br&gt;
@@ -205,8 +205,8 @@
 　使ってなさそうなホワイトボードをもってきて使っていたのもあって，３面のホワイトボードにぎっしりと書かれた数式とネットワークのシーケンス図で取り囲まれて大学の研究室みたいな面白い雰囲気でした．&lt;/p&gt;
 &lt;p&gt;　このあとは仕上げ作業として，ある程度秘密が求まったら残りはブルートフォースをするなどの仕上げのプログラムを書きます．&lt;br&gt;
 　これらがあらかた完了した辺りで２日目は修了．とりあえず Castryck-Decru attack を実装することができたので安心しました．&lt;/p&gt;
-&lt;h2 id=&#34;３日目&#34;&gt;３日目&lt;/h2&gt;
-&lt;p&gt;　ついにキャンプ期間の半分が過ぎ去ろうとしている頃です．&lt;br&gt;
+&lt;h2 id=&#34;３日目&#34;&gt;３日目
+&lt;/h2&gt;&lt;p&gt;　ついにキャンプ期間の半分が過ぎ去ろうとしている頃です．&lt;br&gt;
 　この日は社会科見学があったのですがとても楽しかったです！（小並感）&lt;/p&gt;
 &lt;p&gt;　🐣（キャンプ期間，短いものだなあ）&lt;/p&gt;
 &lt;p&gt;　そう思いながら，この日の作業はコードのリファクタリングに充ててました．ここで講師の先生から最近とある CTF で出題された問題が僕の書いたコードで解けるか試してみないかと言われました．&lt;br&gt;
@@ -221,8 +221,8 @@
 　それとこの日辺りからプロトコルコースの先生と受講生が名刺交換関連の話をコソコソと計画していて，なんというかその様子が見ていて面白かったです．🐧 🕊&lt;br&gt;
 　またこの日はナ行の一文字をやっている方とずんだもん同盟を結び，僕たちは固い絆で結ばれました．🐈&lt;/p&gt;
 &lt;p&gt;　まあなんやかんやありましたが，結局僕の方はなかなかうまくいかなくてとても困っていたまま４日目突入です．&lt;/p&gt;
-&lt;h2 id=&#34;４日目&#34;&gt;４日目&lt;/h2&gt;
-&lt;p&gt;　あんこさんの扉開け技術の練度も極まってきた頃，僕は色々な値を試して検証しつつ高速化を実装まで落とし込もうとなんやかんやしていました．&lt;br&gt;
+&lt;h2 id=&#34;４日目&#34;&gt;４日目
+&lt;/h2&gt;&lt;p&gt;　あんこさんの扉開け技術の練度も極まってきた頃，僕は色々な値を試して検証しつつ高速化を実装まで落とし込もうとなんやかんやしていました．&lt;br&gt;
 　しかしなかなかうまく行かず，少なくともキャンプ期間中では厳しそう（というのも３日目と４日目を過ぎたらあとは成果発表だから）だということになり，マルチスレッドに対応することで少しでも早くしようという風に切り替えました．&lt;/p&gt;
 &lt;p&gt;　ここで問題が発生します．SageMath で Pari を使ってる部分はスレッドセーフに実装されていないのです！！&lt;br&gt;
 　ということでマルチスレッドや Pool を使うのでは実装できませんでした．そのため sage プロセスをいくつか立ち上げて，プロセス間通信でいい感じにやる愚直な方法を実装しました．&lt;/p&gt;
@@ -237,8 +237,8 @@
 　まこさんに説明するのに一時間強かかっていたくらいなので当然 2 分で終わるわけもなく，本番の成果発表はタキオンでいこうと L トラックのプロデューサーさんには言われました．&lt;/p&gt;
 &lt;p&gt;　今まで L トラックの他のゼミがどんなことをしていたのかほとんど知らなかったので，この機会に色々と知ることができました．&lt;/p&gt;
 &lt;p&gt;　また，この日の夜はプロトコルコースの受講生が開いた名刺交換会で賑わっていました．あまりの賑わいで暑すぎて僕は退場……．涼しい Y トラックの教室の中で FPGA の話を色々聞いてました．&lt;/p&gt;
-&lt;h2 id=&#34;５日目&#34;&gt;５日目&lt;/h2&gt;
-&lt;p&gt;　最終日は主に成果発表です．いい感じにグループワークの発表をしたあと，ついに本題が始まります．&lt;/p&gt;
+&lt;h2 id=&#34;５日目&#34;&gt;５日目
+&lt;/h2&gt;&lt;p&gt;　最終日は主に成果発表です．いい感じにグループワークの発表をしたあと，ついに本題が始まります．&lt;/p&gt;
 &lt;p&gt;　最初は専門コース，ジュニア，ネクストの成果発表でした．どこもすごく面白そうなことをしていて，僕も体が百個くらい会ったら参加したい内容でした．&lt;br&gt;
 　個人的にはジュニアの方がすごく大人で，しかも技術レベルも高く関心していました．&lt;/p&gt;
 &lt;p&gt;　適当に最後のお昼を挟んだあと，ついに開発コースの発表です．&lt;/p&gt;
@@ -249,8 +249,8 @@
 　最後の方は何枚か集合写真を撮っていただきました．また L トラック内でも写真を撮ったのですが，このときのポーズがみんなで L 字に腕を作るものでした．大量の L が並んでいたので LLL ですね！（？？？）&lt;br&gt;
 　ところでなぜ L トラックは L なんでしょうか……（歴史的経緯は色々あったみたいですが）&lt;/p&gt;
 &lt;p&gt;　L トラックの L の謎を引きずりつつついに解散となります．後ろ髪引かれる思いで名残惜しかったです．&lt;/p&gt;
-&lt;h2 id=&#34;感想&#34;&gt;感想&lt;/h2&gt;
-&lt;p&gt;　そんなこんなで楽しいキャンプ期間となりました．講師やチューター，受講生の方々，協議会の方々を含めその他セキュリティキャンプに関わってくださった皆様，本当にありがとうございました．&lt;br&gt;
+&lt;h2 id=&#34;感想&#34;&gt;感想
+&lt;/h2&gt;&lt;p&gt;　そんなこんなで楽しいキャンプ期間となりました．講師やチューター，受講生の方々，協議会の方々を含めその他セキュリティキャンプに関わってくださった皆様，本当にありがとうございました．&lt;br&gt;
 　講師の方が強いのはもちろんのこと，受講生のみんなも主体的に何かに取り組んでなにかに熱中している方ばかりで，日常の技術的な雑談のどれもが刺激的でした．&lt;/p&gt;
 &lt;p&gt;　またセキュリティキャンプで学べたのは技術だけでなく，僕自身が目指す先にいる講師の先生にも会えるのでそういった方々から様々なエッセンスを受け取ることができました．僕は今まで暗号が好きで暗号の勉強を続けていたのですが，やはり数学は難しく広大です．それに対してどのように向け合えばいいのか僕自身かなり悩まされていました．e_shiho さんに色々教えてもらう中で，そんな数学にどう立ち向かっていけばいいか，その解答を僕の中で導けたのが一番の成果だなと思っています．&lt;/p&gt;
 &lt;p&gt;　ということで，お疲れ様でした！&lt;/p&gt;
@@ -258,10 +258,10 @@
         </item>
         <item>
         <title>セキュリティキャンプ応募課題晒し (2023, L1 暗号化通信ゼミ)</title>
-        <link>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</link>
+        <link>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</link>
         <pubDate>Sat, 12 Aug 2023 20:40:36 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</guid>
+        <guid>http://localhost:1313/blog/p/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%97%E5%BF%9C%E5%8B%9F%E8%AA%B2%E9%A1%8C%E6%99%92%E3%81%97-2023-l1-%E6%9A%97%E5%8F%B7%E5%8C%96%E9%80%9A%E4%BF%A1%E3%82%BC%E3%83%9F/</guid>
         <description>&lt;p&gt;$$
 \gdef\F{\mathbb{F}}
 \gdef\Z{\mathbb{Z}}
@@ -273,16 +273,16 @@
 \gdef\l{\mathfrak{l}}
 \gdef\O{\mathcal{O}}
 $$&lt;/p&gt;
-&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．&lt;/p&gt;
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h2&gt;&lt;p&gt;　どうも，mitsu です．今までなんやかんや忙しくて参加できないでいたセキュリティキャンプに，ついに今年は幸運にも参加することができました．&lt;/p&gt;
 &lt;p&gt;　興味のあるゼミはいくつかありましたが，とんでもなく強い講師の方々がいらっしゃるのでせっかくだからと自分の一番興味のある部分をさらに伸ばそうと思い L1（暗号化通信ゼミ）のプリミティブコースに応募しました．&lt;/p&gt;
 &lt;p&gt;　より具体的に言うと，Castryck と Decru によって 2022 年の夏頃に SIDH（更に正確には SIKE）を破る論文が出されちょうどそれを読んでいたのですがあまりにも難しくて，それの実装を達成するために講師の方の力を借りようと思いました．というのもこのアルゴリズムは公開実装例が２つしか見当たらなかった（しかもどっちも実装を含めて論文になっている）くらいには難解で，ちょっと僕だけではしっかり論文を読めないなと思ったからです．&lt;/p&gt;
 &lt;p&gt;　プリミティブコースという言葉をパッと出してしまいましたが，今年の L1 コースはプロコトルコースとプリミティブコースの二種類が選択できました．プロトコルコースは暗号化通信ゼミの名前の通り暗号化通信をメインでやる部分です．一方でプリミティブコースは暗号そのものをメインでやる部分です．講師の方々は「コースにとらわれないで流動的であってほしい」と言っていましたが，僕が一にも二にも暗号プリミティブだったこともあって相互で干渉し合うことはあまりできませんでした．ちょこちょこプロトコルコースのボイスチャットにはお邪魔してみてたんですが「プロトコルを実装するってどういうことですか」を質問するレベルでネットワークの知識がなく，まあなんというか多分僕のせいです，すみません．&lt;/p&gt;
 &lt;p&gt;　それはともかくとして，実は今年は年齢的に最初で最後のチャンスだったのもありなんとしてでも全国大会に通る必要があります．とはいってもセキュリティキャンプに応募してくるような人は強い人が多く，ただ僕が適当に応募課題を書いても通るわけがありません．そこで L1 の応募課題を読んでみると「丁寧であればあるほどよく，さらに分量の制限はない」という旨の記述があったので，僕はとにかく書けることはたくさん書いて絶対に受かると自信をもって言える（逆に言えばこれで受からなかったら自分で納得できる）くらいに内容を仕上げてみました．&lt;br&gt;
 　それが功を奏したのが無事選考を通過でき，また講師の先生方にはサーベイ論文と揶揄されて結果的に戦略は成功だったのかなと思います．&lt;/p&gt;
 &lt;p&gt;　ということで，来年以降の L1 ゼミに応募したい方の参考になればいいなという意味も含め応募課題晒しの文化に則って僕も応募課題をインターネットの海に放り込んでみます．（ちなみに参加期も後で書こうと思っています．技術的な内容は少なめだとは思いますがぜひ読んでみてください！）&lt;/p&gt;
-&lt;h2 id=&#34;q1&#34;&gt;Q1&lt;/h2&gt;
-&lt;p&gt;以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は &lt;a class=&#34;link&#34; href=&#34;https://www.ipa.go.jp/jinzai/security-camp/2023/zenkoku/vote.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;q1&#34;&gt;Q1
+&lt;/h2&gt;&lt;p&gt;以降の設問文は全て応募課題からの引用です．(プロトコルコースや他ゼミの応募課題も含めた応募課題関連の情報は &lt;a class=&#34;link&#34; href=&#34;https://www.ipa.go.jp/jinzai/security-camp/2023/zenkoku/vote.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ここ&lt;/a&gt; に色々書いてあります)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;以下の語句から一つ選び, その語句に関してできるだけ詳しく説明してください.&lt;/strong&gt;&lt;/p&gt;
@@ -291,46 +291,45 @@ $$&lt;/p&gt;
 &lt;li&gt;McEliece暗号&lt;/li&gt;
 &lt;li&gt;Grøstl&lt;/li&gt;
 &lt;li&gt;SIDH&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;sidh&#34;&gt;SIDH&lt;/h3&gt;
-&lt;h4 id=&#34;概要&#34;&gt;概要&lt;/h4&gt;
-&lt;p&gt;SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．&lt;/p&gt;
+&lt;h3 id=&#34;sidh&#34;&gt;SIDH
+&lt;/h3&gt;&lt;h4 id=&#34;概要&#34;&gt;概要
+&lt;/h4&gt;&lt;p&gt;SIDH は一言で説明すると，楕円曲線の同種写像を利用した耐量子暗号アルゴリズムです．&lt;/p&gt;
 &lt;p&gt;RSA や DLP といった既存の暗号の基礎問題は比較的簡単に解ける量子アルゴリズムが見つかっており，このまま量子コンピュータの研究が進むと既存の暗号システムが脆弱なものとなってしまいます．そのため耐量子暗号の研究が盛んにおこなわれており，格子ベースのものや符号ベースのものが開発されています．SIDH はそのポスト量子暗号の中で楕円曲線の同種写像グラフを利用したもので，データサイズが小さいことを期待されて研究，開発が進められています．&lt;/p&gt;
-&lt;h4 id=&#34;同種写像問題&#34;&gt;同種写像問題&lt;/h4&gt;
-&lt;p&gt;SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．&lt;/p&gt;
+&lt;h4 id=&#34;同種写像問題&#34;&gt;同種写像問題
+&lt;/h4&gt;&lt;p&gt;SIDH の base problem は，次の同種写像問題に関する仮定となっています [1] ．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;base problem&lt;/strong&gt;&lt;br&gt;
 楕円曲線 $E$ と同種写像 $\phi$ による同種な曲線 $E&amp;rsquo; = \phi(E)$ が与えられたとき，その間にある $\phi$ を求めることは困難である．&lt;/p&gt;
-&lt;h4 id=&#34;sidh-の鍵交換アルゴリズム&#34;&gt;SIDH の鍵交換アルゴリズム&lt;/h4&gt;
-&lt;p&gt;同種写像問題を利用した鍵交換をする基本的な手続きは，次の同種関係による可換図式に基づいています．&lt;/p&gt;
+&lt;h4 id=&#34;sidh-の鍵交換アルゴリズム&#34;&gt;SIDH の鍵交換アルゴリズム
+&lt;/h4&gt;&lt;p&gt;同種写像問題を利用した鍵交換をする基本的な手続きは，次の同種関係による可換図式に基づいています．&lt;/p&gt;
 &lt;p&gt;$$\begin{CD} E @&amp;gt;\phi_B&amp;gt;&amp;gt; E_B\\
 @V\phi_A V V @V V\phi_A&amp;rsquo; V\\
 E_A @&amp;gt;\phi_B&amp;rsquo; &amp;gt;&amp;gt; E_{AB} \end{CD}$$&lt;/p&gt;
 &lt;p&gt;実際の鍵交換アルゴリズムは次に従います [2]．&lt;/p&gt;
-&lt;h5 id=&#34;public-parameter&#34;&gt;public parameter&lt;/h5&gt;
-&lt;ul&gt;
+&lt;h5 id=&#34;public-parameter&#34;&gt;public parameter
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;$p = l_A^{e_A}l_B^{e_B} - 1$&lt;/li&gt;
 &lt;li&gt;super singular elliptic curve $E_0(\mathbb{F_{p^2}})$&lt;/li&gt;
 &lt;li&gt;生成元 $P_A, Q_A \in E\lbrack l_A^{e_A}\rbrack$&lt;/li&gt;
 &lt;li&gt;生成元 $P_B, Q_B \in E\lbrack l_B^{e_B}\rbrack$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;alices-key&#34;&gt;Alice&amp;rsquo;s key&lt;/h5&gt;
-&lt;ul&gt;
+&lt;h5 id=&#34;alices-key&#34;&gt;Alice&amp;rsquo;s key
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;(private) 乱数 $m_A,n_A \in (\Z/l_A^{e_A}\Z)^\times$&lt;/li&gt;
 &lt;li&gt;(private) 同種写像 $\phi_A: E_0 \rightarrow E_A,$　ただし $\ker \phi_A = \left&amp;lt; [m_A]P_A + [n_A]Q_A \right&amp;gt;$&lt;/li&gt;
 &lt;li&gt;(public) $\phi_A(P_B),\ \phi_A(Q_B)$&lt;/li&gt;
 &lt;li&gt;(public) $E_A = \phi_A(E_0)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;bobs-key&#34;&gt;Bob&amp;rsquo;s key&lt;/h5&gt;
-&lt;ul&gt;
+&lt;h5 id=&#34;bobs-key&#34;&gt;Bob&amp;rsquo;s key
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;(private) 乱数 $m_B, n_B \in (\Z/l_B^{e_B}\Z)^\times$&lt;/li&gt;
 &lt;li&gt;(private) 同種写像 $\phi_B: E_0 \rightarrow E_B,$　ただし $\ker \phi_B = \left&amp;lt; [m_B]P_B + [n_B]Q_B \right&amp;gt;$&lt;/li&gt;
 &lt;li&gt;(public) $\phi_B(P_A),\ \phi_B(Q_A)$&lt;/li&gt;
 &lt;li&gt;(public) $E_B = \phi_B(E_0)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;鍵交換手順&#34;&gt;鍵交換手順&lt;/h5&gt;
-&lt;p&gt;[Alice]&lt;/p&gt;
+&lt;h5 id=&#34;鍵交換手順&#34;&gt;鍵交換手順
+&lt;/h5&gt;&lt;p&gt;[Alice]&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;同種写像 $\phi_A^0: E_B \rightarrow E_{AB}$ を計算．ただし $\ker \phi_A^0 = \left&amp;lt; [m_A]\phi_B(P_A) + [n_A]\phi_B(Q_A) \right&amp;gt;$&lt;/li&gt;
 &lt;li&gt;$E_{AB} = \phi_A^0(E_B) = \phi_A^0(\phi_B(E_0))$ を計算&lt;/li&gt;
@@ -344,30 +343,29 @@ E_A @&amp;gt;\phi_B&amp;rsquo; &amp;gt;&amp;gt; E_{AB} \end{CD}$$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;j不変量 $j(E_{AB})$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;参考文献&#34;&gt;参考文献&lt;/h3&gt;
-&lt;p&gt;[1] 相川勇輔，&amp;ldquo;同種写像暗号１：楕円曲線と同種写像グラフ&amp;rdquo;．https://joint.imi.kyushu-u.ac.jp/wp-content/uploads/2022/08/220802_03aikawa.pdf&lt;br&gt;
+&lt;h3 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h3&gt;&lt;p&gt;[1] 相川勇輔，&amp;ldquo;同種写像暗号１：楕円曲線と同種写像グラフ&amp;rdquo;．https://joint.imi.kyushu-u.ac.jp/wp-content/uploads/2022/08/220802_03aikawa.pdf&lt;br&gt;
 [2] David Jao，Luca De Feo，&amp;ldquo;Towards quantum-resistant cryptosystems from supersingular elliptic curve isogenies&amp;rdquo;&lt;/p&gt;
-&lt;h2 id=&#34;q1-発展&#34;&gt;Q1 (発展)&lt;/h2&gt;
-&lt;p&gt;僕は上の問題で SIDH を選択したので次の設問でした．&lt;/p&gt;
+&lt;h2 id=&#34;q1-発展&#34;&gt;Q1 (発展)
+&lt;/h2&gt;&lt;p&gt;僕は上の問題で SIDH を選択したので次の設問でした．&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;似た名前のCSIDHという手法があります. CSIDHとSIDHはどのように異なるのでしょうか.&lt;/li&gt;
 &lt;li&gt;「SIDHは解読された」という報告が昨年ありました. 2023年3月時点では更に進化しているようです. 応募時点までで, SIDHの解読手法にはどのようなものがあるのでしょうか.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;csidh-と-sidh-の違い&#34;&gt;CSIDH と SIDH の違い&lt;/h3&gt;
-&lt;p&gt;CSIDH は SIDH と同じ超特異楕円曲線の同型類を利用したアルゴリズムですが，SIDH とは異なり計算効率の都合上，基本的には Montgomery曲線のみを使用します (Edwards曲線など他のタイプのものを利用した構成法の研究もされています [1] ) ．&lt;/p&gt;
+&lt;h3 id=&#34;csidh-と-sidh-の違い&#34;&gt;CSIDH と SIDH の違い
+&lt;/h3&gt;&lt;p&gt;CSIDH は SIDH と同じ超特異楕円曲線の同型類を利用したアルゴリズムですが，SIDH とは異なり計算効率の都合上，基本的には Montgomery曲線のみを使用します (Edwards曲線など他のタイプのものを利用した構成法の研究もされています [1] ) ．&lt;/p&gt;
 &lt;p&gt;Montgomery曲線は $E:y^2 = x^3+Ax^2 +x$ と表されるもので，後述しますが CSIDH の公開鍵は曲線のみなのでパラメータ $A$ のみとなります．そのため他ポスト量子暗号と比べて公開鍵のサイズが小さいことが利点であった SIDH よりも，さらに公開鍵が小さく [2]，64バイトで十分なセキュリティレベルを確保できます．&lt;/p&gt;
-&lt;h4 id=&#34;p-の生成法の違い&#34;&gt;$p$ の生成法の違い&lt;/h4&gt;
-&lt;p&gt;SIDH で使用する素数は $p = l_A^{e_A} l_B^{e_B} - 1$ で生成していました．しかし CSIDH では $p = 4l_1 l_2 \cdots l_n - 1$ で生成します [3] ．この $l$ の数が多ければ多いほど，同種写像グラフのパスの数が多くなり強固なアルゴリズムとなります．&lt;/p&gt;
-&lt;h4 id=&#34;鍵の違い&#34;&gt;鍵の違い&lt;/h4&gt;
-&lt;p&gt;SIDH における秘密鍵は，二種類の乱数とあるカーネルを持つ同種写像でした．また公開鍵は，公開情報の点と曲線を秘密鍵の同種写像で移したものでした．
+&lt;h4 id=&#34;p-の生成法の違い&#34;&gt;$p$ の生成法の違い
+&lt;/h4&gt;&lt;p&gt;SIDH で使用する素数は $p = l_A^{e_A} l_B^{e_B} - 1$ で生成していました．しかし CSIDH では $p = 4l_1 l_2 \cdots l_n - 1$ で生成します [3] ．この $l$ の数が多ければ多いほど，同種写像グラフのパスの数が多くなり強固なアルゴリズムとなります．&lt;/p&gt;
+&lt;h4 id=&#34;鍵の違い&#34;&gt;鍵の違い
+&lt;/h4&gt;&lt;p&gt;SIDH における秘密鍵は，二種類の乱数とあるカーネルを持つ同種写像でした．また公開鍵は，公開情報の点と曲線を秘密鍵の同種写像で移したものでした．
 一方で CSIDH の秘密鍵は ${-m,\cdots,0,\cdots,m}$ からランダムにサンプルされた $n$ 個の整数 $(e_1,\cdots,e_n)$ となります [3] ．ただしこの時の $m$ は，$2m + 1 \geq \sqrt[2n]{p}$ となる最小の $m$ で，$-m$ から $m$ の範囲は非常に小さく $e$ は全体で $(\log p)/2$ ビット程度となります．
 また CSIDH の公開鍵はモンゴメリ曲線 $E:y^2 = x^3 + Ax^2 + x$ です．この曲線は $A \in \F_p$ のみで特徴づけられるため非常に小さいサイズで表すことができます．&lt;/p&gt;
 &lt;p&gt;また CSIDH は SIDH と違って曲線上の点を公開情報とする必要がないため，それに対する特殊な攻撃手法を発見するのが難しくなっています．&lt;/p&gt;
-&lt;h4 id=&#34;可換図式の違い&#34;&gt;可換図式の違い&lt;/h4&gt;
-&lt;p&gt;SIDH では単に同種写像を持ってきて鍵交換の可換図式を作っていましたが，CSIDH では群作用による可換図式になります．&lt;/p&gt;
+&lt;h4 id=&#34;可換図式の違い&#34;&gt;可換図式の違い
+&lt;/h4&gt;&lt;p&gt;SIDH では単に同種写像を持ってきて鍵交換の可換図式を作っていましたが，CSIDH では群作用による可換図式になります．&lt;/p&gt;
 &lt;p&gt;$p = 4l_1 l_2 \cdots l_n - 1$ なので $p \equiv 3 \mod 8$ となり，このような超楕円曲線の自己準同型環は，$[n]$ を $n$，Frobenius写像を $\pi = \sqrt{-p}$ に対応させれば $\End(E) \simeq \Z[\pi]$ となります [3] ．そのためこれのイデアル類群 $\cl$ を考えることができ，これは CSIDH の対象となる曲線の同型類の集合 $\ell$ に対して作用し $(\ell, \cl)$ が hard homogenous space [14] になります．
 具体的には，$[\a] \in \cl,\ E \in \ell$ として準同型 $\phi_\a(E) = E / \a$ です．ただし $\ker \phi_\a$ は， $\alpha \in \Z[\pi]$ と $\End(E)$ を同一視して $\ker \phi_\a = \bigcap_{\alpha \in \a_s} \ker \alpha$ です．&lt;/p&gt;
 &lt;p&gt;この群作用で以下の可換図式が作れ，これで鍵交換が行えます．&lt;/p&gt;
@@ -523,10 +521,10 @@ E_A @&amp;gt;[\b] &amp;gt;&amp;gt; E_{AB} \end{CD}$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;sharing complete と表示されて，うまく共有できていることが確認できました．&lt;/p&gt;
-&lt;h3 id=&#34;sidh-への攻撃手法と-cd-attack&#34;&gt;SIDH への攻撃手法と CD attack&lt;/h3&gt;
-&lt;p&gt;SIDH への攻撃手法としては以下のようなものが挙げられます．&lt;/p&gt;
-&lt;h4 id=&#34;meet-in-the-middle-4&#34;&gt;Meet-in-the-Middle [4]&lt;/h4&gt;
-&lt;p&gt;一般的に楕円曲線の $l$-isogeny は $l+1$ 個あります．そのため同種写像グラフの各ノードからは $l+1$ 本のエッジが出ています．
+&lt;h3 id=&#34;sidh-への攻撃手法と-cd-attack&#34;&gt;SIDH への攻撃手法と CD attack
+&lt;/h3&gt;&lt;p&gt;SIDH への攻撃手法としては以下のようなものが挙げられます．&lt;/p&gt;
+&lt;h4 id=&#34;meet-in-the-middle-4&#34;&gt;Meet-in-the-Middle [4]
+&lt;/h4&gt;&lt;p&gt;一般的に楕円曲線の $l$-isogeny は $l+1$ 個あります．そのため同種写像グラフの各ノードからは $l+1$ 本のエッジが出ています．
 同種写像問題で求めたい同種写像の始域と終域に相当するノードから，$l$-isogeny を計算していって同種写像グラフを探索するアルゴリズムが Meet-int-the-Middle です．&lt;/p&gt;
 &lt;p&gt;$E_0$ と $E_A$ から Alice の $\phi_A$ を求めたいときは，次のようにします．&lt;/p&gt;
 &lt;ol&gt;
@@ -536,8 +534,8 @@ E_A @&amp;gt;[\b] &amp;gt;&amp;gt; E_{AB} \end{CD}$$&lt;/p&gt;
 &lt;li&gt;2 と 3 で列挙した曲線のうち等しいものを探し，それぞれの $l_A$-isogeny の適用順から $\phi_A$ を復元する&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;このアルゴリズムの計算量は $O(l_A^{e_A/2})$ で非常に時間がかかりますが一般的な解法で，また brute force のような素直な方法です．&lt;/p&gt;
-&lt;h4 id=&#34;gpst-attack&#34;&gt;GPST attack&lt;/h4&gt;
-&lt;p&gt;Alice が同じ秘密鍵を使いまわし，なおかつオラクルとして鍵交換の成功/失敗が得られるとき，evil な Bob が Alice の秘密鍵を復元できてしまうものです．ここでは簡単のため秘密鍵 $m_A,m_B = 1$ として，Alice の秘密鍵 $n_A$ を割り出す方法を説明します [5] ．&lt;/p&gt;
+&lt;h4 id=&#34;gpst-attack&#34;&gt;GPST attack
+&lt;/h4&gt;&lt;p&gt;Alice が同じ秘密鍵を使いまわし，なおかつオラクルとして鍵交換の成功/失敗が得られるとき，evil な Bob が Alice の秘密鍵を復元できてしまうものです．ここでは簡単のため秘密鍵 $m_A,m_B = 1$ として，Alice の秘密鍵 $n_A$ を割り出す方法を説明します [5] ．&lt;/p&gt;
 &lt;p&gt;本来 Bob は公開鍵として $\phi_B(P_A),\ \phi_B(Q_A),\ E_B = \phi_B(E_0)$ を Alice に渡します．ここで $\phi_B(Q_A)$ を渡す代わりに $[l_A^{e_A - 1}] \phi_B(P_A) + \phi_B(Q_A)$ を渡します．
 この状態で Alice が通常の鍵共有を行うと，得られる同種写像のカーネルは $\left&amp;lt; \phi_B(P_A) + [n_A] ([l_A^{e_a - 1}] \phi_B(P_A) + \phi_B(Q_A)) \right&amp;gt;$ となります．&lt;/p&gt;
 &lt;p&gt;$[l_A^{e_a - 1}] \phi_B(P_A)$ は位数が 2 になるはずなので，もしも $n_A$ が偶数であれば $[n_A l_A^{e_a - 1}] \phi_B(P_A) = \O$ となります．逆に $n_A$ が奇数であればカーネルは無限遠点となりません．&lt;/p&gt;
@@ -548,16 +546,16 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;p&gt;するとカーネルを構成する点の位数により，$n_A$ の $i$ ビット目が $0$ であれば鍵共有が成立します．
 よって鍵交換ができたか否かのオラクルで $n_A$ の各ビットが計算できます．&lt;/p&gt;
 &lt;p&gt;この攻撃により，SIDH ベースの IND-CCA を満たす PKE は作れないと考えられています [5] ．&lt;/p&gt;
-&lt;h4 id=&#34;torsion-point-attack&#34;&gt;Torsion-point attack&lt;/h4&gt;
-&lt;p&gt;$l_A^{e_A}$ と $l_B^{e_B}$ の数値のバランスが悪いとき，特に $l_B^{e_B} \geq l_A^{5e_a}$ 程度 [6] の時に多項式時間で攻撃されてしまうようです．&lt;/p&gt;
+&lt;h4 id=&#34;torsion-point-attack&#34;&gt;Torsion-point attack
+&lt;/h4&gt;&lt;p&gt;$l_A^{e_A}$ と $l_B^{e_B}$ の数値のバランスが悪いとき，特に $l_B^{e_B} \geq l_A^{5e_a}$ 程度 [6] の時に多項式時間で攻撃されてしまうようです．&lt;/p&gt;
 &lt;p&gt;この攻撃は，特に SSI-T で $n$ 人のグループ間鍵共有を行う時に危険になり，例えば $p = l_1^{e_1} l_2^{e_2} \cdots l_n^{e_n} - 1$ として $l_i^{e_i} \simeq l_j^{e_j}$ であるとき，6 人以上の鍵共有なら  $A = l_1^{e_1},\ B=l_2^{e_2}\cdots l_n^{e_n}$ とすると $B \geq A^5$ くらいになって攻撃が成立します．&lt;/p&gt;
-&lt;h4 id=&#34;castryck-らによる攻撃&#34;&gt;Castryck らによる攻撃&lt;/h4&gt;
-&lt;p&gt;2022年に Castryck と Decru により発見された [7]，Kani の定理を利用した SIKE に対する多項式時間の攻撃法です．このアルゴリズムにより Microsoft の $IKEp217 challenge をシングルコアで 5分以内で解いたり，SIKEp434 や SIKEp751 などのパラメータを現実的な時間で破られています [8] ．また著者による Magma script が公開され [9]，これを基にさらに高速化した実装 [10] もあります．&lt;/p&gt;
+&lt;h4 id=&#34;castryck-らによる攻撃&#34;&gt;Castryck らによる攻撃
+&lt;/h4&gt;&lt;p&gt;2022年に Castryck と Decru により発見された [7]，Kani の定理を利用した SIKE に対する多項式時間の攻撃法です．このアルゴリズムにより Microsoft の $IKEp217 challenge をシングルコアで 5分以内で解いたり，SIKEp434 や SIKEp751 などのパラメータを現実的な時間で破られています [8] ．また著者による Magma script が公開され [9]，これを基にさらに高速化した実装 [10] もあります．&lt;/p&gt;
 &lt;p&gt;また Maino らによる Kani の定理を利用した攻撃 [11] も平衡して発見されており，これらを基に Robert によりさらに拡張された攻撃方法 [12] によって一般的な SIDH は破られてしまいました．
 さらに， Robert の攻撃は $E_0^4 \times E_A^4$ の　8次元の特殊な自己準同型の計算が必要になり，それによって実用に制約がかかる可能性がありますが，2023年に入ってからそれを解決するために SIDH の公開情報をうまく利用した手法 [13] も提案されているようです．&lt;/p&gt;
 &lt;p&gt;攻撃の原理や仕組みはいまいち理解できませんでした．ただとてもクリティカルなアルゴリズムなのですごく理解したいです．&lt;/p&gt;
-&lt;h3 id=&#34;参考文献-1&#34;&gt;参考文献&lt;/h3&gt;
-&lt;p&gt;[1] 守谷共起，&amp;ldquo;同種写像暗号 CSIDH の Edwards 曲線による構成と超特異曲線の信頼できる生成法&amp;rdquo;&lt;br&gt;
+&lt;h3 id=&#34;参考文献-1&#34;&gt;参考文献
+&lt;/h3&gt;&lt;p&gt;[1] 守谷共起，&amp;ldquo;同種写像暗号 CSIDH の Edwards 曲線による構成と超特異曲線の信頼できる生成法&amp;rdquo;&lt;br&gt;
 [2] 川合豊，廣政良，相川勇輔，&amp;ldquo;耐量子計算機暗号 ―量子コンピュータによる解読にも耐え得る次世代暗号―&amp;rdquo;&lt;br&gt;
 [3] Wouter Castryck，Tanja Lange，Chloe Martindale，Lorenz Panny，Joost Renes，&amp;ldquo;CSIDH: An Efficient Post-Quantum Commutative Group Action&amp;rdquo;&lt;br&gt;
 [4] Brandon Langenberg，&amp;ldquo;Cryptanalysis of known and attempted attacks on SIDH and SIKE&amp;rdquo;&lt;br&gt;
@@ -572,13 +570,12 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 [12] Damien Robert，&amp;ldquo;Breaking SIDH in polynomial time&amp;rdquo;&lt;br&gt;
 [13] Luciano Maino，Chloe Martindale1，Lorenz Panny，Giacomo Pope，Benjamin Wesolowski，&amp;ldquo;A Direct Key Recovery Attack on SIDH&amp;rdquo;&lt;br&gt;
 [14] Jean-Marc Couveignes，&amp;ldquo;Hard Homogeneous&amp;rdquo;&lt;/p&gt;
-&lt;h2 id=&#34;q2&#34;&gt;Q2&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Q1で選択した暗号方式を実装してください.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;q2&#34;&gt;Q2
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Q1で選択した暗号方式を実装してください.&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;sidh-の実装&#34;&gt;SIDH の実装&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;sidh-の実装&#34;&gt;SIDH の実装
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -660,14 +657,13 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;sharing complete と表示されてうまく共有できていることが確認できました．&lt;/p&gt;
-&lt;h2 id=&#34;q2-発展&#34;&gt;Q2 (発展)&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Q2の回答に関して, 「なぜその実装は正しいのですか」と聞かれたとき, あなたならどう返答しますか?&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;q2-発展&#34;&gt;Q2 (発展)
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Q2の回答に関して, 「なぜその実装は正しいのですか」と聞かれたとき, あなたならどう返答しますか?&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;これがすごく難しかったです．Q2 の実装で shared_a と shared_b が等しいこと確認するのではなく，すでにあるパラメータですでにある計算結果と比較してみるべきでした．（講師の先生曰く，その意味では Q2 で $IKEp182 のパラメータを使っているのは良いとのこと）&lt;/p&gt;
 &lt;p&gt;100回計算してちゃんと鍵共有できてることを確認したのですが，僕自身「これはギャグだろ……」って思ってたのでちゃんとした解答を講師の先生から聞けたのはよかったです．&lt;/p&gt;
-&lt;h3 id=&#34;検証&#34;&gt;検証&lt;/h3&gt;
-&lt;p&gt;以下のコードで，Q2 で実装した SIDH のアルゴリズムを 100回計算しました．&lt;/p&gt;
+&lt;h3 id=&#34;検証&#34;&gt;検証
+&lt;/h3&gt;&lt;p&gt;以下のコードで，Q2 で実装した SIDH のアルゴリズムを 100回計算しました．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -745,23 +741,22 @@ $\alpha = (1 + 2^{n-i-1})^{1/2} \mod 2^n$ として，$\phi_B(P_A)$ を公開す
 &lt;/div&gt;&lt;p&gt;これを実行すると，一度も 41行目の assert に引っかからず正常終了しました．そのため，Alice と Bob の秘密鍵によって鍵共有が失敗することはないと考えます．&lt;/p&gt;
 &lt;p&gt;ただ shared の共有ができてアルゴリズムが正しそうでも，電力解析や時間計測系の攻撃のような理論で保障されていない部分に対してもセキュアであるかはわかりません．暗号実装の正しさはそこまで調べなくてはいけませんが，これを判断するのは一人ではとても大変で，また非常に長い時間をかけて精査しなくてはいけません．&lt;/p&gt;
 &lt;p&gt;そのため，この SIDH の実装に関して「正しい」といえるのは「shared の交換が $IKEp182 のパラメータでできる」というところまでで，これ以上の検証できませんでした．&lt;/p&gt;
-&lt;h2 id=&#34;q3&#34;&gt;Q3&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;あなたが面白いと思った暗号方式を一つ取り上げ, それを説明・実装してください.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;q3&#34;&gt;Q3
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;あなたが面白いと思った暗号方式を一つ取り上げ, それを説明・実装してください.&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;非可換群に関連する暗号はどんなものがあるのか気になったので調べてみると braid群を利用した暗号があったため，それについて勉強してみました．&lt;/p&gt;
-&lt;h3 id=&#34;braid群&#34;&gt;braid群&lt;/h3&gt;
-&lt;p&gt;braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post17/braids.png&#34; width=&#34;30%&#34;&gt;
+&lt;h3 id=&#34;braid群&#34;&gt;braid群
+&lt;/h3&gt;&lt;p&gt;braid群 $B_n$ は，対称群 $S_n$ の置換の途中で画像のような紐の重なりを考慮した組みひもの集合です [1] ．&lt;/p&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post17/braids.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;この紐の交差の回数に制限がないため，$B_n$ は無限群です．例えば，二本の組み紐があって，その交差の回数を絶対値，最初の交差が左側の紐が上なのか右側の紐が上なのかで符号を対応させれば $B_2 \simeq \Z$ です．&lt;/p&gt;
 &lt;p&gt;組み紐が等しいというのは，空間上の紐を動かして全く同じ形にできるときを言います．この等号条件により，組み紐という幾何的な表現から，置換と紐の重なりを抽象化して代数的に考えることができるようになります．&lt;/p&gt;
 &lt;p&gt;演算は対称群と同じように，左側の項による置換操作を行った後に右側の項による置換操作を行うものとなります．逆元としては上下を鏡像反転した組み紐が対応します．&lt;/p&gt;
-&lt;h4 id=&#34;artin-generator&#34;&gt;Artin Generator&lt;/h4&gt;
-&lt;p&gt;Artin Generator $\sigma_i\ (0 \leq i &amp;lt; n)$ は，$i$ 番から $i+1$ 番に紐を伸ばしたあと，$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] ．&lt;/p&gt;
-&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post17/artin.png&#34; width=&#34;30%&#34;&gt;
+&lt;h4 id=&#34;artin-generator&#34;&gt;Artin Generator
+&lt;/h4&gt;&lt;p&gt;Artin Generator $\sigma_i\ (0 \leq i &amp;lt; n)$ は，$i$ 番から $i+1$ 番に紐を伸ばしたあと，$i+1$ 番から $i$ 番に紐を伸ばしたものと対応します [1] ．&lt;/p&gt;
+&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;http://localhost:1313/blog/post17/artin.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;組み紐の演算を想像すれば，次の性質が成り立つことが確かめられます．
@@ -770,37 +765,37 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; \ ( |
 &lt;p&gt;上の性質がまさに $B_n$ の基本関係となり，これによって finite presentation が与えられます．&lt;/p&gt;
 &lt;p&gt;$$B_{n} =\left&amp;lt; \sigma _{1} ,\sigma _{2} ,\cdots ,\sigma _{n-1}\middle|  \begin{aligned} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; &amp;amp; \ ( |i-j|&amp;gt;1)\\ \sigma _{i} \sigma _{j} \sigma _{i} =\sigma _{j} \sigma _{i} \sigma _{j} &amp;amp; &amp;amp; \ ( |i-j| =1)\end{aligned}\right&amp;gt;$$&lt;/p&gt;
 &lt;p&gt;数式処理ソフトで braid群を扱うには，例えば自由群を Artin Generator の関係式で剰余をとることなどで使用できます．また sagemath には BraidGroup() というメソッドがあり，これで比較的簡単に計算が行えます．&lt;/p&gt;
-&lt;h3 id=&#34;braid暗号-23&#34;&gt;braid暗号 [2][3]&lt;/h3&gt;
-&lt;p&gt;braid暗号は，braid群 $B_n$ の部分群，$LB_l,RB_r$ によって構成されます．&lt;/p&gt;
+&lt;h3 id=&#34;braid暗号-23&#34;&gt;braid暗号 [2][3]
+&lt;/h3&gt;&lt;p&gt;braid暗号は，braid群 $B_n$ の部分群，$LB_l,RB_r$ によって構成されます．&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$LB_l$：$B_n$ の紐のうち左側 $l$ 本を用いて構成されるもの&lt;/li&gt;
 &lt;li&gt;$RB_r$：$B_n$ の紐のうち右側 $r$ 本を用いて構成されるもの&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;定義から $LB_l = (\sigma_1,\sigma_2,\cdots,\sigma_{l-1}),RB_r = (\sigma_{n-r-1}, \sigma_{n-r-2}, \cdots, \sigma_{n-1})$ なので，任意の $a_l \in LB_l, b_r \in RB_r$ に対して $a_l b_r = b_r a_l$ となります．&lt;/p&gt;
-&lt;h4 id=&#34;base-problem&#34;&gt;Base Problem&lt;/h4&gt;
-&lt;p&gt;braid暗号は以下の仮定を基に実現されています．&lt;/p&gt;
-&lt;h5 id=&#34;conjugacy-problem&#34;&gt;conjugacy problem&lt;/h5&gt;
-&lt;ul&gt;
+&lt;h4 id=&#34;base-problem&#34;&gt;Base Problem
+&lt;/h4&gt;&lt;p&gt;braid暗号は以下の仮定を基に実現されています．&lt;/p&gt;
+&lt;h5 id=&#34;conjugacy-problem&#34;&gt;conjugacy problem
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;秘密 $a \in LB_l,b \in RB_r$ に対して，$y_1 = axa^{-1},y_2 = bxb^{-1}$ となる $(x,y_1,y_2)$ から秘密 $(a, b)$ を求めるのは計算量的に困難である．&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;鍵生成&#34;&gt;鍵生成&lt;/h4&gt;
-&lt;ol&gt;
+&lt;h4 id=&#34;鍵生成&#34;&gt;鍵生成
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;$u \in B_n$ を選択&lt;/li&gt;
 &lt;li&gt;$a_l \in LB_l$ を選択&lt;/li&gt;
 &lt;li&gt;$v = a_l u a_l^{-1}$ を計算し，秘密鍵を $a_l$，公開鍵を $(u,v)$ とする&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;暗号化&#34;&gt;暗号化&lt;/h4&gt;
-&lt;p&gt;メッセージを $m = {0,1}^k$ とし，$H:B_n \rightarrow {0,1}^k$ をハッシュ関数とする．&lt;/p&gt;
+&lt;h4 id=&#34;暗号化&#34;&gt;暗号化
+&lt;/h4&gt;&lt;p&gt;メッセージを $m = {0,1}^k$ とし，$H:B_n \rightarrow {0,1}^k$ をハッシュ関数とする．&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$b_r \in RB_r$ を選択&lt;/li&gt;
 &lt;li&gt;$w = b_rub_r^{-1}$ を計算&lt;/li&gt;
 &lt;li&gt;$d = H(b_rvb_r^{-1}) \oplus m$ を計算し，暗号文を $(w, d)$ とする&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;複合&#34;&gt;複合&lt;/h4&gt;
-&lt;p&gt;以下の式で複合ができます．&lt;/p&gt;
+&lt;h4 id=&#34;複合&#34;&gt;複合
+&lt;/h4&gt;&lt;p&gt;以下の式で複合ができます．&lt;/p&gt;
 &lt;p&gt;$$\begin{aligned} H(a_lwa_l^{-1}) \oplus d &amp;amp;= H(a_lb_rub_r^{-1}a_l^{-1}) \oplus d \ &amp;amp;= H(b_rvb_r^{-1}) \oplus H(b_rvb_r^{-1}) \oplus m \ &amp;amp;= m \end{aligned}$$&lt;/p&gt;
-&lt;h4 id=&#34;実装&#34;&gt;実装&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;実装&#34;&gt;実装
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -990,17 +985,16 @@ $$\begin{cases} \sigma _{i} \sigma _{j} =\sigma _{j} \sigma _{i} &amp;amp; \ ( |
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;メッセージが暗号化され，また複合もうまく機能していることが確認できました．&lt;/p&gt;
-&lt;h3 id=&#34;参考文献-2&#34;&gt;参考文献&lt;/h3&gt;
-&lt;p&gt;[1] E. Artin，&amp;ldquo;Theorie der Zöpfe&amp;rdquo;&lt;br&gt;
+&lt;h3 id=&#34;参考文献-2&#34;&gt;参考文献
+&lt;/h3&gt;&lt;p&gt;[1] E. Artin，&amp;ldquo;Theorie der Zöpfe&amp;rdquo;&lt;br&gt;
 [2] 田中裕子，&amp;ldquo;ブレイド群を利用した公開鍵暗号系の実装と性能評価実験&amp;rdquo;&lt;br&gt;
 [3] 上村恭子，&amp;ldquo;Braid 群の conjugacy algorithm について&amp;rdquo;&lt;/p&gt;
-&lt;h2 id=&#34;q3-発展&#34;&gt;Q3 (発展)&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;また, その暗号が安全かどうかを説明し, 解読手法が存在するなら, それを実装してみてください.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&#34;q3-発展&#34;&gt;Q3 (発展)
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;また, その暗号が安全かどうかを説明し, 解読手法が存在するなら, それを実装してみてください.&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;暗号の安全性&#34;&gt;暗号の安全性&lt;/h3&gt;
-&lt;p&gt;braid暗号は，braid群の conjugacy problem の困難性と等価であると考えられており，また conjugacy problem の多項式時間解法はこの暗号が提案された当初は発見されていませんでした [2] ．
+&lt;h3 id=&#34;暗号の安全性&#34;&gt;暗号の安全性
+&lt;/h3&gt;&lt;p&gt;braid暗号は，braid群の conjugacy problem の困難性と等価であると考えられており，また conjugacy problem の多項式時間解法はこの暗号が提案された当初は発見されていませんでした [2] ．
 conjugacy problem は 2018 年の時点でもまだ難しいようです [5] ．&lt;/p&gt;
 &lt;p&gt;しかし braid群の共役問題全般に関連する非常に強力なツールは古くから知られているようです．Super Summit Set [1] や Ultra Summit Set と呼ばれる集合を列挙する問題に帰着して conjugacy problem を解くアルゴリズムが発見されています [3][4] ．&lt;/p&gt;
 &lt;p&gt;どちらもある組み紐に対して共役な組み紐をある制限の下で列挙した集合なので，特に Super Summit Set の要素数は，braid群 $B_n$ の組み紐の長さに対して指数関数的に大きくなるため計算するのが大変です．しかし Ultra Summit Set は Super Summit Set にさらに制約を加えたもので，組み紐の長さに対して線形のサイズになる可能性があり，その場合は多項式時間で conjugacy problem が解かれてしまいます [4] ．&lt;/p&gt;
@@ -1008,8 +1002,8 @@ conjugacy problem は 2018 年の時点でもまだ難しいようです [5] ．
 &lt;p&gt;他にも同じように Ultra Summit Set のさらに制約を強めた部分集合を定義して，その要素を列挙して conjugacy problem を解こうと研究されているようですが，まだまだ探索空間の上界を多項式で抑えられていないようです [5] ．
 そのためまだ多項式時間解法が得られておらず，暗号アルゴリズムの基礎問題としては十分に機能します．&lt;/p&gt;
 &lt;p&gt;しかしうまくいくかわからないとはいえ，これらの conjugacy problem に対する非常に強力なツールが発見されていることは個人的には少し怖いと思う一方，braid群は数学や物理の世界で非常に有用なツールとて詳細に解析されているため，既存の問題に対応さえできればクリティカルに脆弱となる部分が発見されにくいとも考えています．&lt;/p&gt;
-&lt;h3 id=&#34;鍵生成時の-u-が脆弱な場合の解読手法&#34;&gt;鍵生成時の $u$ が脆弱な場合の解読手法&lt;/h3&gt;
-&lt;p&gt;braid暗号が多項式時間で解けてしまう場合の例として，鍵生成時の $u$ の選び方が不適切な場合があります [6] ．&lt;/p&gt;
+&lt;h3 id=&#34;鍵生成時の-u-が脆弱な場合の解読手法&#34;&gt;鍵生成時の $u$ が脆弱な場合の解読手法
+&lt;/h3&gt;&lt;p&gt;braid暗号が多項式時間で解けてしまう場合の例として，鍵生成時の $u$ の選び方が不適切な場合があります [6] ．&lt;/p&gt;
 &lt;p&gt;$x_1 \in LB_l, x_2 \in RB_r, z \in B_n$ で
 $$\begin{cases}u=x_{1} x_{2} z &amp;amp; \\  z\ は\ a_{l} ,b_{r} ,x_{1} ,x_{2}\ と可換 &amp;amp;\end{cases}$$
 となる $x_1,x_2,z$ が見つかってしまうと脆弱となります．&lt;/p&gt;
@@ -1285,20 +1279,20 @@ $$\begin{aligned}a_{l} x_{1} a_{l}^{-1} &amp;amp; =vz^{-1} x_{2}^{-1}\\ b_{r} x_
 &lt;p&gt;これを防ぐには $u$ の因数に $B_n$ 全体を巡回置換するような元を含めればいいのではないかと考えます．そうすれば上の条件が成り立つ $z$ がないため，この攻撃に対しては安全になると考えます．
 ただ，巡回置換のような性質の良いもので対処するとまた別の攻撃が考えられてしまいそうな気もします．[5] によると，$\sigma_1 \sigma_2^{-1} \sigma_3 , \sigma_4^{-1}\cdots \sigma_{n-1}^{(-1)^n}$ のような元を利用すれば，十分に捩れるだけでなく Ultra Summit Set も大きくなりよさそうに思えますが，このような元をハードコーディングするのも $u$ をサンプリングする空間が限定的になってしまうため少し不安に感じます．
 組み紐の表示の一意性を担保するために長い組み紐が使いにくいことから $n$ をある程度大きくする必要もありますが，そうすると $u \in B_n$ のランダムサンプリングが意外と難しいのではないかと考えています．&lt;/p&gt;
-&lt;h3 id=&#34;参考文献-3&#34;&gt;参考文献&lt;/h3&gt;
-&lt;p&gt;[1] 上村恭子，&amp;ldquo;Braid 群の conjugacy algorithm について&amp;rdquo;&lt;br&gt;
+&lt;h3 id=&#34;参考文献-3&#34;&gt;参考文献
+&lt;/h3&gt;&lt;p&gt;[1] 上村恭子，&amp;ldquo;Braid 群の conjugacy algorithm について&amp;rdquo;&lt;br&gt;
 [2] Ki Hyoung Ko，Sang Jin Lee，Jung Hee Cheon，Jae Woo Han，Ju-sung Kang，Choonsik Park，&amp;ldquo;New Public-key Cryptosystem Using Braid Groups&amp;rdquo;&lt;br&gt;
 [3]  V. Gebhardt，&amp;ldquo;A New Approach to the Conjugacy Problem in Garside Groups&amp;rdquo;&lt;br&gt;
 [4] Chris Gatopoulos，&amp;ldquo;Braid Group Cryptography&amp;rdquo;&lt;br&gt;
 [5] Maxim Prasolov，&amp;ldquo;Small braids having a big Ultra Summit Set&amp;rdquo;&lt;br&gt;
 [6] 前田有宏，&amp;ldquo;ブレイド群を利用した公開鍵暗号系の実装&amp;rdquo;&lt;/p&gt;
-&lt;h2 id=&#34;q4&#34;&gt;Q4&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;自己アピールできることがあれば, ここに書いてください.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;q4&#34;&gt;Q4
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;自己アピールできることがあれば, ここに書いてください.&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;恥ずかしいので非公開です！！！&lt;br&gt;
 CTF をやっていたこと，今まで勉強してきた暗号関連の数学のこと（BKZ，Schoof のアルゴリズム，超楕円曲線暗号など），コンパイラやデバッガ，RISC-V 自作の話などブワーーーって書きました．&lt;/p&gt;
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;いかかでしたか？（迫真）&lt;/p&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ
+&lt;/h2&gt;&lt;p&gt;いかかでしたか？（迫真）&lt;/p&gt;
 &lt;p&gt;ゼミによっては簡潔にまとまっているものを評価するところもあるようなので，僕のこの記事が参考になるかはちょっと微妙です……．&lt;br&gt;
 それに僕のこの解答はまだまだ甘い部分が多く僕自身知識が浅いので，もしこの記事を参考に課題を書こうとしている方がいればそれは&lt;strong&gt;非推奨&lt;/strong&gt;です．僕の文章なんかよりもよく纏まった論文はたくさんありますし，講師の先生方は「原著にあたる」気持ちを重要視していたので，言葉通り原著にあたって真に理解してみてください．（暗号界隈はとてもオープンで，ePrint なんかで論文がサッと読めるのはありがたいですね）&lt;br&gt;
 これは僕の個人的な意見なのですが，ライブラリやツールに頼るだけでなく中身がどうなっているかを数学としてしっかり理解していくのが暗号の勉強で重要だと感じています．（暗号に限らない話だと思いますが）&lt;br&gt;
@@ -1310,10 +1304,10 @@ CTF をやっていたこと，今まで勉強してきた暗号関連の数学�
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup (English)</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -1324,12 +1318,11 @@ $$&lt;/p&gt;
     &gt;zer0pts ctf 2023&lt;/a&gt; on July 15.
 I&amp;rsquo;m happy to see so meny people participating!&lt;br&gt;
 I created 4 challenges in the crypto genre for this contest. Here, I&amp;rsquo;d like to explain the intended solution for me.&lt;/p&gt;
-&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;The word “decomposition” has multiple meanings.&lt;br&gt;
-Can you decompose?&lt;/p&gt;
-&lt;/blockquote&gt;
+Can you decompose?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1369,8 +1362,8 @@ Can you decompose?&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;The most important part of the given code is above.&lt;br&gt;
 Let $p,q$ are large prime and $N := p^2 + q^2$. Given $N$, we need restore $p,q$ from $N$ to get the flag.&lt;br&gt;
 The name of the challenge is easy_factoring, but what it is supposed to be is a sum-of-squares decomposition disguised as prime factorization. (Although, in the end, prime factorization is required)&lt;/p&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;The decomposition of $N$ into sums of squares can be solved if the Gaussian integer ring $\mathbb{Z}[i]$ can be solved for the prime elements of $N$.&lt;br&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;The decomposition of $N$ into sums of squares can be solved if the Gaussian integer ring $\mathbb{Z}[i]$ can be solved for the prime elements of $N$.&lt;br&gt;
 Now, $N$ is expressed as $N = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2) \cdots (\pi_s \bar \pi_s)$ by Gaussian primes $\pi_1,\pi_2,\cdots,\pi_s$.&lt;br&gt;
 Then for $a,b \in \mathbb{Z}$ such that $N = a^2 + b^2$, $N = (a + bi)(a - bi) = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2) \cdots (\pi_s \bar \pi_s)$ holds.&lt;/p&gt;
 &lt;p&gt;In short, integers $a,b$ such that $N$ decomposes into a sum of squares are included in the factors in $\mathbb{Z}[i]$ of $N$ as $a + bi$.&lt;br&gt;
@@ -1438,12 +1431,11 @@ Furthermore, it seems that the Diophantine problem can be solved by simply apply
 &lt;p&gt;I think easy_factoring was assumed to be easy in terms of difficulty, so there was little damage. But I regret that a non-intended solution was created that could be solved by just applying the tool.&lt;br&gt;
 At the beginning of the problem design, I was thinking of using the decomposition of the sum of squares to do collution attack with some system.&lt;br&gt;
 I wish I could have been more creative in that area. (I lacked the ability to create challenge&amp;hellip;)&lt;/p&gt;
-&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-1&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-1&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;RSA is hard over integer ring.&lt;br&gt;
-What about RSA over elliptic curve ring (!?)&lt;/p&gt;
-&lt;/blockquote&gt;
+What about RSA over elliptic curve ring (!?)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1499,8 +1491,8 @@ What about RSA over elliptic curve ring (!?)&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;The most important part of the given code is above.&lt;br&gt;
 Given a group ring constructed by coefficients $\mathbb{F}_p$ and basis $E(\mathbb{F}_p)$. (Sorry, the source code is complex to implement properly)&lt;br&gt;
 The task is to break the RSA on this group ring $\mathrm{ER}$.&lt;/p&gt;
-&lt;h3 id=&#34;solution-1&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Since it is a group ring, it seems to be homomorphic to the residue ring of some polynomial ring.&lt;br&gt;
+&lt;h3 id=&#34;solution-1&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;Since it is a group ring, it seems to be homomorphic to the residue ring of some polynomial ring.&lt;br&gt;
 So, first of all, I feel like computing the structure of $E(\Fp)$ and its order $o := \#E(\Fp)$.&lt;/p&gt;
 &lt;p&gt;Actually, the calculation shows that $o = 192$ and $E(\Fp) = \left&amp;lt; G \right&amp;gt;$ by $G := (189, 152)$.&lt;/p&gt;
 &lt;p&gt;Hence $\mathrm{ER} = \Fp[G]$, and if $[i]G \mapsto x^i$ then we can construct the isomorphism $\Fp[G] \simeq \Fp[x]/(x^o - 1)$.&lt;br&gt;
@@ -1879,11 +1871,10 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-2&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-2&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1926,8 +1917,8 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 Let $S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$ and $T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ be the maps.&lt;br&gt;
 There is also a secret hash function $h$, which consists of random composition of $S$ and $T$.&lt;br&gt;
 This challenge is to recover $h$ given some $z \in \mathbb{C}$ and its hash $h(z)$.&lt;/p&gt;
-&lt;h3 id=&#34;solution-2&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.&lt;br&gt;
+&lt;h3 id=&#34;solution-2&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.&lt;br&gt;
 Modular group $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ is a group action of $H$.&lt;br&gt;
 Since $H$ can be classified by orbits due to this action, so we can consider its orbit space $\Gamma \backslash H$. And, if the representatives are picked properly, this can be identify with fundamental domain $F$ defined below.
 $$
@@ -1940,7 +1931,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.&lt;br&gt;
 Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.&lt;br&gt;
 Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post16/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/diagram.png&#34;
 	
 	
 	
@@ -2183,12 +2174,11 @@ The lower half-plane can be solved in the same way by simply replacing $H$ with 
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Actually, I had planned to use moduhash as a crypto warmup.&lt;br&gt;
 If genius ptr-yudai had not created SquareRNG, I would have committed Seppuku (ritual suicide).&lt;/p&gt;
-&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-3&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-3&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;This is probably hard problem.
-Is this commutative or non-commutative?&lt;/p&gt;
-&lt;/blockquote&gt;
+Is this commutative or non-commutative?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2316,8 +2306,8 @@ The secret is $a_l \in \mathrm{LB}_l$ and public keys are $u \in B_n$, $v := a_l
 &lt;p&gt;Let $m$ is a message and $H\colon B_n \to {0,1}^k$ is a serialize function.&lt;br&gt;
 In encryption, server chooses $b_r \in \mathrm{RB}_r$ and calculate $w := b_r u b_r^{-1}$, $d := H(b_r v b_r^{-1}) \oplus m$.&lt;br&gt;
 And ciphertext is given as $(w,d)$.&lt;/p&gt;
-&lt;h3 id=&#34;solution-3&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;If we know $a_l$, we can decrypt as follows.
+&lt;h3 id=&#34;solution-3&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;If we know $a_l$, we can decrypt as follows.
 $$
 \begin{aligned}
 H(a_l w a_l^{-1}) \oplus d &amp;amp;= H(a_l b_r u b_r^{-1} a_l^{-1})\\
@@ -2359,7 +2349,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$
 Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post16/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/neco.jpg&#34;
 	
 	
 	
@@ -2550,10 +2540,10 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup（日本語）</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -2564,12 +2554,11 @@ $$&lt;/p&gt;
     &gt;zer0pts ctf 2023&lt;/a&gt; を開催しました．
 多くの方々に参加していただいて感謝しております．&lt;/p&gt;
 &lt;p&gt;僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．&lt;/p&gt;
-&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;The word “decomposition” has multiple meanings.&lt;br&gt;
-Can you decompose?&lt;/p&gt;
-&lt;/blockquote&gt;
+Can you decompose?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2609,8 +2598,8 @@ Can you decompose?&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;与えられたコードの中で特に重要な部分は上の部分です．&lt;br&gt;
 $p,q$ を 128 bits の素数とし，$N := p^2 + q^2$ が与えられます．このとき $p,q$ を発見することができたらフラグを取得できます．&lt;br&gt;
 easy_factoring という問題名ですが，やることは素因数分解と見せかけて平方和での分解です．（といっても結局素因数分解が必要になりますが）&lt;/p&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;$N$ の平方和での分解は，ガウス整数環 $\mathbb{Z}[i]$ で $N$ の素元分解ができれば解けます．&lt;br&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;$N$ の平方和での分解は，ガウス整数環 $\mathbb{Z}[i]$ で $N$ の素元分解ができれば解けます．&lt;br&gt;
 今 $N$ がガウス素数 $\pi_1,\pi_2,\cdots,\pi_s$ を用いて $N = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2)\cdots (\pi_s \bar \pi_s)$ と書けるとします．&lt;br&gt;
 このとき $N = a^2 + b^2$ となる $a,b\in \mathbb{Z}$ について，$N = (a + bi)(a - bi) = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2)\cdots (\pi_s \bar \pi_s)$ となります．&lt;/p&gt;
 &lt;p&gt;つまり $N$ を平方和に分解するような整数 $a,b$ は，$a + bi$ として $N$ の $\mathbb{Z}[i]$ での因数に含まれています．&lt;br&gt;
@@ -2677,12 +2666,11 @@ easy_factoring という問題名ですが，やることは素因数分解と�
 &lt;p&gt;さらにさらに，普通にディオファントス問題としてみて sympy のディオファントス問題ソルバにかけるだでも解けるようです．&lt;br&gt;
 easy_factoring は難易度として easy 想定だったので被害は少なかったと思いますが，それでもツールにかけるだけで解けちゃうタイプの非想定解が生まれてしまったのは反省しています．（warmup より solves 多いし）&lt;br&gt;
 問題の構想の最初の頃は平方和の分解を使って何らかのシステムに結託攻撃することを考えていたので，そっち方面でもっと練れていたらなという気持ちです．（作問力ぅ……）&lt;/p&gt;
-&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-1&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-1&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;RSA is hard over integer ring.&lt;br&gt;
-What about RSA over elliptic curve ring (!?)&lt;/p&gt;
-&lt;/blockquote&gt;
+What about RSA over elliptic curve ring (!?)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2738,8 +2726,8 @@ What about RSA over elliptic curve ring (!?)&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;与えられたコードの中で重要な部分は上の部分です．&lt;br&gt;
 またこの暗号化処理の上には $\Fp$ を係数として基底を $E(\Fp)$ で張った群環の実装がなされています．（正確に実装するためにそこそこ長いコードになってしまいました）&lt;br&gt;
 この問題は，その群環 $\mathrm{ER}$ 上で行われている $e = 13$ の RSA を破ることがゴールとなります．&lt;/p&gt;
-&lt;h3 id=&#34;solution-1&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;群環なので，何らかの多項式環の剰余環と準同型で結べそうな気がしてきます．ということでまずは $E(\Fp)$ の構造とその位数 $o := \#E(\Fp)$ を計算したい気持ちになってきます．&lt;br&gt;
+&lt;h3 id=&#34;solution-1&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;群環なので，何らかの多項式環の剰余環と準同型で結べそうな気がしてきます．ということでまずは $E(\Fp)$ の構造とその位数 $o := \#E(\Fp)$ を計算したい気持ちになってきます．&lt;br&gt;
 実際に計算すると $o = 192$ であることと，$G := (189, 152)$ によって $E(\Fp) = \left&amp;lt; G \right&amp;gt;$ となることがわかります．&lt;br&gt;
 したがって $\mathrm{ER} = \Fp[G]$ となり，$[i]G \mapsto x^i$ とすれば同型 $\Fp[G] \simeq \Fp[x]/(x^o - 1)$ が作れます．&lt;br&gt;
 よって $\mathrm{ER}$ 上での RSA は多項式の剰余環での RSA が解ければ破れます．&lt;/p&gt;
@@ -3116,11 +3104,10 @@ $e^{-1}$ の計算は，$x^o - 1$ の各因数 $f _ i$ について $e^{-1} \bmo
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-2&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-2&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3163,8 +3150,8 @@ $e^{-1}$ の計算は，$x^o - 1$ の各因数 $f _ i$ について $e^{-1} \bmo
 &lt;p&gt;$S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$，$T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ とします．&lt;br&gt;
 また秘匿されたハッシュ関数 $h$ があり，これは $S$ と $T$ のランダムな関数合成によって構成されています．&lt;br&gt;
 問題としては，ある $z \in \mathbb{C}$ とそのハッシュによる出力 $h(z)$ が与えられるので $h$ を復元してくださいという問題です．&lt;/p&gt;
-&lt;h3 id=&#34;solution-2&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．&lt;br&gt;
+&lt;h3 id=&#34;solution-2&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．&lt;br&gt;
 モジュラー群 $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ は $H$ に作用します．&lt;br&gt;
 この作用による軌道で $H$ を類別できるためその軌道空間 $\Gamma \backslash H$ を考えることができ，そこからうまく代表元を取ってくれば次で定義される基本領域 $F$ と同一視することができます．
 $$
@@ -3177,7 +3164,7 @@ $$&lt;/p&gt;
 &lt;p&gt;また後述する $\Gamma$ の生成元から $h \in \Gamma$ なので，$\tau$ と $h(\tau)$ の軌道について $\Gamma \tau = \Gamma h(\tau)$ が成り立ちます．&lt;br&gt;
 したがって $\tau, h(\tau) \in H$ が与えられたとき，$\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$ となる $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ を見つけることができれば $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ となります．&lt;br&gt;
 ここまでくればあとは簡単で，$\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$ となるため目的のハッシュ関数を計算することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post15/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/diagram.png&#34;
 	
 	
 	
@@ -3434,12 +3421,11 @@ $$
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;実は元々 moduhash が warmup になる予定でした．&lt;br&gt;
 天才 ptr-yudai 氏が SquareRNG を作ってくれていなかったら，今頃僕は責任を取って切腹することになっていたでしょう．&lt;/p&gt;
-&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-3&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-3&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;This is probably hard problem.
-Is this commutative or non-commutative?&lt;/p&gt;
-&lt;/blockquote&gt;
+Is this commutative or non-commutative?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3566,8 +3552,8 @@ Is this commutative or non-commutative?&lt;/p&gt;
 また $a _ l \in \LB$ を秘密鍵として，公開鍵を $v := a _ l u a _ l^{-1}$ とします．&lt;/p&gt;
 &lt;p&gt;$m$ をメッセージとし，さらに $H \colon B _ n \to \left\lbrace 0, 1 \right\rbrace^{k}$ をシリアライズ用の関数とします．&lt;br&gt;
 このとき暗号化の処理は，ランダムな組み紐 $b _ r \in \RB$ を選び $w := b _ r u b _ r^{-1}$，$d := H(b _ r v b _ r ^{-1}) \oplus$ を計算し，最後に暗号文を $(w, d)$ とするものになっています．&lt;/p&gt;
-&lt;h3 id=&#34;solution-3&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
+&lt;h3 id=&#34;solution-3&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
 $$
 \begin{aligned}
 H(a_l w a_l^{-1}) \oplus d &amp;amp;= H(a_l b_r u b_r^{-1} a_l^{-1})\\
@@ -3608,7 +3594,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$&lt;/p&gt;
 &lt;p&gt;よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ とすることで複合することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post15/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/neco.jpg&#34;
 	
 	
 	
@@ -3799,15 +3785,15 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>超楕円曲線暗号を理解するぞ</title>
-        <link>https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>http://localhost:1313/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Thu, 01 Jun 2023 16:46:29 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
-        <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます．
+        <guid>http://localhost:1313/blog/p/%E8%B6%85%E6%A5%95%E5%86%86%E6%9B%B2%E7%B7%9A%E6%9A%97%E5%8F%B7%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h2&gt;&lt;p&gt;　超楕円曲線を，こと超楕円曲線暗号のシステムを理解することに絞って最短ルートで解説できたらなと思います．とは言っても，記事の内容に大きな間違いがあるかもしれません．疑問に思ったことや間違っていそうなことがありましたらぜひ twitter なりなんなりで教えてください．僕が悩みます．
 $\gdef\C{\mathbb{C}} \gdef\R{\mathbb{R}} \gdef\D{\mathcal{D}} \gdef\J{\mathcal{J}} \gdef\F{\mathbb{F} _ p}$&lt;/p&gt;
-&lt;h2 id=&#34;定義とか&#34;&gt;定義とか&lt;/h2&gt;
-&lt;p&gt;　今まで扱ってきた楕円曲線は $v^2 + h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．&lt;br&gt;
+&lt;h2 id=&#34;定義とか&#34;&gt;定義とか
+&lt;/h2&gt;&lt;p&gt;　今まで扱ってきた楕円曲線は $v^2 + h(u)v = f(u)$ で $\deg f = 3$ みたいなものでした．これに種数 $g$ という概念を追加します．&lt;br&gt;
 　曲線の右辺の多項式 $f$ の次数に関して，種数 $g$ を $\deg f = 2g + 1$ となる整数と定義します．&lt;br&gt;
 　通常の楕円曲線は種数 $1$ の曲線で，またその自然な拡張として $g = 2$ のものや $g = 3$ のものも考えることができるようになります．これらの種数が $1$ よりも大きい代数曲線を&lt;strong&gt;超楕円曲線&lt;/strong&gt;といいます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義&lt;/strong&gt;&lt;br&gt;
@@ -3817,7 +3803,7 @@ $$C: v^2 + h(u)v = f(u)$$
 &lt;p&gt;　普通超楕円曲線という場合は非特異なものに限りますが，慣用的に特異点を持つ超楕円曲線という言い方をする場合もあります（楕円曲線でもそういうノリはありますよね……気のせい？）．&lt;/p&gt;
 &lt;p&gt;　ちなみに種数の概念が急に出てきて曲線の次数を $2$ ずつ増やしていくのに違和感があるかもしれません．この種数というものは位相幾何の言葉だと「閉曲面の切断によって生じる多様体が連結なままである最大回数」みたいな感じで定義されています．&lt;br&gt;
 　楕円曲線は $\wp$ 関数のパラメータから生成される格子 $\Lambda$ を使うと $E(\C) \simeq \C / \Lambda$ でした．また $\C/\Lambda$ は幾何学的にはトーラスだったので種数の定義と合致しており，天下り的に見える種数の登場は代数曲線を複素多様体の世界から見たときに自然な導入となるのです．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post14/reinoare.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/reinoare.png&#34;
 	
 	
 	
@@ -3827,8 +3813,8 @@ $$C: v^2 + h(u)v = f(u)$$
 	
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;特異点の条件&#34;&gt;特異点の条件&lt;/h2&gt;
-&lt;p&gt;　曲線ができるだけ非特異な場合を考えたいですが，じゃあ非特異な曲線はどういう曲線なのか気になります．ということで $F = v^2 + h(u)v - f$ としておいて，この関数について調べていきたいと思います．&lt;/p&gt;
+&lt;h2 id=&#34;特異点の条件&#34;&gt;特異点の条件
+&lt;/h2&gt;&lt;p&gt;　曲線ができるだけ非特異な場合を考えたいですが，じゃあ非特異な曲線はどういう曲線なのか気になります．ということで $F = v^2 + h(u)v - f$ としておいて，この関数について調べていきたいと思います．&lt;/p&gt;
 &lt;p&gt;　まず特異点 $P = (x, y)$ では $F(P) = 0$ が成り立ちます．また各変数での偏微分を考えてあげると
 $$\frac{\partial F}{\partial u} = \frac{d h}{du} v - \frac{df}{du}$$
 $$\frac{\partial F}{\partial v} = 2v + h$$
@@ -3840,7 +3826,7 @@ h&amp;rsquo;(x)y = f&amp;rsquo;(x) \\
 2y+h(x)=0 \\
 \end{cases}$$
 となる曲線だということがわかります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post14/singular_cat.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/singular_cat.png&#34;
 	
 	
 	
@@ -3850,8 +3836,8 @@ h&amp;rsquo;(x)y = f&amp;rsquo;(x) \\
 	
 	
 &gt;　← Singular なネコ（力作）&lt;/p&gt;
-&lt;h2 id=&#34;標準形&#34;&gt;標準形&lt;/h2&gt;
-&lt;p&gt;　うわああああああ $h(u)$ 邪魔すぎて面倒くさい〜〜〜〜．超楕円曲線にも Weierstrass 標準形はないんですか？&lt;/p&gt;
+&lt;h2 id=&#34;標準形&#34;&gt;標準形
+&lt;/h2&gt;&lt;p&gt;　うわああああああ $h(u)$ 邪魔すぎて面倒くさい〜〜〜〜．超楕円曲線にも Weierstrass 標準形はないんですか？&lt;/p&gt;
 &lt;p&gt;　$C: v^2 + h(u)v = f(u)$ について $u \rightarrow u,\ v \rightarrow v - h(u) / 2$ と変数変換してあげると
 $$\begin{aligned} (v - h(u) / 2)^2 + h(u)(v - h(u) / 2) &amp;amp;= f(u) \\
 v^2 - h(u)v + h(u)^2 / 4 + h(u)v - h(u)^2/2 &amp;amp;= f(u) \\
@@ -3862,7 +3848,7 @@ v^2 &amp;amp;= f(u) + h(u)^2 / 2
 &lt;p&gt;&lt;strong&gt;命題&lt;/strong&gt;&lt;br&gt;
 　$K$ 上の超楕円曲線 $C$ について，$\mathrm{char}(K) \neq 2$ であるとき $C$ と双有理同値な $v^2 = f(u)$ 型の種数が同じ超楕円曲線が存在する．&lt;/p&gt;
 &lt;p&gt;　例として $\R$ 上の曲線 $y^2 + (x^2 - 2x - 3)y = 3x^5 - x^4 + x^3 + x^2 - x - 3$ の標準形を求めてみると $y^2 = 3x^5 - x^4 / 2 - x^3  + 5x  + 3/2$ となります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post14/hyoujun.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post14/hyoujun.png&#34;
 	
 	
 	
@@ -3872,8 +3858,8 @@ v^2 &amp;amp;= f(u) + h(u)^2 / 2
 	
 	
 &gt;　← 緑が元の曲線，赤が標準形&lt;/p&gt;
-&lt;h2 id=&#34;曲線上の点&#34;&gt;曲線上の点&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義&lt;/strong&gt;&lt;br&gt;
+&lt;h2 id=&#34;曲線上の点&#34;&gt;曲線上の点
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義&lt;/strong&gt;&lt;br&gt;
 　$K$ 上で定義される曲線 $C$ の&lt;strong&gt;K-有理点&lt;/strong&gt;を以下の式で定義する．
 $$C(K) = (C \cap K^2) \cup \left\{ P_{\infty} \right\}$$
 特に $C = C({\bar K}^2)$．&lt;/p&gt;
@@ -3886,8 +3872,8 @@ $$\begin{aligned}
 &amp;amp;= y^2 + h(x)y\\
 &amp;amp;= f(x)
 \end{aligned}$$&lt;/p&gt;
-&lt;h2 id=&#34;座標環&#34;&gt;座標環&lt;/h2&gt;
-&lt;p&gt;　多様体上の関数について考えてあげると良いことが起きることが一般的によく知られています．ということで超楕円曲線 $C$ 上の関数を考えてみましょう．&lt;/p&gt;
+&lt;h2 id=&#34;座標環&#34;&gt;座標環
+&lt;/h2&gt;&lt;p&gt;　多様体上の関数について考えてあげると良いことが起きることが一般的によく知られています．ということで超楕円曲線 $C$ 上の関数を考えてみましょう．&lt;/p&gt;
 &lt;p&gt;　例えば $K$ 上の曲線 $C: F = 0$ 上の関数でぱっと思い浮かぶのは $f \in K[u,v]$ です．ですが $K$ 代数において $C$ は別に代数的じゃないので $f$ の根に $C$ に含まれない点が出てきてしまい，$C$ にぴったりフィットする関数全体として $K[u,v]$ はちょっと大きすぎる気がします．&lt;br&gt;
 　そこで，じゃあ根が同じくらい $C$ から離れている関数同士は同一視しようという発想が出てきます．数学では結構ありがちですね．ということで Let&amp;rsquo;s イデアル．&lt;/p&gt;
 &lt;p&gt;　次のような $F$ から生成されるイデアルを考えます．
@@ -3901,8 +3887,8 @@ $$K[C] = K[u,v]/(v^2 + h(u)v - f(u))$$
 　$\bar K$ 上についても同様に $\bar K[C] = \bar K[u,v]/(v^2 + h(u)v - f(u))$ とし，この元を&lt;strong&gt;多項式&lt;/strong&gt;という．&lt;/p&gt;
 &lt;p&gt;　超楕円曲線上の関数 $g \in \bar K [C]$ は，$g$ の $v^2$ を $h(u)v - f(u)$ に置き換えていけば $v$ に関して次数 $1$ になります．つまり $a, b \in \bar K[u]$ を用いて $g = a(u) - b(u)v$ と書くことができます．&lt;br&gt;
 　$u$ に関して次数 $2g + 1$ 以下，$v$ に関して次数 $1$ 以下で表現できますね．&lt;/p&gt;
-&lt;h2 id=&#34;有理関数&#34;&gt;有理関数&lt;/h2&gt;
-&lt;p&gt;　多項式が作れたので有理関数も作りたくなるとことです．有理関数があれば極と零点が定義できますが，実はこれが超楕円曲線を利用した群の構成に密接に関わってくるのです．&lt;br&gt;
+&lt;h2 id=&#34;有理関数&#34;&gt;有理関数
+&lt;/h2&gt;&lt;p&gt;　多項式が作れたので有理関数も作りたくなるとことです．有理関数があれば極と零点が定義できますが，実はこれが超楕円曲線を利用した群の構成に密接に関わってくるのです．&lt;br&gt;
 　定義は簡単かつ自然なのでペッです．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義&lt;/strong&gt;&lt;br&gt;
 　$K$ 上の超楕円曲線 $C$ の&lt;strong&gt;関数体&lt;/strong&gt; $K(C)$ を以下で定義する．
@@ -3918,8 +3904,8 @@ $\bar K$ についても同様に $\bar K(C) = \mathrm{Frac}(\bar K[C])$ とし�
 　$f \in K(C)$ について，$f$ の零点全体の集合を $Z_f$，極全体の集合を $S_f$ としたとき以下が成り立つ．
 $$\sum_{P \in Z_f} m_Z(P) = \sum_{P \in S_f} m_S(P)$$&lt;/p&gt;
 &lt;p&gt;　要するに重複度を込めて零点と極の数は同じということですね．ほんまか？って思う人もいるかもしれませんが無限遠点パワーです．&lt;/p&gt;
-&lt;h2 id=&#34;曲線上の因子&#34;&gt;曲線上の因子&lt;/h2&gt;
-&lt;p&gt;　準備は整いました．さあ，群を作っていきましょう！&lt;/p&gt;
+&lt;h2 id=&#34;曲線上の因子&#34;&gt;曲線上の因子
+&lt;/h2&gt;&lt;p&gt;　準備は整いました．さあ，群を作っていきましょう！&lt;/p&gt;
 &lt;p&gt;　楕円曲線では曲線上の点で群をなせましたが，超楕円曲線ではそう簡単にはいきません．&lt;br&gt;
 　ということで点のタプル的なのを使うんですが，それは以下の感じで定義されます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義&lt;/strong&gt;&lt;br&gt;
@@ -3948,8 +3934,8 @@ $$\J_C = \D^0 / \D^l$$
 　まず $D = \sum m_i (P_i) \in \D^0$ に対して $Q = \sum m_i P_i$ と置けば，$D - (Q) + (P_\infty)$ が実は主因子となり $D \equiv (Q) - (P_\infty) \mod D^l$ となります．&lt;br&gt;
 　また一対一であることについては，異なる点 $P_1, P_2 \in C$ について $(P_1) - (P_\infty) \equiv (P_2) - (P_\infty)$ であることから $(P_1) - (P_2) \equiv 0$ となってしまい，$(P_1) - (P_2) \in \D^l$ となって矛盾します．&lt;br&gt;
 　ということで $D \mapsto Q$ と対応させれば同型が成り立ちます．&lt;/p&gt;
-&lt;h2 id=&#34;mumford-表現&#34;&gt;Mumford 表現&lt;/h2&gt;
-&lt;p&gt;　ヤコビアン $\J_C$ は因子類群として定義できましたが，因子は複数個の点と係数の組として扱わなくてはいけないのでちょっと複雑です．&lt;br&gt;
+&lt;h2 id=&#34;mumford-表現&#34;&gt;Mumford 表現
+&lt;/h2&gt;&lt;p&gt;　ヤコビアン $\J_C$ は因子類群として定義できましたが，因子は複数個の点と係数の組として扱わなくてはいけないのでちょっと複雑です．&lt;br&gt;
 　実は因子の剰余類を簡潔に表現するために，$\J_C$ の元を２つの多項式で表現する天才的な発明があります．これを &lt;strong&gt;Mumford表現&lt;/strong&gt;といいます．&lt;/p&gt;
 &lt;p&gt;　Mumford表現では Harley加算などの高速な加算アルゴリズムも見つかり，計算機的にも嬉しいことが多いのです．&lt;br&gt;
 　ということで Mumford表現を説明したいところですが，実はこれは一般の因子に対しては定義されません．じゃあどうするか，次のような因子を考えます．&lt;/p&gt;
@@ -3982,16 +3968,16 @@ F-V^{2} \equiv 0\bmod U &amp;amp; \\
 \end{cases}$$&lt;/p&gt;
 &lt;p&gt;　受け取った因子の Mumford表現を計算するアルゴリズムはちょっと複雑です（もしかしたらこのアルゴリズム単体で記事を書くかもしれません）．&lt;br&gt;
 　みんな sagemath 使おう．ヤコビアンの元の表現を，点の組の表現か Mumford表現か選べます．&lt;/p&gt;
-&lt;h2 id=&#34;被約因子&#34;&gt;被約因子&lt;/h2&gt;
-&lt;p&gt;　実は半被約因子は暗号として使うのに少々問題があります．というのも半被約因子による表現は $\J_C$ の元の一意な表現とはなりません．つまり平文と暗号文の間に一対一対応が作れなくなるしハッシュ化も大変です．&lt;br&gt;
+&lt;h2 id=&#34;被約因子&#34;&gt;被約因子
+&lt;/h2&gt;&lt;p&gt;　実は半被約因子は暗号として使うのに少々問題があります．というのも半被約因子による表現は $\J_C$ の元の一意な表現とはなりません．つまり平文と暗号文の間に一対一対応が作れなくなるしハッシュ化も大変です．&lt;br&gt;
 　これを解決するものとして，以下のような因子が考えられています．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義&lt;/strong&gt;&lt;br&gt;
 　種数 $g$ の超楕円曲線の半被約因子 $(U, V)$ について，特に $\deg U \leq g$ であるものを&lt;strong&gt;被約因子&lt;/strong&gt;という．&lt;/p&gt;
 &lt;p&gt;　まあ定義は簡単ですがほえ〜んって感じじゃないでしょうか．&lt;br&gt;
 　実は被約因子は $\D^l$ の下でそれと同値な被約因子が一意に存在します．またこれをアルゴリズム的に構成することも可能です（これも単体で記事書くかも．期待はしないでね）．&lt;br&gt;
 　ですので，$\J_C$ の元の表現は半被約因子ではなく，被約因子の Mumford表現にすると色々と嬉しくなります．ちなみに sagemath は被約因子を使ってくれます．みんな sagemath 使おう．&lt;/p&gt;
-&lt;h2 id=&#34;j_c-の有限部分群&#34;&gt;$\J_C$ の有限部分群&lt;/h2&gt;
-&lt;p&gt;　実は今のヤコビアンのままでは超楕円曲線暗号を楕円曲線暗号のように ElGamal のシステムに乗せるのは無理です．というのも一般に $\bar K$（特に $\bar{\mathbb{F} _ p}$）は無限位数なのでヤコビアンも無限位数になってしまうのです．ElGamal のシステムに乗せるには，少なくとも有限群でなくてはいけません．&lt;/p&gt;
+&lt;h2 id=&#34;j_c-の有限部分群&#34;&gt;$\J_C$ の有限部分群
+&lt;/h2&gt;&lt;p&gt;　実は今のヤコビアンのままでは超楕円曲線暗号を楕円曲線暗号のように ElGamal のシステムに乗せるのは無理です．というのも一般に $\bar K$（特に $\bar{\mathbb{F} _ p}$）は無限位数なのでヤコビアンも無限位数になってしまうのです．ElGamal のシステムに乗せるには，少なくとも有限群でなくてはいけません．&lt;/p&gt;
 &lt;p&gt;　ということで $\J_C$ の有限部分群を考えていきましょう．と言ってもこれは簡単です．&lt;/p&gt;
 &lt;p&gt;　とりあえず今のヤコビアンが Mumford表現を使ってどう表現されるのか明示しておきます．
 $$\J_C = \left\{ (U, V) \in \bar K[X]^2 \mid \deg V &amp;lt; \deg U &amp;lt; g,\ F - V^2 \equiv 0 \mod U \right\}$$&lt;/p&gt;
@@ -4002,8 +3988,8 @@ $$\J_C(K) = \left\{ (U, V) \in K[X]^2 \mid (U, V) \in \J_C \right\}$$&lt;br&gt;
 $$\varphi: \J_C \ni D \longmapsto D^p \in \J_C$$
 と定めます．ここで注意なのが，$D^p = \sum m_i (P_i)^p - (\sum m_i)(P_\infty),\ P^p = (x^p, y^p)$ です．&lt;br&gt;
 　この Frobenius写像により固定される集合こそが $\mathbb{F} _ p$-有理点 $\J_C(\mathbb{F} _ p) = \left\{ D \in \J_C \mid \varphi(D) = D \right\}$ となります（そもそも $K$-有理点という概念が $G_{\bar K / K}$ で固定される集合なので）．&lt;/p&gt;
-&lt;h2 id=&#34;超楕円曲線暗号&#34;&gt;超楕円曲線暗号&lt;/h2&gt;
-&lt;p&gt;　やっとこさ暗号のシステムの話になります．といってもここまで理解できてればあとは簡単で，超楕円曲線暗号は $C$ のヤコビアン $\J_C(\F)$ での離散対数問題に関する暗号です．&lt;/p&gt;
+&lt;h2 id=&#34;超楕円曲線暗号&#34;&gt;超楕円曲線暗号
+&lt;/h2&gt;&lt;p&gt;　やっとこさ暗号のシステムの話になります．といってもここまで理解できてればあとは簡単で，超楕円曲線暗号は $C$ のヤコビアン $\J_C(\F)$ での離散対数問題に関する暗号です．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;公開パラメータ&lt;/strong&gt;&lt;br&gt;
 $p$: 素数&lt;br&gt;
 $C$: $\F$ 上の超楕円曲線&lt;/p&gt;
@@ -4156,26 +4142,26 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
         </item>
         <item>
         <title>数学ノートの取り方について振り返ってみた</title>
-        <link>https://mitsu1119.github.io/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</link>
+        <link>http://localhost:1313/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</link>
         <pubDate>Fri, 06 Jan 2023 17:15:37 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</guid>
+        <guid>http://localhost:1313/blog/p/%E6%95%B0%E5%AD%A6%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AE%E5%8F%96%E3%82%8A%E6%96%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%8C%AF%E3%82%8A%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</guid>
         <description>&lt;p&gt;最近、数学書を読むときのノートのとり方を変えてみようかな〜なんて思ってたのですが、今まで自分はどのように数学ノートをとっていたのか振り返ってみたら、過去にどんなことを考えていたのか、どんな気持ちで勉強していたのかが透けて見えて面白かったのでまとめてみたくなりカス記事を書いてみました。&lt;/p&gt;
 &lt;p&gt;あとは数学のノートのとり方に困っているのはきっと僕だけじゃないので、まだまだひよっこの僕ですが自分なりに勉強の仕方を変えて試してみてたので、数学に限らず何かの参考にでもなれば嬉しいかもしれないです。&lt;/p&gt;
 &lt;p&gt;といっても、まだ学部生で真面目に勉強に向き合うようになってからもそこまで月日が経っていないため、本当にひよっこでむしろ僕が誰かに導いてほしいという気持ちでいっぱいです。&lt;/p&gt;
-&lt;h1 id=&#34;最初の最初&#34;&gt;最初の最初&lt;/h1&gt;
-&lt;p&gt;そもそも僕が数学を始めよう、正確には自分自身で勉強をしようと思い始めたのは中学生の頃でした。当時プログラミングを勉強してゲームを作りたいと思っていたのですが、ゲームプログラミングには三角関数や行列など高校レベルの数学が必須でした。&lt;/p&gt;
+&lt;h1 id=&#34;最初の最初&#34;&gt;最初の最初
+&lt;/h1&gt;&lt;p&gt;そもそも僕が数学を始めよう、正確には自分自身で勉強をしようと思い始めたのは中学生の頃でした。当時プログラミングを勉強してゲームを作りたいと思っていたのですが、ゲームプログラミングには三角関数や行列など高校レベルの数学が必須でした。&lt;/p&gt;
 &lt;p&gt;ということで、ゲームを作るためにあくまでツールとして数学に触れたのがきっかけで、当時はプログラミングに応用できればよかったため、必要になる都度その概念をネットで調べてなんとなく理解した気になるというのが主でした。&lt;/p&gt;
 &lt;p&gt;例えば三角関数だったら、三角関数の定義と計算の仕方を理解して、プログラミングに必要なレベルの演習さえできればいいという感じです。&lt;/p&gt;
 &lt;p&gt;そのため、数学ノートと言っていいのか怪しいですが、当時勉強したことをまとめていたノートにはとにかくたくさん定義が載っていて、その図形的意味や主要な関係式がさっぱりとまとまっているようなものでした。&lt;/p&gt;
-&lt;h1 id=&#34;写経ノート&#34;&gt;写経ノート&lt;/h1&gt;
-&lt;p&gt;大学数学をやるようになって、一番最初にとった手法が写経です。&lt;/p&gt;
+&lt;h1 id=&#34;写経ノート&#34;&gt;写経ノート
+&lt;/h1&gt;&lt;p&gt;大学数学をやるようになって、一番最初にとった手法が写経です。&lt;/p&gt;
 &lt;p&gt;「数学書は読むのが難しい」、「数ページ読むのに何日もかかるのがざら」みたいな言説をツイッターで見かけて、それだったらできるだけ丁寧に読もうと自分なりに頑張った結果です。&lt;/p&gt;
 &lt;p&gt;これは本当に写経に近くて、教科書のすべての行を自分で書き下していたと思います。例えば教科書が同じ内容を言い直していた場合、自分はそれがわかっていてもあえて言い直してみるみたいな感じでした。&lt;/p&gt;
 &lt;p&gt;今でも当時の真っ黒のノートが鮮明に思い出せます……。&lt;/p&gt;
 &lt;p&gt;まあでも実際、集合論や解析学はすごく細かい議論が多くて、写経を一番最初の手法としてとったのは正解だったのかもしれません。&lt;/p&gt;
-&lt;h1 id=&#34;カスノート&#34;&gt;カスノート&lt;/h1&gt;
-&lt;p&gt;頑張って写経をしていたのですが、なんかツイッターを見ていると僕よりもあとに同じ本を始めた人が、僕がまだ全体の四分の一も読んでない頃に読み終わって別の分野の本を読み始めているのを見て「なんか自分の数学書の読み方だと遅すぎないか？」と思うようになりました。&lt;/p&gt;
+&lt;h1 id=&#34;カスノート&#34;&gt;カスノート
+&lt;/h1&gt;&lt;p&gt;頑張って写経をしていたのですが、なんかツイッターを見ていると僕よりもあとに同じ本を始めた人が、僕がまだ全体の四分の一も読んでない頃に読み終わって別の分野の本を読み始めているのを見て「なんか自分の数学書の読み方だと遅すぎないか？」と思うようになりました。&lt;/p&gt;
 &lt;p&gt;特にそういう人に限って「数学書は丁寧に読むべき」ということを言っていた上、ツイッターでその本で勉強する内容の難しそうなことをたくさん呟いていたので、写経よりもより効率のいい丁寧な読み方があるんじゃないかと模索するようになりました。&lt;/p&gt;
 &lt;p&gt;そこで僕がとった手法は、「基本的にノートは取らず、本の中でわからない行があったら行間を埋めるだけだけにノートを使う」というものでした。&lt;/p&gt;
 &lt;p&gt;感覚としては本を読むための計算ノートだったと思います。&lt;/p&gt;
@@ -4183,8 +4169,8 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
 &lt;p&gt;特に行間が少ない本だとノートに書くこともなく、見て文章を脳内で音読しているだけみたいな、そこまでひどくはありませんがそれに近い状態だったんじゃないかなと思います。自分で噛み砕いて解釈してという感じではなく、行の言っていることがわかるかどうかでノートを取るかどうか判断していたと思います。&lt;/p&gt;
 &lt;p&gt;しかもこれが最悪で、数学書を読むペースは当然早くなるので「いいノートのとり方」だと思ってしまっていました。&lt;/p&gt;
 &lt;p&gt;僕はカスノートと読んでいます。（もちろん人によると思いますが）&lt;/p&gt;
-&lt;h1 id=&#34;写経ノート2&#34;&gt;写経ノート2&lt;/h1&gt;
-&lt;p&gt;プログラミングをしていたこともあって、今まで学んだ数学と情報分野が融合した情報数学や数理アルゴリズムに興味が湧いてきました。&lt;/p&gt;
+&lt;h1 id=&#34;写経ノート2&#34;&gt;写経ノート2
+&lt;/h1&gt;&lt;p&gt;プログラミングをしていたこともあって、今まで学んだ数学と情報分野が融合した情報数学や数理アルゴリズムに興味が湧いてきました。&lt;/p&gt;
 &lt;p&gt;これらの分野は線形代数や解析学などの基本的な内容をベースに成り立っていることが多く、今までの勉強の方法がいかにカスであるか痛感した記憶があります。&lt;/p&gt;
 &lt;p&gt;そのため勉強をするのは自分が勉強をしたいからだというのが一番であって、「人と議論したい」とか「進めるペースが異常な人にマウント取られたくない」とかそういう自分にとって非本質な部分は取り払おうと思いました。&lt;/p&gt;
 &lt;p&gt;ということで、一つ一つをとにかく丁寧にやって周りのことは気にしなくてもいいから内容を自分なりにしっかりと理解することを目的として先に進むことよりもゆっくりと歩む必要があると感じ写経に戻りました。&lt;/p&gt;
@@ -4194,8 +4180,8 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
 &lt;p&gt;さらに、ツイッターでは数学書を読むのが早い華やかな人が目立ちますが、実際に自分が直接会って話して「すごく詳しいな」と感じた人の勉強法を見ると皆そこまで華やかなものではありませんでした。そこで数学書を早く読めるというのは才能であって、皆ができるような簡単なことでは無いのだと初めて気づきました。&lt;/p&gt;
 &lt;p&gt;これは特に学校の数学の先生（僕は高専生だったので正真正銘の数学者です）に勉強法を聞いてみたりしていくうちに、数学に大事なのは学問に対する謙虚さなんだなとなったのが特に大きかったです。&lt;/p&gt;
 &lt;p&gt;この写経で自分の中での考えが本当に色々と変わったと思います。理解するということがどういうことなのか、行間とは何なのか、色々と感覚が変わりました。&lt;/p&gt;
-&lt;h1 id=&#34;概ね写経ノート&#34;&gt;概ね写経ノート&lt;/h1&gt;
-&lt;p&gt;ただ写経を続けていくうちにやっぱりこれは時間がかかりすぎだと思いました。正確には、時間がかかる分には問題が無いのですが、数学の理解とは関係のない余計な時間がかかっていると感じるようになりました。&lt;/p&gt;
+&lt;h1 id=&#34;概ね写経ノート&#34;&gt;概ね写経ノート
+&lt;/h1&gt;&lt;p&gt;ただ写経を続けていくうちにやっぱりこれは時間がかかりすぎだと思いました。正確には、時間がかかる分には問題が無いのですが、数学の理解とは関係のない余計な時間がかかっていると感じるようになりました。&lt;/p&gt;
 &lt;p&gt;というのも写経ノート2をとっていくうちに、教科書とほとんど同じ文章を書くことが直接理解に繋がっている感覚がなかったからです。&lt;/p&gt;
 &lt;p&gt;実際に物事を理解する瞬間（？）というのは、教科書の文章を読んでその言葉の意味を追えたときではなく、言葉の気持ちが理解できたときです。&lt;/p&gt;
 &lt;p&gt;で、言葉の気持ちを理解する瞬間は、その文章の言いたいことを色々な視点で見てみて、具体的に図形を書いてみたり、集合の対応を考えてみたり、今までの定理を使って可換図式や包含関係を表してみたり、とにかく教科書には書いてない自分なりの思考をしてみたときです。&lt;/p&gt;
@@ -4203,8 +4189,8 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
 &lt;p&gt;この「自分の言葉」というのは、教科書の文章を自分なりに「言い換える」という意味ではなく、教科書に書いてる理論を自分なりの視点で考えて自分で色々と構築して見るとき現れる「自分なりの論理展開の構築」です。（大層なことを言ってますが、これ以外にうまい言い表し方が見つからなくてうーむ……）&lt;/p&gt;
 &lt;p&gt;写経ノート1をとっていたときは「自分の言葉」を「自分なりの言い換え」だと勘違いしていた節があってかなり反省しています。&lt;/p&gt;
 &lt;p&gt;最近は、章の内容を軽くペラペラと読んでみて重要なところの意味だけ汲み取ってあとは自分で考えてみて、補題や定理を構築するためにどのような論理展開があればいいのか考えたあと、実際に章をしっかり読んで答え合わせ（？）するような感じで読んでます。必要ないかもしれませんが、ミステリー小説みたいでちょっとおもしろいです。&lt;/p&gt;
-&lt;h1 id=&#34;今ちょっと思っているもの&#34;&gt;今ちょっと思っているもの&lt;/h1&gt;
-&lt;p&gt;とりあえず今は概ね写経ノートに落ち着いていますが、それでも結構写経は多くて、例えば教科書に載っている証明の内容などは同じものを全部ノートに書いています。&lt;/p&gt;
+&lt;h1 id=&#34;今ちょっと思っているもの&#34;&gt;今ちょっと思っているもの
+&lt;/h1&gt;&lt;p&gt;とりあえず今は概ね写経ノートに落ち着いていますが、それでも結構写経は多くて、例えば教科書に載っている証明の内容などは同じものを全部ノートに書いています。&lt;/p&gt;
 &lt;p&gt;ですが証明自体はわざわざノートに書く必要も無いのかなって思うこともあります。これが構成するタイプの証明だったらノートにまとめたいですが、存在をいうだけみたいなタイプのものだったら教科書の何ページに書かれてるって注釈みたいなものを入れるだけでいいんじゃないかと思います。&lt;/p&gt;
 &lt;p&gt;というのも、同じ内容のものを見たかったらノートではなく教科書を見ればいいし、自分の論理展開の流れの邪魔になったしまうことが多いように感じたからです。&lt;/p&gt;
 &lt;p&gt;証明が邪魔になるというのはちょっと変な話ですが、これは自分のノートが「教科書を解釈して出てきた、教科書と同じ流れを踏む自分の論理展開」という流れを意識したものなので、その中で長い証明を書くくらいなら略しちゃおうって感覚です。&lt;/p&gt;
@@ -4214,20 +4200,20 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
         </item>
         <item>
         <title>Merry CryptoMath !!!!!</title>
-        <link>https://mitsu1119.github.io/blog/p/merry-cryptomath/</link>
+        <link>http://localhost:1313/blog/p/merry-cryptomath/</link>
         <pubDate>Mon, 13 Dec 2021 00:09:54 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/merry-cryptomath/</guid>
-        <description>&lt;h1 id=&#34;merry-cryptomath-&#34;&gt;Merry CryptoMath !!!!!!&lt;/h1&gt;
-&lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://adventar.org/calendars/6914&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>http://localhost:1313/blog/p/merry-cryptomath/</guid>
+        <description>&lt;h1 id=&#34;merry-cryptomath-&#34;&gt;Merry CryptoMath !!!!!!
+&lt;/h1&gt;&lt;p&gt;　この記事は &lt;a class=&#34;link&#34; href=&#34;https://adventar.org/calendars/6914&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;CTF Advent Calendar 2021&lt;/a&gt; の25日目の記事です。昨日の記事はSatokiさんによる &lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@satoki/BkeNHyWot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【文学】 Flagを読む&lt;/a&gt; で、面白いフラグを紹介してくれたりLeetについて説明してくれました。&lt;/p&gt;
 &lt;p&gt;　ところで、最初はアドカレに参加するつもりはなかったのですが、激寒ギャグをしまっておくのもあれだということでCVPの記事を書くことにしました。そのためこの記事を枕にして寂しい夜を過ごすともっと寂しくなる一方です。&lt;br&gt;
 　ババイでバイバイバイ（そういえば学会の予稿提出が迫って研究がめちゃめちゃ忙しいのですが、なんで記事なんて書いてるんでしょうか）&lt;/p&gt;
 &lt;p&gt;　別に難しかったり物珍しい内容の記事ではありません（ギャグがメインなため）。学び全集中の呼吸勢はブラウザバックしてもいいししなくてもいいです。&lt;/p&gt;
 &lt;p&gt;　あとなんでCVP？って感じるかしれませんが僕も知りません。ふるつき先生に聞いてください。&lt;/p&gt;
-&lt;h1 id=&#34;クリスマスについて&#34;&gt;クリスマスについて&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;クリスマス&lt;/strong&gt;
+&lt;h1 id=&#34;クリスマスについて&#34;&gt;クリスマスについて
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;クリスマス&lt;/strong&gt;
 　キリストの降誕祭。十二月二十五日。&lt;br&gt;
 　① &lt;strong&gt;―イブ&lt;/strong&gt;　クリスマス前夜祭。&lt;br&gt;
 　② &lt;strong&gt;―カード&lt;/strong&gt;　クリスマスを祝っておくる絵入りのカード。&lt;br&gt;
@@ -4236,12 +4222,12 @@ C_2 - sC_1 &amp;amp;= rD + M - srD_g
 　⑤ &lt;strong&gt;―ツリー&lt;/strong&gt;　クリスマスのときに立てて飾る常緑樹。&lt;br&gt;
 　⑥ &lt;strong&gt;―プレゼント&lt;/strong&gt;　クリスマスの贈り物。&lt;/p&gt;
 &lt;p&gt;　ウキウキで布団に入ってサンタクロースの正体を暴くべく頑張って寝たフリをするものの、眠くなっちゃっていつの間にか次の日の朝になって、肌を刺すような寒さに耐えながらクリスマスツリーの下に広がるプレゼントを夢中になって開封する。そんな小さい頃の記憶はないんですがクリスマスはいいですね。&lt;/p&gt;
-&lt;h1 id=&#34;cvp&#34;&gt;CVP&lt;/h1&gt;
-&lt;p&gt;　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。&lt;/p&gt;
+&lt;h1 id=&#34;cvp&#34;&gt;CVP
+&lt;/h1&gt;&lt;p&gt;　格子 $\Lambda$ について、目標ベクトル $w \in \mathrm{span}(\Lambda)$ との距離が最も近い $v \in \Lambda$ を見つける問題を Closest Vector Problem (CVP) とします。&lt;/p&gt;
 &lt;p&gt;　CVP は一般に多項式時間で厳密解を求めるアルゴリズムが存在しないことが知られています。そのため、暗号理論の観点で結構注目されています。&lt;/p&gt;
 &lt;p&gt;　しかし（？！） CVP は SVP よろしく近似解法があります。&lt;/p&gt;
-&lt;h1 id=&#34;kannans-embedding-method&#34;&gt;Kannan&amp;rsquo;s embedding method&lt;/h1&gt;
-&lt;p&gt;　埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。&lt;/p&gt;
+&lt;h1 id=&#34;kannans-embedding-method&#34;&gt;Kannan&amp;rsquo;s embedding method
+&lt;/h1&gt;&lt;p&gt;　埋め込み法とか呼ばれてるやつです。CVP と uSVP の同値性が目に見えてわかるので、Babai のアルゴリズム（後述）よりも個人的に好きです。&lt;/p&gt;
 &lt;p&gt;　uSVP（正確には uSVP$_ \gamma$）というのは、格子の逐次最小について $\gamma \lambda _ {1} &amp;lt; \lambda _ {2}$ みたいなのが成り立つ格子での SVP です。単に SVP と思ってもらって構いません。  　&lt;/p&gt;
 &lt;p&gt;　考える格子を $\Lambda = \mathcal{L}(B) \subseteq \mathbb{Z}^n$ として、目標ベクトル $w \in \mathbb{Z}^n$、CVP の解ベクトルを $v = \sum v_ i b_ i$ とします。（つまり全部整数格子で考える）&lt;/p&gt;
 &lt;p&gt;　まあ実際のところ暗号の文脈で出てくる格子点は計算機で扱う都合上、与えられる入力として面倒くさいものを考えても有限少数なので、簡単に線形同値な格子が作れますし別に問題ないです。&lt;/p&gt;
@@ -4316,8 +4302,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;hr&gt;
-&lt;h1 id=&#34;babais-algorithm&#34;&gt;Babai&amp;rsquo;s algorithm&lt;/h1&gt;
-&lt;p&gt;　ババイです。実は難しくないです。&lt;/p&gt;
+&lt;h1 id=&#34;babais-algorithm&#34;&gt;Babai&amp;rsquo;s algorithm
+&lt;/h1&gt;&lt;p&gt;　ババイです。実は難しくないです。&lt;/p&gt;
 &lt;p&gt;　この名前を聞くとBaba is youを思い出すのですが人の名前がついたアルゴリズム名で遊ぶのは最悪なのでやめておきます。Baba is youやったことないし。&lt;/p&gt;
 &lt;p&gt;　で、アルゴリズムの解説に入るのですが次の操作をやるだけです。&lt;/p&gt;
 &lt;ol&gt;
@@ -4329,26 +4315,26 @@ $$&lt;/p&gt;
 &lt;li&gt;$y = \sum y_ i$ が求めたかった一番最初の $w$ の最近ベクトル $y$ となります。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;コード書くの、怠惰すぎてやめちゃった。簡単ですし適当にググると出てきます。&lt;/p&gt;
-&lt;h1 id=&#34;最後に&#34;&gt;最後に&lt;/h1&gt;
-&lt;p&gt;有名ガチプロCTFerが素晴らしい記事を生やしている中、自分はこんなカスみたいな記事を錬成していていいのか……という感じです。それなのにここまで読んでいただいて本当に感謝です。それではよいお年を！&lt;/p&gt;
+&lt;h1 id=&#34;最後に&#34;&gt;最後に
+&lt;/h1&gt;&lt;p&gt;有名ガチプロCTFerが素晴らしい記事を生やしている中、自分はこんなカスみたいな記事を錬成していていいのか……という感じです。それなのにここまで読んでいただいて本当に感謝です。それではよいお年を！&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>NITIC CTF 2 Crypto</title>
-        <link>https://mitsu1119.github.io/blog/p/nitic-ctf-2-crypto/</link>
+        <link>http://localhost:1313/blog/p/nitic-ctf-2-crypto/</link>
         <pubDate>Mon, 06 Sep 2021 18:07:38 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/nitic-ctf-2-crypto/</guid>
-        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;茨城高専の学生さん+ α で開催の CTF のようです。自分も高専生なので同じ高専生が開くということで親近感が湧き、頑張って取り組もうと思いました。(寝坊したけど)&lt;/p&gt;
+        <guid>http://localhost:1313/blog/p/nitic-ctf-2-crypto/</guid>
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;茨城高専の学生さん+ α で開催の CTF のようです。自分も高専生なので同じ高専生が開くということで親近感が湧き、頑張って取り組もうと思いました。(寝坊したけど)&lt;/p&gt;
 &lt;p&gt;全体的に問題は易しめに作られていて、自分でもなんとか取り組むことができました。初心者向け CTF の難易度周りの話は色々あると思いますが、何はともあれこの CTF ではまともな問題が出ていたのでとても良かったと思います。&lt;/p&gt;
 &lt;p&gt;自分たちのチーム zer0pts は、チームメンバーがむちゃくちゃ強いおかげで無事 1 位でした。さすがですね。個人で出ていた keymoon さんもさすがでした。自分も頑張らないとって焦ってきますね。研究のことが頭から離れずグダグダしてしまいます。悲しい。&lt;/p&gt;
 &lt;p&gt;ということで Crypto を解いたので writeup 書きます。&lt;/p&gt;
-&lt;h1 id=&#34;caesar-cipher&#34;&gt;Caesar Cipher&lt;/h1&gt;
-&lt;p&gt;フラグの中身を暗号化したものが &amp;ldquo;fdhvdu&amp;rdquo; という文字列だそうです。いわゆるシーザー暗号なので全通りの ROT を試して解きました。&lt;/p&gt;
+&lt;h1 id=&#34;caesar-cipher&#34;&gt;Caesar Cipher
+&lt;/h1&gt;&lt;p&gt;フラグの中身を暗号化したものが &amp;ldquo;fdhvdu&amp;rdquo; という文字列だそうです。いわゆるシーザー暗号なので全通りの ROT を試して解きました。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;nitic_ctf{caesar}&lt;/code&gt;&lt;/p&gt;
-&lt;h1 id=&#34;ord_xor&#34;&gt;ord_xor&lt;/h1&gt;
-&lt;p&gt;フラグの各文字を xor 演算で他の文字に変換した結果が渡されます。感覚的にこの文字の変換は一対一のものだと思ったので、アルファベットを全部変換してみて、暗号文の各文字と変換後の文字が一致するようなアルファベットを選んでいくことで、全探索みたいな感じで解けます。&lt;/p&gt;
+&lt;h1 id=&#34;ord_xor&#34;&gt;ord_xor
+&lt;/h1&gt;&lt;p&gt;フラグの各文字を xor 演算で他の文字に変換した結果が渡されます。感覚的にこの文字の変換は一対一のものだと思ったので、アルファベットを全部変換してみて、暗号文の各文字と変換後の文字が一致するようなアルファベットを選んでいくことで、全探索みたいな感じで解けます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -4396,8 +4382,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;hr&gt;
-&lt;h1 id=&#34;tanitu_kanji&#34;&gt;tanitu_kanji&lt;/h1&gt;
-&lt;p&gt;フラグをある規則に従って変換するコードとその結果が与えられました。変換は after1 及び after2 と呼ばれる文字列をベースに行われ、10 文字のフォーマットと呼ばれる文字列を先頭から読んでいくことで行われるものでした。&lt;/p&gt;
+&lt;h1 id=&#34;tanitu_kanji&#34;&gt;tanitu_kanji
+&lt;/h1&gt;&lt;p&gt;フラグをある規則に従って変換するコードとその結果が与えられました。変換は after1 及び after2 と呼ばれる文字列をベースに行われ、10 文字のフォーマットと呼ばれる文字列を先頭から読んでいくことで行われるものでした。&lt;/p&gt;
 &lt;p&gt;フラグ文字列の各文字に注目し、その文字のインデックスと同じインデックスを持つフォーマットの文字が &amp;ldquo;1&amp;rdquo; なら after1 から、そうでなければ after2 から文字を適切にとってくるといったものでした。フォーマットの長さは 10 なので全パターン列挙しても 2^10 通り程度なのでブルートフォースができます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4477,8 +4463,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# nitic_ctf{bit_full_search}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;summersa&#34;&gt;summeRSA&lt;/h1&gt;
-&lt;p&gt;普通の RSA 暗号です。ただし 59 文字のフラグのうち先頭 51 文字が判明しています。今回、$e = 7$ なので $51 &amp;gt; 59 \times \frac{6}{7}$ より Coppersmith&amp;rsquo;s Attack がそのまま適用できます。&lt;/p&gt;
+&lt;/div&gt;&lt;h1 id=&#34;summersa&#34;&gt;summeRSA
+&lt;/h1&gt;&lt;p&gt;普通の RSA 暗号です。ただし 59 文字のフラグのうち先頭 51 文字が判明しています。今回、$e = 7$ なので $51 &amp;gt; 59 \times \frac{6}{7}$ より Coppersmith&amp;rsquo;s Attack がそのまま適用できます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -4533,12 +4519,12 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>CakeCTF2021 Crypto</title>
-        <link>https://mitsu1119.github.io/blog/p/cakectf2021-crypto/</link>
+        <link>http://localhost:1313/blog/p/cakectf2021-crypto/</link>
         <pubDate>Mon, 06 Sep 2021 12:01:57 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/cakectf2021-crypto/</guid>
-        <description>&lt;h1 id=&#34;discrete-log&#34;&gt;discrete log&lt;/h1&gt;
-&lt;p&gt;ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\  \mathrm{mod}\  p$ が計算されている。$p,g,c_i$ が既知。&lt;/p&gt;
+        <guid>http://localhost:1313/blog/p/cakectf2021-crypto/</guid>
+        <description>&lt;h1 id=&#34;discrete-log&#34;&gt;discrete log
+&lt;/h1&gt;&lt;p&gt;ランダムな素数 $p,q,r$ があり、フラグの各文字 $m_i$ について $c_i = g^{rm_i}\  \mathrm{mod}\  p$ が計算されている。$p,g,c_i$ が既知。&lt;/p&gt;
 &lt;p&gt;フラグの先頭、つまり $c_0$ と $c_1$ の平文 $m_0,m_1$ が &amp;lsquo;C&amp;rsquo; 及び &amp;lsquo;a&amp;rsquo; で有ることを利用すれば RSA の Common Modulus Attack と同じように解くことができる。
 今 $m_0 x + m_1 y = 0$ の解を $s_0, s_1$ とすれば、
 $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 + m_1 s_1)} \equiv g^r \mod p$$
@@ -4596,8 +4582,8 @@ $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 + m_1
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;k&#34;&gt;break&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;improvisation&#34;&gt;improvisation&lt;/h1&gt;
-&lt;p&gt;LFSR でビット単位で暗号化されたフラグが与えられる。フラグの先頭が CakeCTF{ なので 63 ビット分の情報が手に入り、LFSR の状態をシミュレートできてしまう。よくある疑似乱数予測問。&lt;/p&gt;
+&lt;/div&gt;&lt;h1 id=&#34;improvisation&#34;&gt;improvisation
+&lt;/h1&gt;&lt;p&gt;LFSR でビット単位で暗号化されたフラグが与えられる。フラグの先頭が CakeCTF{ なので 63 ビット分の情報が手に入り、LFSR の状態をシミュレートできてしまう。よくある疑似乱数予測問。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -4682,8 +4668,8 @@ $$c_0^{s_0} c_1^{s_1} \equiv g^{rm_0 s_0} g^{rm_1 s_1} \equiv g^{r(m_0 s_0 + m_1
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;long_to_bytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[::&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))[::&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;together-as-one&#34;&gt;Together as one&lt;/h1&gt;
-&lt;p&gt;$N = pqr$ の RSA。$x \equiv (p + q)^r \mod n$ と $y \equiv (p + qr)^r \mod n$ が与えられる。&lt;/p&gt;
+&lt;/div&gt;&lt;h1 id=&#34;together-as-one&#34;&gt;Together as one
+&lt;/h1&gt;&lt;p&gt;$N = pqr$ の RSA。$x \equiv (p + q)^r \mod n$ と $y \equiv (p + qr)^r \mod n$ が与えられる。&lt;/p&gt;
 &lt;p&gt;今 $x$ について、二項定理を使って展開すれば、$p^r$ と $q^r$ の項以外の二項係数は $r$ を約数に含むため $pqr$ で割り切れるので
 $$x \equiv (p + q)^r \equiv p^r + q^r \mod n$$
 である。また $y$ についても展開すれば $pqr$ の項が出てくるので
@@ -4756,12 +4742,12 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$&lt;/p&gt;
         </item>
         <item>
         <title>zer0pts ctf 2021 writeup (日本語)</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 09 Mar 2021 06:15:12 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
-        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;easy pseudo random: &lt;a class=&#34;link&#34; href=&#34;https://t.co/d8RX3eY6tC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://t.co/d8RX3eY6tC&lt;/a&gt;&lt;/li&gt;
@@ -4771,9 +4757,9 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$&lt;/p&gt;
 &lt;p&gt;他の問題のwriteupはこちらです。英語なので注意してください。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@ptr-yudai/B1bk04fmu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://hackmd.io/@ptr-yudai/B1bk04fmu&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;easy-pseudo-random-crypto-31-solves&#34;&gt;easy pseudo random (crypto: 31 solves)&lt;/h1&gt;
-&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
-&lt;p&gt;次のコードとその出力が与えられます。コードでは、フラグが乱数を用いてxorで暗号化されています。出力からは2つの連続した乱数列の上位kビットw0, w1が得られ、ここから乱数列を予測することでフラグを複合することができます。&lt;/p&gt;
+&lt;h1 id=&#34;easy-pseudo-random-crypto-31-solves&#34;&gt;easy pseudo random (crypto: 31 solves)
+&lt;/h1&gt;&lt;h2 id=&#34;概要&#34;&gt;概要
+&lt;/h2&gt;&lt;p&gt;次のコードとその出力が与えられます。コードでは、フラグが乱数を用いてxorで暗号化されています。出力からは2つの連続した乱数列の上位kビットw0, w1が得られ、ここから乱数列を予測することでフラグを複合することができます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -4844,8 +4830,8 @@ $$y - x \equiv q^r r^r - q^r \equiv q^r (r^r - 1) \mod n$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;w1 = &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;解法&#34;&gt;解法&lt;/h2&gt;
-&lt;p&gt;乱数生成用の$\mathbb{F}_p$上の関数を$F(v) = v^2 + b$とし、nbitsを$n$とおきます。このとき、未知数$x,y$を用いて$v_0$と$v_1$は数式で次のように表されます。
+&lt;/div&gt;&lt;h2 id=&#34;解法&#34;&gt;解法
+&lt;/h2&gt;&lt;p&gt;乱数生成用の$\mathbb{F}_p$上の関数を$F(v) = v^2 + b$とし、nbitsを$n$とおきます。このとき、未知数$x,y$を用いて$v_0$と$v_1$は数式で次のように表されます。
 $$\begin{eqnarray} v_0 &amp;amp;=&amp;amp; 2^{n-k} w_0 + x \nonumber \\ v_1 &amp;amp;=&amp;amp; 2^{n-k} w_1 + y \nonumber \end{eqnarray}$$&lt;/p&gt;
 &lt;p&gt;また、$v_1$を展開すれば
 $$\begin{eqnarray} v_1 &amp;amp;=&amp;amp; F(v_0) \nonumber \\ &amp;amp;=&amp;amp; (2^{n-k}w_0 + x)^2 + b \nonumber \end{eqnarray}$$
@@ -4941,9 +4927,9 @@ $k = \lceil \frac{nd}{d + 1} \rceil \ where\ d = \deg f$なのでCoppersmith&amp
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;zer0pts{is_blum_blum_shub_safe?}&lt;/code&gt;
 ちなみにこの乱数生成器はblum blum shubじゃないです。&lt;/p&gt;
-&lt;h1 id=&#34;pure-division-crypto-7-solves&#34;&gt;pure division (crypto: 7 solves)&lt;/h1&gt;
-&lt;h2 id=&#34;概要-1&#34;&gt;概要&lt;/h2&gt;
-&lt;p&gt;ピュアピュアの除算なのでpure divisionです。でもピュアじゃないらしいです。&lt;/p&gt;
+&lt;h1 id=&#34;pure-division-crypto-7-solves&#34;&gt;pure division (crypto: 7 solves)
+&lt;/h1&gt;&lt;h2 id=&#34;概要-1&#34;&gt;概要
+&lt;/h2&gt;&lt;p&gt;ピュアピュアの除算なのでpure divisionです。でもピュアじゃないらしいです。&lt;/p&gt;
 &lt;p&gt;次のコードとその出力が与えられます。とにかくECDLPさえ解けばフラグを得ることができますが、一般的に解けないためちょっと難しいです。しかし今回の問題では、剰余環$F_p = \mathbb{Z}/p^3\mathbb{Z}$上のECDLPなのでp進整数を利用すれば解けます。($F_p$は$\mathbb{F}_p$では無いことに注意してください。単にコード内の変数に従った名前にしているだけです)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4997,8 +4983,8 @@ $k = \lceil \frac{nd}{d + 1} \rceil \ where\ d = \deg f$なのでCoppersmith&amp
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;T: (49376632602749543055345783411902198690599351794957124343389298933965298693663616388441379424236401744560279599744281594405742089477317921152802669021421009909184865835968088427615238677007575776072993333868804852765473010336459028 : 342987792080103175522504176026047089398654876852013925736156942540831035248585067987750805770826115548602899760190394686399806864247192767745458016875262322097116857255158318478943025083293316585095725393024663165264177646858125759 : 1)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;解法-1&#34;&gt;解法&lt;/h2&gt;
-&lt;p&gt;$\mathbb{Z}/p^n\mathbb{Z}$は、精度$n$桁の$\mathbb{Q}_p$と見ることができます。今回フラグは320ビットで$p^3$はそれより十分大きいため、恒等写像で適当に移して$\mathbb{Q}_p$上のECDLPを解けば勝てます。この問題の解法のメインはこの部分です。あとはECDLPを解きます。$\mathbb{Q}_p$上のECDLPは解けることが一般的に知られていて、今回はその解法の一つであるSSSA Attackの原理とほぼ同じ手法を紹介します。&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;解法-1&#34;&gt;解法
+&lt;/h2&gt;&lt;p&gt;$\mathbb{Z}/p^n\mathbb{Z}$は、精度$n$桁の$\mathbb{Q}_p$と見ることができます。今回フラグは320ビットで$p^3$はそれより十分大きいため、恒等写像で適当に移して$\mathbb{Q}_p$上のECDLPを解けば勝てます。この問題の解法のメインはこの部分です。あとはECDLPを解きます。$\mathbb{Q}_p$上のECDLPは解けることが一般的に知られていて、今回はその解法の一つであるSSSA Attackの原理とほぼ同じ手法を紹介します。&lt;/p&gt;
 &lt;p&gt;$E$を$\mathbb{Q}_p$上の楕円曲線とし、$E$を還元して得られた$\mathbb{F}_p$上の曲線を$E_f$とします。簡単のため、$E_f$は非特異と仮定します。&lt;/p&gt;
 &lt;p&gt;また、$\pi : \mathbb{P}^2(\mathbb{Q}_p) \longrightarrow \mathbb{P}^2(\mathbb{F}_p)$を還元写像とし、射影平面上の点について$(x,y,1) \in \mathbb{P}^2(\mathbb{Q})$ と $(x,y) \in \mathbb{A}^2(\mathbb{Q})$を同一視します。$\mathcal{E}$を$E$の形式群とし、$\phi:\ker \pi \ni (x,y,z) \longmapsto -x/y \in \mathcal{E}(p\mathbb{Z}_p)$とすれば次のような同型写像が構成できます。
 $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset{\log _ \mathcal{E}} \longrightarrow p\mathbb{Z}_p$$&lt;/p&gt;
@@ -5006,8 +4992,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 したがって次の同型が成り立ちます。&lt;/p&gt;
 &lt;p&gt;$$E(\mathbb{Q}_p) \longrightarrow \ker \pi \longrightarrow p\mathbb{Z}_p$$&lt;/p&gt;
 &lt;p&gt;$p\mathbb{Z}_p \simeq \mathbb{F} _ p ^ +$なので、同型写像で変換していくことで$\mathbb{F} _ p$上の問題に帰着でき、ECDLPを解くことができます。&lt;/p&gt;
-&lt;h2 id=&#34;実装&#34;&gt;実装&lt;/h2&gt;
-&lt;p&gt;実際の実装ではp進展開を利用することができます。p進付値を$v_p$とし、$E(\mathbb{Q}_p)$の部分集合$E _ n(\mathbb{Q} _ p) = \left\{ P \in E(\mathbb{Q} _ p) v _ p(P _ x) \leq -2n \right\} \cup \left\{O\right\}$を考えます。このとき$E_n(\mathbb{Q}_p) \simeq \mathcal{E}(p^n\mathbb{Z}_p)$が成り立ちます。&lt;/p&gt;
+&lt;h2 id=&#34;実装&#34;&gt;実装
+&lt;/h2&gt;&lt;p&gt;実際の実装ではp進展開を利用することができます。p進付値を$v_p$とし、$E(\mathbb{Q}_p)$の部分集合$E _ n(\mathbb{Q} _ p) = \left\{ P \in E(\mathbb{Q} _ p) v _ p(P _ x) \leq -2n \right\} \cup \left\{O\right\}$を考えます。このとき$E_n(\mathbb{Q}_p) \simeq \mathcal{E}(p^n\mathbb{Z}_p)$が成り立ちます。&lt;/p&gt;
 &lt;p&gt;恒等写像を利用すれば次の式が得られます。&lt;/p&gt;
 &lt;p&gt;$$\mathcal{E}(p^n\mathbb{Z}_p)/\mathcal{E}(p^{n+1}\mathbb{Z}_p) \simeq p^n\mathbb{Z}_p / p^{n+1}\mathbb{Z}_p \simeq \mathbb{F}_p^+$$&lt;/p&gt;
 &lt;p&gt;これらの結果から、p進展開$\sum a_i p^i$の係数$a_i$を逐次的に求めることができます。&lt;/p&gt;
@@ -5119,37 +5105,37 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
         </item>
         <item>
         <title>zer0pts ctf 2021 開催記</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</link>
         <pubDate>Mon, 08 Mar 2021 19:06:07 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</guid>
-        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-%E9%96%8B%E5%82%AC%E8%A8%98/</guid>
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;zer0pts ctf 2021のを開催しました。パブリックなCTFの運営側に回るのは初めてだったので、例えば質問の受け答えなど間違えてしまわないかとても不安でした。サーバー周りはふるつきさんやst98さんがやってくれたため、自分は基本的に質問対応だけでよく、まあなんとかなりました。ありがとうございました。
 zer0pts ctf 2021では、正の得点を得たチームが951チームもいて、非常に多くの人に参加していただけました。ありがとうございます。
 また、1位がSuper Guesser、2位がK-Students、3位がr00timentaryでした。おめでとうございます！&lt;/p&gt;
 &lt;p&gt;出題した問題の公式writeupは &lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@ptr-yudai/B1bk04fmu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://hackmd.io/@ptr-yudai/B1bk04fmu&lt;/a&gt; で公開されているので、ぜひ参考にしてください。&lt;/p&gt;
-&lt;h1 id=&#34;作問&#34;&gt;作問&lt;/h1&gt;
-&lt;p&gt;cryptoの&amp;quot;easy pseudo random&amp;quot;と&amp;quot;pure division&amp;quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。&lt;/p&gt;
+&lt;h1 id=&#34;作問&#34;&gt;作問
+&lt;/h1&gt;&lt;p&gt;cryptoの&amp;quot;easy pseudo random&amp;quot;と&amp;quot;pure division&amp;quot;の2問を作らせていただきました。概要としては、非線形な乱数の予測とあまり良くない空間での楕円曲線の問題です。本当はrevやmiscもあと一問ずつくらい作る予定でしたが、考えていた案がことごとくうまく行かず結局問題には至りませんでした。ただ、問題を作ろうとすると周辺知識がたくさん見につくので自分でも色々勉強になりましたしいいかな〜くらいに思ってます。&lt;/p&gt;
 &lt;p&gt;easy pseudo randomは31solvesでした。easyくらいの難易度を想定していてwar(sa)mupの次くらいの比較的簡単目な予定だったのですが、solve数を見る限りでは意外とそうでもなかったっぽいです。この問題について言及している話を聞く限りでは、非線形な乱数である部分が特に難しかったらしく、確かにCTFの問題としてはあまり出ないよな〜なんて思いました。まあでも線形だと誰でも解けるのでこのくらいが丁度いいのかななんて気もしました。&lt;/p&gt;
 &lt;p&gt;pure divisionは7solvesでした。hard〜lunaticくらいの難易度を想定していてかなり難しく作ったつもりだったのですが、思っていたよりもsolve数は多くてびっくりしました。さすがです。次はもっと難しい問題を作れるようにがんばります。ただやはり一桁solvesに留まったようでちょっとだけ安心しました。この問題を解くためにFormal Logarithmやp進数の知識が必須だったため、そこで躓いている方が結構見受けられました。&lt;/p&gt;
 &lt;p&gt;作問チェックはあまり参加できず、3問くらいしかチェックすることができませんでした。ごめんなさい。サーバー周りの知識が無なのでCTFの準備などにあまり貢献できず、たくさん助けられました。ごめんなさい。&lt;/p&gt;
-&lt;h1 id=&#34;おわりに&#34;&gt;おわりに&lt;/h1&gt;
-&lt;p&gt;運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。&lt;/p&gt;
+&lt;h1 id=&#34;おわりに&#34;&gt;おわりに
+&lt;/h1&gt;&lt;p&gt;運営の方針として、ヒントになるものは与えないを徹底していたところがとても良かったと思います。絶対的な指標があったので自分も質問に答えやすかったです。また世の中には色んな人がいるんだなって知れたいい機会にもなりました。&lt;/p&gt;
 &lt;p&gt;めちゃくちゃ強いチームがたくさん参加していたので、次に開催されるときはもっと難しい問題を作れるようになってたらいいなって思っています。頑張れ未来の自分。あと日本語writeupどうしようかな〜〜&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>連結されたベジェ曲線状を等速で動こう</title>
-        <link>https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</link>
+        <link>http://localhost:1313/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</link>
         <pubDate>Mon, 04 Jan 2021 21:03:57 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</guid>
-        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。&lt;/p&gt;
+        <guid>http://localhost:1313/blog/p/%E9%80%A3%E7%B5%90%E3%81%95%E3%82%8C%E3%81%9F%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E7%8A%B6%E3%82%92%E7%AD%89%E9%80%9F%E3%81%A7%E5%8B%95%E3%81%93%E3%81%86/</guid>
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;いくつかの連結されたベジェ曲線に沿って一定の速さで移動したときの、各単位時間あたりの座標を所得する方法について解説します。ここでは実用できな2次元の3次ベジェ曲線のみを扱いますが、$n$次の場合も同様に計算できると思います。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;準備&#34;&gt;準備&lt;/h1&gt;
-&lt;p&gt;まずは制御点 $\mathbf{B} _ 1, \mathbf{B} _ 2, \mathbf{B} _ 3, \mathbf{B} _ 4$ によって表されるベジェ曲線 $\mathbf{P}(t)$ を次式で定義しておきます。
+&lt;h1 id=&#34;準備&#34;&gt;準備
+&lt;/h1&gt;&lt;p&gt;まずは制御点 $\mathbf{B} _ 1, \mathbf{B} _ 2, \mathbf{B} _ 3, \mathbf{B} _ 4$ によって表されるベジェ曲線 $\mathbf{P}(t)$ を次式で定義しておきます。
 $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 + 3t(1-t)^2 \mathbf{B} _ 2 + 3t^2(1-t) \mathbf{B} _ 3 + t^3 \mathbf{B} _ 4\ \ \ (0 \leq t \leq 1)$$&lt;/p&gt;
 &lt;p&gt;$t = 0$ で始点、$t = 1$ で終点の座標を取ります。&lt;/p&gt;
 &lt;p&gt;またベジェ曲線を複数連結したものをベジェ曲線ズと呼ぶことにし、これを構成する各ベジェ曲線により表される曲線をセグメントと呼ぶことにします。具体的な式でベジェ曲線ズ $\mathbf{P}(t)$ を定義しておきます。&lt;/p&gt;
@@ -5164,8 +5150,8 @@ $$\mathbf{P}(t) = (1 - t)^3 \mathbf{B} _ 1 + 3t(1-t)^2 \mathbf{B} _ 2 + 3t^2(1-t
 $$&lt;/p&gt;
 &lt;p&gt;ただし $\mathbf{P} _ i$ は $i$ 番目のセグメントのベジェ曲線を表し、$\mathbf{P} _ i(1) = \mathbf{P} _ {i + 1}(0)\ \ (1 \leq i &amp;lt; n)$ を満たすものとします。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;ベジェ曲線を長さの関数で表す&#34;&gt;ベジェ曲線を長さの関数で表す&lt;/h1&gt;
-&lt;p&gt;まずベジェ曲線 $\mathbf{P}(t)$ を曲線に沿った長さ $s$ を使って $\mathbf{Q}(s)\ \ 0 \leq s \leq l$ と表すことを考えます。ただし $l$ はベジェ曲線の孤長とします。&lt;/p&gt;
+&lt;h1 id=&#34;ベジェ曲線を長さの関数で表す&#34;&gt;ベジェ曲線を長さの関数で表す
+&lt;/h1&gt;&lt;p&gt;まずベジェ曲線 $\mathbf{P}(t)$ を曲線に沿った長さ $s$ を使って $\mathbf{Q}(s)\ \ 0 \leq s \leq l$ と表すことを考えます。ただし $l$ はベジェ曲線の孤長とします。&lt;/p&gt;
 &lt;p&gt;連鎖律から&lt;/p&gt;
 &lt;p&gt;$$ \left| \dfrac{d\mathbf{P}}{dt}\right| = \left| \dfrac{d\mathbf{Q}}{ds} \dfrac{ds}{dt} \right| = \left| \dfrac{d\mathbf{Q}}{ds}\right| \left| \dfrac{ds}{dt}\right| = \dfrac{ds}{dt}$$&lt;/p&gt;
 &lt;p&gt;よって微分と積分の関係から&lt;/p&gt;
@@ -5177,8 +5163,8 @@ $$&lt;/p&gt;
 &lt;p&gt;となります。一応ですがベジェ曲線の導関数は&lt;/p&gt;
 &lt;p&gt;$$\dfrac{d\mathbf{P}}{dt} = 3t^2(-\mathbf{B} _ 1 + 3 \mathbf{B} _ 2 - 3\mathbf{B} _ 3 + \mathbf{B} _ 4) + 6t(\mathbf{B} _ 1 - 2\mathbf{B} _ 2 + \mathbf{B} _ 3) + 3(-\mathbf{B} _ 1 + \mathbf{B} _ 2)$$&lt;/p&gt;
 &lt;p&gt;です。&lt;/p&gt;
-&lt;h1 id=&#34;ベジェ曲線ズ&#34;&gt;ベジェ曲線ズ&lt;/h1&gt;
-&lt;p&gt;改めてベジェ曲線ズ $\mathbf{P}(t),\ \ (0 \leq t \leq n)$ を長さ $s$ を使って $\mathbf{Q}(s),\ \ (0 \leq s \leq L)$ と表すことを考えます。ここでの $L$ はベジェ曲線ズ全体の弧長で、$i$ 番目のセグメントの長さは $l _ i$ と表すことにします。&lt;/p&gt;
+&lt;h1 id=&#34;ベジェ曲線ズ&#34;&gt;ベジェ曲線ズ
+&lt;/h1&gt;&lt;p&gt;改めてベジェ曲線ズ $\mathbf{P}(t),\ \ (0 \leq t \leq n)$ を長さ $s$ を使って $\mathbf{Q}(s),\ \ (0 \leq s \leq L)$ と表すことを考えます。ここでの $L$ はベジェ曲線ズ全体の弧長で、$i$ 番目のセグメントの長さは $l _ i$ と表すことにします。&lt;/p&gt;
 &lt;p&gt;また、$i$ 番目のセグメント $\mathbf{P} _ i$ に対応した $s$ による関数を $\mathbf{Q} _ i (s)$ と表すことにします。この場合でも先ほどと同様に&lt;/p&gt;
 &lt;p&gt;$$f _ i (t) = \int ^ t _ 0 \left| \dfrac{d \mathbf{P} _ i}{dt} \right| dt$$&lt;/p&gt;
 &lt;p&gt;とし、ベジェ曲線ズの始点から長さ $s$ の地点を含むセグメントの番号を $m$ とすれば&lt;/p&gt;
@@ -5195,8 +5181,8 @@ $$&lt;/p&gt;
 &lt;p&gt;$$\mathbf{Q}(s) = (\mathbf{P} \circ f^{-1})(s)$$&lt;/p&gt;
 &lt;p&gt;となります。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h1 id=&#34;ソースコード&#34;&gt;ソースコード
+&lt;/h1&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
@@ -5568,18 +5554,18 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>yoshi-camp 2020 winter 参加記</title>
-        <link>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
-&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
+&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;z3を完全に理解しよう-by-ptr-yudai&#34;&gt;Z3を完全に理解しよう by ptr-yudai&lt;/h1&gt;
-&lt;p&gt;Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。&lt;/p&gt;
-&lt;h2 id=&#34;シンボリック変数の型&#34;&gt;シンボリック変数の型&lt;/h2&gt;
-&lt;p&gt;シンボリック変数で使える型をまずは教えてくれました。&lt;/p&gt;
+&lt;h1 id=&#34;z3を完全に理解しよう-by-ptr-yudai&#34;&gt;Z3を完全に理解しよう by ptr-yudai
+&lt;/h1&gt;&lt;p&gt;Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。&lt;/p&gt;
+&lt;h2 id=&#34;シンボリック変数の型&#34;&gt;シンボリック変数の型
+&lt;/h2&gt;&lt;p&gt;シンボリック変数で使える型をまずは教えてくれました。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;真偽変数(Bool)&lt;/li&gt;
 &lt;li&gt;整数・実数変数(Int, Real)&lt;/li&gt;
@@ -5589,8 +5575,8 @@ $$&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。&lt;/p&gt;
 &lt;p&gt;BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。&lt;/p&gt;
-&lt;h2 id=&#34;制約と論理式&#34;&gt;制約と論理式&lt;/h2&gt;
-&lt;p&gt;制約はs.add(&amp;hellip;)みたいな感じで追加していきます。&lt;/p&gt;
+&lt;h2 id=&#34;制約と論理式&#34;&gt;制約と論理式
+&lt;/h2&gt;&lt;p&gt;制約はs.add(&amp;hellip;)みたいな感じで追加していきます。&lt;/p&gt;
 &lt;p&gt;制約内で用いる論理演算はAnd,Or,Xor,Not&amp;hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。
 また制約をかけるときに1 &amp;lt; a &amp;lt; 100みたいな不等式のチェーンは許されないらしいです。&lt;/p&gt;
 &lt;ul&gt;
@@ -5599,23 +5585,23 @@ $$&lt;/p&gt;
 &lt;li&gt;If(P, x, y) (PがTrueならx、PがFalseならy)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;あたりも使えるらしいです。便利。&lt;/p&gt;
-&lt;h2 id=&#34;解の列挙&#34;&gt;解の列挙&lt;/h2&gt;
-&lt;p&gt;Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。&lt;/p&gt;
-&lt;h2 id=&#34;z3における型&#34;&gt;Z3における「型」&lt;/h2&gt;
-&lt;p&gt;実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。&lt;/p&gt;
+&lt;h2 id=&#34;解の列挙&#34;&gt;解の列挙
+&lt;/h2&gt;&lt;p&gt;Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。&lt;/p&gt;
+&lt;h2 id=&#34;z3における型&#34;&gt;Z3における「型」
+&lt;/h2&gt;&lt;p&gt;実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。&lt;/p&gt;
 &lt;p&gt;DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。&lt;/p&gt;
-&lt;h2 id=&#34;z3の変数の種類&#34;&gt;Z3の変数の種類&lt;/h2&gt;
-&lt;p&gt;Z3の変数は主に３種類あるらしいです。&lt;/p&gt;
+&lt;h2 id=&#34;z3の変数の種類&#34;&gt;Z3の変数の種類
+&lt;/h2&gt;&lt;p&gt;Z3の変数は主に３種類あるらしいです。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Applications (全称・存在記号なし。qf論理式。IntやRealなど)&lt;/li&gt;
 &lt;li&gt;Quantifiers (全称・存在記号あり。Function)&lt;/li&gt;
 &lt;li&gt;Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;例題&#34;&gt;例題&lt;/h2&gt;
-&lt;p&gt;このあと例題を解きました。&lt;/p&gt;
-&lt;h3 id=&#34;例題1&#34;&gt;例題1&lt;/h3&gt;
-&lt;p&gt;A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？&lt;/p&gt;
+&lt;h2 id=&#34;例題&#34;&gt;例題
+&lt;/h2&gt;&lt;p&gt;このあと例題を解きました。&lt;/p&gt;
+&lt;h3 id=&#34;例題1&#34;&gt;例題1
+&lt;/h3&gt;&lt;p&gt;A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A「BとEは正直者」&lt;/li&gt;
 &lt;li&gt;B「Cは嘘つき」&lt;/li&gt;
@@ -5686,8 +5672,8 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;正直者はBとDでした。&lt;/p&gt;
-&lt;h2 id=&#34;例題2&#34;&gt;例題2&lt;/h2&gt;
-&lt;p&gt;次の式を満たす有理数x,yを求めよ&lt;/p&gt;
+&lt;h2 id=&#34;例題2&#34;&gt;例題2
+&lt;/h2&gt;&lt;p&gt;次の式を満たす有理数x,yを求めよ&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$x^2 + y^2 = 533/196$&lt;/li&gt;
 &lt;li&gt;$x^2 + y^2 = 3$&lt;/li&gt;
@@ -5733,8 +5719,8 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;1番の答えは11/7と1/2で有ることがわかりました。また同じような方法で2番を解こうとしましたが当然解けませんでした。&lt;/p&gt;
-&lt;h2 id=&#34;例題3&#34;&gt;例題3&lt;/h2&gt;
-&lt;p&gt;Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。&lt;/p&gt;
+&lt;h2 id=&#34;例題3&#34;&gt;例題3
+&lt;/h2&gt;&lt;p&gt;Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$\forall P, Q \in S,\ P * Q=Q * P$&lt;/li&gt;
 &lt;li&gt;$\forall P, Q \in S,\ P * (P * Q) = Q$
@@ -5798,29 +5784,29 @@ $$ P + Q = O * (P * Q)$$
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;この出力で群の結合法則を満たさない演算を手に入れることができました。とても便利で驚きです。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;z3の便利機能&#34;&gt;Z3の便利機能&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;z3の便利機能&#34;&gt;Z3の便利機能
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Optimize (最大、最小問題が解ける。ベクトル解析めっちゃ使ってそう)&lt;/li&gt;
 &lt;li&gt;Unsat Core (部分的な制約を満たすか否か推論。特に条件を1つ除けばsatになるようなものをMCUというらしいです)&lt;/li&gt;
 &lt;li&gt;Goal, Tactic (ゴールを設定してより高速に計算ができるらしいです。Tacticには色々な種類があるらしいです。どういう場合に使えばいいかよくわからなかったので復習します)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Unsat Coreを使ったデバッグ法を説明してくれました。とても便利そう。&lt;/p&gt;
-&lt;h2 id=&#34;z3の利用ミス集&#34;&gt;Z3の利用ミス集&lt;/h2&gt;
-&lt;p&gt;Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。&lt;/p&gt;
+&lt;h2 id=&#34;z3の利用ミス集&#34;&gt;Z3の利用ミス集
+&lt;/h2&gt;&lt;p&gt;Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。&lt;/p&gt;
 &lt;p&gt;1つ目の問題はBitVecの変数に対して単に&amp;raquo;としてしまうとだめ、というものでした。LShRを使えば解決します。&lt;/p&gt;
 &lt;p&gt;2つ目の問題はCのunsigned char同士の掛け算の問題でした。unsigned char同士の掛け算は暗黙の型変換で16bitの計算になってしまうので、単に8ビットのBitVecに対してZeroExt(8, x)みたいにして掛け算しないとだめ、というものでした。&lt;/p&gt;
 &lt;p&gt;3つ目の問題は32bitのBitVecで出力に時間がかかるというものでした。32bitを使うのではなく8bitのBitVec4つで表して解けば短い実行時間ですむらしいです。ただ、うまく修正したはずがあまり速度向上が見えなかったのでうーん:thinking_face:という感じです。&lt;/p&gt;
 &lt;br /&gt;
 &lt;p&gt;全体的に初めて知ることが多く、勉強になることがたくさんありました。ありがとうございました。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;bkzで勝つ-by-mitsu&#34;&gt;BKZで勝つ by mitsu&lt;/h1&gt;
-&lt;p&gt;自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。&lt;/p&gt;
+&lt;h1 id=&#34;bkzで勝つ-by-mitsu&#34;&gt;BKZで勝つ by mitsu
+&lt;/h1&gt;&lt;p&gt;自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。&lt;/p&gt;
 &lt;p&gt;内容はBKZ簡約基底、BKZ簡約のアルゴリズムについて雰囲気で説明し気持ちだけ汲み取ってもらおうというものでした。また問題を解いてもらったのですが、BKZを使う問題は基本的に基底をshuffleしてwhileで回す必要がありうまく解くのに時間がかかるため、結局その問題のフラグは講義中に得ることができませんでした。悲しい。ついでに部分和問題のCLOS法についても話しましたがこれは家庭普及率100%なのであまり必要なかった印象です。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;lllで殴る2-by-theoldmoon0602&#34;&gt;LLLで殴る(2) by theoldmoon0602&lt;/h1&gt;
-&lt;p&gt;前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。&lt;/p&gt;
-&lt;h2 id=&#34;coppersmithの定理&#34;&gt;Coppersmithの定理&lt;/h2&gt;
-&lt;p&gt;sageのsmall_rootsを自力で実装しよう、という内容でした。&lt;/p&gt;
+&lt;h1 id=&#34;lllで殴る2-by-theoldmoon0602&#34;&gt;LLLで殴る(2) by theoldmoon0602
+&lt;/h1&gt;&lt;p&gt;前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。&lt;/p&gt;
+&lt;h2 id=&#34;coppersmithの定理&#34;&gt;Coppersmithの定理
+&lt;/h2&gt;&lt;p&gt;sageのsmall_rootsを自力で実装しよう、という内容でした。&lt;/p&gt;
 &lt;p&gt;monicな1変数多項式$f(x)$について、$f(x_0) \equiv 0 \mod N$を満たす小さい$x_0$を求めるプログラムを作ろうという話です。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理(Coppersmithの定理)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;monicな1変数$d$次多項式$f$の、$f(x_0) \equiv 0 \mod b$を満たす$|x_0 | &amp;lt; N^{\beta^2 / d}$を、$\log N,\ d$の多項式時間で求めることができる。ただし$b$は$N$の因数で$N^\beta \leq b$。&lt;/p&gt;
@@ -5945,8 +5931,8 @@ $$
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;やっていることは意外とシンプルで驚きました。やろうやろうと思ってやれていなかったのでとてもいい機会になりました。&lt;/p&gt;
-&lt;h2 id=&#34;truncated-lcg&#34;&gt;Truncated LCG&lt;/h2&gt;
-&lt;p&gt;LCGの漸化式
+&lt;h2 id=&#34;truncated-lcg&#34;&gt;Truncated LCG
+&lt;/h2&gt;&lt;p&gt;LCGの漸化式
 $$
 \begin{array}{ c c }
 x_{1} &amp;amp; =ax_{0} +b\bmod m\\
@@ -5982,8 +5968,8 @@ $$
 $L$を基底簡約して$B$に変換しても格子は変わらないので$xB=0 \mod m$はなりたちます。
 &lt;p&gt;$x = s^ky + z$なので$(2^ky + z)B = lm$となるようなベクトル$l$が存在し、$zB = lm - 2^kyB$となります。
 ここで$zB \simeq 0$と近似できるようで、$l$が求められるそうです。ここから$l$がわかったので$z$も求めることができます、という内容でした。なんで$zB \simeq 0$とできるのかイマイチ理解ができませんでした。&lt;/p&gt;
-&lt;h2 id=&#34;lwe&#34;&gt;LWE&lt;/h2&gt;
-&lt;p&gt;時間がなくてほとんど解説されませんでした。&lt;/p&gt;
+&lt;h2 id=&#34;lwe&#34;&gt;LWE
+&lt;/h2&gt;&lt;p&gt;時間がなくてほとんど解説されませんでした。&lt;/p&gt;
 &lt;p&gt;$$
 \begin{pmatrix}
 a_{11} &amp;amp; a_{21} &amp;amp; \cdots  &amp;amp; a_{m1}\\
@@ -6000,27 +5986,27 @@ $$&lt;/p&gt;
 &lt;br /&gt;
 数学の話が多めでした。いつかやろうやろうと思っていたことをやる機会になったのでとてもありがたい発表でした。この発表と比べると自分のBKZの話がカス過ぎて悲しくなってしまいます。
 &lt;br /&gt;
-&lt;h1 id=&#34;prngと戯れる&#34;&gt;PRNGと戯れる&lt;/h1&gt;
-&lt;p&gt;yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。&lt;/p&gt;
+&lt;h1 id=&#34;prngと戯れる&#34;&gt;PRNGと戯れる
+&lt;/h1&gt;&lt;p&gt;yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;感想&#34;&gt;感想&lt;/h1&gt;
-&lt;p&gt;午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。&lt;/p&gt;
+&lt;h1 id=&#34;感想&#34;&gt;感想
+&lt;/h1&gt;&lt;p&gt;午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。&lt;/p&gt;
 &lt;p&gt;あとは単に問題を解くのに実行時間がかかるBKZはこういうところで発表するものじゃないなと身にしみて思いました。ごめんなさい&lt;/p&gt;
 &lt;/div&gt;
 </description>
         </item>
         <item>
         <title>InterKosenCTF2020 writeup</title>
-        <link>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</link>
+        <link>http://localhost:1313/blog/p/interkosenctf2020-writeup/</link>
         <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</guid>
+        <guid>http://localhost:1313/blog/p/interkosenctf2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめました．運営は3人しかいないらしくとても大変そうです．本当にお疲れ様でした．&lt;br&gt;
 では自分が解いた問題のwirteupを書いていこうと思います．&lt;/p&gt;
 &lt;br&gt;
-&lt;h1 id=&#34;pwn-105pts-babysort-49-solved&#34;&gt;[pwn: 105pts] babysort (49 solved)&lt;/h1&gt;
-&lt;p&gt;次のプログラムで動いているサービスがあります．&lt;/p&gt;
+&lt;h1 id=&#34;pwn-105pts-babysort-49-solved&#34;&gt;[pwn: 105pts] babysort (49 solved)
+&lt;/h1&gt;&lt;p&gt;次のプログラムで動いているサービスがあります．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -6169,8 +6155,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;pwn-300pts-authme-20-solved&#34;&gt;[pwn: 300pts] authme (20 solved)&lt;/h1&gt;
-&lt;p&gt;次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．&lt;/p&gt;
+&lt;h1 id=&#34;pwn-300pts-authme-20-solved&#34;&gt;[pwn: 300pts] authme (20 solved)
+&lt;/h1&gt;&lt;p&gt;次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -6357,8 +6343,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-201pts-ciphertexts-33-solved&#34;&gt;[crypto: 201pts] ciphertexts (33 solved)&lt;/h1&gt;
-&lt;p&gt;次のmulti-prime rsaのような暗号と，その出力結果が渡されました．&lt;/p&gt;
+&lt;h1 id=&#34;crypto-201pts-ciphertexts-33-solved&#34;&gt;[crypto: 201pts] ciphertexts (33 solved)
+&lt;/h1&gt;&lt;p&gt;次のmulti-prime rsaのような暗号と，その出力結果が渡されました．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -6456,8 +6442,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-326pts-bitcrypto-17-solved&#34;&gt;[crypto: 326pts] bitcrypto (17 solved)&lt;/h1&gt;
-&lt;p&gt;&amp;ldquo;&amp;ldquo;&amp;ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&amp;rdquo;&amp;rdquo;&amp;rdquo; ← これ好き&lt;/p&gt;
+&lt;h1 id=&#34;crypto-326pts-bitcrypto-17-solved&#34;&gt;[crypto: 326pts] bitcrypto (17 solved)
+&lt;/h1&gt;&lt;p&gt;&amp;ldquo;&amp;ldquo;&amp;ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&amp;rdquo;&amp;rdquo;&amp;rdquo; ← これ好き&lt;/p&gt;
 &lt;p&gt;次のコードが動いているサーバーに接続してフラグを取る問題です．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -6718,8 +6704,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-383pts-ochazuke-11-solved&#34;&gt;[crypto: 383pts] ochazuke (11 solved)&lt;/h1&gt;
-&lt;p&gt;次のsageのコードが動いているサーバーにアクセスできます．&lt;/p&gt;
+&lt;h1 id=&#34;crypto-383pts-ochazuke-11-solved&#34;&gt;[crypto: 383pts] ochazuke (11 solved)
+&lt;/h1&gt;&lt;p&gt;次のsageのコードが動いているサーバーにアクセスできます．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -6935,8 +6921,8 @@ $$&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;your messageにhexlify(b&amp;quot;ohayougozaimasu&amp;rdquo;)を送り，そのシグネチャをこの計算プログラムに入力すればochazukeのシグネチャが計算されます．この問題，あまり楕円曲線要素がなくただの法の下の計算みたいな感じだったので少し残念でした．でも面白かったです！&lt;/p&gt;
 &lt;br&gt;
-&lt;h1 id=&#34;reversing-182pts-harmagedon-36-solved&#34;&gt;[reversing: 182pts] harmagedon (36 solved)&lt;/h1&gt;
-&lt;p&gt;ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．&lt;/p&gt;
+&lt;h1 id=&#34;reversing-182pts-harmagedon-36-solved&#34;&gt;[reversing: 182pts] harmagedon (36 solved)
+&lt;/h1&gt;&lt;p&gt;ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．&lt;/p&gt;
 &lt;p&gt;頑張ってバイナリを読むと，$i$番目に選択したアルファベットのインデックス(例えば[fRd3]でRなら1)を$a_i$とすると，次のような漸化式と制約でフラグかどうか判別しているようでした．&lt;/p&gt;
 &lt;p&gt;$$x_1 = 0,\ x_{i+1} = 4(x_i + a_i + 1)$$
 $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
@@ -6998,8 +6984,8 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;reversing-182pts-in-question-36-solved&#34;&gt;[reversing: 182pts] in question (36 solved)&lt;/h1&gt;
-&lt;p&gt;ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．&lt;/p&gt;
+&lt;h1 id=&#34;reversing-182pts-in-question-36-solved&#34;&gt;[reversing: 182pts] in question (36 solved)
+&lt;/h1&gt;&lt;p&gt;ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．&lt;/p&gt;
 &lt;p&gt;そるばどぺー&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -7034,8 +7020,8 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;reversing-252pts-trilemma-26-solved&#34;&gt;[reversing: 252pts] trilemma (26 solved)&lt;/h1&gt;
-&lt;p&gt;複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．&lt;br&gt;
+&lt;h1 id=&#34;reversing-252pts-trilemma-26-solved&#34;&gt;[reversing: 252pts] trilemma (26 solved)
+&lt;/h1&gt;&lt;p&gt;複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．&lt;br&gt;
 実行してみると各ライブラリのflag関数からエラーが出ます．エラーの文章からdl_iterate_phdrとlookupで落ちているようでした，ということで各ライブラリのlookup関数の中身を編集し，ライブラリの存在の有無でデータに1を書き込んでいる部分を0を書き込むように直しました．これは直接バイナリエディタでアセンブリをいじっています．&lt;/p&gt;
 &lt;p&gt;また，その後実行してもまたエラーで落ちます．そのエラーは，先程のエラーを回避するために0を代入したのに，そのデータの値が0であるときに発生するエラーでした．ということでそのジャンプ命令を変更してあげてそこもパスできるように編集しました．&lt;/p&gt;
 &lt;p&gt;その後またエラーが発生します．フラグを生成する部分のバッファのアドレスをmmapするとき，各ライブラリが使う部分が競合してしまっていました．gdbで頑張って色々命令を飛ばしながら動かすとフラグの断片が色々手に入るので，それを組みわせればオッケーです．&lt;/p&gt;
@@ -7045,14 +7031,14 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
         </item>
         <item>
         <title>WMCTF 2020 writeup</title>
-        <link>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</link>
+        <link>http://localhost:1313/blog/p/wmctf-2020-writeup/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</guid>
+        <guid>http://localhost:1313/blog/p/wmctf-2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!&lt;br&gt;
 Thanks to my team members.
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post2/rank.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post2/rank.png&#34;
 	
 	
 	
@@ -7063,8 +7049,8 @@ Thanks to my team members.
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.&lt;/p&gt;
-&lt;h2 id=&#34;crypto-606pts-babysum-14-solved&#34;&gt;[Crypto: 606pts] babySum (14 solved)&lt;/h2&gt;
-&lt;p&gt;We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.&lt;br&gt;
+&lt;h2 id=&#34;crypto-606pts-babysum-14-solved&#34;&gt;[Crypto: 606pts] babySum (14 solved)
+&lt;/h2&gt;&lt;p&gt;We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.&lt;br&gt;
 Reading check.py, we will see that we need to solve a typical subset sum problem.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -7199,13 +7185,13 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
         </item>
         <item>
         <title>LLLを理解するぞ</title>
-        <link>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
+        <link>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</link>
         <pubDate>Sun, 10 May 2020 20:51:59 +0000</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
+        <guid>http://localhost:1313/blog/p/lll%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%9E/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;大体タイトル通りの記事です．LLLを解説していきます．&lt;br&gt;
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h2&gt;&lt;p&gt;大体タイトル通りの記事です．LLLを解説していきます．&lt;br&gt;
 性質や定理の証明は一つ一つ丁寧に与えていこうと思いますが，何から何まで全てやって記事を書ききる自信はないので，基本的な線形代数の内容(特に線形空間やノルム周り)は前提知識として進めていきます．また，格子に関する基本的な性質やLLLを理解するのに必要な部分の解説しかないので，もしこの記事を読んでもっと勉強したいと思った方は適当な本を読むことをお勧めします（つまり内容が薄いです．許してください）．またその関係上内容が直感的にわかりやすいものでは無いかもしれませんのでそのあたりはご了承ください．
 もし自分が理解したつもりになっている内容に誤りがあったらコメントで教えてください．特に用語の日本語訳が非常に怪しい感じになっています．証明の書き方が稚拙だったり，特にサイズ簡約の部分で添え字が複雑になってしまっていたり，正直そこまでうまく説明できている自信がないためお手柔らかにお願いします……あと，判断できない命題はとりあえず定理にしています．お許しください．&lt;br&gt;
 とにかくコードだけ欲しいという方はこのリポジトリを参照してください．verifyはしてないので結構怪しい感じですが，オープンソースで上がっている他のLLLと比較したら出力が同じだったので多分大丈夫だと思います．&lt;/p&gt;
@@ -7222,15 +7208,15 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 &gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;1-格子&#34;&gt;1. 格子&lt;/h2&gt;
-&lt;p&gt;一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．&lt;/p&gt;
+&lt;h2 id=&#34;1-格子&#34;&gt;1. 格子
+&lt;/h2&gt;&lt;p&gt;一応この記事は，格子を知らない状態からLLLを理解するまでの道みたいな感じで作ったつもりです．ということで，前提となる格子からをちゃんと定義しておきます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 1.1:&lt;/strong&gt;
 線形独立な $n$ 本のベクトル $b _ 1,b _ 2,\cdots ,b _ n \in \mathbb{R} ^ m$ によって張られる&lt;strong&gt;格子&lt;/strong&gt; $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ を次のように定義する．$$\displaystyle \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ \sum x _ ib _ i \mathrel{}\middle|\mathrel{} x _ i \in \mathbb{Z} \right\}$$この時， $ \left\{b _ 1,b _ 2,\cdots,b _ n \right\}$ を格子の&lt;strong&gt;基底&lt;/strong&gt;と呼び， $ n$ を格子の&lt;strong&gt;次数&lt;/strong&gt;と言う．
 また $ n = m$ であるとき，格子 $ \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n)$ は&lt;strong&gt;full-rankである&lt;/strong&gt;と言う．&lt;/p&gt;
 &lt;p&gt;full-rankでない例は $ m &amp;gt; n$ の場合を適当に考えれば作れます．例えば $ {} ^ t\!b _ 1 = \begin{pmatrix} 1 &amp;amp; 0 &amp;amp; 1 \end{pmatrix},\ {} ^ t\!b _ 2 = \begin{pmatrix} 0 &amp;amp; 1 &amp;amp; 2 \end{pmatrix}$ とすれば $ b _ 1$ と $ b _ 2$ は線形独立ですが，これによって作られる二次元の格子 $ \mathcal{L}(b _ 1,b _ 2)$ は明らかにfull-rankになりません．また， $ m &amp;lt; n$ の時は各ベクトルが線形独立にならないので注意してください．&lt;/p&gt;
 &lt;p&gt;格子の表記について，基底となる列ベクトル $ b _ 1,b _ 2,\cdots,b _ n$ を横に並べた $ m \times n$ 行列 $ B$ を使って$$ \mathcal{L}(B) = \mathcal{L}(b _ 1,b _ 2,\cdots,b _ n) = \left\{ Bx \mathrel{}\middle|\mathrel{} x \in \mathbb{Z} ^ n \right\}$$と表すこともあります．このときの $B$ のことを&lt;strong&gt;基底行列&lt;/strong&gt;と言います．&lt;/p&gt;
 &lt;p&gt;一応図を用意しました．黒い点が格子の元で，原点から出ている黒い矢印が基底を構成するベクトルです．なんとなく格子という名前通りの集合になっていますね．
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lattice_ex1.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex1.png&#34;
 	
 	
 	
@@ -7241,7 +7227,7 @@ WMCTF{83077532752999414286785898029842440}&lt;/p&gt;
 	
 &gt;
 $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 0 \\ 0 &amp;amp; 1 \end{pmatrix}$$
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lattice_ex2.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post1/lattice_ex2.png&#34;
 	
 	
 	
@@ -7266,8 +7252,8 @@ $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 1 \\ 1 &amp;amp; 2 \end{pmatrix}$
 &lt;p&gt;このように，同じ格子の基底同士はユニモジュラ行列によって関連付けられています．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;2-格子の行列式&#34;&gt;2. 格子の行列式&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 2.1:&lt;/strong&gt;
+&lt;h2 id=&#34;2-格子の行列式&#34;&gt;2. 格子の行列式
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 2.1:&lt;/strong&gt;
 基底行列 $ B = \begin{pmatrix} b _  {1} &amp;amp; \cdots  &amp;amp; b _  {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n}$ の格子 $ \Lambda$ の&lt;strong&gt;スパン&lt;/strong&gt; $ \mathrm{span}(\Lambda)$ とは，次のような線形包である．$$ \mathrm{span}(\Lambda) = \mathrm{span}(b _ 1,\cdots,b _ n) = \mathrm{span}(B) = \left\{ By \mathrel{}\middle|\mathrel{} y \in \mathbb{R} ^ n \right\}$$&lt;/p&gt;
 &lt;p&gt;定義より，格子 $ \Lambda$ の基底行列 $ B$ は $ \mathrm{span}(\Lambda)$ の基底行列にもなります．また，格子 $ \Lambda$ がfull-rankな時， $ \mathrm{span}(\Lambda) = \mathbb{R} ^ n$ となります．このスパンのおかげで格子の点と点の隙間を考えることができ，格子上の計算をスパンにマッピングして行ってから元の格子に射影し直すという操作を使うことで，それなりに自由に計算が行えるようになります．後述のLLLアルゴリズムもこの方法を使っています．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 2.2:&lt;/strong&gt;
@@ -7282,8 +7268,8 @@ $$ \displaystyle B=\begin{pmatrix} 1 &amp;amp; 1 \\ 1 &amp;amp; 2 \end{pmatrix}$
 &lt;p&gt;逆は言えないので注意してください（基底行列の次数が違う場合が反例としてあげられます）．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;3-逐次最小&#34;&gt;3. 逐次最小&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 3.1:&lt;/strong&gt;
+&lt;h2 id=&#34;3-逐次最小&#34;&gt;3. 逐次最小
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 3.1:&lt;/strong&gt;
 $ B \in \mathbb{R} ^ {m \times n}$ を基底行列とする格子 $ \Lambda$ について，自然数 $ 1 \leq i \leq n$ に対する $ i$ 番目の逐次最小 $ \lambda _ i = \lambda _ i(\Lambda)$ を次の式で定義する．$$\lambda _  {i} (\Lambda )=\inf\left\{r \mathrel{}\middle|\mathrel{} i\leq \dim (\mathrm{span} (\Lambda \cap B(0;r)))\right\} \ \\ \hspace{6em} \mathit{where} \ B(0;r)=\left\{x\in \mathbb{R} ^ {m} \mathrel{}\middle|\mathrel{} |x| \leq r \right\} $$&lt;/p&gt;
 &lt;p&gt;多分ぱっと見ではこの式が何を言っているのかわかりにくいと思いますが（自分はわからなかった）言っていることは実は結構簡単で，要するに逐次最小 $ \lambda _ i$ とは， $ i$ 個の線形独立な格子の元を含む原点中心の最小の超球の半径です．
 この定義より，格子 $ \Lambda$ の線形独立な格子ベクトルを短い順に $ n$ 個とってできたベクトルの組 $ v _ 1,\cdots,v _ n$ の長さはそれぞれ $ \lambda _ 1,\cdots,\lambda _ n$ となることがわかります．ただし注意として，五次元以上の格子では $ \left\{ v _ 1,\cdots,v _ n \right\}$ が必ずしも $ \Lambda$ の基底になるとは限りません．
@@ -7312,14 +7298,14 @@ $  n $ 次のfull-rankな格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ �
 閉球 $  B(0; r) \subset \mathbb{R} ^ n $ について，立方体 $  X = \left[-\frac{r}{\sqrt{n}}, \frac{r}{\sqrt{n}} \right] ^ {n} \subset \mathbb{R} ^ n $ は $  X \subseteq B(0; r) $ を満たす．従って， $   \mathrm{vol}(X) = 2 ^ n(\frac{r}{\sqrt{n}}) ^ n \leq \mathrm{vol}(B(0;r)) $ となる．よって $  r = \sqrt{n}(\det \Lambda) ^ {\frac{1}{n}} $ とすれば $  \mathrm{vol}(B(0; r)) \geq 2 ^ n\det \Lambda $ が成り立ち，Minkowskiの凸体定理より $  B(0; r) $ の内側に格子点が存在するため， $  r =  \sqrt{n}(\det \Lambda) ^ {\frac{1}{n}} $ より短い格子ベクトルが存在する． $  ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;4-グラムシュミットの直交化法&#34;&gt;4. グラム・シュミットの直交化法&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 4.1:&lt;/strong&gt;
+&lt;h2 id=&#34;4-グラムシュミットの直交化法&#34;&gt;4. グラム・シュミットの直交化法
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 4.1:&lt;/strong&gt;
 内積空間 $  V $ の基底 $  \left\{b _  1, b _  2,\cdots,b _  n \right\} $ から，同じ空間を張るような直交基底 $  \left\{b _  1  ^  *,b _  2  ^  *,\cdots,b _  n  ^  * \right\} $ を次の式から求める操作を&lt;strong&gt;グラム・シュミットの直交化法&lt;/strong&gt;という．
 $$  \displaystyle b  ^  {*} _  {i} =b _  {i} -\sum   ^  {i-1} _  {j=1} \mu _  {i,j} b  ^  {*} _  {j}\ \mathit{where}\ \mu _  {i,j} =\frac{\langle b _  {i} ,b  ^  {*} _  {j} \rangle }{\langle b  ^  {*} _  {j} ,b  ^  {*} _  {j} \rangle } $$&lt;/p&gt;
 &lt;p&gt;正規化しないことに注意してください（グラム・シュミットの正規直交化として書いてあることが多いので）．
 また簡単のため，グラム・シュミットの直交化における係数 $  \mu _  {i,j}\ (1 \leq j &amp;lt; i \leq n) $ を&lt;strong&gt;グラムシュミット係数&lt;/strong&gt;と呼び， $  \left\{ b _  1,\cdots,b _  n \right\} $ をグラム・シュミットの直交化法で直交化したときに得られる新たなベクトル $  b _  1 ^ *,\cdots,b _  n ^ * $ を&lt;strong&gt;グラムシュミットベクトル&lt;/strong&gt;と呼ぶことにします．さらに，グラム・シュミットの直交化法を，基底行列 $  B = \begin{pmatrix} b _  {1} &amp;amp; \cdots  &amp;amp; b _  {n} \end{pmatrix} $ から $  B ^ * = \begin{pmatrix} b _  {1} ^ * &amp;amp; \cdots  &amp;amp; b _  {n} ^ * \end{pmatrix} $ を得る操作としても用いるようにします．
 一応疑似コードも載せておきます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/gramschmidt.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/gramschmidt.png&#34;
 	
 	
 	
@@ -7357,8 +7343,8 @@ $$\begin{aligned} B &amp;amp; = \begin{pmatrix} b ^ {*} _ {1} &amp;amp; b ^ {*} 
 $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，そのグラムシュミットベクトルを $  b _ 1 ^ *,\cdots,b _ n ^ * $ とする．この時，自然数 $  1 \leq i \leq n $ に対し $  | b _ i ^ * | \leq | b _ i | $ なので，$  | b _ 1 ^ * | | b _ 2 ^ * | \cdots | b _ n ^ * | \leq |b _ 1| |b _ 2| \cdots |b _ n| $ となる． 従って定理4.2より， $  \det \Lambda \leq \prod  ^ {n} _ {i=1} | b _ {i} | $ となる． $  ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;5-lagrangeの方法&#34;&gt;5. Lagrangeの方法&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;定義 5.1:&lt;/strong&gt;
+&lt;h2 id=&#34;5-lagrangeの方法&#34;&gt;5. Lagrangeの方法
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定義 5.1:&lt;/strong&gt;
 格子の基底 $  \left\{ b _ 1, b _ 2 \right\} \in \mathbb{R} ^ {m \times 2} $ が任意の $  x \in \mathbb{Z} $ に対し次の条件を満たすとき，&lt;strong&gt;簡約されている&lt;/strong&gt;という．$$  |b _ 1| \leq |b _ 2| \leq |b _ 2+xb _ 1| $$ また，簡約されている基底のことを&lt;strong&gt;簡約基底&lt;/strong&gt;と呼ぶ．ある格子の簡約基底は，同じ格子を張るような基底の中で直交欠陥が最も $  1 $ に近く，各ベクトルが短い基底です．また，ある格子が与えられたときその簡約基底を求めることを&lt;strong&gt;簡約化&lt;/strong&gt;と言います．基底の簡約化は次のような性質から，最も長さの短い格子ベクトルの計算に用いられます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 5.1:&lt;/strong&gt;
 二次元の格子 $  \Lambda $ の簡約基底を $  \left\{b _ 1,b _ 2\right\} \in \mathbb{R} ^ {m \times 2} $ とし，逐次最小を $  \lambda _ 1,\lambda _ 2 $ とする．この時次の式が成り立つ．$$  |b _ 1| = \lambda _ 1,\ |b _ 2| = \lambda _ 2 $$&lt;/p&gt;
@@ -7371,7 +7357,7 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 まず $  b _ 1,b _ 2 $ が簡約されていると仮定する．定義5.1において $  x = \pm 1 $ とすれば $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ ．
 次に $  b _ 1,b _ 2 $ が $  |b _ 1| \leq |b _ 2| \leq |b _ 2 \pm b _ 1| $ を満たすと仮定する．ここで，関数 $  f(\mu) = |b _ 2 + \mu b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu \langle b _ 1,b _ 2 \rangle + \mu ^ 2|b _ 1| ^ 2 $ の最小値が $  -1 &amp;lt; \mu &amp;lt; 1 $ の時取られることを考えれば， $  f(\mu) $ は二次関数なので $  |x| &amp;gt; 1 $ を満たす整数 $  x $ に対し $  f(0) \leq f(x) $ となり，同じ $  x $ に対し $  |b _ 2| \leq |b _ 2 + xb _ 1 | $ となる．従って仮定より任意の $  x \in \mathbb{Z} $ に対し $  |b _ 1| \leq |b _ 2| \leq |b _ 2 + xb _ 1| $ が成り立つ．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;基底の簡約化は一般には難しい問題です．ところが二次元の場合は，厳密解が多項式時間で求まるLagrangeの方法というアルゴリズムが存在し，具体的には次のような操作で簡約することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lagrange.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lagrange.png&#34;
 	
 	
 	
@@ -7384,8 +7370,8 @@ $  \Lambda $ の基底を $  \left\{b _ 1,b _ 2,\cdots,b _ n\right\} $ とし，
 $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ が最小となるような $  b _ 1 $ の係数を設定していることに注意してください． $  \mu _ {2,1} $ の最小値は，下に凸な二次関数 $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 = |b _ 2| ^ 2 - 2\mu _ {2,1} \langle b _ 1,b _ 2 \rangle + \mu _ {2,1} ^ 2|b _ 1| ^ 2 $ の最小値でもあるので，適当に微分して $  -2\langle b _ {1} ,b _ {2} \rangle +2\mu _ {2,1} | b _ {1} |  ^ {2} =0 $ の解を求めれば $  \mu _ {2, 1} = \langle b1, b2 \rangle / |b _ 1| ^ 2 $ が導けます．つまり，二つのベクトルの差のノルムができるだけ短くなるように計算しているだけです．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;6-lll簡約基底とサイズ簡約&#34;&gt;6. LLL簡約基底とサイズ簡約&lt;/h2&gt;
-&lt;p&gt;Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．&lt;/p&gt;
+&lt;h2 id=&#34;6-lll簡約基底とサイズ簡約&#34;&gt;6. LLL簡約基底とサイズ簡約
+&lt;/h2&gt;&lt;p&gt;Lagrangeの方法は，二次元の格子の簡約しかできない代わりに厳密解が求まるアルゴリズムでした．それに対しLLL(Lenstra–Lenstra–Lovász)アルゴリズムは，一般の次元に対して簡約基底の近似が行えます．ということで，そもそもの簡約基底の近似とはどういったものなのかちゃんと定義しておきます．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定義 6.1:&lt;/strong&gt;
 格子 $  \Lambda $ の基底 $  \left\{ b _ 1,\cdots,b _ n \right\} \in \mathbb{R} ^ {m \times n} $ とそのグラムシュミットベクトル $  b _ 1 ^ *,\cdots,b _ n ^ * \in \mathbb{R} ^ {m \times n} $ について，ある $  \delta \in \mathbb{R}\ (\frac{1}{4} &amp;lt; \delta &amp;lt; 1) $ を用いて次の条件が成り立つとき，基底がパラメータ $  \delta $ で&lt;strong&gt;LLL簡約されている&lt;/strong&gt;という．&lt;/p&gt;
 &lt;ol&gt;
@@ -7395,7 +7381,7 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 &lt;br/&gt;
 &lt;p&gt;一つ目の条件はLLL以外の格子アルゴリズムでも度々出てくる重要な条件で，これ満たす基底は&lt;strong&gt;サイズ簡約されている&lt;/strong&gt;と言います．また二つ目の条件はLovászの条件と呼ばれ，これのおかげで簡約の定義の強さを緩めることができます．&lt;/p&gt;
 &lt;p&gt;次に，格子の基底が与えられたとき，グラムシュミットベクトルを変えないようにサイズ簡約された基底を作るアルゴリズムを示します．これを使えばサイズ簡約の条件を簡単に達成できます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/size_reduction.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction.png&#34;
 	
 	
 	
@@ -7421,8 +7407,8 @@ $  7 $ 行目の $  \mu _ {2, 1} $ は， $  |b _ 2 - \mu _ {2,1}b _ 1 | ^ 2 $ �
 &lt;p&gt;補題6.1より，Algorithm 3の正当性を確認することができました．また，補題6.1の1つ目の式から，Algorithm 3の6行目の処理は2つ目の式を使ってグラムシュミット係数のみ計算すればいいことがわかります．しかしここでは簡単のため，グラム・シュミットの直交化をするようにしています．この部分の最適化は，LLLの説明が終わった後の最適化の部分に纏めて書いてあるので安心してください．&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;7-lovászの条件&#34;&gt;7. Lovászの条件&lt;/h2&gt;
-&lt;p&gt;LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
+&lt;h2 id=&#34;7-lovászの条件&#34;&gt;7. Lovászの条件
+&lt;/h2&gt;&lt;p&gt;LLL簡約のLovászの条件は， $  |b _ {i+1} ^ *| ^ 2 + \mu _ {i+1, i} ^ 2 |b _ i ^ *| ^ 2 = |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $ より次のような式に書き換えることもできます．$$  \delta |b _ i ^ *| ^ 2 \leq  |b _ {i+1} ^ * + \mu _ {i+1,i}b _ i ^ *| ^ 2 $$ここで正射影 $  \pi _ i: \mathbb{R} ^ m \to  \mathrm{span}( b _ i ^ * , \cdots  , b _ n ^ * ) $ を考えてみます．具体的には$$  \displaystyle \pi _ i(x) = \sum _ {j=i} ^ n \frac{\langle x,b _ j ^ * \rangle}{\langle b _ j ^ *,b _ j ^ * \rangle}b _ j ^ * $$となります．これを用いればLovászの条件は， $  \delta |\pi _ i(b _ i)| ^ 2 \leq |\pi _ i(b _ {i+1})| ^ 2 $ となることがわかります．この式からもわかるように，この条件は，基底の簡約の条件 $  b _ i \leq b _ {i+1} $ を $  \delta $ を用いて緩和したものと同じようなものになります．
 また，サイズ簡約の条件より， $  \alpha = \frac{1}{\delta - 1 / 4} $ としたとき自然数 $  1 \leq j \leq i \leq n $ について$$  |b _ j ^ *| ^ 2 \leq \alpha ^ {i-j}|b _ i ^ *| ^ 2 $$となります．この式はLovászの条件がどの程度簡約の条件を緩めるかを意味するものになっています．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理 7.1:&lt;/strong&gt;
 格子 $  \Lambda $ の基底行列を $  B=\begin{pmatrix} b _ {1} &amp;amp; \cdots  &amp;amp; b _ {n} \end{pmatrix} \in \mathbb{R} ^ {m \times n} $ とし，そのグラムシュミットベクトルによる行列を $  B ^ *=\begin{pmatrix} b _ {1} ^ * &amp;amp; \cdots  &amp;amp; b _ {n} ^ * \end{pmatrix} $ とする．この時，格子 $  \Lambda $ の逐次最小 $  \lambda _ 1 $ について次の不等式が成り立つ．$$  \lambda _ 1 \geq  \min _ i |b _ i ^ *| $$&lt;/p&gt;
@@ -7445,10 +7431,10 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 定理7.2より，$$  \displaystyle \begin{aligned} \begin{aligned} | b _ {1} |  ^ {n} \end{aligned} &amp;amp; \leq \prod  ^ {n} _ {i=1} \alpha  ^ {( i-1) /2} | b ^ {*} _ {i} | \\ &amp;amp; =\alpha  ^ {n( n-1) /4}\det \Lambda \end{aligned} $$である．従って， $  | b _ {1} | \leq \alpha  ^ {( n-1) /4}\det( \Lambda ) ^ {1/n} $ ． $ ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;8-lll簡約と計算量&#34;&gt;8. LLL簡約と計算量&lt;/h2&gt;
-&lt;p&gt;遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
+&lt;h2 id=&#34;8-lll簡約と計算量&#34;&gt;8. LLL簡約と計算量
+&lt;/h2&gt;&lt;p&gt;遂にLLL簡約です．といってもここまで読めた方にとってはあまり難しくないと思います．実はLLLアルゴリズムは意外と単純で，サイズ簡約した後Lovászの条件を満たすか確認し，もし満たさなかったときはそのベクトルの組を入れ替えてやり直すことを繰り返すアルゴリズムなのです．
 下に愚直な疑似コードを示します．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lll_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_1.png&#34;
 	
 	
 	
@@ -7459,7 +7445,7 @@ $  1 \leq i \leq n $ なる自然数 $  i $ について，定理7.2より$$  \d
 	
 &gt;
 さすがに愚直が過ぎるので，ある程度無駄な計算を省いたものとして下のコードも示しておきます．主な解析はこっちのコードで行います．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lll_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_2.png&#34;
 	
 	
 	
@@ -7502,10 +7488,10 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 よってAlgorithm 5全体の計算量は $  O(n ^ 2m + n ^ 5 m \log X) = O(n ^ 5 m \log X) $ となる． $ ■ $&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section&#34;&gt;
-&lt;h2 id=&#34;9-最適化&#34;&gt;9. 最適化&lt;/h2&gt;
-&lt;p&gt;この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．&lt;/p&gt;
+&lt;h2 id=&#34;9-最適化&#34;&gt;9. 最適化
+&lt;/h2&gt;&lt;p&gt;この最適化の章の内容は，青野先生と安田先生の『格子暗号解読のための数学的基礎』をかなり参考にさせていただきました．とてもいい本なの全人類読みましょう．&lt;/p&gt;
 &lt;p&gt;前にちょこちょこ書いていたように，Algorithm 5のLLLは無駄な計算があります．ということで，上で説明したAlgorithm 5の計算量をもう少し落としてみます．まずは8行目のグラム・シュミットの直交化の部分に注目します．補題6.1より，サイズ簡約を行ったあと出力されるベクトルは変わらないことが保証されているため，ここはグラムシュミット係数を更新するだけで済み，わざわざ直交化までする必要はありません．また，グラムシュミット係数の更新は補題6.1の二つ目の主張を利用すればよく，この部分の計算量を $  \Theta(n ^ 2m) $ から $  \Theta(n) $ まで落とすことができます．具体的には，サイズ簡約を下のようなコードで書けばよいことになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/size_reduction_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/size_reduction_2.png&#34;
 	
 	
 	
@@ -7530,7 +7516,7 @@ D=\prod  ^ {n-1} _ {i=1} | b ^ {*} _ {i} |  ^ {n-i} \leq \prod  ^ {n-1} _ {i=1} 
 さらに，自然数 $  k+1 \leq j \leq n $ についても同様に，$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k} \rangle }{| b ^ {&#39;*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,\frac{| b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k-1} -\mu _ {k,k-1}\frac{| b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}} b ^ {*} _ {k} \rangle }{\frac{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}}\\ &amp;amp; =\frac{\langle b _ {j} ,| b ^ {*} _ {k} |  ^ {2} b ^ {*} _ {k-1} -\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k-1} |  ^ {2} | b ^ {*} _ {k} | }\\ &amp;amp; =\mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k} \end{aligned} $$となり， $  \mu _ {j,k-1} ^ {\prime} $ についても$$  \displaystyle \begin{aligned} \mu  ^ {&#39;} _ {j,k-1} &amp;amp; =\frac{\langle b ^ {\prime } _ {j} ,b ^ {\prime *} _ {k-1} \rangle }{| b ^ {&#39;*} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} +\mu _ {k,k-1} b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\left( | b ^ {\prime *} _ {k-1} |  ^ {2} -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}\right) \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle -\mu  ^ {2} _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle +\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle -\mu _ {k,k-1} \langle b _ {k} ,b ^ {*} _ {k-1} \rangle \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{| b ^ {\prime *} _ {k-1} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k} |  ^ {2} \langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}} -\frac{\mu _ {k,k-1} \langle b _ {j} ,b ^ {*} _ {k} \rangle \langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {\prime *} _ {k-1} |  ^ {2} | b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}} +\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}} -\frac{\mu _ {k,k-1} | b ^ {*} _ {k-1} |  ^ {2}}{| b ^ {\prime *} _ {k-1} |  ^ {2}}\frac{\langle b _ {k} ,b ^ {*} _ {k-1} \rangle }{| b ^ {*} _ {k-1} |  ^ {2}}\frac{\langle b _ {j} ,b ^ {*} _ {k} \rangle }{| b ^ {*} _ {k} |  ^ {2}}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu _ {j,k-1} -\mu  ^ {\prime } _ {k,k-1} \mu _ {k,k-1} \mu _ {j,k}\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1}( \mu _ {j,k-1} -\mu _ {k,k-1} \mu _ {j,k})\\ &amp;amp; =\mu _ {j,k} +\mu  ^ {\prime } _ {k,k-1} \mu  ^ {\prime } _ {j,k} \end{aligned} $$となる．
 他のグラムシュミット係数については， $  b _ k $ と $  b _ {k-1} $ しか交換してないことから変化しないことは明らかである．よって示された． $ ■ $&lt;/p&gt;
 &lt;p&gt;補題9.1の結果を用いれば，Algorithm 5の13行目のグラム・シュミットの直交化を $  \Theta(n) $ の処理で置き換えることができ，最終的にLLL全体は次のようになります．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post1/lll_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post1/lll_3.png&#34;
 	
 	
 	

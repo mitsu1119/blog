@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！
 Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
 次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。
@@ -14,84 +14,20 @@ ElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年�
 古参ですね！
 個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
 公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
-CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。'>
+CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。
+この信じる心を CDH仮定 と呼びます。
+'>
 <title>群で理解する ElGamal</title>
 
-<link rel='canonical' href='https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/'>
+<link rel='canonical' href='http://localhost:1313/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/'>
 
-<link rel="stylesheet" href="/blog/scss/style.min.fd84e57133f7e873d7b16bba3f165639533befb316512be183800fd65952f8fe.css"><meta property='og:title' content='群で理解する ElGamal'>
-<meta property='og:description' content='はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！
-Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
-次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。
-ということで本題へレッツラゴー。
-ElGamal 暗号 ElGamal 暗号ってご存じですか？
-公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
-ちなみに私はあまりよく知りませんでした。
-ElGamal 暗号って何？現在は？base problem は？
-調べてみました！
-ElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
-古参ですね！
-個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
-公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
-CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。'>
-<meta property='og:url' content='https://mitsu1119.github.io/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/'>
+<link rel="stylesheet" href="/blog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="群で理解する ElGamal">
+<meta property='og:description' content="はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！\nDay 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。\n次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。\nということで本題へレッツラゴー。\nElGamal 暗号 ElGamal 暗号ってご存じですか？\n公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？\nちなみに私はあまりよく知りませんでした。\nElGamal 暗号って何？現在は？base problem は？\n調べてみました！\nElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。\n古参ですね！\n個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^\n公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！\nCDH 問題 とは、「$p$ を素数、$g \\neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \\pmod p,\\ g^y \\pmod p$ から $g^{xy} \\pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。\nこの信じる心を CDH仮定 と呼びます。\n">
+<meta property='og:url' content='http://localhost:1313/blog/p/%E7%BE%A4%E3%81%A7%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-elgamal/'>
 <meta property='og:site_name' content='みつみつみつですか？'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-01T18:56:50&#43;09:00'/><meta property='article:modified_time' content='2023-12-01T18:56:50&#43;09:00'/>
 <meta name="twitter:title" content="群で理解する ElGamal">
-<meta name="twitter:description" content="はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！
-Day 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。
-次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。
-ということで本題へレッツラゴー。
-ElGamal 暗号 ElGamal 暗号ってご存じですか？
-公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？
-ちなみに私はあまりよく知りませんでした。
-ElGamal 暗号って何？現在は？base problem は？
-調べてみました！
-ElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。
-古参ですね！
-個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^
-公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！
-CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \pmod p,\ g^y \pmod p$ から $g^{xy} \pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。">
-
-
-<style>
-  :root {
-    --ja-g-font-family: 'Zen Maru Gothic', '游ゴシック', '游ゴシック Medium',
-      'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic,
-      'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-
-    --article-font-family: var(--ja-g-font-family), var(--base-font-family);
-    --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family),
-      var(--zh-font-family), sans-serif;
-    --code-font-family: 'Ricty Diminished', Menlo, Monaco, Consolas,
-      'Courier New', monospace;
-  }
-</style>
-
-<script>
-  (function () {
-    const customFont = document.createElement('link');
-    customFont.href =
-      'https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap';
-
-    customFont.type = 'text/css';
-    customFont.rel = 'stylesheet';
-
-    document.head.appendChild(customFont);
-  })();
-</script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ0SEQSRZ0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VQ0SEQSRZ0');
-</script>
-
-
+<meta name="twitter:description" content="はじめに この記事は Lumos Advent Calendar の Day 2 の記事です！\nDay 1 の記事は @tomoyahiroe さんによる 【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい でした。\n次回の記事（Day 3）はくっきーさんによる ISUCON13 に参加した話 です。お楽しみに。\nということで本題へレッツラゴー。\nElGamal 暗号 ElGamal 暗号ってご存じですか？\n公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？\nちなみに私はあまりよく知りませんでした。\nElGamal 暗号って何？現在は？base problem は？\n調べてみました！\nElGamal 暗号とは 公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。\n古参ですね！\n個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^\n公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。 というのも ElGamal 暗号はCDH 問題をベースにしています！\nCDH 問題 とは、「$p$ を素数、$g \\neq 1$ を $p$ 未満の正の整数とする。$x,y$ を正の整数とし $g^x \\pmod p,\\ g^y \\pmod p$ から $g^{xy} \\pmod p$ を求めよ」という問題で、これは計算機で解くには非常に難しいと信じられています。\nこの信じる心を CDH仮定 と呼びます。\n">
 
     </head>
     <body class="
@@ -136,7 +72,7 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
                     
                     
                         
-                        <img src="/blog/images/avatar_hu6d5cebf05e4ae7675a69c338dfe93e72_520761_300x0_resize_box_3.png" width="300"
+                        <img src="/blog/images/avatar_hu_fa85c30bc21976cf.png" width="300"
                             height="291" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -152,7 +88,7 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
             <h1 class="site-name"><a href="/blog">みつみつみつですか？</a></h1>
             <h2 class="site-description">はい</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -197,31 +133,12 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
         </ol><ol class="menu" id="main-menu">
         
         
+        <li class="menu-bottom-section">
+            <ol class="menu">
 
-        <div class="menu-bottom-section">
-                <li id="i18n-switch">  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
-                        
-                            <option value="https://mitsu1119.github.io/blog/" selected></option>
-                        
-                    </select>
-                </li>
-            
-            
-            
-                <li id="dark-mode-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="8" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -229,7 +146,7 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
 
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="16" cy="12" r="2" />
   <rect x="2" y="6" width="20" height="12" rx="6" />
@@ -237,10 +154,11 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
 
 
 
-                    <span>ダークモード</span>
-                </li>
-            
-        </div>
+                        <span>ダークモード</span>
+                    </li>
+                
+            </ol>
+        </li>
     </ol>
 </aside>
 
@@ -325,7 +243,7 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 01, 2023</time>
+                <time class="article-time--published">12月 01, 2023</time>
             </div>
         
 
@@ -341,22 +259,22 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
     <section class="article-content">
     
     
-    <h2 id="はじめに">はじめに</h2>
-<p>　この記事は <a class="link" href="https://qiita.com/advent-calendar/2023/lumos"  target="_blank" rel="noopener"
+    <h2 id="はじめに">はじめに
+</h2><p>　この記事は <a class="link" href="https://qiita.com/advent-calendar/2023/lumos"  target="_blank" rel="noopener"
     >Lumos Advent Calendar</a> の Day 2 の記事です！</p>
 <p>　Day 1 の記事は @tomoyahiroe さんによる <a class="link" href="https://qiita.com/tomoyahiroe/items/343f158905ac7a65ca35"  target="_blank" rel="noopener"
     >【Nuxt3】Client Side Rendering で .output/public/ に index.html ファイルを生成したい</a> でした。<br>
 　次回の記事（Day 3）はくっきーさんによる <a class="link" href="https://blog.ck9.jp/post/240/"  target="_blank" rel="noopener"
     >ISUCON13 に参加した話</a> です。お楽しみに。</p>
 <p>　ということで本題へレッツラゴー。</p>
-<h2 id="elgamal-暗号">ElGamal 暗号</h2>
-<p>　ElGamal 暗号ってご存じですか？</p>
+<h2 id="elgamal-暗号">ElGamal 暗号
+</h2><p>　ElGamal 暗号ってご存じですか？</p>
 <p>　公開鍵暗号を少し調べたことのある方なら、もしかしたら名前だけでも聞いたことはあるのではないでしょうか？<br>
 　ちなみに私はあまりよく知りませんでした。</p>
 <p>　ElGamal 暗号って何？現在は？base problem は？<br>
 　調べてみました！</p>
-<h3 id="elgamal-暗号とは">ElGamal 暗号とは</h3>
-<p>　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。<br>
+<h3 id="elgamal-暗号とは">ElGamal 暗号とは
+</h3><p>　公開鍵暗号の種類の一つで、なんと 1980 年代から提案されているそうです。<br>
 　古参ですね！</p>
 <p>　個人的に ElGamal 暗号と RSA 暗号が初期の現代的な公開鍵暗号の巨頭に感じます。^^</p>
 <p>　公開鍵暗号は計算量的に難しい問題をベースに作られるのが基本となっていて、ElGamal 暗号も例外ではありません。
@@ -366,8 +284,8 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
 <p>　仰々しい数式が出てきましたが、丁寧に見ていけば主張は意外とと単純なことがわかると思います！</p>
 <p>　とりあえずなんか安全だと皆が願っているんだなってことがわかっていただければいいです。<br>
 　ということで次は暗号自体の説明です。</p>
-<h3 id="鍵生成">鍵生成</h3>
-<p>　まあ暗号化するには鍵が必要なわけです。<br>
+<h3 id="鍵生成">鍵生成
+</h3><p>　まあ暗号化するには鍵が必要なわけです。<br>
 　その鍵はどうやって作るんですか？というお話です。</p>
 <ol>
 <li>十分大きな素数$p$ を選ぶ</li>
@@ -376,57 +294,57 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
 <li>$h := g^x \pmod p$ を計算する</li>
 <li>$(g, p, h)$ を公開鍵、$x$ を秘密鍵とする！</li>
 </ol>
-<h3 id="暗号化">暗号化</h3>
-<p>　暗号化は公開鍵で行います。</p>
+<h3 id="暗号化">暗号化
+</h3><p>　暗号化は公開鍵で行います。</p>
 <ol>
 <li>平文 $m \in \{0,\cdots,p - 1\}$ を受け取る</li>
 <li>$\{0,\cdots,p-1\}$ からランダムに選び $r$ とする</li>
 <li>$c_1 := g^r \pmod p$、$c_2 := m\cdot h^r \pmod p$ を計算する</li>
 <li>$(c_1, c_2)$ を暗号文とし送信する！</li>
 </ol>
-<h3 id="復号">復号</h3>
-<p>　暗号文を受け取って秘密鍵で複合します。</p>
+<h3 id="復号">復号
+</h3><p>　暗号文を受け取って秘密鍵で複合します。</p>
 <ol>
 <li>$m = c_2 \cdot (c_2^x)^{-1} \pmod p$</li>
 </ol>
 <p>　実際、自分の持っている秘密鍵 $x$ が正しければ $c_2 \cdot (c_1^x)^{-1} \equiv m \cdot (g^x)^r \cdot ((g^r)^x)^{-1} \equiv m \mod p$ となることが確認できます。</p>
 <p>　「$(c_1^x)^{-1}$ のマイナス 1 乗って？」とか「十分に大きな素数ってどのくらい大きいの？」とかは聞かないでください。<br>
 　暗号の標準化の話や、そもそも生の ElGamal 暗号は使わないでパディングをする話とか込み入った話をする必要があるのですが、今は Advent Calendar 執筆 RTA 中（つまり進捗が危うい）のでその辺雑にやります。</p>
-<h3 id="なるほどね">なるほどね</h3>
-<p>　いかがでしたか？</p>
+<h3 id="なるほどね">なるほどね
+</h3><p>　いかがでしたか？</p>
 <p>　ここまではよくある普通の ElGamal 暗号の説明です。<br>
 　ただこれまでの流れの話は、群論を使うとより簡潔により一般的に議論することができます。</p>
 <p>　暗号をより一般的に議論すると、その暗号を暗号たらしめている核の部分が浮き彫りになり、より応用の利くものとなるのです！<br>
 　（というか上で普通の説明と書きましたが、周りを見てると暗号やってる人は群論の言葉で書かれた状態を普通として扱ってる気がしています。整数で書かれると具体的すぎてわかりづらい）</p>
-<h2 id="elgamal-暗号群論バージョン">ElGamal 暗号（群論バージョン）</h2>
-<p>　CDH 問題は整数の剰余の集合だけでなく、より一般的に次のように描くことができます。</p>
+<h2 id="elgamal-暗号群論バージョン">ElGamal 暗号（群論バージョン）
+</h2><p>　CDH 問題は整数の剰余の集合だけでなく、より一般的に次のように描くことができます。</p>
 <p><strong>CDH 問題</strong><br>
 　$G$ を有限巡回群、$g$ をその生成元とする。$x, y \in \N$ について $g^x,\ g^y$ から $g^{xy}$ を求めよ</p>
 <p>　この形で書けば、最初に説明した整数の形の CDH 問題は $G = (\Z/p\Z)^\times$ の特別な場合であることが目に見えると思います！<br>
 　（ちなみに $(\Z/p\Z)^\times$ をそのまま使って ElGamal するのはよくなくて、平文の $\mod p$ での平方剰余の情報がリークできます。そのために $(\Z/p\Z)^\times$ の適当な部分群を使ってやる方法など工夫があります）</p>
 <p>　それでは鍵生成や暗号化/復号についてみていきましょう。</p>
-<h3 id="鍵生成-1">鍵生成</h3>
-<ol>
+<h3 id="鍵生成-1">鍵生成
+</h3><ol>
 <li>有限巡回群 $G$ を選ぶ</li>
 <li>$G$ の生成元 $g$ を選ぶ</li>
 <li>$x \xleftarrow{U} \{0,\cdots,|G|-1\}$</li>
 <li>$h := g^x$ を計算</li>
 <li>$(g, |G|, h)$ を公開鍵、$x$ を秘密鍵とする</li>
 </ol>
-<h3 id="暗号化-1">暗号化</h3>
-<ol>
+<h3 id="暗号化-1">暗号化
+</h3><ol>
 <li>平文 $m \in G$ を受け取る</li>
 <li>$r \xleftarrow{U} \{0,\cdots,|G|-1\}$</li>
 <li>$c_1 := g^r,\ c_2 := m \cdot h^r$ を計算する</li>
 <li>$(c_1, c_2)$ を暗号文とする</li>
 </ol>
-<h3 id="復号-1">復号</h3>
-<ol>
+<h3 id="復号-1">復号
+</h3><ol>
 <li>$m = c_2 \cdot (c_1^x)^{-1}$ を計算する<br>
 復号の正当性は、整数の時と同じです。</li>
 </ol>
-<h2 id="応用例楕円曲線暗号">応用例（楕円曲線暗号）</h2>
-<p>　楕円曲線暗号は別名で<strong>楕円 ElGamal 暗号</strong>と呼ばれますが、実はこれも ElGamal 暗号の特別な例だからです。（といっても演算は乗法群としての表記より加法群としての表記が多いですが、あくまで表記の話です）</p>
+<h2 id="応用例楕円曲線暗号">応用例（楕円曲線暗号）
+</h2><p>　楕円曲線暗号は別名で<strong>楕円 ElGamal 暗号</strong>と呼ばれますが、実はこれも ElGamal 暗号の特別な例だからです。（といっても演算は乗法群としての表記より加法群としての表記が多いですが、あくまで表記の話です）</p>
 <p>　楕円曲線の $\mathbb{F}_p$ 有理点 $E(\mathbb{F}_p)$ は巡回群 or 二つの巡回群の直積となります。<br>
 　この巡回群を使って ElGamal してやろうというものが楕円曲線なのでした。</p>
 <p>　楕円曲線暗号と聞くと難しそうに聞こえますが、やってることはただの巡回群の計算でめちゃくちゃ簡単なんです！（表面上は。例えばなぜ $E(\mathbb{F}_p)$ が巡回群になるのか、など基礎的な部分を考え始めると数学も高度になってきます）</p>
@@ -458,18 +376,19 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
     
         <link 
                 rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
             ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
                 defer
                 >
             </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
                 defer
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
@@ -479,6 +398,7 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
             ignoredClasses: ["gist"]
         });})
 </script>
+
     
 </article>
 
@@ -539,12 +459,12 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
         
             2020 - 
         
-        2024 みつみつみつですか？
+        2025 みつみつみつですか？
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.17.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
+        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
+        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
     </section>
 </footer>
 
@@ -633,7 +553,7 @@ CDH 問題 とは、「$p$ を素数、$g \neq 1$ を $p$ 未満の正の整数�
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/blog/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog/ts/main.39bc816cda3503f41dec2c8cf0624a2c93df46569a6b8ac987f789bd48984c01.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

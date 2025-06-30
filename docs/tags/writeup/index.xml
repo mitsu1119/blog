@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Writeup on みつみつみつですか？</title>
-        <link>https://mitsu1119.github.io/blog/tags/writeup/</link>
+        <link>http://localhost:1313/blog/tags/writeup/</link>
         <description>Recent content in Writeup on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Tue, 18 Jul 2023 05:15:52 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/writeup/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Jul 2023 05:15:52 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/writeup/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>zer0pts ctf 2023 writeup (English)</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup-english/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -22,12 +22,11 @@ $$&lt;/p&gt;
     &gt;zer0pts ctf 2023&lt;/a&gt; on July 15.
 I&amp;rsquo;m happy to see so meny people participating!&lt;br&gt;
 I created 4 challenges in the crypto genre for this contest. Here, I&amp;rsquo;d like to explain the intended solution for me.&lt;/p&gt;
-&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;The word “decomposition” has multiple meanings.&lt;br&gt;
-Can you decompose?&lt;/p&gt;
-&lt;/blockquote&gt;
+Can you decompose?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -67,8 +66,8 @@ Can you decompose?&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;The most important part of the given code is above.&lt;br&gt;
 Let $p,q$ are large prime and $N := p^2 + q^2$. Given $N$, we need restore $p,q$ from $N$ to get the flag.&lt;br&gt;
 The name of the challenge is easy_factoring, but what it is supposed to be is a sum-of-squares decomposition disguised as prime factorization. (Although, in the end, prime factorization is required)&lt;/p&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;The decomposition of $N$ into sums of squares can be solved if the Gaussian integer ring $\mathbb{Z}[i]$ can be solved for the prime elements of $N$.&lt;br&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;The decomposition of $N$ into sums of squares can be solved if the Gaussian integer ring $\mathbb{Z}[i]$ can be solved for the prime elements of $N$.&lt;br&gt;
 Now, $N$ is expressed as $N = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2) \cdots (\pi_s \bar \pi_s)$ by Gaussian primes $\pi_1,\pi_2,\cdots,\pi_s$.&lt;br&gt;
 Then for $a,b \in \mathbb{Z}$ such that $N = a^2 + b^2$, $N = (a + bi)(a - bi) = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2) \cdots (\pi_s \bar \pi_s)$ holds.&lt;/p&gt;
 &lt;p&gt;In short, integers $a,b$ such that $N$ decomposes into a sum of squares are included in the factors in $\mathbb{Z}[i]$ of $N$ as $a + bi$.&lt;br&gt;
@@ -136,12 +135,11 @@ Furthermore, it seems that the Diophantine problem can be solved by simply apply
 &lt;p&gt;I think easy_factoring was assumed to be easy in terms of difficulty, so there was little damage. But I regret that a non-intended solution was created that could be solved by just applying the tool.&lt;br&gt;
 At the beginning of the problem design, I was thinking of using the decomposition of the sum of squares to do collution attack with some system.&lt;br&gt;
 I wish I could have been more creative in that area. (I lacked the ability to create challenge&amp;hellip;)&lt;/p&gt;
-&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-1&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-1&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;RSA is hard over integer ring.&lt;br&gt;
-What about RSA over elliptic curve ring (!?)&lt;/p&gt;
-&lt;/blockquote&gt;
+What about RSA over elliptic curve ring (!?)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -197,8 +195,8 @@ What about RSA over elliptic curve ring (!?)&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;The most important part of the given code is above.&lt;br&gt;
 Given a group ring constructed by coefficients $\mathbb{F}_p$ and basis $E(\mathbb{F}_p)$. (Sorry, the source code is complex to implement properly)&lt;br&gt;
 The task is to break the RSA on this group ring $\mathrm{ER}$.&lt;/p&gt;
-&lt;h3 id=&#34;solution-1&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;Since it is a group ring, it seems to be homomorphic to the residue ring of some polynomial ring.&lt;br&gt;
+&lt;h3 id=&#34;solution-1&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;Since it is a group ring, it seems to be homomorphic to the residue ring of some polynomial ring.&lt;br&gt;
 So, first of all, I feel like computing the structure of $E(\Fp)$ and its order $o := \#E(\Fp)$.&lt;/p&gt;
 &lt;p&gt;Actually, the calculation shows that $o = 192$ and $E(\Fp) = \left&amp;lt; G \right&amp;gt;$ by $G := (189, 152)$.&lt;/p&gt;
 &lt;p&gt;Hence $\mathrm{ER} = \Fp[G]$, and if $[i]G \mapsto x^i$ then we can construct the isomorphism $\Fp[G] \simeq \Fp[x]/(x^o - 1)$.&lt;br&gt;
@@ -577,11 +575,10 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-2&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-2&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -624,8 +621,8 @@ To compute $e^{-1}$, just compute $e^{-1} \bmod (p^{\deg f_i})$ for each factor 
 Let $S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$ and $T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ be the maps.&lt;br&gt;
 There is also a secret hash function $h$, which consists of random composition of $S$ and $T$.&lt;br&gt;
 This challenge is to recover $h$ given some $z \in \mathbb{C}$ and its hash $h(z)$.&lt;/p&gt;
-&lt;h3 id=&#34;solution-2&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.&lt;br&gt;
+&lt;h3 id=&#34;solution-2&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;At first, consider the upper half-plane $H$ instead of the entire $\mathbb{C}$.&lt;br&gt;
 Modular group $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ is a group action of $H$.&lt;br&gt;
 Since $H$ can be classified by orbits due to this action, so we can consider its orbit space $\Gamma \backslash H$. And, if the representatives are picked properly, this can be identify with fundamental domain $F$ defined below.
 $$
@@ -638,7 +635,7 @@ $$&lt;/p&gt;
 &lt;p&gt;Also, since $h \in \Gamma$ (for the property of $\Gamma$ described later),$\Gamma \tau = \Gamma h(\tau)$ is holds for the orbit $\tau$ and $h(\tau)$.&lt;br&gt;
 Thereore, given $\tau, h(\tau) \in H$, $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ holds for $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ such that $\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$.&lt;br&gt;
 Finally, the hash $h$ can be computed by $\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post16/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/diagram.png&#34;
 	
 	
 	
@@ -881,12 +878,11 @@ The lower half-plane can be solved in the same way by simply replacing $H$ with 
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Actually, I had planned to use moduhash as a crypto warmup.&lt;br&gt;
 If genius ptr-yudai had not created SquareRNG, I would have committed Seppuku (ritual suicide).&lt;/p&gt;
-&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-3&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-3&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;This is probably hard problem.
-Is this commutative or non-commutative?&lt;/p&gt;
-&lt;/blockquote&gt;
+Is this commutative or non-commutative?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1014,8 +1010,8 @@ The secret is $a_l \in \mathrm{LB}_l$ and public keys are $u \in B_n$, $v := a_l
 &lt;p&gt;Let $m$ is a message and $H\colon B_n \to {0,1}^k$ is a serialize function.&lt;br&gt;
 In encryption, server chooses $b_r \in \mathrm{RB}_r$ and calculate $w := b_r u b_r^{-1}$, $d := H(b_r v b_r^{-1}) \oplus m$.&lt;br&gt;
 And ciphertext is given as $(w,d)$.&lt;/p&gt;
-&lt;h3 id=&#34;solution-3&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;If we know $a_l$, we can decrypt as follows.
+&lt;h3 id=&#34;solution-3&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;If we know $a_l$, we can decrypt as follows.
 $$
 \begin{aligned}
 H(a_l w a_l^{-1}) \oplus d &amp;amp;= H(a_l b_r u b_r^{-1} a_l^{-1})\\
@@ -1057,7 +1053,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$
 Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post16/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post16/neco.jpg&#34;
 	
 	
 	
@@ -1248,10 +1244,10 @@ Therefore, we can decrypt by $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z
         </item>
         <item>
         <title>zer0pts ctf 2023 writeup（日本語）</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 18 Jul 2023 05:15:52 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2023-writeup%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
         <description>&lt;p&gt;$$
 \gdef\Fp {\mathbb{F} _ p}
 \gdef\LB{\mathrm{LB} _ l}
@@ -1262,12 +1258,11 @@ $$&lt;/p&gt;
     &gt;zer0pts ctf 2023&lt;/a&gt; を開催しました．
 多くの方々に参加していただいて感謝しております．&lt;/p&gt;
 &lt;p&gt;僕は本コンテストで crypto ジャンルの問題を 4つ作成しました．ここでは作者の想定していた解法を解説していきたいと思います．&lt;/p&gt;
-&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-102pts-easy_factoring-95-solves&#34;&gt;[crypto 102pts] easy_factoring (95 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;The word “decomposition” has multiple meanings.&lt;br&gt;
-Can you decompose?&lt;/p&gt;
-&lt;/blockquote&gt;
+Can you decompose?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1307,8 +1302,8 @@ Can you decompose?&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;与えられたコードの中で特に重要な部分は上の部分です．&lt;br&gt;
 $p,q$ を 128 bits の素数とし，$N := p^2 + q^2$ が与えられます．このとき $p,q$ を発見することができたらフラグを取得できます．&lt;br&gt;
 easy_factoring という問題名ですが，やることは素因数分解と見せかけて平方和での分解です．（といっても結局素因数分解が必要になりますが）&lt;/p&gt;
-&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;$N$ の平方和での分解は，ガウス整数環 $\mathbb{Z}[i]$ で $N$ の素元分解ができれば解けます．&lt;br&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;$N$ の平方和での分解は，ガウス整数環 $\mathbb{Z}[i]$ で $N$ の素元分解ができれば解けます．&lt;br&gt;
 今 $N$ がガウス素数 $\pi_1,\pi_2,\cdots,\pi_s$ を用いて $N = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2)\cdots (\pi_s \bar \pi_s)$ と書けるとします．&lt;br&gt;
 このとき $N = a^2 + b^2$ となる $a,b\in \mathbb{Z}$ について，$N = (a + bi)(a - bi) = (\pi_1 \bar \pi_1)(\pi_2 \bar \pi_2)\cdots (\pi_s \bar \pi_s)$ となります．&lt;/p&gt;
 &lt;p&gt;つまり $N$ を平方和に分解するような整数 $a,b$ は，$a + bi$ として $N$ の $\mathbb{Z}[i]$ での因数に含まれています．&lt;br&gt;
@@ -1375,12 +1370,11 @@ easy_factoring という問題名ですが，やることは素因数分解と�
 &lt;p&gt;さらにさらに，普通にディオファントス問題としてみて sympy のディオファントス問題ソルバにかけるだでも解けるようです．&lt;br&gt;
 easy_factoring は難易度として easy 想定だったので被害は少なかったと思いますが，それでもツールにかけるだけで解けちゃうタイプの非想定解が生まれてしまったのは反省しています．（warmup より solves 多いし）&lt;br&gt;
 問題の構想の最初の頃は平方和の分解を使って何らかのシステムに結託攻撃することを考えていたので，そっち方面でもっと練れていたらなという気持ちです．（作問力ぅ……）&lt;/p&gt;
-&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-1&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-178pts-elliptic-ring-rsa-27-solves&#34;&gt;[crypto 178pts] Elliptic Ring RSA (27 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-1&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;RSA is hard over integer ring.&lt;br&gt;
-What about RSA over elliptic curve ring (!?)&lt;/p&gt;
-&lt;/blockquote&gt;
+What about RSA over elliptic curve ring (!?)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1436,8 +1430,8 @@ What about RSA over elliptic curve ring (!?)&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;与えられたコードの中で重要な部分は上の部分です．&lt;br&gt;
 またこの暗号化処理の上には $\Fp$ を係数として基底を $E(\Fp)$ で張った群環の実装がなされています．（正確に実装するためにそこそこ長いコードになってしまいました）&lt;br&gt;
 この問題は，その群環 $\mathrm{ER}$ 上で行われている $e = 13$ の RSA を破ることがゴールとなります．&lt;/p&gt;
-&lt;h3 id=&#34;solution-1&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;群環なので，何らかの多項式環の剰余環と準同型で結べそうな気がしてきます．ということでまずは $E(\Fp)$ の構造とその位数 $o := \#E(\Fp)$ を計算したい気持ちになってきます．&lt;br&gt;
+&lt;h3 id=&#34;solution-1&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;群環なので，何らかの多項式環の剰余環と準同型で結べそうな気がしてきます．ということでまずは $E(\Fp)$ の構造とその位数 $o := \#E(\Fp)$ を計算したい気持ちになってきます．&lt;br&gt;
 実際に計算すると $o = 192$ であることと，$G := (189, 152)$ によって $E(\Fp) = \left&amp;lt; G \right&amp;gt;$ となることがわかります．&lt;br&gt;
 したがって $\mathrm{ER} = \Fp[G]$ となり，$[i]G \mapsto x^i$ とすれば同型 $\Fp[G] \simeq \Fp[x]/(x^o - 1)$ が作れます．&lt;br&gt;
 よって $\mathrm{ER}$ 上での RSA は多項式の剰余環での RSA が解ければ破れます．&lt;/p&gt;
@@ -1814,11 +1808,10 @@ $e^{-1}$ の計算は，$x^o - 1$ の各因数 $f _ i$ について $e^{-1} \bmo
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-2&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/div&gt;&lt;h2 id=&#34;crypto-226pts-moduhash-16-solves&#34;&gt;[crypto 226pts] moduhash (16 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-2&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;This is related to a base of the theory of elliptic curves!&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1861,8 +1854,8 @@ $e^{-1}$ の計算は，$x^o - 1$ の各因数 $f _ i$ について $e^{-1} \bmo
 &lt;p&gt;$S \colon \mathbb{C} \ni z \mapsto -1/z \in \mathbb{C}$，$T \colon \mathbb{C} \ni z \mapsto z + 1 \in \mathbb{C}$ とします．&lt;br&gt;
 また秘匿されたハッシュ関数 $h$ があり，これは $S$ と $T$ のランダムな関数合成によって構成されています．&lt;br&gt;
 問題としては，ある $z \in \mathbb{C}$ とそのハッシュによる出力 $h(z)$ が与えられるので $h$ を復元してくださいという問題です．&lt;/p&gt;
-&lt;h3 id=&#34;solution-2&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．&lt;br&gt;
+&lt;h3 id=&#34;solution-2&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;まずは $\mathbb{C}$ 全体ではなく，上半平面 $H$ について考えていきましょう．&lt;br&gt;
 モジュラー群 $\Gamma := \mathrm{SL}(\mathbb{Z})/\left\lbrace \pm 1 \right\rbrace$ は $H$ に作用します．&lt;br&gt;
 この作用による軌道で $H$ を類別できるためその軌道空間 $\Gamma \backslash H$ を考えることができ，そこからうまく代表元を取ってくれば次で定義される基本領域 $F$ と同一視することができます．
 $$
@@ -1875,7 +1868,7 @@ $$&lt;/p&gt;
 &lt;p&gt;また後述する $\Gamma$ の生成元から $h \in \Gamma$ なので，$\tau$ と $h(\tau)$ の軌道について $\Gamma \tau = \Gamma h(\tau)$ が成り立ちます．&lt;br&gt;
 したがって $\tau, h(\tau) \in H$ が与えられたとき，$\gamma_{\tau}(\tau), \gamma_{h(\tau)}(h(\tau)) \in F$ となる $\gamma_{\tau}, \gamma_{h(\tau)} \in \Gamma$ を見つけることができれば $\gamma_{\tau}(\tau) = \gamma_{h(\tau)}(h(\tau))$ となります．&lt;br&gt;
 ここまでくればあとは簡単で，$\gamma_{h(\tau)}^{-1} \circ \gamma_{\tau} = h$ となるため目的のハッシュ関数を計算することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post15/diagram.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/diagram.png&#34;
 	
 	
 	
@@ -2132,12 +2125,11 @@ $$
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;実は元々 moduhash が warmup になる予定でした．&lt;br&gt;
 天才 ptr-yudai 氏が SquareRNG を作ってくれていなかったら，今頃僕は責任を取って切腹することになっていたでしょう．&lt;/p&gt;
-&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)&lt;/h2&gt;
-&lt;h3 id=&#34;overview-3&#34;&gt;Overview&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&#34;crypto-340pts-unlimited-braid-works-6-solves&#34;&gt;[crypto 340pts] Unlimited Braid Works (6 solves)
+&lt;/h2&gt;&lt;h3 id=&#34;overview-3&#34;&gt;Overview
+&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;This is probably hard problem.
-Is this commutative or non-commutative?&lt;/p&gt;
-&lt;/blockquote&gt;
+Is this commutative or non-commutative?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2264,8 +2256,8 @@ Is this commutative or non-commutative?&lt;/p&gt;
 また $a _ l \in \LB$ を秘密鍵として，公開鍵を $v := a _ l u a _ l^{-1}$ とします．&lt;/p&gt;
 &lt;p&gt;$m$ をメッセージとし，さらに $H \colon B _ n \to \left\lbrace 0, 1 \right\rbrace^{k}$ をシリアライズ用の関数とします．&lt;br&gt;
 このとき暗号化の処理は，ランダムな組み紐 $b _ r \in \RB$ を選び $w := b _ r u b _ r^{-1}$，$d := H(b _ r v b _ r ^{-1}) \oplus$ を計算し，最後に暗号文を $(w, d)$ とするものになっています．&lt;/p&gt;
-&lt;h3 id=&#34;solution-3&#34;&gt;Solution&lt;/h3&gt;
-&lt;p&gt;もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
+&lt;h3 id=&#34;solution-3&#34;&gt;Solution
+&lt;/h3&gt;&lt;p&gt;もし秘密鍵 $a _ l$ がわかっていれば，次のように複合することができます．
 $$
 \begin{aligned}
 H(a_l w a_l^{-1}) \oplus d &amp;amp;= H(a_l b_r u b_r^{-1} a_l^{-1})\\
@@ -2306,7 +2298,7 @@ b_r x_2 b_r^{-1} &amp;amp;= x_1^{-1} w z^{-1}
 \end{aligned}
 $$&lt;/p&gt;
 &lt;p&gt;よって $a_lwa_l^{-1} = (vz^{-1}x_2^{-1})(x_1^{-1}wz^{-1})z$ とすることで複合することができます．&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post15/neco.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/blog/post15/neco.jpg&#34;
 	
 	
 	
@@ -2497,12 +2489,12 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>zer0pts ctf 2021 writeup (日本語)</title>
-        <link>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
+        <link>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</link>
         <pubDate>Tue, 09 Mar 2021 06:15:12 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
-        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
+        <guid>http://localhost:1313/blog/p/zer0pts-ctf-2021-writeup-%E6%97%A5%E6%9C%AC%E8%AA%9E/</guid>
+        <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;日本語でwriteupを書いていきます。英語版はこちら&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;easy pseudo random: &lt;a class=&#34;link&#34; href=&#34;https://t.co/d8RX3eY6tC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://t.co/d8RX3eY6tC&lt;/a&gt;&lt;/li&gt;
@@ -2512,9 +2504,9 @@ $$&lt;/p&gt;
 &lt;p&gt;他の問題のwriteupはこちらです。英語なので注意してください。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hackmd.io/@ptr-yudai/B1bk04fmu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://hackmd.io/@ptr-yudai/B1bk04fmu&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;easy-pseudo-random-crypto-31-solves&#34;&gt;easy pseudo random (crypto: 31 solves)&lt;/h1&gt;
-&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
-&lt;p&gt;次のコードとその出力が与えられます。コードでは、フラグが乱数を用いてxorで暗号化されています。出力からは2つの連続した乱数列の上位kビットw0, w1が得られ、ここから乱数列を予測することでフラグを複合することができます。&lt;/p&gt;
+&lt;h1 id=&#34;easy-pseudo-random-crypto-31-solves&#34;&gt;easy pseudo random (crypto: 31 solves)
+&lt;/h1&gt;&lt;h2 id=&#34;概要&#34;&gt;概要
+&lt;/h2&gt;&lt;p&gt;次のコードとその出力が与えられます。コードでは、フラグが乱数を用いてxorで暗号化されています。出力からは2つの連続した乱数列の上位kビットw0, w1が得られ、ここから乱数列を予測することでフラグを複合することができます。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -2585,8 +2577,8 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;w1 = &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w1&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;解法&#34;&gt;解法&lt;/h2&gt;
-&lt;p&gt;乱数生成用の$\mathbb{F}_p$上の関数を$F(v) = v^2 + b$とし、nbitsを$n$とおきます。このとき、未知数$x,y$を用いて$v_0$と$v_1$は数式で次のように表されます。
+&lt;/div&gt;&lt;h2 id=&#34;解法&#34;&gt;解法
+&lt;/h2&gt;&lt;p&gt;乱数生成用の$\mathbb{F}_p$上の関数を$F(v) = v^2 + b$とし、nbitsを$n$とおきます。このとき、未知数$x,y$を用いて$v_0$と$v_1$は数式で次のように表されます。
 $$\begin{eqnarray} v_0 &amp;amp;=&amp;amp; 2^{n-k} w_0 + x \nonumber \\ v_1 &amp;amp;=&amp;amp; 2^{n-k} w_1 + y \nonumber \end{eqnarray}$$&lt;/p&gt;
 &lt;p&gt;また、$v_1$を展開すれば
 $$\begin{eqnarray} v_1 &amp;amp;=&amp;amp; F(v_0) \nonumber \\ &amp;amp;=&amp;amp; (2^{n-k}w_0 + x)^2 + b \nonumber \end{eqnarray}$$
@@ -2682,9 +2674,9 @@ $k = \lceil \frac{nd}{d + 1} \rceil \ where\ d = \deg f$なのでCoppersmith&amp
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;zer0pts{is_blum_blum_shub_safe?}&lt;/code&gt;
 ちなみにこの乱数生成器はblum blum shubじゃないです。&lt;/p&gt;
-&lt;h1 id=&#34;pure-division-crypto-7-solves&#34;&gt;pure division (crypto: 7 solves)&lt;/h1&gt;
-&lt;h2 id=&#34;概要-1&#34;&gt;概要&lt;/h2&gt;
-&lt;p&gt;ピュアピュアの除算なのでpure divisionです。でもピュアじゃないらしいです。&lt;/p&gt;
+&lt;h1 id=&#34;pure-division-crypto-7-solves&#34;&gt;pure division (crypto: 7 solves)
+&lt;/h1&gt;&lt;h2 id=&#34;概要-1&#34;&gt;概要
+&lt;/h2&gt;&lt;p&gt;ピュアピュアの除算なのでpure divisionです。でもピュアじゃないらしいです。&lt;/p&gt;
 &lt;p&gt;次のコードとその出力が与えられます。とにかくECDLPさえ解けばフラグを得ることができますが、一般的に解けないためちょっと難しいです。しかし今回の問題では、剰余環$F_p = \mathbb{Z}/p^3\mathbb{Z}$上のECDLPなのでp進整数を利用すれば解けます。($F_p$は$\mathbb{F}_p$では無いことに注意してください。単にコード内の変数に従った名前にしているだけです)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -2738,8 +2730,8 @@ $k = \lceil \frac{nd}{d + 1} \rceil \ where\ d = \deg f$なのでCoppersmith&amp
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;T: (49376632602749543055345783411902198690599351794957124343389298933965298693663616388441379424236401744560279599744281594405742089477317921152802669021421009909184865835968088427615238677007575776072993333868804852765473010336459028 : 342987792080103175522504176026047089398654876852013925736156942540831035248585067987750805770826115548602899760190394686399806864247192767745458016875262322097116857255158318478943025083293316585095725393024663165264177646858125759 : 1)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;解法-1&#34;&gt;解法&lt;/h2&gt;
-&lt;p&gt;$\mathbb{Z}/p^n\mathbb{Z}$は、精度$n$桁の$\mathbb{Q}_p$と見ることができます。今回フラグは320ビットで$p^3$はそれより十分大きいため、恒等写像で適当に移して$\mathbb{Q}_p$上のECDLPを解けば勝てます。この問題の解法のメインはこの部分です。あとはECDLPを解きます。$\mathbb{Q}_p$上のECDLPは解けることが一般的に知られていて、今回はその解法の一つであるSSSA Attackの原理とほぼ同じ手法を紹介します。&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;解法-1&#34;&gt;解法
+&lt;/h2&gt;&lt;p&gt;$\mathbb{Z}/p^n\mathbb{Z}$は、精度$n$桁の$\mathbb{Q}_p$と見ることができます。今回フラグは320ビットで$p^3$はそれより十分大きいため、恒等写像で適当に移して$\mathbb{Q}_p$上のECDLPを解けば勝てます。この問題の解法のメインはこの部分です。あとはECDLPを解きます。$\mathbb{Q}_p$上のECDLPは解けることが一般的に知られていて、今回はその解法の一つであるSSSA Attackの原理とほぼ同じ手法を紹介します。&lt;/p&gt;
 &lt;p&gt;$E$を$\mathbb{Q}_p$上の楕円曲線とし、$E$を還元して得られた$\mathbb{F}_p$上の曲線を$E_f$とします。簡単のため、$E_f$は非特異と仮定します。&lt;/p&gt;
 &lt;p&gt;また、$\pi : \mathbb{P}^2(\mathbb{Q}_p) \longrightarrow \mathbb{P}^2(\mathbb{F}_p)$を還元写像とし、射影平面上の点について$(x,y,1) \in \mathbb{P}^2(\mathbb{Q})$ と $(x,y) \in \mathbb{A}^2(\mathbb{Q})$を同一視します。$\mathcal{E}$を$E$の形式群とし、$\phi:\ker \pi \ni (x,y,z) \longmapsto -x/y \in \mathcal{E}(p\mathbb{Z}_p)$とすれば次のような同型写像が構成できます。
 $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset{\log _ \mathcal{E}} \longrightarrow p\mathbb{Z}_p$$&lt;/p&gt;
@@ -2747,8 +2739,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 したがって次の同型が成り立ちます。&lt;/p&gt;
 &lt;p&gt;$$E(\mathbb{Q}_p) \longrightarrow \ker \pi \longrightarrow p\mathbb{Z}_p$$&lt;/p&gt;
 &lt;p&gt;$p\mathbb{Z}_p \simeq \mathbb{F} _ p ^ +$なので、同型写像で変換していくことで$\mathbb{F} _ p$上の問題に帰着でき、ECDLPを解くことができます。&lt;/p&gt;
-&lt;h2 id=&#34;実装&#34;&gt;実装&lt;/h2&gt;
-&lt;p&gt;実際の実装ではp進展開を利用することができます。p進付値を$v_p$とし、$E(\mathbb{Q}_p)$の部分集合$E _ n(\mathbb{Q} _ p) = \left\{ P \in E(\mathbb{Q} _ p) v _ p(P _ x) \leq -2n \right\} \cup \left\{O\right\}$を考えます。このとき$E_n(\mathbb{Q}_p) \simeq \mathcal{E}(p^n\mathbb{Z}_p)$が成り立ちます。&lt;/p&gt;
+&lt;h2 id=&#34;実装&#34;&gt;実装
+&lt;/h2&gt;&lt;p&gt;実際の実装ではp進展開を利用することができます。p進付値を$v_p$とし、$E(\mathbb{Q}_p)$の部分集合$E _ n(\mathbb{Q} _ p) = \left\{ P \in E(\mathbb{Q} _ p) v _ p(P _ x) \leq -2n \right\} \cup \left\{O\right\}$を考えます。このとき$E_n(\mathbb{Q}_p) \simeq \mathcal{E}(p^n\mathbb{Z}_p)$が成り立ちます。&lt;/p&gt;
 &lt;p&gt;恒等写像を利用すれば次の式が得られます。&lt;/p&gt;
 &lt;p&gt;$$\mathcal{E}(p^n\mathbb{Z}_p)/\mathcal{E}(p^{n+1}\mathbb{Z}_p) \simeq p^n\mathbb{Z}_p / p^{n+1}\mathbb{Z}_p \simeq \mathbb{F}_p^+$$&lt;/p&gt;
 &lt;p&gt;これらの結果から、p進展開$\sum a_i p^i$の係数$a_i$を逐次的に求めることができます。&lt;/p&gt;
@@ -2860,16 +2852,16 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
         </item>
         <item>
         <title>InterKosenCTF2020 writeup</title>
-        <link>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</link>
+        <link>http://localhost:1313/blog/p/interkosenctf2020-writeup/</link>
         <pubDate>Mon, 07 Sep 2020 01:14:23 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/interkosenctf2020-writeup/</guid>
+        <guid>http://localhost:1313/blog/p/interkosenctf2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;InterKosenCTF 2020に，久しぶりにkaitoさんとチームStarrySkyで参加しました．結果は20位で少し残念でしたが，面白い問題が多くとても楽しめました．運営は3人しかいないらしくとても大変そうです．本当にお疲れ様でした．&lt;br&gt;
 では自分が解いた問題のwirteupを書いていこうと思います．&lt;/p&gt;
 &lt;br&gt;
-&lt;h1 id=&#34;pwn-105pts-babysort-49-solved&#34;&gt;[pwn: 105pts] babysort (49 solved)&lt;/h1&gt;
-&lt;p&gt;次のプログラムで動いているサービスがあります．&lt;/p&gt;
+&lt;h1 id=&#34;pwn-105pts-babysort-49-solved&#34;&gt;[pwn: 105pts] babysort (49 solved)
+&lt;/h1&gt;&lt;p&gt;次のプログラムで動いているサービスがあります．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3018,8 +3010,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;pwn-300pts-authme-20-solved&#34;&gt;[pwn: 300pts] authme (20 solved)&lt;/h1&gt;
-&lt;p&gt;次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．&lt;/p&gt;
+&lt;h1 id=&#34;pwn-300pts-authme-20-solved&#34;&gt;[pwn: 300pts] authme (20 solved)
+&lt;/h1&gt;&lt;p&gt;次のコードで動いている実行ファイルと，ダミーのパスワードとユーザー名が渡されます．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3206,8 +3198,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-201pts-ciphertexts-33-solved&#34;&gt;[crypto: 201pts] ciphertexts (33 solved)&lt;/h1&gt;
-&lt;p&gt;次のmulti-prime rsaのような暗号と，その出力結果が渡されました．&lt;/p&gt;
+&lt;h1 id=&#34;crypto-201pts-ciphertexts-33-solved&#34;&gt;[crypto: 201pts] ciphertexts (33 solved)
+&lt;/h1&gt;&lt;p&gt;次のmulti-prime rsaのような暗号と，その出力結果が渡されました．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3305,8 +3297,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-326pts-bitcrypto-17-solved&#34;&gt;[crypto: 326pts] bitcrypto (17 solved)&lt;/h1&gt;
-&lt;p&gt;&amp;ldquo;&amp;ldquo;&amp;ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&amp;rdquo;&amp;rdquo;&amp;rdquo; ← これ好き&lt;/p&gt;
+&lt;h1 id=&#34;crypto-326pts-bitcrypto-17-solved&#34;&gt;[crypto: 326pts] bitcrypto (17 solved)
+&lt;/h1&gt;&lt;p&gt;&amp;ldquo;&amp;ldquo;&amp;ldquo;hi!!!! flag!!!! here!!! wowowowowo~~~~~~&amp;rdquo;&amp;rdquo;&amp;rdquo; ← これ好き&lt;/p&gt;
 &lt;p&gt;次のコードが動いているサーバーに接続してフラグを取る問題です．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3567,8 +3559,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;crypto-383pts-ochazuke-11-solved&#34;&gt;[crypto: 383pts] ochazuke (11 solved)&lt;/h1&gt;
-&lt;p&gt;次のsageのコードが動いているサーバーにアクセスできます．&lt;/p&gt;
+&lt;h1 id=&#34;crypto-383pts-ochazuke-11-solved&#34;&gt;[crypto: 383pts] ochazuke (11 solved)
+&lt;/h1&gt;&lt;p&gt;次のsageのコードが動いているサーバーにアクセスできます．&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -3784,8 +3776,8 @@ $$\ker \pi \overset{\phi}{\longrightarrow} \mathcal{E}(p\mathbb{Z} _ p) \overset
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;your messageにhexlify(b&amp;quot;ohayougozaimasu&amp;rdquo;)を送り，そのシグネチャをこの計算プログラムに入力すればochazukeのシグネチャが計算されます．この問題，あまり楕円曲線要素がなくただの法の下の計算みたいな感じだったので少し残念でした．でも面白かったです！&lt;/p&gt;
 &lt;br&gt;
-&lt;h1 id=&#34;reversing-182pts-harmagedon-36-solved&#34;&gt;[reversing: 182pts] harmagedon (36 solved)&lt;/h1&gt;
-&lt;p&gt;ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．&lt;/p&gt;
+&lt;h1 id=&#34;reversing-182pts-harmagedon-36-solved&#34;&gt;[reversing: 182pts] harmagedon (36 solved)
+&lt;/h1&gt;&lt;p&gt;ELFのバイナリが与えられます．実行するとwhich is your choice? [fRD3]みたいな感じで何度も聞かれ，正しいアルファベットを選択していくとフラグが手に入るプログラムです．&lt;/p&gt;
 &lt;p&gt;頑張ってバイナリを読むと，$i$番目に選択したアルファベットのインデックス(例えば[fRd3]でRなら1)を$a_i$とすると，次のような漸化式と制約でフラグかどうか判別しているようでした．&lt;/p&gt;
 &lt;p&gt;$$x_1 = 0,\ x_{i+1} = 4(x_i + a_i + 1)$$
 $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
@@ -3847,8 +3839,8 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;reversing-182pts-in-question-36-solved&#34;&gt;[reversing: 182pts] in question (36 solved)&lt;/h1&gt;
-&lt;p&gt;ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．&lt;/p&gt;
+&lt;h1 id=&#34;reversing-182pts-in-question-36-solved&#34;&gt;[reversing: 182pts] in question (36 solved)
+&lt;/h1&gt;&lt;p&gt;ELFのバイナリが与えられています．コマンドライン引数にフラグを入力し，それがあってるか判別してくれるようです．頑張ってバイナリを読んでpythonでシミュレートすればフラグが取れます．&lt;/p&gt;
 &lt;p&gt;そるばどぺー&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3883,8 +3875,8 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;br&gt;
-&lt;h1 id=&#34;reversing-252pts-trilemma-26-solved&#34;&gt;[reversing: 252pts] trilemma (26 solved)&lt;/h1&gt;
-&lt;p&gt;複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．&lt;br&gt;
+&lt;h1 id=&#34;reversing-252pts-trilemma-26-solved&#34;&gt;[reversing: 252pts] trilemma (26 solved)
+&lt;/h1&gt;&lt;p&gt;複数の共有ライブラリとソースコードが渡されます．ソースコードにはそのコンパイル方法も記載されていて丁寧だと感じました．&lt;br&gt;
 実行してみると各ライブラリのflag関数からエラーが出ます．エラーの文章からdl_iterate_phdrとlookupで落ちているようでした，ということで各ライブラリのlookup関数の中身を編集し，ライブラリの存在の有無でデータに1を書き込んでいる部分を0を書き込むように直しました．これは直接バイナリエディタでアセンブリをいじっています．&lt;/p&gt;
 &lt;p&gt;また，その後実行してもまたエラーで落ちます．そのエラーは，先程のエラーを回避するために0を代入したのに，そのデータの値が0であるときに発生するエラーでした．ということでそのジャンプ命令を変更してあげてそこもパスできるように編集しました．&lt;/p&gt;
 &lt;p&gt;その後またエラーが発生します．フラグを生成する部分のバッファのアドレスをmmapするとき，各ライブラリが使う部分が競合してしまっていました．gdbで頑張って色々命令を飛ばしながら動かすとフラグの断片が色々手に入るので，それを組みわせればオッケーです．&lt;/p&gt;
@@ -3894,14 +3886,14 @@ $$\exists j \leq 11,\ x_j = 12024956$$&lt;/p&gt;
         </item>
         <item>
         <title>WMCTF 2020 writeup</title>
-        <link>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</link>
+        <link>http://localhost:1313/blog/p/wmctf-2020-writeup/</link>
         <pubDate>Mon, 03 Aug 2020 15:11:32 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/wmctf-2020-writeup/</guid>
+        <guid>http://localhost:1313/blog/p/wmctf-2020-writeup/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
 &lt;p&gt;I played WMCTF 2020 in mixed team of Defenit and zer0pts named Defenitelyzer0. We got 8th place!&lt;br&gt;
 Thanks to my team members.
-&lt;img src=&#34;https://mitsu1119.github.io/blog/blog/post2/rank.png&#34;
+&lt;img src=&#34;http://localhost:1313/blog/post2/rank.png&#34;
 	
 	
 	
@@ -3912,8 +3904,8 @@ Thanks to my team members.
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;I tried to solve the crypto challenges, but they are too hard for me. I could solve only one challenge. I wanted to solve the piece_of_cake.&lt;/p&gt;
-&lt;h2 id=&#34;crypto-606pts-babysum-14-solved&#34;&gt;[Crypto: 606pts] babySum (14 solved)&lt;/h2&gt;
-&lt;p&gt;We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.&lt;br&gt;
+&lt;h2 id=&#34;crypto-606pts-babysum-14-solved&#34;&gt;[Crypto: 606pts] babySum (14 solved)
+&lt;/h2&gt;&lt;p&gt;We are given some scripts. The data contained a single number s and a list of 120 numbers A. We can load in json format.&lt;br&gt;
 Reading check.py, we will see that we need to solve a typical subset sum problem.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

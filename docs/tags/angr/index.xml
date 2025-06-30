@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Angr on みつみつみつですか？</title>
-        <link>https://mitsu1119.github.io/blog/tags/angr/</link>
+        <link>http://localhost:1313/blog/tags/angr/</link>
         <description>Recent content in Angr on みつみつみつですか？</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 28 Dec 2020 17:32:33 +0900</lastBuildDate><atom:link href="https://mitsu1119.github.io/blog/tags/angr/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 28 Dec 2020 17:32:33 +0900</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/angr/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>yoshi-camp 2020 winter 参加記</title>
-        <link>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
+        <link>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</link>
         <pubDate>Mon, 28 Dec 2020 17:32:33 +0900</pubDate>
         
-        <guid>https://mitsu1119.github.io/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
+        <guid>http://localhost:1313/blog/p/yoshi-camp-2020-winter-%E5%8F%82%E5%8A%A0%E8%A8%98/</guid>
         <description>&lt;div class=&#34;section&#34;&gt;
-&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
+&lt;h1 id=&#34;はじめに&#34;&gt;はじめに
+&lt;/h1&gt;&lt;p&gt;年末に開催されたyoshi-campに参加しました。wherebyを使ってリモートで行いました。今回はptr-yudaiさんがangrの細かい使い方やコーナーケースを、ふるつきさんが合同方程式のsmall_rootsとLLLを使った問題について解説してくれました。yoshikingさんがMersenne Twisterについて話してくれる予定もあったのですが、色々忙しかったらしくそれは叶いませんでした。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;z3を完全に理解しよう-by-ptr-yudai&#34;&gt;Z3を完全に理解しよう by ptr-yudai&lt;/h1&gt;
-&lt;p&gt;Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。&lt;/p&gt;
-&lt;h2 id=&#34;シンボリック変数の型&#34;&gt;シンボリック変数の型&lt;/h2&gt;
-&lt;p&gt;シンボリック変数で使える型をまずは教えてくれました。&lt;/p&gt;
+&lt;h1 id=&#34;z3を完全に理解しよう-by-ptr-yudai&#34;&gt;Z3を完全に理解しよう by ptr-yudai
+&lt;/h1&gt;&lt;p&gt;Z3の基本的な部分から細かい部分まで解説してくれました。またrev問を解くときにアセンブリやCのコードからZ3への変換でやってしまいがちなミスを教えてくれました。&lt;/p&gt;
+&lt;h2 id=&#34;シンボリック変数の型&#34;&gt;シンボリック変数の型
+&lt;/h2&gt;&lt;p&gt;シンボリック変数で使える型をまずは教えてくれました。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;真偽変数(Bool)&lt;/li&gt;
 &lt;li&gt;整数・実数変数(Int, Real)&lt;/li&gt;
@@ -29,8 +29,8 @@
 &lt;/ul&gt;
 &lt;p&gt;BitVecは固定長のビット数の数値を表す音に主に使い、論理演算が出てくるときに特に有効っぽいです。算術演算を使いたい場合はIntを使ったほうが早いらしいです。&lt;/p&gt;
 &lt;p&gt;BitVecとIntの変換はBV2Int、Int2BVを使うらしいです。またBitVecは演算子の文脈でsignedになるらしくここが引っかかりやすいので結構大事でした。&lt;/p&gt;
-&lt;h2 id=&#34;制約と論理式&#34;&gt;制約と論理式&lt;/h2&gt;
-&lt;p&gt;制約はs.add(&amp;hellip;)みたいな感じで追加していきます。&lt;/p&gt;
+&lt;h2 id=&#34;制約と論理式&#34;&gt;制約と論理式
+&lt;/h2&gt;&lt;p&gt;制約はs.add(&amp;hellip;)みたいな感じで追加していきます。&lt;/p&gt;
 &lt;p&gt;制約内で用いる論理演算はAnd,Or,Xor,Not&amp;hellip;といった具合で使うらしいです。またAndの省略形として,が使えるっぽいです。
 また制約をかけるときに1 &amp;lt; a &amp;lt; 100みたいな不等式のチェーンは許されないらしいです。&lt;/p&gt;
 &lt;ul&gt;
@@ -39,23 +39,23 @@
 &lt;li&gt;If(P, x, y) (PがTrueならx、PがFalseならy)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;あたりも使えるらしいです。便利。&lt;/p&gt;
-&lt;h2 id=&#34;解の列挙&#34;&gt;解の列挙&lt;/h2&gt;
-&lt;p&gt;Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。&lt;/p&gt;
-&lt;h2 id=&#34;z3における型&#34;&gt;Z3における「型」&lt;/h2&gt;
-&lt;p&gt;実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。&lt;/p&gt;
+&lt;h2 id=&#34;解の列挙&#34;&gt;解の列挙
+&lt;/h2&gt;&lt;p&gt;Z3は基本的に1つの解しか見つけませんが、その1つの解が見つかったあとその解と等しくないという制約をかけてもう一度解けば別の解を見使えることができます。これを利用すれば解の列挙ができるらしいです。&lt;/p&gt;
+&lt;h2 id=&#34;z3における型&#34;&gt;Z3における「型」
+&lt;/h2&gt;&lt;p&gt;実はZ3の型はIntSort、RealSort、BoolSort、BitVecSortみたいなものらしいです。またInt(&amp;ldquo;x&amp;rdquo;)やReal(&amp;ldquo;x&amp;rdquo;)はConst(&amp;ldquo;x&amp;rdquo;, IntSort())みたいな糖衣構文らしいです。&lt;/p&gt;
 &lt;p&gt;DeclareSortやFunctionを利用してIntやRealと同じような新しい型を定義できるらしいです。発表ではじゃんけん型みたいなものを見せてくれました。&lt;/p&gt;
-&lt;h2 id=&#34;z3の変数の種類&#34;&gt;Z3の変数の種類&lt;/h2&gt;
-&lt;p&gt;Z3の変数は主に３種類あるらしいです。&lt;/p&gt;
+&lt;h2 id=&#34;z3の変数の種類&#34;&gt;Z3の変数の種類
+&lt;/h2&gt;&lt;p&gt;Z3の変数は主に３種類あるらしいです。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Applications (全称・存在記号なし。qf論理式。IntやRealなど)&lt;/li&gt;
 &lt;li&gt;Quantifiers (全称・存在記号あり。Function)&lt;/li&gt;
 &lt;li&gt;Lambda (Z3pyにはwrapされてないらしいです。特に説明されませんでした)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;例題&#34;&gt;例題&lt;/h2&gt;
-&lt;p&gt;このあと例題を解きました。&lt;/p&gt;
-&lt;h3 id=&#34;例題1&#34;&gt;例題1&lt;/h3&gt;
-&lt;p&gt;A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？&lt;/p&gt;
+&lt;h2 id=&#34;例題&#34;&gt;例題
+&lt;/h2&gt;&lt;p&gt;このあと例題を解きました。&lt;/p&gt;
+&lt;h3 id=&#34;例題1&#34;&gt;例題1
+&lt;/h3&gt;&lt;p&gt;A,B,C,D,Eのうち2人は正直ものです。残りは嘘つきですが、真実を言う可能性もあります。正直者2りは誰？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A「BとEは正直者」&lt;/li&gt;
 &lt;li&gt;B「Cは嘘つき」&lt;/li&gt;
@@ -126,8 +126,8 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;正直者はBとDでした。&lt;/p&gt;
-&lt;h2 id=&#34;例題2&#34;&gt;例題2&lt;/h2&gt;
-&lt;p&gt;次の式を満たす有理数x,yを求めよ&lt;/p&gt;
+&lt;h2 id=&#34;例題2&#34;&gt;例題2
+&lt;/h2&gt;&lt;p&gt;次の式を満たす有理数x,yを求めよ&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$x^2 + y^2 = 533/196$&lt;/li&gt;
 &lt;li&gt;$x^2 + y^2 = 3$&lt;/li&gt;
@@ -173,8 +173,8 @@ Bool型の変数を5つつくって制約をつければ解けます。正直者
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;1番の答えは11/7と1/2で有ることがわかりました。また同じような方法で2番を解こうとしましたが当然解けませんでした。&lt;/p&gt;
-&lt;h2 id=&#34;例題3&#34;&gt;例題3&lt;/h2&gt;
-&lt;p&gt;Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。&lt;/p&gt;
+&lt;h2 id=&#34;例題3&#34;&gt;例題3
+&lt;/h2&gt;&lt;p&gt;Sを次の2つの性質を満たす合成法 * を持つ集合とせよ。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$\forall P, Q \in S,\ P * Q=Q * P$&lt;/li&gt;
 &lt;li&gt;$\forall P, Q \in S,\ P * (P * Q) = Q$
@@ -238,29 +238,29 @@ $$ P + Q = O * (P * Q)$$
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;この出力で群の結合法則を満たさない演算を手に入れることができました。とても便利で驚きです。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;z3の便利機能&#34;&gt;Z3の便利機能&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;z3の便利機能&#34;&gt;Z3の便利機能
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Optimize (最大、最小問題が解ける。ベクトル解析めっちゃ使ってそう)&lt;/li&gt;
 &lt;li&gt;Unsat Core (部分的な制約を満たすか否か推論。特に条件を1つ除けばsatになるようなものをMCUというらしいです)&lt;/li&gt;
 &lt;li&gt;Goal, Tactic (ゴールを設定してより高速に計算ができるらしいです。Tacticには色々な種類があるらしいです。どういう場合に使えばいいかよくわからなかったので復習します)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Unsat Coreを使ったデバッグ法を説明してくれました。とても便利そう。&lt;/p&gt;
-&lt;h2 id=&#34;z3の利用ミス集&#34;&gt;Z3の利用ミス集&lt;/h2&gt;
-&lt;p&gt;Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。&lt;/p&gt;
+&lt;h2 id=&#34;z3の利用ミス集&#34;&gt;Z3の利用ミス集
+&lt;/h2&gt;&lt;p&gt;Cのコードと解法のZ3のコードが与えられました。解法を見ると内容自体は特に間違ってないのですがなぜかunsatになったり解が出てこなかったり、めちゃくちゃ時間がかかったりしました。それを修正してね、という問題です。&lt;/p&gt;
 &lt;p&gt;1つ目の問題はBitVecの変数に対して単に&amp;raquo;としてしまうとだめ、というものでした。LShRを使えば解決します。&lt;/p&gt;
 &lt;p&gt;2つ目の問題はCのunsigned char同士の掛け算の問題でした。unsigned char同士の掛け算は暗黙の型変換で16bitの計算になってしまうので、単に8ビットのBitVecに対してZeroExt(8, x)みたいにして掛け算しないとだめ、というものでした。&lt;/p&gt;
 &lt;p&gt;3つ目の問題は32bitのBitVecで出力に時間がかかるというものでした。32bitを使うのではなく8bitのBitVec4つで表して解けば短い実行時間ですむらしいです。ただ、うまく修正したはずがあまり速度向上が見えなかったのでうーん:thinking_face:という感じです。&lt;/p&gt;
 &lt;br /&gt;
 &lt;p&gt;全体的に初めて知ることが多く、勉強になることがたくさんありました。ありがとうございました。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;bkzで勝つ-by-mitsu&#34;&gt;BKZで勝つ by mitsu&lt;/h1&gt;
-&lt;p&gt;自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。&lt;/p&gt;
+&lt;h1 id=&#34;bkzで勝つ-by-mitsu&#34;&gt;BKZで勝つ by mitsu
+&lt;/h1&gt;&lt;p&gt;自分がBKZの理論と、BKZを用いないと解けないCryptoの問題を解説し解いてもらいました。自分の部分なのであまり書きませんが、yoshi-campでBKZの解説をしようと思ったのは失敗だったと思っています。ごめんなさい。&lt;/p&gt;
 &lt;p&gt;内容はBKZ簡約基底、BKZ簡約のアルゴリズムについて雰囲気で説明し気持ちだけ汲み取ってもらおうというものでした。また問題を解いてもらったのですが、BKZを使う問題は基本的に基底をshuffleしてwhileで回す必要がありうまく解くのに時間がかかるため、結局その問題のフラグは講義中に得ることができませんでした。悲しい。ついでに部分和問題のCLOS法についても話しましたがこれは家庭普及率100%なのであまり必要なかった印象です。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;lllで殴る2-by-theoldmoon0602&#34;&gt;LLLで殴る(2) by theoldmoon0602&lt;/h1&gt;
-&lt;p&gt;前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。&lt;/p&gt;
-&lt;h2 id=&#34;coppersmithの定理&#34;&gt;Coppersmithの定理&lt;/h2&gt;
-&lt;p&gt;sageのsmall_rootsを自力で実装しよう、という内容でした。&lt;/p&gt;
+&lt;h1 id=&#34;lllで殴る2-by-theoldmoon0602&#34;&gt;LLLで殴る(2) by theoldmoon0602
+&lt;/h1&gt;&lt;p&gt;前回のyoshi-campでLLLで殴る(1)をやったらしいです。Coppersmithの定理やTruncated LCG、LWEについて解説してくれました。&lt;/p&gt;
+&lt;h2 id=&#34;coppersmithの定理&#34;&gt;Coppersmithの定理
+&lt;/h2&gt;&lt;p&gt;sageのsmall_rootsを自力で実装しよう、という内容でした。&lt;/p&gt;
 &lt;p&gt;monicな1変数多項式$f(x)$について、$f(x_0) \equiv 0 \mod N$を満たす小さい$x_0$を求めるプログラムを作ろうという話です。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;定理(Coppersmithの定理)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;monicな1変数$d$次多項式$f$の、$f(x_0) \equiv 0 \mod b$を満たす$|x_0 | &amp;lt; N^{\beta^2 / d}$を、$\log N,\ d$の多項式時間で求めることができる。ただし$b$は$N$の因数で$N^\beta \leq b$。&lt;/p&gt;
@@ -385,8 +385,8 @@ $$
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;やっていることは意外とシンプルで驚きました。やろうやろうと思ってやれていなかったのでとてもいい機会になりました。&lt;/p&gt;
-&lt;h2 id=&#34;truncated-lcg&#34;&gt;Truncated LCG&lt;/h2&gt;
-&lt;p&gt;LCGの漸化式
+&lt;h2 id=&#34;truncated-lcg&#34;&gt;Truncated LCG
+&lt;/h2&gt;&lt;p&gt;LCGの漸化式
 $$
 \begin{array}{ c c }
 x_{1} &amp;amp; =ax_{0} +b\bmod m\\
@@ -422,8 +422,8 @@ $$
 $L$を基底簡約して$B$に変換しても格子は変わらないので$xB=0 \mod m$はなりたちます。
 &lt;p&gt;$x = s^ky + z$なので$(2^ky + z)B = lm$となるようなベクトル$l$が存在し、$zB = lm - 2^kyB$となります。
 ここで$zB \simeq 0$と近似できるようで、$l$が求められるそうです。ここから$l$がわかったので$z$も求めることができます、という内容でした。なんで$zB \simeq 0$とできるのかイマイチ理解ができませんでした。&lt;/p&gt;
-&lt;h2 id=&#34;lwe&#34;&gt;LWE&lt;/h2&gt;
-&lt;p&gt;時間がなくてほとんど解説されませんでした。&lt;/p&gt;
+&lt;h2 id=&#34;lwe&#34;&gt;LWE
+&lt;/h2&gt;&lt;p&gt;時間がなくてほとんど解説されませんでした。&lt;/p&gt;
 &lt;p&gt;$$
 \begin{pmatrix}
 a_{11} &amp;amp; a_{21} &amp;amp; \cdots  &amp;amp; a_{m1}\\
@@ -440,11 +440,11 @@ $$&lt;/p&gt;
 &lt;br /&gt;
 数学の話が多めでした。いつかやろうやろうと思っていたことをやる機会になったのでとてもありがたい発表でした。この発表と比べると自分のBKZの話がカス過ぎて悲しくなってしまいます。
 &lt;br /&gt;
-&lt;h1 id=&#34;prngと戯れる&#34;&gt;PRNGと戯れる&lt;/h1&gt;
-&lt;p&gt;yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。&lt;/p&gt;
+&lt;h1 id=&#34;prngと戯れる&#34;&gt;PRNGと戯れる
+&lt;/h1&gt;&lt;p&gt;yoshikingさんは忙しかったそうです。特に発表はありませんでした。楽しみだったので少し残念でしたが仕方ないと思います。&lt;/p&gt;
 &lt;br /&gt;
-&lt;h1 id=&#34;感想&#34;&gt;感想&lt;/h1&gt;
-&lt;p&gt;午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。&lt;/p&gt;
+&lt;h1 id=&#34;感想&#34;&gt;感想
+&lt;/h1&gt;&lt;p&gt;午後1時から日付が変わる直前までやっていたのでとても疲れました。また、説明されたものをその場ですぐに実装することの難しさを改めて感じました。ただ全体的にとても勉強になる発表で実装の時間もたっぷりとくれたのでこの一日で成長できたんじゃないかなと思います。&lt;/p&gt;
 &lt;p&gt;あとは単に問題を解くのに実行時間がかかるBKZはこういうところで発表するものじゃないなと身にしみて思いました。ごめんなさい&lt;/p&gt;
 &lt;/div&gt;
 </description>
